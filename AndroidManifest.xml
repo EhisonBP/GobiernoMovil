@@ -1,18 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--/*
+ * Licencia GPL v3
+ * "Gobierno Móvil" es un producto de "Gobierno en Línea".
+ * Copyright (C) 2011 Richard Ricciardelli. Centro Nacional de Tecnologías de Información. All Rights Reserved.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses
+ */-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="gob.movil"
-      android:versionCode="1"
-      android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="7" />
+	package="gob.movil" android:versionCode="80" android:versionName="0.6.8">
+	<uses-sdk android:minSdkVersion="7" />
 
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name="gob.movil.app.GobiernoMovil"
-                  android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+	<application android:icon="@drawable/icon" android:label="@string/app_name">
+		<activity android:name="gob.movil.app.GobiernoMovil"
+			android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<meta-data android:name="android.app.default_searchable"
+				android:value="gob.movil.info.Search"></meta-data>
+		</activity>
 
-    </application>
+		<activity android:name="gob.movil.info.Search" android:label="@string/search_label">
+			<intent-filter>
+				<action android:name="android.intent.action.SEARCH">
+				</action>
+			</intent-filter>
+			<meta-data android:name="android.app.searchable"
+				android:resource="@xml/searchable"></meta-data>
+		</activity>
+
+		<activity android:name="gob.movil.app.Directorio"
+			android:label="@string/directorio">
+			<meta-data android:name="android.app.default_searchable"
+				android:value="gob.movil.info.Search"></meta-data>
+		</activity>
+		<activity android:name="gob.movil.app.Alcaldias"
+			android:label="@string/alcaldias">
+			<meta-data android:name="android.app.default_searchable"
+				android:value="gob.movil.info.Search"></meta-data>
+		</activity>
+		<activity android:name="gob.movil.app.Tramites"
+			android:label="@string/tramites">
+			<meta-data android:name="android.app.default_searchable"
+				android:value="gob.movil.info.Search"></meta-data>
+		</activity>
+		<activity android:name="gob.movil.app.Gobierno"
+			android:label="@string/gobierno">
+			<meta-data android:name="android.app.default_searchable"
+				android:value="gob.movil.info.Search"></meta-data>
+		</activity>
+		<activity android:name="gob.movil.info.About" android:label="@string/about">
+			<meta-data android:name="android.app.default_searchable"
+				android:value="gob.movil.info.Search"></meta-data>
+		</activity>
+		<activity android:name="gob.movil.info.Help" android:label="@string/help">
+			<meta-data android:name="android.app.default_searchable"
+				android:value="gob.movil.info.Search"></meta-data>
+		</activity>
+		<activity android:name="gob.movil.info.Show">
+			<meta-data android:name="android.app.default_searchable"
+				android:value="gob.movil.info.Search"></meta-data>
+		</activity>
+
+	</application>
 </manifest>
