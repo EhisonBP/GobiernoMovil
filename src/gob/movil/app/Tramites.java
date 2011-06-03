@@ -72,10 +72,7 @@ public class Tramites extends Activity {
 								+ spinner.getItemAtPosition(position) + "'",
 						null);
 				procedures.moveToFirst();
-				Cursor agencies = db.rawQuery(helper.SELECT + helper.AGENCIES
-						+ " WHERE _id = " + procedures.getInt(6), null);
-				agencies.moveToFirst();
-				setTextProcedure(procedures, agencies.getString(1).toString());
+				setTextProcedure(procedures);
 			}
 
 			public void onNothingSelected(AdapterView<?> arg0) {
@@ -85,7 +82,7 @@ public class Tramites extends Activity {
 
 	}
 
-	public void setTextProcedure(Cursor query, String agency) {
+	public void setTextProcedure(Cursor query) {
 		TextView text = (TextView) findViewById(R.id.text_tra);
 		text.setText("Trámite: " + query.getString(1) + ".\n\n"
 				+ getString(R.string.requirements) + ":\n" + query.getString(2)
@@ -93,7 +90,7 @@ public class Tramites extends Activity {
 				+ query.getString(3) + ".\n\n" + getString(R.string.cost)
 				+ ": " + query.getString(4) + ".\n\n"
 				+ getString(R.string.info) + ": " + query.getString(5)
-				+ ".\n\n" + getString(R.string.organism) + ": " + agency + ".");
+				+ ".\n\n" + getString(R.string.organism) + ": " + query.getString(6) + ".");
 	}
 
 	public void onMainClick(View button) {
