@@ -73,7 +73,7 @@ public class Tramites extends Activity {
 						null);
 				procedures.moveToFirst();
 				Cursor agencies = db.rawQuery(helper.SELECT + helper.AGENCIES
-						+ " WHERE _id_agency = " + procedures.getInt(6), null);
+						+ " WHERE _id = " + procedures.getInt(6), null);
 				agencies.moveToFirst();
 				setTextProcedure(procedures, agencies.getString(1).toString());
 			}
