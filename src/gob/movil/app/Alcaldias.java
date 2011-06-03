@@ -75,8 +75,7 @@ public class Alcaldias extends Activity {
 					Cursor query = db.rawQuery(helper.SELECT
 							+ helper.MAYORALTIES + " WHERE municipality = "
 							+ (position + 1) + " AND state = " + state, null);
-					query.moveToFirst();
-
+					
 					widgets.setDialog(Alcaldias.this, query);
 
 				} catch (Exception e) {
