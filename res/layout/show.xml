@@ -23,24 +23,24 @@
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="vertical" android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:padding="10sp">
+		android:layout_height="wrap_content" android:padding="10dip">
 
 		<TextView android:id="@+id/public_official"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:autoLink="all" android:linksClickable="true"
-			android:textColor="#FFFFFF" android:textSize="16sp" />
+			android:textColor="#FFFFFF" android:textSize="16dip" />
 
 		<LinearLayout android:orientation="horizontal"
 			android:gravity="center" android:layout_width="fill_parent"
 			android:layout_height="fill_parent">
 			<Button android:id="@+id/ok" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:width="80sp"
+				android:layout_height="wrap_content" android:width="80dip"
 				android:layout_gravity="left" android:text="@string/ok" />
 
 			<Button android:id="@+id/twitter" android:layout_width="wrap_content"
 				android:layout_height="wrap_content" android:layout_gravity="right"
 				android:drawableLeft="@drawable/twitter" android:visibility="gone"
-				android:textStyle="bold" android:drawablePadding="4sp" />
+				android:textStyle="bold" android:drawablePadding="4dip" />
 		</LinearLayout>
 
 	</LinearLayout>
