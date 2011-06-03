@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 public class GobiernoMovil extends Activity {
 	/** Called when the activity is first created. */
@@ -44,5 +45,9 @@ public class GobiernoMovil extends Activity {
 		Intent intent = new Intent();
 		intent.setComponent(new ComponentName(this, c));
 		startActivity(intent);
+	}
+
+	public void onQuitClick(View button) {
+		finish();
 	}
 }
