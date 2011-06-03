@@ -49,11 +49,11 @@
 				android:gravity="center" android:padding="10dip">
 				<ImageView android:src="@color/effect_dir"
 					android:layout_height="wrap_content" android:layout_width="wrap_content"
-					android:clickable="true" android:onClick="onDirectorioClick"></ImageView>
+					android:clickable="true" android:onClick="showActivity(Directorio.class)"></ImageView>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:gravity="center_horizontal"
 					android:clickable="true" android:text="@string/main_dir"
-					android:onClick="onDirectorioClick" android:textSize="18dip"
+					android:onClick="showActivity(Directorio.class)" android:textSize="18dip"
 					android:textColor="@color/text"></TextView>
 			</LinearLayout>
 
@@ -62,11 +62,11 @@
 				android:gravity="center" android:padding="10dip">
 				<ImageView android:src="@color/effect_tra"
 					android:layout_height="wrap_content" android:layout_width="wrap_content"
-					android:clickable="true" android:onClick="onTramitesClick"></ImageView>
+					android:clickable="true" android:onClick="showActivity(Tramites.class)"></ImageView>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:text="@string/main_tra"
 					android:gravity="center_horizontal" android:clickable="true"
-					android:onClick="onTramitesClick" android:textSize="18dip"
+					android:onClick="showActivity(Tramites.class)" android:textSize="18dip"
 					android:textColor="@color/text"></TextView>
 			</LinearLayout>
 
@@ -75,11 +75,11 @@
 				android:gravity="center" android:padding="10dip">
 				<ImageView android:src="@color/effect_gob"
 					android:layout_height="wrap_content" android:layout_width="wrap_content"
-					android:clickable="true" android:onClick="onGobiernoClick"></ImageView>
+					android:clickable="true" android:onClick="showActivity(Gobierno.class)"></ImageView>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:text="@string/main_gob"
 					android:gravity="center_horizontal" android:clickable="true"
-					android:onClick="onGobiernoClick" android:textSize="18dip"
+					android:onClick="showActivity(Gobierno.class)" android:textSize="18dip"
 					android:textColor="@color/text"></TextView>
 			</LinearLayout>
 
