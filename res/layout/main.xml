@@ -47,7 +47,7 @@
 			<LinearLayout android:orientation="vertical"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:gravity="center" android:padding="10dip">
-				<ImageView android:src="@drawable/selector_directorio"
+				<ImageView android:src="@color/effect_dir"
 					android:layout_height="wrap_content" android:layout_width="wrap_content"
 					android:clickable="true" android:onClick="onDirectorioClick"></ImageView>
 				<TextView android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
 			<LinearLayout android:orientation="vertical"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:gravity="center" android:padding="10dip">
-				<ImageView android:src="@drawable/selector_tramites"
+				<ImageView android:src="@color/effect_tra"
 					android:layout_height="wrap_content" android:layout_width="wrap_content"
 					android:clickable="true" android:onClick="onTramitesClick"></ImageView>
 				<TextView android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
 			<LinearLayout android:orientation="vertical"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:gravity="center" android:padding="10dip">
-				<ImageView android:src="@drawable/selector_gobierno"
+				<ImageView android:src="@color/effect_gob"
 					android:layout_height="wrap_content" android:layout_width="wrap_content"
 					android:clickable="true" android:onClick="onGobiernoClick"></ImageView>
 				<TextView android:layout_width="wrap_content"
