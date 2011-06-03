@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, GobiernoMovil!</string>
-    <string name="app_name">Gobierno Móvil</string>
+	<string name="about">Acerca de</string>
+	<string name="help">Ayuda</string>
+	<string name="search_instructions">Presione la tecla "SEARCH" de su teléfono para buscar dentro de la aplicación.</string>
+	<string name="app_name">Gobierno Móvil</string>
 </resources>
