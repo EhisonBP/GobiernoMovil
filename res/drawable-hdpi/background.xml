@@ -17,8 +17,6 @@
  * along with this program. If not, see http://www.gnu.org/licenses
  */-->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-	<!-- Efecto de degradado sobre el fondo. Los colores degradados son todos una combinación
-		 en la escala del color negro. -->
 	<gradient android:startColor="#424242" android:centerColor="#1C1C1C"
 		android:endColor="#0B0B0B" android:angle="135"></gradient>
 </shape>
