@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/*
+ * Licencia GPL v3
+ * "Gobierno Móvil" es un producto de "Gobierno en Línea".
+ * Copyright (C) 2011 Richard Ricciardelli. Centro Nacional de Tecnologías de Información. All Rights Reserved.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses
+ */-->
+ 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent" android:layout_width="fill_parent"
+	android:orientation="vertical">
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="0dip" android:layout_weight="1"
+		android:fillViewport="true" android:paddingTop="6dip"
+		android:paddingLeft="6dip" android:paddingRight="6dip">
+
+		<LinearLayout android:orientation="vertical"
+			android:layout_width="fill_parent" android:layout_height="wrap_content">
+			<LinearLayout android:orientation="horizontal"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:gravity="left">
+
+				<TextView android:id="@+id/start" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="Ruta de Inicio"
+					android:clickable="true" android:onClick="onMainClick"
+					android:textSize="14dip" android:textColor="@color/text" />
+
+				<TextView android:text=" | " android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="14dip"
+					android:textColor="@color/text" />
+
+				<TextView android:id="@+id/end" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="Ruta Actual"
+					android:textSize="14dip" android:textColor="@color/text" />
+
+				<LinearLayout android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:gravity="right">
+
+					<ImageView android:src="@color/effect_icon"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:clickable="true" android:onClick="onMainClick" />
+
+				</LinearLayout>
+
+			</LinearLayout>
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:text="@string/name" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:textSize="18dip"
+					android:textColor="@color/text" />
+				<EditText android:id="@+id/name" android:layout_width="fill_parent"
+					android:singleLine="true" android:layout_height="wrap_content"
+					android:autoText="true" android:inputType="textCapWords" />
+			</LinearLayout>
+			<TextView android:text="@string/subject"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:textSize="18dip" android:textColor="@color/text"></TextView>
+			<RadioGroup android:id="@+id/options" android:orientation="horizontal"
+				android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<RadioButton android:id="@+id/general"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:text="@string/general" android:checked="true"></RadioButton>
+				<RadioButton android:id="@+id/news"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:text="@string/news"></RadioButton>
+			</RadioGroup>
+			<TextView android:text="@string/body" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:textSize="18dip"
+				android:textColor="@color/text" />
+			<EditText android:id="@+id/email_text" android:hint="@string/compose"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_weight="1" android:gravity="left|top"
+				android:autoText="true" android:capitalize="sentences" />
+		</LinearLayout>
+	</ScrollView>
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		style="@android:style/ButtonBar">
+		<Button android:text="@string/send" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:layout_weight="1"
+			android:onClick="onSendClick" />
+		<Button android:text="@string/cancel" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:layout_weight="1"
+			android:onClick="onMainClick" />
+	</LinearLayout>
+</LinearLayout>
