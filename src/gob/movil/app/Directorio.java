@@ -129,7 +129,6 @@ public class Directorio extends Activity {
 						Cursor officers = sql.rawQuery(help.SELECT + help.AGENCIES
 								+ " WHERE power = 6 AND state = "
 								+ (position + POS), null);
-						officers.moveToFirst();
 						widgets.setDialog(Directorio.this, officers);						
 					} catch (Exception e) {
 						widgets.setToast(getApplicationContext(), getString(R.string.error_db));
