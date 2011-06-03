@@ -46,8 +46,26 @@ public class GobiernoMovil extends Activity {
 		intent.setComponent(new ComponentName(this, c));
 		startActivity(intent);
 	}
+	
+	public void onDirectorioClick(View button) {
+		Intent intent = new Intent();
+		intent.setComponent(new ComponentName(this, Directorio.class));
+		startActivity(intent);
+	}
 
-	public void onQuitClick(View button) {
+	public void onTramitesClick(View button) {
+		Intent intent = new Intent();
+		intent.setComponent(new ComponentName(this, Tramites.class));
+		startActivity(intent);
+	}
+
+	public void onGobiernoClick(View button) {
+		Intent intent = new Intent();
+		intent.setComponent(new ComponentName(this, Gobierno.class));
+		startActivity(intent);
+	}
+
+	public void onQuitClick(View v) {
 		finish();
 	}
 }
