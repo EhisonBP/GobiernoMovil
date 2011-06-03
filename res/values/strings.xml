@@ -1,7 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--/*
+ * Licencia GPL v3
+ * "Gobierno Móvil" es un producto de "Gobierno en Línea".
+ * Copyright (C) 2011 Richard Ricciardelli. Centro Nacional de Tecnologías de Información. All Rights Reserved.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses
+ */-->
 <resources>
+	<string name="gobierno_linea">Gobierno en Línea</string>
+	<string name="signature">Enviado desde \"Gobierno Móvil\" para Android</string>
+	<string-array name="powers">
+		<item>Poder Ejecutivo</item>
+		<item>Poder Legislativo</item>
+		<item>Poder Judicial</item>
+		<item>Poder Electoral</item>
+		<item>Poder Ciudadano</item>
+		<item>Poder Estadal</item>
+		<item>Poder Municipal</item>
+		<item>Órganos de Seguridad de la Nación</item>
+	</string-array>	
 	<string name="about">Acerca de</string>
-	<string name="help">Ayuda</string>
-	<string name="search_instructions">Presione la tecla "SEARCH" de su teléfono para buscar dentro de la aplicación.</string>
+	<string name="address">Dirección</string>
+	<string name="alcaldias">Alcaldías</string>
 	<string name="app_name">Gobierno Móvil</string>
+	<string name="body">Comentario</string>
+	<string name="cancel">Cancelar</string>
+	<string name="compose">Redactar</string>
+	<string name="cost">Costo</string>
+	<string name="directorio">Directorio del Estado</string>
+	<string name="email">atencionalusuario@cnti.gob.ve</string>
+	<string name="error_db">Error. No se logró la conexión con la base de datos o no existe ningún registro</string>
+	<string name="general">General</string>
+	<string name="gobierno">Escríbele al Gobierno</string>
+	<string name="help_text">
+		<b><big>Directorio</big></b>
+		\n\nEn la sección \"Directorio\" usted podrá consultar el Directorio
+		del Estado en donde encontrará información sobre los representantes
+		principales de la Administración Pública Nacional.\n\n
+		<b><big>Trámites</big></b>
+		\n\nEn la sección \"Trámites\" usted podrá consultar información sobre
+		los trámites disponibles para realizar en los respectivos entes de la
+		Administración Pública Nacional.\n\n
+		<b><big>Gobierno</big></b>
+		\n\nEn la sección \"Gobierno\" usted podrá interactuar con el Centro
+		Nacional de Tecnologías de Información para enviar algún comentario
+		que considere importante sobre Gobierno en Línea.\n\n
+		<b><big>Acerca de</big></b>
+		\n\nEn la sección \"Acerca de\" encontrará información sobre la
+		licencia de esta aplicación.\n\n
+	</string>
+	<string name="help">Ayuda</string>
+	<string name="hours">Horarios de atención</string>
+	<string name="main_dir">Directorio</string>
+	<string name="main_gob">Gobierno</string>
+	<string name="main_tra">Trámites</string>
+	<string name="name">Nombre</string>
+	<string name="news">Noticias</string>
+	<string name="ok">Aceptar</string>
+	<string name="organism">Organismo al cual pertenece</string>
+	<string name="info">Otra información a tener en cuenta</string>
+	<string name="phone">Teléfonos</string>
+	<string name="quit">Salir</string>
+	<string name="requirements">Requisitos</string>
+	<string name="search_hint">Buscar en GM</string>
+	<string name="search_instructions">Presione la tecla "SEARCH" de su teléfono para
+		buscar dentro de la aplicación.</string>
+	<string name="search_label">Resultados de la búsqueda</string>
+	<string name="search_none">No se encontró nada relacionado con <b>%s</b></string>
+	<string name="select">Seleccione</string>
+	<string name="selected">Seleccionado: </string>
+	<string name="send">Enviar</string>
+	<string name="subject">Asunto</string>
+	<string name="tramites">Trámites y Servicios</string>
+	<string name="twitter">Twitter</string>
+	<string name="web">Página Web</string>
+	<string name="license">
+		<b><big>Licencia GPL v3</big></b>
+		\n\n<b>\"Gobierno Móvil\"</b>es un producto de<b>\"Gobierno en Línea\"</b>.
+		\n\nThis program is free software: you can redistribute it and/or
+		modify
+		it under the terms of the GNU General Public License as
+		published by
+		the Free Software Foundation, either version 3 of the
+		License, or any
+		later version.
+
+		\n\nThis program is distributed in the
+		hope that it will be useful,
+		but WITHOUT ANY WARRANTY; without even the
+		implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR
+		PURPOSE. See the
+		GNU General Public License for more details.
+
+		\n\nYou
+		should have received a copy of the GNU General Public License
+		along
+		with this program. If not, see http://www.gnu.org/licenses\n\n
+	</string>
 </resources>
