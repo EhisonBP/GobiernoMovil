@@ -1,12 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
-</LinearLayout>
+<!--/*
+ * Licencia GPL v3
+ * "Gobierno Móvil" es un producto de "Gobierno en Línea".
+ * Copyright (C) 2011 Richard Ricciardelli. Centro Nacional de Tecnologías de Información. All Rights Reserved.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses
+ */-->
+ 
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:fillViewport="true" android:background="@drawable/background">
+	
+	<LinearLayout android:orientation="vertical"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center" android:padding="20dip">
+			<ImageView android:src="@drawable/logo"
+				android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageView>
+		</LinearLayout>
+
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center" android:padding="20dip">
+			<TextView android:text="@string/search_instructions"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:gravity="center" android:textSize="18dip" android:textColor="@color/selector_text"></TextView>
+		</LinearLayout>
+
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center">
+
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:gravity="center" android:padding="10dip">
+				<ImageView android:src="@drawable/selector_directorio"
+					android:layout_height="wrap_content" android:layout_width="wrap_content"
+					android:clickable="true" android:onClick="onDirectorioClick"></ImageView>
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:gravity="center_horizontal"
+					android:clickable="true" android:text="@string/main_dir"
+					android:onClick="onDirectorioClick" android:textSize="18dip"
+					android:textColor="@color/selector_text"></TextView>
+			</LinearLayout>
+
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:gravity="center" android:padding="10dip">
+				<ImageView android:src="@drawable/selector_tramites"
+					android:layout_height="wrap_content" android:layout_width="wrap_content"
+					android:clickable="true" android:onClick="onTramitesClick"></ImageView>
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="@string/main_tra"
+					android:gravity="center_horizontal" android:clickable="true"
+					android:onClick="onTramitesClick" android:textSize="18dip"
+					android:textColor="@color/selector_text"></TextView>
+			</LinearLayout>
+
+			<LinearLayout android:orientation="vertical"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:gravity="center" android:padding="10dip">
+				<ImageView android:src="@drawable/selector_gobierno"
+					android:layout_height="wrap_content" android:layout_width="wrap_content"
+					android:clickable="true" android:onClick="onGobiernoClick"></ImageView>
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="@string/main_gob"
+					android:gravity="center_horizontal" android:clickable="true"
+					android:onClick="onGobiernoClick" android:textSize="18dip"
+					android:textColor="@color/selector_text"></TextView>
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:padding="10dip" android:gravity="bottom">
+
+			<TextView android:text="@string/quit" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:gravity="left"
+				android:clickable="true" android:onClick="onQuitClick"
+				android:paddingRight="18dip" android:textSize="18dip"
+				android:textColor="@color/selector_text"></TextView>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</ScrollView>
