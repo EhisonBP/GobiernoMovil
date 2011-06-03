@@ -42,21 +42,13 @@
 	<string name="error_db">Error. No se logró la conexión con la base de datos o no existe ningún registro</string>
 	<string name="general">General</string>
 	<string name="gobierno">Escríbele al Gobierno</string>
-	<string name="help_text">
-		<b><big>Directorio</big></b>
-		\n\nEn la sección \"Directorio\" usted podrá consultar el Directorio
+	<string name="help_text"><b><big>Directorio</big></b>\n\nEn la sección \"Directorio\" usted podrá consultar el Directorio
 		del Estado en donde encontrará información sobre los representantes
-		principales de la Administración Pública Nacional.\n\n
-		<b><big>Trámites</big></b>
-		\n\nEn la sección \"Trámites\" usted podrá consultar información sobre
+		principales de la Administración Pública Nacional.\n\n<b><big>Trámites</big></b>\n\nEn la sección \"Trámites\" usted podrá consultar información sobre
 		los trámites disponibles para realizar en los respectivos entes de la
-		Administración Pública Nacional.\n\n
-		<b><big>Gobierno</big></b>
-		\n\nEn la sección \"Gobierno\" usted podrá interactuar con el Centro
+		Administración Pública Nacional.\n\n<b><big>Gobierno</big></b>\n\nEn la sección \"Gobierno\" usted podrá interactuar con el Centro
 		Nacional de Tecnologías de Información para enviar algún comentario
-		que considere importante sobre Gobierno en Línea.\n\n
-		<b><big>Acerca de</big></b>
-		\n\nEn la sección \"Acerca de\" encontrará información sobre la
+		que considere importante sobre Gobierno en Línea.\n\n<b><big>Acerca de</big></b>\n\nEn la sección \"Acerca de\" encontrará información sobre la
 		licencia de esta aplicación.\n\n
 	</string>
 	<string name="help">Ayuda</string>
@@ -73,8 +65,7 @@
 	<string name="quit">Salir</string>
 	<string name="requirements">Requisitos</string>
 	<string name="search_hint">Buscar en GM</string>
-	<string name="search_instructions">Presione la tecla "SEARCH" de su teléfono para
-		buscar dentro de la aplicación.</string>
+	<string name="search_instructions">Presione la tecla "SEARCH" de su teléfono para buscar dentro de la aplicación.</string>
 	<string name="search_label">Resultados de la búsqueda</string>
 	<string name="search_none">No se encontró nada relacionado con &lt;b>%1$s&lt;/b></string>
 	<string name="select">Seleccione</string>
@@ -84,9 +75,7 @@
 	<string name="tramites">Trámites y Servicios</string>
 	<string name="twitter">Twitter</string>
 	<string name="web">Página Web</string>
-	<string name="license">
-		<b><big>Licencia GPL v3</big></b>
-		\n\n<b>\"Gobierno Móvil\"</b>es un producto de<b>\"Gobierno en Línea\"</b>.
+	<string name="license"><b><big>Licencia GPL v3</big></b>\n\n<b>\"Gobierno Móvil\"</b>es un producto de<b>\"Gobierno en Línea\"</b>.
 		\n\nThis program is free software: you can redistribute it and/or
 		modify
 		it under the terms of the GNU General Public License as
@@ -103,9 +92,7 @@
 		PURPOSE. See the
 		GNU General Public License for more details.
 
-		\n\nYou
-		should have received a copy of the GNU General Public License
-		along
+		\n\nYou should have received a copy of the GNU General Public License along
 		with this program. If not, see http://www.gnu.org/licenses\n\n
 	</string>
 </resources>
