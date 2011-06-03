@@ -27,21 +27,21 @@
 
 		<LinearLayout android:orientation="horizontal"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:gravity="center" android:padding="20sp">
+			android:gravity="center" android:padding="20dip">
 			<ImageView android:src="@drawable/logo"
 				android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageView>
 		</LinearLayout>
 
 		<LinearLayout android:orientation="vertical"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:gravity="center" android:padding="10sp">
+			android:gravity="center" android:padding="10dip">
 			<TextView android:text="@string/help_text"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:linksClickable="true" android:autoLink="all"
 				android:textColor="#FFFFFF"></TextView>
 
 			<Button android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:width="80sp"
+				android:layout_height="wrap_content" android:width="80dip"
 				android:layout_gravity="center" android:text="@string/ok"
 				android:onClick="onOkClick" />
 		</LinearLayout>
