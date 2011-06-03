@@ -76,7 +76,7 @@
 	<string name="search_instructions">Presione la tecla "SEARCH" de su teléfono para
 		buscar dentro de la aplicación.</string>
 	<string name="search_label">Resultados de la búsqueda</string>
-	<string name="search_none">No se encontró nada relacionado con <b>%s</b></string>
+	<string name="search_none">No se encontró nada relacionado con &lt;b>%1$s&lt;/b></string>
 	<string name="select">Seleccione</string>
 	<string name="selected">Seleccionado: </string>
 	<string name="send">Enviar</string>
