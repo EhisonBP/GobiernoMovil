@@ -17,13 +17,9 @@
  * along with this program. If not, see http://www.gnu.org/licenses
  */-->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-	<!-- Cuando es presionada la imagen, cambiará a esta otra imagen. -->
 	<item android:drawable="@drawable/tramites_pressed"
 		android:state_pressed="true" />
-	<!-- Cuando es seleccionada la imagen (focused), cambiará a esta otra imagen. 
-		 Propiedad no disponible en ninguna imagen de la aplicación. -->
 	<item android:drawable="@drawable/tramites_pressed"
 		android:state_focused="true" />
-	<!-- Cuando la imagen está en reposo. -->
 	<item android:drawable="@drawable/tramites" />
 </selector>
