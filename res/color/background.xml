@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see http://www.gnu.org/licenses
  */-->
+ 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 	<gradient android:startColor="#424242" android:centerColor="#1C1C1C"
 		android:endColor="#0B0B0B" android:angle="135"></gradient>
