@@ -24,7 +24,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "test.db";
-	private static final int DB_VERSION = 9;
+	private static final int DB_VERSION = 11;
 	public final String POWERS = "powers";
 	public final String STATES = "states";
 	public final String MUNICIPALITIES = "municipalities";
@@ -444,6 +444,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Salud', 'Eugenia Sader Castellanos', 'Ministra del Poder Popular para la Salud', 'Av. Baralt, Centro Simón Bolívar, Edif. Sur, El Silencio, Caracas', '(0212)4080000', 'http://www.mpps.gob.ve/\nCorreo: mpps@mpps.gob.ve', '', '1', '1')");
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Trabajo y Seguridad Social', 'María Cristina Iglesias', 'Ministra del Poder Popular del Trabajo y Seguridad Social', 'Centro Simón Bolívar. Torre Sur. Piso 5. Caracas', '(0212)4084222 / (0212)4084229 / (0212)4084234', 'http://www.minpptrass.gob.ve\nCorreo: maria.cristina@minpptrass.gob.ve', '', '1', '1')");
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Transporte y Comunicaciones', 'Francisco Garcés', 'Ministro del Poder Popular para Transporte y Comunicaciones', 'Torre MTC, Municipio Chacao. Distrito Capital', '(0212)2015042', 'http://www.mtc.gob.ve', '', '1', '1')");
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Turismo', 'Alejandro Fleming', 'Ministro del Poder Popular para el Turismo', 'Av. Francisco de Miranda con Av. Principal la Floresta Edif. MINTUR, Municipio Chacao', '(0212)2084651 / (0212)2084652', 'http://www.mintur.gob.ve/', '', '1', '1')");
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Procuraduría General de la República', 'Dra. Margarita Luisa Mendola Sánchez', 'Procuradora General de la República', 'Av. Los Ilustres, cruce con calle Francisco Lazo Martí, Edif. Sede Procuraduría General de la República, Urb. Santa Mónica - Caracas', '(0212)5973300 / (0212)5973903', 'http://www.pgr.gob.ve', '', '1', '1')");
 		
 		//Gobernaciones
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Distrito Capital', 'Jackeline Farías', 'Gobernadora del Distrito Capital', 'Esq. Principal, frente a la Plaza Bolívar, Edif. Palacio de Gobierno, El Silencio, Caracas', '(0212)8632998', 'http://www.gdc.gob.ve', '', '6', '1')");
