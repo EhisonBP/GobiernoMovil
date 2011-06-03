@@ -37,7 +37,7 @@
 			android:gravity="center" android:padding="20dip">
 			<TextView android:text="@string/search_instructions"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:gravity="center" android:textSize="18dip" android:textColor="@color/selector_text"></TextView>
+				android:gravity="center" android:textSize="18dip" android:textColor="@color/text"></TextView>
 		</LinearLayout>
 
 		<LinearLayout android:orientation="horizontal"
@@ -54,7 +54,7 @@
 					android:layout_height="wrap_content" android:gravity="center_horizontal"
 					android:clickable="true" android:text="@string/main_dir"
 					android:onClick="onDirectorioClick" android:textSize="18dip"
-					android:textColor="@color/selector_text"></TextView>
+					android:textColor="@color/text"></TextView>
 			</LinearLayout>
 
 			<LinearLayout android:orientation="vertical"
@@ -67,7 +67,7 @@
 					android:layout_height="wrap_content" android:text="@string/main_tra"
 					android:gravity="center_horizontal" android:clickable="true"
 					android:onClick="onTramitesClick" android:textSize="18dip"
-					android:textColor="@color/selector_text"></TextView>
+					android:textColor="@color/text"></TextView>
 			</LinearLayout>
 
 			<LinearLayout android:orientation="vertical"
@@ -80,7 +80,7 @@
 					android:layout_height="wrap_content" android:text="@string/main_gob"
 					android:gravity="center_horizontal" android:clickable="true"
 					android:onClick="onGobiernoClick" android:textSize="18dip"
-					android:textColor="@color/selector_text"></TextView>
+					android:textColor="@color/text"></TextView>
 			</LinearLayout>
 
 		</LinearLayout>
@@ -93,7 +93,7 @@
 				android:layout_height="wrap_content" android:gravity="left"
 				android:clickable="true" android:onClick="onQuitClick"
 				android:paddingRight="18dip" android:textSize="18dip"
-				android:textColor="@color/selector_text"></TextView>
+				android:textColor="@color/text"></TextView>
 
 		</LinearLayout>
 
