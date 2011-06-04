@@ -38,6 +38,7 @@ import android.widget.TextView;
 
 public class Directorio extends Activity {
 	public final int POS = 1;
+	public int powerPosition = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,7 @@ public class Directorio extends Activity {
 					android.view.View v, int position, long id) {
 				Cursor agencies = db.rawQuery(helper.SELECT + helper.AGENCIES
 						+ " WHERE power = " + (position + POS), null);
+				powerPosition = position + POS;
 				Cursor states = db
 						.rawQuery(helper.SELECT + helper.STATES, null);
 				if (position == 5) {
@@ -118,22 +120,24 @@ public class Directorio extends Activity {
 				if (type > 0) {
 					Cursor agencies = sql.rawQuery(
 							help.SELECT + help.AGENCIES + " WHERE name = '"
-									+ lv.getItemAtPosition(position) + "'",
-							null);
+									+ lv.getItemAtPosition(position)
+									+ "' AND power = " + powerPosition, null);
 					agencies.moveToFirst();
 					widgets.setDialog(Directorio.this, agencies);
 				} else if (type < 0) {
 					showIntent(position + POS);
 				} else {
 					try {
-						Cursor officers = sql.rawQuery(help.SELECT + help.AGENCIES
+						Cursor officers = sql.rawQuery(help.SELECT
+								+ help.AGENCIES
 								+ " WHERE power = 6 AND state = "
 								+ (position + POS), null);
-						widgets.setDialog(Directorio.this, officers);						
+						widgets.setDialog(Directorio.this, officers);
 					} catch (Exception e) {
-						widgets.setToast(getApplicationContext(), getString(R.string.error_db));
+						widgets.setToast(getApplicationContext(),
+								getString(R.string.error_db));
 					}
-					
+
 				}
 			}
 		});
