@@ -24,7 +24,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "test.db";
-	private static final int DB_VERSION = 18;
+	private static final int DB_VERSION = 19;
 	public final String POWERS = "powers";
 	public final String STATES = "states";
 	public final String MUNICIPALITIES = "municipalities";
