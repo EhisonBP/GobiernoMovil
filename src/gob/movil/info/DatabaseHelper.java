@@ -24,7 +24,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "test.db";
-	private static final int DB_VERSION = 16;
+	private static final int DB_VERSION = 18;
 	public final String POWERS = "powers";
 	public final String STATES = "states";
 	public final String MUNICIPALITIES = "municipalities";
@@ -469,6 +469,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Contraloría General de la República', 'Clodosbaldo Russián Uzcátegui', 'Contralor General de la República', 'Av. Andrés Bello. Edif. Contraloría General de la República, Caracas', '(0212)5083111 / (0212)5083000', 'http://www.cgr.gob.ve', '', '5', '1')");
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Defensoría del Pueblo', 'Gabriela Ramírez', 'Defensora del Pueblo', 'Av. México, Plaza Morelos, Edif. Defensoría del Pueblo, piso 8, frente al Ateneo. Caracas', '(0212)5754703 / (0212)5755103 / Fax: (0212)5754467', 'http://www.defensoria.gob.ve', '', '5', '1')");
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Fiscalía - Ministerio Público', 'Dra. Luisa Ortega Díaz', 'Fiscal General de la República', 'Edificio Sede del Despacho de la Fiscal General de la República, esquina de Misericordia a Pele El Ojo, Av. México, Caracas', '(0212)5097211 / (0212)5097464', 'No disponible.', '', '5', '1')");
+		
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Armada', 'Almirante Carlos Máximo Aniasi Turchio', 'Comandante General de la Armada', 'Meseta de Mamo, Catia La Mar, La Guaira, Vargas', '(0212)3512151', 'http://www.armada.mil.ve', '', '8', '22')");
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('CICPC', 'Wilmer Flores Trocel', 'Director General del Cuerpo de Investigaciones Científicas, Penales y Criminalísticas', 'Sede Principal - Av. Urdaneta, de Pelota a Punceres Edif. CICPC', '(0800)2427224', 'http://www.cicpc.gov.ve', '', '8', '1')");
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Cuerpo de Bomberos D.C.', 'Cdmte. Gral. (B) Ángel William Martínez', 'Primer Comandante de la Institución', 'Avenida Lecuna con Esquina El Rosario, Edificio Cuartel Central de Bomberos \"Victoriano Jordán Pestana\", Municipio Libertador, Distrito Capital', '(0212)5422512 / (0212)5450066', 'http://www.bomberoscaracas.gov.ve', '', '8', '1')");
 		
 		//Gobernaciones
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Distrito Capital', 'Jackeline Farías', 'Gobernadora del Distrito Capital', 'Esq. Principal, frente a la Plaza Bolívar, Edif. Palacio de Gobierno, El Silencio, Caracas', '(0212)8632998', 'http://www.gdc.gob.ve', '', '6', '1')");
