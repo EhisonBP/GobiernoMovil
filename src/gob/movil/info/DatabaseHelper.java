@@ -24,7 +24,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "test.db";
-	private static final int DB_VERSION = 19;
+	private static final int DB_VERSION = 20;
 	public final String POWERS = "powers";
 	public final String STATES = "states";
 	public final String MUNICIPALITIES = "municipalities";
@@ -481,6 +481,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		//Gobernaciones
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Distrito Capital', 'Jackeline Farías', 'Gobernadora del Distrito Capital', 'Esq. Principal, frente a la Plaza Bolívar, Edif. Palacio de Gobierno, El Silencio, Caracas', '(0212)8632998', 'http://www.gdc.gob.ve', '', '6', '1')");
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Estado Amazonas', 'Lobirio Guarulla', 'Gobernador del Estado Amazonas', 'Av. Río Negro, Casa de Gobierno. Puerto Ayacucho. Edo. Amazonas', '(0248)5210249 / (0248)5212859', 'No disponible.\nCorreo: sprivada@amazonas.gob.ve', '', '6', '2')");
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Estado Anzóategui', 'Tarek William Saab', 'Gobernador del Estado Anzóategui', 'Palacio de Gobierno Piso N° 4. Barcelona, Edo. Anzoátegui', '(0281)2701401 / (0281)2701402 / (0281)2701403 / (0281)2701404 / Fax: (0281)2751671 / (0281)2701401 / (0281)2701402 / (0281)2701403 / (0281)2701404', 'No disponible.\nCorreo: tarek@gobernaciondeanzoategui.com', '', '6', '3')");
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Estado Apure', 'Ramón Carrizales', 'Secretario General del Gobierno de Apure', 'Edificio Administrativo del Ejecutivo, calle Comerico, entre Piar y Madariaga, San Fernando de Apure', '(0247)3410156 / (0247)3411114 / (0247)3413048 / (0247)3413865', 'No disponible.\nCorreo: gobernacionapure@yahoo.com', '', '6', '4')");
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Estado Aragua', 'Rafael Isea', 'Gobernador del Estado Aragua', 'Av. Miranda frente a la Plaza Bolívar Palacio de Gobierno. Maracay. Edo. Aragua', '(0243)2335646 / (0243)2331134 / Fax: (0234)2337767 / (0234)2337002', 'No disponible.', '', '6', '5')");
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Estado Barinas', 'Adán Coromoto Chávez', 'Gobernador del Estado Barinas', 'Palacio del Marqués, frente a la Plaza Bolívar, Barinas, Edo. Barinas', '(0273)5301111 / (0273)5301131', 'No disponible.', '', '6', '6')");
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Estado Bolívar', 'Francisco Rangel Gómez', 'Gobernador del Estado Bolívar', 'Calle Constitución. Palacio de Gobierno frente a la Plaza Bolívar. Ciudad Bolívar. Edo. Bolívar', '(0285)6002110 / (0285)6002111 / (0285)6002126 / (0285)6002127 / Fax: (0285)6002285 / (0285)6002356', 'http://www.e-bolivar.gov.ve', '', '6', '7')");
+		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Estado Carabobo', 'Henrique Salas Feo', 'Gobernador del Estado Carabobo', 'Calle Páez entre Av. Montes de Oca y Av. Díaz Moreno, Capitolio de Valencia. Edo. Carabobo', '(0241)8742951 / Fax: (0241)8570783', 'http://www.carabobo.gob.ve', '', '6', '8')");
+		
 //		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('', '', '', '', '', '', '', '1', '1')");
 //		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('', '', '', '', '', '', '', '1', '1')");
 //		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('', '', '', '', '', '', '', '1', '1')");
