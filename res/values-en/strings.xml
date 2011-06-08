@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/*
+ * Licencia GPL v3
+ * "Gobierno Móvil" es un producto de "Gobierno en Línea".
+ * Copyright (C) 2011 Richard Ricciardelli. Centro Nacional de Tecnologías de Información. All Rights Reserved.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses
+ */-->
+<resources>
+	<string name="gobierno_linea">Government Online</string>
+	<string name="signature">Sent from \"Gobierno Móvil\" for Android</string>
+	<string-array name="powers">
+		<item>Executive Power</item>
+		<item>Legislative Power</item>
+		<item>Judicial Power</item>
+		<item>Electoral Power</item>
+		<item>Citizen Power</item>
+		<item>States Power</item>
+		<item>Municipality Power</item>
+		<item>Nation Security Organisms</item>
+	</string-array>	
+	<string name="about">About</string>
+	<string name="address">Address</string>
+	<string name="alcaldias">Mayoralties</string>
+	<string name="app_name">Mobile Government</string>
+	<string name="body">Body</string>
+	<string name="cancel">Cancel</string>
+	<string name="compose">Compose</string>
+	<string name="cost">Cost</string>
+	<string name="directorio">Government Directory</string>
+	<string name="email">pordefinir@gobiernoenlinea.gob.ve</string>
+	<string name="error_db">Error. We could not connect to database or there are no any info available.</string>
+	<string name="general">General</string>
+	<string name="gobierno">Write to Government</string>
+	<string name="help_text"><b><big>Directorio</big></b>\n\nEn la sección \"Directorio\" usted podrá consultar el Directorio
+		del Estado en donde encontrará información sobre los representantes
+		principales de la Administración Pública Nacional.\n\n<b><big>Trámites</big></b>\n\nEn la sección \"Trámites\" usted podrá consultar información sobre
+		los trámites disponibles para realizar en los respectivos entes de la
+		Administración Pública Nacional.\n\n<b><big>Gobierno</big></b>\n\nEn la sección \"Gobierno\" usted podrá interactuar con el Centro
+		Nacional de Tecnologías de Información para enviar algún comentario
+		que considere importante sobre Gobierno en Línea.\n\n<b><big>Acerca de</big></b>\n\nEn la sección \"Acerca de\" encontrará información sobre la
+		licencia de esta aplicación.\n\n
+	</string>
+	<string name="help">Help</string>
+	<string name="hours">Opening Hours</string>
+	<string name="main_dir">Directory</string>
+	<string name="main_gob">Government</string>
+	<string name="main_tra">Procedures</string>
+	<string name="name">Name</string>
+	<string name="news">News</string>
+	<string name="ok">Ok</string>
+	<string name="organism">Belongs to</string>
+	<string name="info">Another info</string>
+	<string name="phone">Phones</string>
+	<string name="quit">Quit</string>
+	<string name="requirements">Requirements</string>
+	<string name="search_hint">Search in MG</string>
+	<string name="search_instructions">Press SEARCH key to look for a word in this app.</string>
+	<string name="search_label">Results</string>
+	<string name="search_none">We could not find anything related with &lt;b>%1$s&lt;/b></string>
+	<string name="select">Choose</string>
+	<string name="selected">Selected: </string>
+	<string name="send">Send</string>
+	<string name="subject">Subject</string>
+	<string name="tramites">Procedures and Services</string>
+	<string name="twitter">Twitter</string>
+	<string name="web">Web Page</string>
+	<string name="license"><b><big>Licencia GPL v3</big></b>\n\n<b>\"Gobierno Móvil\"</b>es un producto de<b>\"Gobierno en Línea\"</b>.
+		\n\nThis program is free software: you can redistribute it and/or
+		modify
+		it under the terms of the GNU General Public License as
+		published by
+		the Free Software Foundation, either version 3 of the
+		License, or any
+		later version.
+
+		\n\nThis program is distributed in the
+		hope that it will be useful,
+		but WITHOUT ANY WARRANTY; without even the
+		implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR
+		PURPOSE. See the
+		GNU General Public License for more details.
+
+		\n\nYou should have received a copy of the GNU General Public License along
+		with this program. If not, see http://www.gnu.org/licenses\n\n
+	</string>
+</resources>
