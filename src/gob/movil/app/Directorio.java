@@ -57,8 +57,8 @@ public class Directorio extends Activity {
 		final SQLiteDatabase db = helper.getReadableDatabase();
 
 		for (int i = 0; i < items.length; i++) {
-			db.execSQL(helper.INSERT + helper.POWERS + " (name) VALUES ('"
-					+ items[i] + "')");
+			db.execSQL(helper.INSERT + helper.POWERS + " (name) VALUES (\""
+					+ items[i] + "\")");
 		}
 
 		Spinner spinner = (Spinner) findViewById(R.id.spinner_dir);
