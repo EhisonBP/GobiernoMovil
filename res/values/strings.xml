@@ -38,7 +38,7 @@
 	<string name="compose">Redactar</string>
 	<string name="cost">Costo</string>
 	<string name="directorio">Directorio del Estado</string>
-	<string name="email">atencionalusuario@cnti.gob.ve</string>
+	<string name="email">pordefinir@gobiernoenlinea.gob.ve</string>
 	<string name="error_db">Error. No se logró la conexión con la base de datos o no existe ningún registro</string>
 	<string name="general">General</string>
 	<string name="gobierno">Escríbele al Gobierno</string>
