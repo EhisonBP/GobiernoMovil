@@ -21,6 +21,7 @@ package gob.movil.app;
 import gob.movil.R;
 import gob.movil.info.DatabaseHelper;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -36,6 +37,9 @@ public class Tramites extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tramites);
+
+		Intent receive = getIntent();
+		final int procedure = receive.getIntExtra("item", 0);
 
 		TextView pathStart = (TextView) findViewById(R.id.start);
 		TextView pathEnd = (TextView) findViewById(R.id.end);
@@ -64,6 +68,8 @@ public class Tramites extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
 
+		spinner.setSelection(procedure - 1);
+
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
@@ -90,7 +96,8 @@ public class Tramites extends Activity {
 				+ query.getString(3) + ".\n\n" + getString(R.string.cost)
 				+ ": " + query.getString(4) + ".\n\n"
 				+ getString(R.string.info) + ": " + query.getString(5)
-				+ ".\n\n" + getString(R.string.organism) + ": " + query.getString(6) + ".");
+				+ ".\n\n" + getString(R.string.organism) + ": "
+				+ query.getString(6) + ".");
 	}
 
 	public void onMainClick(View button) {
