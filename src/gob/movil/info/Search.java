@@ -101,10 +101,10 @@ public class Search extends ListActivity {
 
 	public String replace(String column, String keyword) {
 		String replacement = "REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE("
-				+ column
-				+ ",'á','a'), 'é','e'),'í','i'),'ó','o'),'ú','u'),'ñ','n') LIKE REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(LOWER('%"
-				+ keyword
-				+ "%'),'á','a'), 'é','e'),'í','i'),'ó','o'),'ú','u'),'ñ','n')";
+				+ column.toLowerCase()
+				+ ",'á','a'), 'é','e'),'í','i'),'ó','o'),'ú','u'),'ñ','n') LIKE REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE('%"
+				+ keyword.toLowerCase()
+				+ "%','á','a'), 'é','e'),'í','i'),'ó','o'),'ú','u'),'ñ','n')";
 		return replacement;
 	}
 
@@ -147,11 +147,11 @@ public class Search extends ListActivity {
 						dbHelper.MAYORALTIES, itemClicked);
 				Cursor queryProcedures = queryItemClicked(dbHelper.PROCEDURES,
 						itemClicked);
-				//Solve this problem.
-//				widgets.setDialog(Search.this, queryAgencies);
-//				widgets.setDialog(Search.this, queryMayoralties);
-				//This one is not working.
-//				widgets.setProceduresDialog(Search.this, queryProcedures);
+				// Solve this problem.
+				// widgets.setDialog(Search.this, queryAgencies);
+				// widgets.setDialog(Search.this, queryMayoralties);
+				// This one is not working.
+				// widgets.setProceduresDialog(Search.this, queryProcedures);
 			}
 		});
 	}
