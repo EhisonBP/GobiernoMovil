@@ -19,6 +19,7 @@
 package gob.movil.info;
 
 import gob.movil.R;
+import gob.movil.app.Tramites;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +27,7 @@ import java.util.List;
 
 import android.app.ListActivity;
 import android.app.SearchManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -147,13 +149,23 @@ public class Search extends ListActivity {
 						dbHelper.MAYORALTIES, itemClicked);
 				Cursor queryProcedures = queryItemClicked(dbHelper.PROCEDURES,
 						itemClicked);
-				// Solve this problem.
+				
 				// widgets.setDialog(Search.this, queryAgencies);
 				// widgets.setDialog(Search.this, queryMayoralties);
-				// This one is not working.
-				// widgets.setProceduresDialog(Search.this, queryProcedures);
+
+				if (itemClicked.equalsIgnoreCase(queryProcedures.getString(1)
+						.toString())) {
+					showIntent(queryProcedures.getInt(0));
+				}
 			}
 		});
+	}
+
+	public void showIntent(int item) {
+		Intent i = new Intent();
+		i.setComponent(new ComponentName(this, Tramites.class));
+		i.putExtra("item", item);
+		startActivity(i);
 	}
 
 	private Cursor queryItemClicked(String table, String item) {
@@ -161,6 +173,7 @@ public class Search extends ListActivity {
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		Cursor query = db.rawQuery(dbHelper.SELECT + table + WHERE + "name = '"
 				+ item + "'", null);
+		query.moveToFirst();
 		return query;
 	}
 }
