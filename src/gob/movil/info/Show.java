@@ -32,7 +32,7 @@ import android.widget.Toast;
 public class Show extends Activity {
 
 	public void setDialog(Context context, Cursor query) {
-		
+
 		query.moveToFirst();
 
 		final Dialog dialog = new Dialog(context);
@@ -72,40 +72,6 @@ public class Show extends Activity {
 			});
 		}
 
-		dialog.show();
-	}
-	
-	public void setProceduresDialog(Context context, Cursor queryProcedures) {
-		
-		queryProcedures.moveToFirst();
-		
-		final Dialog dialog = new Dialog(context);
-		dialog.setContentView(R.layout.show);
-
-		dialog.setTitle(queryProcedures.getString(1));
-
-		dialog.setCancelable(true);
-
-		dialog.setCanceledOnTouchOutside(true);
-
-		TextView text = (TextView) dialog.findViewById(R.id.public_official);
-
-		text.setText("Trámite: " + queryProcedures.getString(1) + ".\n\n"
-				+ getString(R.string.requirements) + ":\n" + queryProcedures.getString(2)
-				+ ".\n\n" + getString(R.string.hours) + ": "
-				+ queryProcedures.getString(3) + ".\n\n" + getString(R.string.cost)
-				+ ": " + queryProcedures.getString(4) + ".\n\n"
-				+ getString(R.string.info) + ": " + queryProcedures.getString(5)
-				+ ".\n\n");
-
-		Button ok = (Button) dialog.findViewById(R.id.ok);
-
-		ok.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				dialog.dismiss();
-			}
-		});
-		
 		dialog.show();
 	}
 
