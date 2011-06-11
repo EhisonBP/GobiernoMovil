@@ -5,4 +5,6 @@
 		android:icon="@android:drawable/ic_menu_info_details"></item>
 	<item android:id="@+id/help" android:title="@string/help"
 		android:icon="@android:drawable/ic_menu_help"></item>
+	<item android:id="@+id/quit" android:title="@string/quit"
+		android:icon="@android:drawable/ic_lock_power_off"></item>
 </menu>
