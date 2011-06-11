@@ -36,6 +36,9 @@ public class GobiernoMovil extends Activity {
 		case R.id.help:
 			showActivity(Help.class);
 			return true;
+		case R.id.quit:
+			finish();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -63,9 +66,5 @@ public class GobiernoMovil extends Activity {
 		Intent intent = new Intent();
 		intent.setComponent(new ComponentName(this, Gobierno.class));
 		startActivity(intent);
-	}
-
-	public void onQuitClick(View v) {
-		finish();
 	}
 }
