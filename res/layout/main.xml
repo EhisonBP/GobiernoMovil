@@ -85,18 +85,6 @@
 
 		</LinearLayout>
 
-		<LinearLayout android:orientation="horizontal"
-			android:layout_width="fill_parent" android:layout_height="fill_parent"
-			android:padding="10dip" android:gravity="bottom">
-
-			<TextView android:text="@string/quit" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:gravity="left"
-				android:clickable="true" android:onClick="onQuitClick"
-				android:paddingRight="18dip" android:textSize="18dip"
-				android:textColor="@color/text"></TextView>
-
-		</LinearLayout>
-
 	</LinearLayout>
 
 </ScrollView>
