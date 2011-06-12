@@ -149,12 +149,13 @@ public class Search extends ListActivity {
 						dbHelper.MAYORALTIES, itemClicked);
 				Cursor queryProcedures = queryItemClicked(dbHelper.PROCEDURES,
 						itemClicked);
-				
-				// widgets.setDialog(Search.this, queryAgencies);
-				// widgets.setDialog(Search.this, queryMayoralties);
-
-				if (itemClicked.equalsIgnoreCase(queryProcedures.getString(1)
-						.toString())) {
+				if (queryAgencies.moveToFirst()) {
+					widgets.setDialog(Search.this, queryAgencies);
+				}
+				if (queryMayoralties.moveToFirst()) {
+					widgets.setDialog(Search.this, queryMayoralties);
+				}
+				if (queryProcedures.moveToFirst()) {
 					showIntent(queryProcedures.getInt(0));
 				}
 			}
@@ -173,7 +174,6 @@ public class Search extends ListActivity {
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		Cursor query = db.rawQuery(dbHelper.SELECT + table + WHERE + "name = '"
 				+ item + "'", null);
-		query.moveToFirst();
 		return query;
 	}
 }
