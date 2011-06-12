@@ -21,22 +21,19 @@
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 
-	<LinearLayout android:orientation="horizontal"
+		<LinearLayout android:orientation="horizontal"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:gravity="left" android:padding="6dip">
+		android:gravity="left" android:padding="4dip">
 
 		<TextView android:id="@+id/start" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Ruta de Inicio"
-			android:clickable="true" android:onClick="onMainClick"
-			android:textSize="14dip" android:textColor="@color/text" />
+			android:layout_height="wrap_content" android:clickable="true"
+			android:onClick="onMainClick" android:textColor="@color/text" />
 
 		<TextView android:text=" | " android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:textSize="14dip"
-			android:textColor="@color/text" />
+			android:layout_height="wrap_content" android:textColor="@color/text" />
 
 		<TextView android:id="@+id/end" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="Ruta Actual"
-			android:textSize="14dip" android:textColor="@color/text" />
+			android:layout_height="wrap_content" android:textColor="@color/text" />
 
 		<LinearLayout android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:gravity="right">
@@ -44,9 +41,8 @@
 			<ImageView android:src="@color/effect_icon"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:clickable="true" android:onClick="onMainClick" />
-
 		</LinearLayout>
-
+		
 	</LinearLayout>
 
 	<LinearLayout android:layout_width="fill_parent"
