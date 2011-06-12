@@ -64,7 +64,7 @@
 	<string name="phone">Phones</string>
 	<string name="quit">Quit</string>
 	<string name="requirements">Requirements</string>
-	<string name="search_hint">Search in MG</string>
+	<string name="search_hint">Search in Mobile Government</string>
 	<string name="search_instructions">Press SEARCH key to look for a word in this app.</string>
 	<string name="search_label">Results</string>
 	<string name="search_none">We could not find anything related with &lt;b>%1$s&lt;/b></string>
