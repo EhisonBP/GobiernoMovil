@@ -42,11 +42,11 @@
 	<string name="error_db">Error. We could not connect to database or there are no any info available.</string>
 	<string name="general">General</string>
 	<string name="gobierno">Write to Government</string>
-	<string name="help_text"><b><big>Directorio</big></b>\n\nEn la sección \"Directorio\" usted podrá consultar el Directorio
+	<string name="help_text"><b><big>Directory</big></b>\n\nEn la sección \"Directorio\" usted podrá consultar el Directorio
 		del Estado en donde encontrará información sobre los representantes
-		principales de la Administración Pública Nacional.\n\n<b><big>Trámites</big></b>\n\nEn la sección \"Trámites\" usted podrá consultar información sobre
+		principales de la Administración Pública Nacional.\n\n<b><big>Procedures</big></b>\n\nEn la sección \"Trámites\" usted podrá consultar información sobre
 		los trámites disponibles para realizar en los respectivos entes de la
-		Administración Pública Nacional.\n\n<b><big>Gobierno</big></b>\n\nEn la sección \"Gobierno\" usted podrá interactuar con el Centro
+		Administración Pública Nacional.\n\n<b><big>Government</big></b>\n\nEn la sección \"Gobierno\" usted podrá interactuar con el Centro
 		Nacional de Tecnologías de Información para enviar algún comentario
 		que considere importante sobre Gobierno en Línea.\n\n<b><big>Acerca de</big></b>\n\nEn la sección \"Acerca de\" encontrará información sobre la
 		licencia de esta aplicación.\n\n
