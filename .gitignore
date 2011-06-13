@@ -1,7 +1,6 @@
 # Ignore these files and folders
 
 .classpath
-.project
 proguard.cfg
 bin/
 gen/
