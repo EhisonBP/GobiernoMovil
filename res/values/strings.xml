@@ -10,18 +10,15 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 <resources>
 	<string name="gobierno_linea">Gobierno en Línea</string>
-	<string name="signature">Enviado desde \"Gobierno Móvil\" para Android
-	</string>
-	<string-array name="powers">
-		<item>Poder Ejecutivo</item>
-		<item>Poder Legislativo</item>
-		<item>Poder Judicial</item>
-		<item>Poder Electoral</item>
-		<item>Poder Ciudadano</item>
-		<item>Poder Estadal</item>
-		<item>Poder Municipal</item>
-		<item>Órganos de Seguridad de la Nación</item>
-	</string-array>
+	<string name="signature">Enviado desde \"Gobierno Móvil\" para Android</string>
+	<string name="executive">Poder Ejecutivo</string>
+	<string name="legislative">Poder Legislativo</string>
+	<string name="judicial">Poder Judicial</string>
+	<string name="electoral">Poder Electoral</string>
+	<string name="citizen">Poder Ciudadano</string>
+	<string name="state">Poder Estadal</string>
+	<string name="municipality">Poder Municipal</string>
+	<string name="security">Órganos de Seguridad de la Nación</string>
 	<string name="about">Acerca de</string>
 	<string name="address">Dirección</string>
 	<string name="alcaldias">Alcaldías</string>
