@@ -44,27 +44,23 @@ public class GobiernoMovil extends Activity {
 		}
 	}
 
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.main_dir:
+			showActivity(Directorio.class);
+			break;
+		case R.id.main_tra:
+			showActivity(Tramites.class);
+			break;
+		case R.id.main_gob:
+			showActivity(Gobierno.class);
+			break;
+		}
+	}
+
 	public void showActivity(Class<?> c) {
 		Intent intent = new Intent();
 		intent.setComponent(new ComponentName(this, c));
-		startActivity(intent);
-	}
-	
-	public void onDirectorioClick(View button) {
-		Intent intent = new Intent();
-		intent.setComponent(new ComponentName(this, Directorio.class));
-		startActivity(intent);
-	}
-
-	public void onTramitesClick(View button) {
-		Intent intent = new Intent();
-		intent.setComponent(new ComponentName(this, Tramites.class));
-		startActivity(intent);
-	}
-
-	public void onGobiernoClick(View button) {
-		Intent intent = new Intent();
-		intent.setComponent(new ComponentName(this, Gobierno.class));
 		startActivity(intent);
 	}
 }
