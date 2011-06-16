@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="powers">
+		<item>@string/executive</item>
+		<item>@string/legislative</item>
+		<item>@string/judicial</item>
+		<item>@string/electoral</item>
+		<item>@string/citizen</item>
+		<item>@string/state</item>
+		<item>@string/municipality</item>
+		<item>@string/security</item>
+	</string-array>
+</resources>
