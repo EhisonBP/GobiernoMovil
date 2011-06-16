@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--/*
- * Licencia GPL v3
- * "Gobierno Móvil" es un producto de "Gobierno en Línea".
- * Copyright (C) 2011 Richard Ricciardelli. Centro Nacional de Tecnologías de Información. All Rights Reserved.
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or any
- * later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see http://www.gnu.org/licenses
- */-->
- 
+<!-- Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
+	This program is free software: you can redistribute it and/or modify it under 
+	the terms of the GNU General Public License as published by the Free Software 
+	Foundation, either version 3 of the License, or any later version. This program 
+	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+	PURPOSE. See the GNU General Public License for more details. You should 
+	have received a copy of the GNU General Public License along with this program. 
+	If not, see http://www.gnu.org/licenses\n\n -->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	android:fillViewport="true" android:background="@color/background">
-	
+	android:fillViewport="true">
 	<LinearLayout android:orientation="vertical"
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:background="@color/background">
 
 		<LinearLayout android:orientation="horizontal"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:gravity="center" android:padding="20dip">
+			android:gravity="center" android:padding="10dip">
 			<ImageView android:src="@drawable/logo"
 				android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageView>
 		</LinearLayout>
@@ -37,54 +29,37 @@
 			android:gravity="center" android:padding="20dip">
 			<TextView android:text="@string/search_instructions"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:gravity="center" android:textSize="18dip" android:textColor="@color/text"></TextView>
+				android:gravity="center" android:textSize="18sp" android:textColor="@color/text"></TextView>
 		</LinearLayout>
 
 		<LinearLayout android:orientation="horizontal"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:gravity="center">
 
-			<LinearLayout android:orientation="vertical"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:gravity="center" android:padding="10dip">
-				<ImageView android:src="@color/effect_dir"
-					android:layout_height="wrap_content" android:layout_width="wrap_content"
-					android:clickable="true" android:onClick="onDirectorioClick"></ImageView>
-				<TextView android:layout_width="wrap_content"
-					android:layout_height="wrap_content" android:gravity="center_horizontal"
-					android:clickable="true" android:text="@string/main_dir"
-					android:onClick="onDirectorioClick" android:textSize="16dip"
-					android:textColor="@color/text"></TextView>
-			</LinearLayout>
+			<TableLayout android:layout_height="wrap_content"
+				android:layout_width="wrap_content" android:layout_gravity="center"
+				android:stretchColumns="*">
 
-			<LinearLayout android:orientation="vertical"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:gravity="center" android:padding="10dip">
-				<ImageView android:src="@color/effect_tra"
-					android:layout_height="wrap_content" android:layout_width="wrap_content"
-					android:clickable="true" android:onClick="onTramitesClick"></ImageView>
-				<TextView android:layout_width="wrap_content"
-					android:layout_height="wrap_content" android:text="@string/main_tra"
-					android:gravity="center_horizontal" android:clickable="true"
-					android:onClick="onTramitesClick" android:textSize="16dip"
-					android:textColor="@color/text"></TextView>
-			</LinearLayout>
-
-			<LinearLayout android:orientation="vertical"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:gravity="center" android:padding="10dip">
-				<ImageView android:src="@color/effect_gob"
-					android:layout_height="wrap_content" android:layout_width="wrap_content"
-					android:clickable="true" android:onClick="onGobiernoClick"></ImageView>
-				<TextView android:layout_width="wrap_content"
-					android:layout_height="wrap_content" android:text="@string/main_gob"
-					android:gravity="center_horizontal" android:clickable="true"
-					android:onClick="onGobiernoClick" android:textSize="16dip"
-					android:textColor="@color/text"></TextView>
-			</LinearLayout>
-
+				<TableRow>
+					<ImageView android:gravity="center" android:src="@color/effect_dir"
+						android:clickable="true" android:onClick="onDirectorioClick"></ImageView>
+					<ImageView android:gravity="center" android:src="@color/effect_tra"
+						android:clickable="true" android:onClick="onTramitesClick"></ImageView>
+					<ImageView android:gravity="center" android:src="@color/effect_gob"
+						android:clickable="true" android:onClick="onGobiernoClick"></ImageView>
+				</TableRow>
+				<TableRow>
+					<TextView android:text="@string/main_dir" android:gravity="center"
+						android:textColor="@color/text" android:clickable="true"
+						android:onClick="onDirectorioClick"></TextView>
+					<TextView android:text="@string/main_tra" android:gravity="center"
+						android:textColor="@color/text" android:clickable="true"
+						android:onClick="onTramitesClick"></TextView>
+					<TextView android:text="@string/main_gob" android:gravity="center"
+						android:textColor="@color/text" android:clickable="true"
+						android:onClick="onGobiernoClick"></TextView>
+				</TableRow>
+			</TableLayout>
 		</LinearLayout>
-
 	</LinearLayout>
-
 </ScrollView>
