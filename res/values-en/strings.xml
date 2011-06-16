@@ -19,16 +19,14 @@
 <resources>
 	<string name="gobierno_linea">Government Online</string>
 	<string name="signature">Sent from \"Gobierno Móvil\" for Android</string>
-	<string-array name="powers">
-		<item>Executive Power</item>
-		<item>Legislative Power</item>
-		<item>Judicial Power</item>
-		<item>Electoral Power</item>
-		<item>Citizen Power</item>
-		<item>States Power</item>
-		<item>Municipality Power</item>
-		<item>Nation\'s Security Organisms</item>
-	</string-array>	
+	<string name="executive">Executive Power</string>
+	<string name="legislative">Legislative Power</string>
+	<string name="judicial">Judicial Power</string>
+	<string name="electoral">Electoral Power</string>
+	<string name="citizen">Citizen Power</string>
+	<string name="state">States Power</string>
+	<string name="municipality">Municipality Power</string>
+	<string name="security">Nation\'s Security Organisms</string>
 	<string name="about">About</string>
 	<string name="address">Address</string>
 	<string name="alcaldias">Mayoralties</string>
