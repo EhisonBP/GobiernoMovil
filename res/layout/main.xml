@@ -41,23 +41,26 @@
 				android:stretchColumns="*">
 
 				<TableRow>
-					<ImageView android:gravity="center" android:src="@color/effect_dir"
-						android:clickable="true" android:onClick="onDirectorioClick"></ImageView>
-					<ImageView android:gravity="center" android:src="@color/effect_tra"
-						android:clickable="true" android:onClick="onTramitesClick"></ImageView>
-					<ImageView android:gravity="center" android:src="@color/effect_gob"
-						android:clickable="true" android:onClick="onGobiernoClick"></ImageView>
+					<ImageView android:id="@+id/main_dir" android:gravity="center"
+						android:src="@color/effect_dir" android:clickable="true"
+						android:onClick="onClick"></ImageView>
+					<ImageView android:id="@+id/main_tra" android:gravity="center"
+						android:src="@color/effect_tra" android:clickable="true"
+						android:onClick="onClick"></ImageView>
+					<ImageView android:id="@+id/main_gob" android:gravity="center"
+						android:src="@color/effect_gob" android:clickable="true"
+						android:onClick="onClick"></ImageView>
 				</TableRow>
 				<TableRow>
-					<TextView android:text="@string/main_dir" android:gravity="center"
-						android:textColor="@color/text" android:clickable="true"
-						android:onClick="onDirectorioClick"></TextView>
-					<TextView android:text="@string/main_tra" android:gravity="center"
-						android:textColor="@color/text" android:clickable="true"
-						android:onClick="onTramitesClick"></TextView>
-					<TextView android:text="@string/main_gob" android:gravity="center"
-						android:textColor="@color/text" android:clickable="true"
-						android:onClick="onGobiernoClick"></TextView>
+					<TextView android:id="@id/main_dir" android:text="@string/main_dir"
+						android:gravity="center" android:textColor="@color/text"
+						android:clickable="true" android:onClick="onClick"></TextView>
+					<TextView android:id="@id/main_tra" android:text="@string/main_tra"
+						android:gravity="center" android:textColor="@color/text"
+						android:clickable="true" android:onClick="onClick"></TextView>
+					<TextView android:id="@id/main_gob" android:text="@string/main_gob"
+						android:gravity="center" android:textColor="@color/text"
+						android:clickable="true" android:onClick="onClick"></TextView>
 				</TableRow>
 			</TableLayout>
 		</LinearLayout>
