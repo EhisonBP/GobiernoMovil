@@ -1,10 +1,13 @@
-***Aplicación Gobierno Móvil***
+*************************
+Aplicación Gobierno Móvil
+*************************
 
 Funciona mejor en terminales Android OS 2.1.
 
-***Licencia GPL v3***
+Licencia GPL v3
+###############
 
-"Gobierno Móvil" es un producto de "Gobierno en Línea".
+**"Gobierno Móvil"** es un producto de **"Gobierno en Línea"**.
 
 Copyright (C) 2011 Richard Ricciardelli. Centro Nacional de Tecnologías
 de Información. All Rights Reserved.
