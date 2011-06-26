@@ -18,6 +18,11 @@
 
 package gob.movil.app;
 
+import static gob.movil.info.Constants.AGENCIES;
+import static gob.movil.info.Constants.INSERT;
+import static gob.movil.info.Constants.POWERS;
+import static gob.movil.info.Constants.SELECT;
+import static gob.movil.info.Constants.STATES;
 import gob.movil.R;
 import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Show;
@@ -57,8 +62,8 @@ public class Directorio extends Activity {
 		final SQLiteDatabase db = helper.getReadableDatabase();
 
 		for (int i = 0; i < items.length; i++) {
-			db.execSQL(helper.INSERT + helper.POWERS + " (name) VALUES (\""
-					+ items[i] + "\")");
+			db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + items[i]
+					+ "\")");
 		}
 
 		Spinner spinner = (Spinner) findViewById(R.id.spinner_dir);
@@ -70,11 +75,10 @@ public class Directorio extends Activity {
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
-				Cursor agencies = db.rawQuery(helper.SELECT + helper.AGENCIES
+				Cursor agencies = db.rawQuery(SELECT + AGENCIES
 						+ " WHERE power = " + (position + POS), null);
 				powerPosition = position + POS;
-				Cursor states = db
-						.rawQuery(helper.SELECT + helper.STATES, null);
+				Cursor states = db.rawQuery(SELECT + STATES, null);
 				if (position == 5) {
 					// Poder Estadal
 					addItems(helper, db, states, 0);
@@ -119,7 +123,7 @@ public class Directorio extends Activity {
 				Show widgets = new Show();
 				if (type > 0) {
 					Cursor agencies = sql.rawQuery(
-							help.SELECT + help.AGENCIES + " WHERE name = '"
+							SELECT + AGENCIES + " WHERE name = '"
 									+ lv.getItemAtPosition(position)
 									+ "' AND power = " + powerPosition, null);
 					agencies.moveToFirst();
@@ -128,8 +132,7 @@ public class Directorio extends Activity {
 					showIntent(position + POS);
 				} else {
 					try {
-						Cursor officers = sql.rawQuery(help.SELECT
-								+ help.AGENCIES
+						Cursor officers = sql.rawQuery(SELECT + AGENCIES
 								+ " WHERE power = 6 AND state = "
 								+ (position + POS), null);
 						widgets.setDialog(Directorio.this, officers);

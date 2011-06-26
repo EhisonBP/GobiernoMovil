@@ -18,6 +18,9 @@
 
 package gob.movil.app;
 
+import static gob.movil.info.Constants.MAYORALTIES;
+import static gob.movil.info.Constants.MUNICIPALITIES;
+import static gob.movil.info.Constants.SELECT;
 import gob.movil.R;
 import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Show;
@@ -50,8 +53,8 @@ public class Alcaldias extends Activity {
 		final DatabaseHelper helper = new DatabaseHelper(this);
 		final SQLiteDatabase db = helper.getReadableDatabase();
 
-		Cursor municipalities = db.rawQuery(helper.SELECT
-				+ helper.MUNICIPALITIES + " WHERE state = " + state, null);
+		Cursor municipalities = db.rawQuery(SELECT + MUNICIPALITIES
+				+ " WHERE state = " + state, null);
 
 		String[] items = new String[municipalities.getCount()];
 		int i = 0;
@@ -72,10 +75,10 @@ public class Alcaldias extends Activity {
 					long id) {
 				Show widgets = new Show();
 				try {
-					Cursor query = db.rawQuery(helper.SELECT
-							+ helper.MAYORALTIES + " WHERE municipality = "
-							+ (position + 1) + " AND state = " + state, null);
-					
+					Cursor query = db.rawQuery(SELECT + MAYORALTIES
+							+ " WHERE municipality = " + (position + 1)
+							+ " AND state = " + state, null);
+
 					widgets.setDialog(Alcaldias.this, query);
 
 				} catch (Exception e) {

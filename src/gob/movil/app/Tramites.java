@@ -18,6 +18,8 @@
 
 package gob.movil.app;
 
+import static gob.movil.info.Constants.PROCEDURES;
+import static gob.movil.info.Constants.SELECT;
 import gob.movil.R;
 import gob.movil.info.DatabaseHelper;
 import android.app.Activity;
@@ -50,8 +52,7 @@ public class Tramites extends Activity {
 		final DatabaseHelper helper = new DatabaseHelper(this);
 		final SQLiteDatabase db = helper.getReadableDatabase();
 
-		Cursor procedures = db
-				.rawQuery(helper.SELECT + helper.PROCEDURES, null);
+		Cursor procedures = db.rawQuery(SELECT + PROCEDURES, null);
 
 		String[] items = new String[procedures.getCount()];
 		int i = 0;
@@ -74,7 +75,7 @@ public class Tramites extends Activity {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
 				Cursor procedures = db.rawQuery(
-						helper.SELECT + helper.PROCEDURES + " WHERE name = '"
+						SELECT + PROCEDURES + " WHERE name = '"
 								+ spinner.getItemAtPosition(position) + "'",
 						null);
 				procedures.moveToFirst();
