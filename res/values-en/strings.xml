@@ -10,6 +10,7 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 	
 <resources>
+	<string name="home">Home</string>
 	<string name="gobierno_linea">Government Online</string>
 	<string name="signature">Sent from \"Gobierno Móvil\" for Android</string>
 	<string name="executive">Executive Power</string>
