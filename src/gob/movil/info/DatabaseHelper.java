@@ -18,22 +18,20 @@
 
 package gob.movil.info;
 
+import static gob.movil.info.Constants.AGENCIES;
+import static gob.movil.info.Constants.INSERT;
+import static gob.movil.info.Constants.MAYORALTIES;
+import static gob.movil.info.Constants.MUNICIPALITIES;
+import static gob.movil.info.Constants.POWERS;
+import static gob.movil.info.Constants.PROCEDURES;
+import static gob.movil.info.Constants.STATES;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-	private static final String DB_NAME = "test.db";
-	private static final int DB_VERSION = 22;
-	public final String POWERS = "powers";
-	public final String STATES = "states";
-	public final String MUNICIPALITIES = "municipalities";
-	public final String AGENCIES = "agencies";
-	public final String PROCEDURES = "procedures";
-	public final String MAYORALTIES = "mayoralties";
-	
-	public final String INSERT = "INSERT INTO ";
-	public final String SELECT = "SELECT * FROM ";
+	private static final String DB_NAME = "gm.db";
+	private static final int DB_VERSION = 1;
 	
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -45,30 +43,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		db.execSQL("CREATE TABLE " + STATES + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");
 		
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Distrito Capital')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Amazonas')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Anzoátegui')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Apure')"); 
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Aragua')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Barinas')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Bolívar')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Carabobo')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Cojedes')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Delta Amacuro')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Falcón')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Guárico')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Lara')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Mérida')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Miranda')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Monagas')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Nueva Esparta')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Portuguesa')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Sucre')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Táchira')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Trujillo')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Vargas')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Yaracuy')");
-		db.execSQL(INSERT + STATES + " (name) VALUES ('Zulia')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Distrito Capital')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Amazonas')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Anzoátegui')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Apure')"); 
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Aragua')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Barinas')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Bolívar')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Carabobo')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Cojedes')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Delta Amacuro')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Falcón')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Guárico')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Lara')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Mérida')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Miranda')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Monagas')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Nueva Esparta')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Portuguesa')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Sucre')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Táchira')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Trujillo')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Vargas')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Yaracuy')");
+		db.execSQL(INSERT + STATES + " VALUES (null, 'Zulia')");
 		
 		db.execSQL("CREATE TABLE " + MUNICIPALITIES + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, state INTEGER NOT NULL, FOREIGN KEY(state) REFERENCES states(_id))");
 		db.execSQL(INSERT + MUNICIPALITIES + " (name, state) VALUES ('Baruta', '1')");
