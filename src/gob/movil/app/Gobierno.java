@@ -25,7 +25,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 public class Gobierno extends Activity {
 	EditText NAME;
@@ -36,12 +35,6 @@ public class Gobierno extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gobierno);
-
-		TextView pathStart = (TextView) findViewById(R.id.start);
-		TextView pathEnd = (TextView) findViewById(R.id.end);
-
-		pathStart.setText(getString(R.string.app_name));
-		pathEnd.setText(getString(R.string.gobierno));
 
 		NAME = (EditText) findViewById(R.id.name);
 		EMAILTEXT = (EditText) findViewById(R.id.email_text);

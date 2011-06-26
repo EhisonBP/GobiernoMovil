@@ -39,7 +39,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 public class Directorio extends Activity {
 	public final int POS = 1;
@@ -49,11 +48,6 @@ public class Directorio extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.directorio);
-
-		TextView pathStart = (TextView) findViewById(R.id.start);
-		TextView pathEnd = (TextView) findViewById(R.id.end);
-		pathStart.setText(getString(R.string.app_name));
-		pathEnd.setText(getString(R.string.directorio));
 
 		Resources res = getResources();
 		String[] items = res.getStringArray(R.array.powers);

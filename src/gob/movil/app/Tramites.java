@@ -43,12 +43,6 @@ public class Tramites extends Activity {
 		Intent receive = getIntent();
 		final int procedure = receive.getIntExtra("item", 0);
 
-		TextView pathStart = (TextView) findViewById(R.id.start);
-		TextView pathEnd = (TextView) findViewById(R.id.end);
-
-		pathStart.setText(getString(R.string.app_name));
-		pathEnd.setText(getString(R.string.tramites));
-
 		final DatabaseHelper helper = new DatabaseHelper(this);
 		final SQLiteDatabase db = helper.getReadableDatabase();
 

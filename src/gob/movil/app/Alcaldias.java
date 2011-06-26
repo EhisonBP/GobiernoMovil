@@ -34,7 +34,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class Alcaldias extends Activity {
 	@Override
@@ -44,11 +43,6 @@ public class Alcaldias extends Activity {
 
 		Intent receive = getIntent();
 		final int state = receive.getIntExtra("item", 0);
-
-		TextView pathStart = (TextView) findViewById(R.id.start);
-		TextView pathEnd = (TextView) findViewById(R.id.end);
-		pathStart.setText(getString(R.string.directorio));
-		pathEnd.setText(getString(R.string.alcaldias));
 
 		final DatabaseHelper helper = new DatabaseHelper(this);
 		final SQLiteDatabase db = helper.getReadableDatabase();
