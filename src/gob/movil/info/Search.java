@@ -18,6 +18,10 @@
 
 package gob.movil.info;
 
+import static gob.movil.info.Constants.AGENCIES;
+import static gob.movil.info.Constants.MAYORALTIES;
+import static gob.movil.info.Constants.PROCEDURES;
+import static gob.movil.info.Constants.SELECT;
 import gob.movil.R;
 import gob.movil.app.Tramites;
 
@@ -60,22 +64,20 @@ public class Search extends ListActivity {
 			String searchKeywords = queryIntent
 					.getStringExtra(SearchManager.QUERY);
 			Cursor searchAgencies = db.rawQuery(
-					dbHelper.SELECT + dbHelper.AGENCIES + WHERE
-							+ replace("name", searchKeywords) + OR
-							+ replace("officer", searchKeywords) + OR
+					SELECT + AGENCIES + WHERE + replace("name", searchKeywords)
+							+ OR + replace("officer", searchKeywords) + OR
 							+ replace("office", searchKeywords) + OR
 							+ replace("twitter", searchKeywords), null);
 
 			Cursor searchMayoralties = db.rawQuery(
-					dbHelper.SELECT + dbHelper.MAYORALTIES + WHERE
+					SELECT + MAYORALTIES + WHERE
 							+ replace("name", searchKeywords) + OR
 							+ replace("mayor", searchKeywords) + OR
 							+ replace("office", searchKeywords) + OR
 							+ replace("twitter", searchKeywords), null);
 
-			Cursor searchProcedures = db.rawQuery(
-					dbHelper.SELECT + dbHelper.PROCEDURES + WHERE
-							+ replace("name", searchKeywords), null);
+			Cursor searchProcedures = db.rawQuery(SELECT + PROCEDURES + WHERE
+					+ replace("name", searchKeywords), null);
 
 			if (!searchAgencies.moveToFirst()
 					&& !searchMayoralties.moveToFirst()
@@ -131,7 +133,6 @@ public class Search extends ListActivity {
 	}
 
 	public void onResultClick(String[] results) {
-		final DatabaseHelper dbHelper = new DatabaseHelper(this);
 		final ListView resultsList = (ListView) findViewById(R.id.list_result);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, results);
@@ -143,11 +144,10 @@ public class Search extends ListActivity {
 				Show widgets = new Show();
 				String itemClicked = resultsList.getItemAtPosition(position)
 						.toString();
-				Cursor queryAgencies = queryItemClicked(dbHelper.AGENCIES,
+				Cursor queryAgencies = queryItemClicked(AGENCIES, itemClicked);
+				Cursor queryMayoralties = queryItemClicked(MAYORALTIES,
 						itemClicked);
-				Cursor queryMayoralties = queryItemClicked(
-						dbHelper.MAYORALTIES, itemClicked);
-				Cursor queryProcedures = queryItemClicked(dbHelper.PROCEDURES,
+				Cursor queryProcedures = queryItemClicked(PROCEDURES,
 						itemClicked);
 				if (queryAgencies.moveToFirst()) {
 					widgets.setDialog(Search.this, queryAgencies);
@@ -172,8 +172,8 @@ public class Search extends ListActivity {
 	private Cursor queryItemClicked(String table, String item) {
 		DatabaseHelper dbHelper = new DatabaseHelper(this);
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		Cursor query = db.rawQuery(dbHelper.SELECT + table + WHERE + "name = '"
-				+ item + "'", null);
+		Cursor query = db.rawQuery(SELECT + table + WHERE + "name = '" + item
+				+ "'", null);
 		return query;
 	}
 }
