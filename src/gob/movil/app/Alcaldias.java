@@ -72,7 +72,7 @@ public class Alcaldias extends Activity {
 					long id) {
 				Show widgets = new Show();
 				try {
-					/** Consultamos la alcaldía del municipio seleccionado. */
+					// Consultamos la alcaldía del municipio seleccionado.
 					Cursor query = db.rawQuery(SELECT + MAYORALTIES
 							+ " WHERE municipality = " + (position + 1)
 							+ " AND state = " + state, null);
