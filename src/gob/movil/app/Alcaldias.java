@@ -41,12 +41,14 @@ public class Alcaldias extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alcaldias);
 
+		/** Recibimos la entidad estatal. */
 		Intent receive = getIntent();
 		final int state = receive.getIntExtra("item", 0);
 
 		final DatabaseHelper helper = new DatabaseHelper(this);
 		final SQLiteDatabase db = helper.getReadableDatabase();
 
+		/** Consultamos los municipios pertenecientes a esa entidad estatal. */
 		Cursor municipalities = db.rawQuery(SELECT + MUNICIPALITIES
 				+ " WHERE state = " + state, null);
 
@@ -59,6 +61,7 @@ public class Alcaldias extends Activity {
 			} while (municipalities.moveToNext());
 		}
 
+		/** Mostramos el listado de municipios. */
 		final ListView lv = (ListView) findViewById(R.id.list_mayor);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, items);
@@ -69,12 +72,11 @@ public class Alcaldias extends Activity {
 					long id) {
 				Show widgets = new Show();
 				try {
+					/** Consultamos la alcaldía del municipio seleccionado. */
 					Cursor query = db.rawQuery(SELECT + MAYORALTIES
 							+ " WHERE municipality = " + (position + 1)
 							+ " AND state = " + state, null);
-
 					widgets.setDialog(Alcaldias.this, query);
-
 				} catch (Exception e) {
 					widgets.setToast(getApplicationContext(),
 							getString(R.string.error_db));
