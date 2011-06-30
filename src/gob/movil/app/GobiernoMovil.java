@@ -13,13 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class GobiernoMovil extends Activity {
-	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 	}
 
+	/** Creamos el menú de opciones. */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -27,6 +27,7 @@ public class GobiernoMovil extends Activity {
 		return true;
 	}
 
+	/** Opción seleccionada. */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -44,6 +45,7 @@ public class GobiernoMovil extends Activity {
 		}
 	}
 
+	/** Vista seleccionada. */
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.main_dir:
@@ -58,6 +60,7 @@ public class GobiernoMovil extends Activity {
 		}
 	}
 
+	/** Mostramos la opción seleccionada. */
 	public void showActivity(Class<?> c) {
 		Intent intent = new Intent();
 		intent.setComponent(new ComponentName(this, c));
