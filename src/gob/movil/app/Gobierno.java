@@ -43,13 +43,11 @@ public class Gobierno extends Activity {
 
 	public void onSendClick(View button) {
 		String radioButtonSelected;
-
 		if (SUBJECT.isChecked()) {
 			radioButtonSelected = getString(R.string.general);
 		} else {
 			radioButtonSelected = getString(R.string.news);
 		}
-
 		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 		emailIntent.setType("plain/text");
 		emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
