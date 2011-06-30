@@ -49,12 +49,14 @@ public class Directorio extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.directorio);
 
+		/** Utilizamos el arreglo de los poderes. */
 		Resources res = getResources();
 		String[] items = res.getStringArray(R.array.powers);
 
 		final DatabaseHelper helper = new DatabaseHelper(this);
 		final SQLiteDatabase db = helper.getReadableDatabase();
 
+		/** Guardamos los poderes en la base de datos. */
 		for (int i = 0; i < items.length; i++) {
 			db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + items[i]
 					+ "\")");
@@ -66,18 +68,21 @@ public class Directorio extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
 
+		/** Mostramos los poderes. */
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
+				// Consultamos las instituciones del poder elegido.
 				Cursor agencies = db.rawQuery(SELECT + AGENCIES
 						+ " WHERE power = " + (position + POS), null);
 				powerPosition = position + POS;
+				// Consultamos las entidades estatales.
 				Cursor states = db.rawQuery(SELECT + STATES, null);
 				if (position == 5) {
-					// Poder Estadal
+					// Poder Estadal.
 					addItems(helper, db, states, 0);
 				} else if (position == 6) {
-					// Poder Municipal
+					// Poder Municipal.
 					addItems(helper, db, states, -1);
 				} else {
 					addItems(helper, db, agencies, 1);
@@ -105,7 +110,7 @@ public class Directorio extends Activity {
 				i++;
 			} while (list.moveToNext());
 		}
-
+		
 		final ListView lv = (ListView) findViewById(R.id.list_dir);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, items);
