@@ -79,12 +79,13 @@ public class Directorio extends Activity {
 				// Consultamos las entidades estatales.
 				Cursor states = db.rawQuery(SELECT + STATES, null);
 				if (position == 5) {
-					// Poder Estadal.
+					// Poder Estatal.
 					addItems(helper, db, states, 0);
 				} else if (position == 6) {
 					// Poder Municipal.
 					addItems(helper, db, states, -1);
 				} else {
+					// Poder Nacional.
 					addItems(helper, db, agencies, 1);
 				}
 			}
@@ -110,7 +111,7 @@ public class Directorio extends Activity {
 				i++;
 			} while (list.moveToNext());
 		}
-		
+
 		final ListView lv = (ListView) findViewById(R.id.list_dir);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, items);
@@ -121,6 +122,7 @@ public class Directorio extends Activity {
 					long id) {
 				Show widgets = new Show();
 				if (type > 0) {
+					// Mostramos el listado de instituciones del Poder Nacional.
 					Cursor agencies = sql.rawQuery(
 							SELECT + AGENCIES + " WHERE name = '"
 									+ lv.getItemAtPosition(position)
@@ -128,9 +130,11 @@ public class Directorio extends Activity {
 					agencies.moveToFirst();
 					widgets.setDialog(Directorio.this, agencies);
 				} else if (type < 0) {
+					// Mostramos los municipios.
 					showIntent(position + POS);
 				} else {
 					try {
+						// Mostramos las gobernaciones.
 						Cursor officers = sql.rawQuery(SELECT + AGENCIES
 								+ " WHERE power = 6 AND state = "
 								+ (position + POS), null);
@@ -139,13 +143,13 @@ public class Directorio extends Activity {
 						widgets.setToast(getApplicationContext(),
 								getString(R.string.error_db));
 					}
-
 				}
 			}
 		});
 	}
 
 	public void showIntent(int item) {
+		/** Enviamos la entidad estatal seleccionada. */
 		Intent i = new Intent();
 		i.setComponent(new ComponentName(this, Alcaldias.class));
 		i.putExtra("item", item);
