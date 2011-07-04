@@ -10,7 +10,7 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="gob.movil" android:versionName="0.6.96" android:versionCode="96">
+	package="gob.movil" android:versionName="0.6.98" android:versionCode="98">
 	<uses-sdk android:minSdkVersion="7" />
 
 	<application android:icon="@drawable/icon" android:label="@string/app_name">
@@ -22,7 +22,6 @@
 			<meta-data android:name="android.app.default_searchable"
 				android:value=".info.Search"></meta-data>
 		</activity>
-
 		<activity android:name=".info.Search" android:label="@string/search_label">
 			<intent-filter>
 				<action android:name="android.intent.action.SEARCH">
@@ -31,7 +30,6 @@
 			<meta-data android:name="android.app.searchable"
 				android:resource="@xml/searchable"></meta-data>
 		</activity>
-
 		<activity android:name=".app.Directorio" android:label="@string/directorio">
 			<meta-data android:name="android.app.default_searchable"
 				android:value=".info.Search"></meta-data>
@@ -61,6 +59,6 @@
 			<meta-data android:name="android.app.default_searchable"
 				android:value=".info.Search"></meta-data>
 		</activity>
-
+		<activity android:name=".info.Preferences" android:label="@string/preferences"></activity>
 	</application>
 </manifest>
