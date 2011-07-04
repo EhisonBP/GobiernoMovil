@@ -10,6 +10,17 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 	
 <resources>
+	<string name="vibration">Vibración</string>
+	<string name="vibration_summary">Activar vibración</string>
+	<string name="twitter_preferences">Preferencias del cliente Twitter</string>
+	<string name="username">Usuario</string>
+	<string name="username_edit">Editar nombre de usuario</string>
+	<string name="username_summary">Nombre de usuario en Twitter</string>
+	<string name="password">Contraseña</string>
+	<string name="password_edit">Editar contraseña</string>
+	<string name="password_summary">Contraseña en Twitter</string>
+	<string name="preferences">Preferencias</string>
+	<string name="more">Más</string>
 	<string name="home">Gobierno Móvil</string>
 	<string name="gobierno_linea">Gobierno en Línea</string>
 	<string name="signature">Enviado desde \"Gobierno Móvil\" para Android</string>
