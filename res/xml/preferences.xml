@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
+	This program is free software: you can redistribute it and/or modify it under 
+	the terms of the GNU General Public License as published by the Free Software 
+	Foundation, either version 3 of the License, or any later version. This program 
+	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+	PURPOSE. See the GNU General Public License for more details. You should 
+	have received a copy of the GNU General Public License along with this program. 
+	If not, see http://www.gnu.org/licenses\n\n -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<CheckBoxPreference android:key="vibration"
+		android:title="@string/vibration" android:summary="@string/vibration_summary"
+		android:defaultValue="true"></CheckBoxPreference>
+	<PreferenceCategory android:key="twitter_preferences"
+		android:title="@string/twitter_preferences">
+		<EditTextPreference android:dialogTitle="@string/username"
+			android:dialogMessage="@string/username_edit"
+			android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel"
+			android:key="username" android:title="@string/username"
+			android:summary="@string/username_summary"></EditTextPreference>
+		<EditTextPreference android:dialogTitle="@string/password"
+			android:dialogMessage="@string/password_edit"
+			android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel"
+			android:key="password" android:title="@string/password"
+			android:summary="@string/password_summary" android:password="true"
+			android:enabled="false"></EditTextPreference>
+	</PreferenceCategory>
+</PreferenceScreen>
