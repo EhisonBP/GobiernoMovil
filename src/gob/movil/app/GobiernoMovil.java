@@ -3,6 +3,7 @@ package gob.movil.app;
 import gob.movil.R;
 import gob.movil.info.About;
 import gob.movil.info.Help;
+import gob.movil.info.Preferences;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -36,6 +37,12 @@ public class GobiernoMovil extends Activity {
 			return true;
 		case R.id.help:
 			showActivity(Help.class);
+			return true;
+		case R.id.preferences:
+			showActivity(Preferences.class);
+			return true;
+		case R.id.twitter:
+			finish();
 			return true;
 		case R.id.quit:
 			finish();
