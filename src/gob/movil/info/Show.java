@@ -32,35 +32,25 @@ import android.widget.Toast;
 public class Show extends Activity {
 
 	public void setDialog(Context context, Cursor query) {
-
 		query.moveToFirst();
-
 		final Dialog dialog = new Dialog(context);
 		dialog.setContentView(R.layout.show);
-
 		dialog.setTitle(query.getString(2));
-
 		dialog.setCancelable(true);
-
 		dialog.setCanceledOnTouchOutside(true);
-
 		TextView text = (TextView) dialog.findViewById(R.id.public_official);
-
 		text.setText(query.getString(3) + ".\n"
 				+ context.getString(R.string.address) + ": "
 				+ query.getString(4) + ".\n"
 				+ context.getString(R.string.phone) + ": " + query.getString(5)
 				+ "\n" + context.getString(R.string.web) + ": "
 				+ query.getString(6) + "\n");
-
 		Button ok = (Button) dialog.findViewById(R.id.ok);
-
 		ok.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				dialog.dismiss();
 			}
 		});
-
 		if (!query.getString(7).equals("")) {
 			Button twitter = (Button) dialog.findViewById(R.id.twitter);
 			twitter.setVisibility(0);
@@ -71,7 +61,6 @@ public class Show extends Activity {
 				}
 			});
 		}
-
 		dialog.show();
 	}
 
