@@ -10,6 +10,9 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 	
 <resources>
+	<string name="timeline">Cronología</string>
+	<string name="mentions">Menciones</string>
+	<string name="retweets">Retweets</string>
 	<string name="vibration">Vibración</string>
 	<string name="vibration_summary">Activar vibración</string>
 	<string name="twitter_preferences">Preferencias del cliente Twitter</string>
