@@ -148,8 +148,8 @@ public class Directorio extends Activity {
 		});
 	}
 
+	/** Enviamos la entidad estatal seleccionada. */
 	public void showIntent(int item) {
-		/** Enviamos la entidad estatal seleccionada. */
 		Intent i = new Intent();
 		i.setComponent(new ComponentName(this, Alcaldias.class));
 		i.putExtra("item", item);
