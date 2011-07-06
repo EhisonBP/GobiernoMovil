@@ -29,6 +29,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -78,6 +79,8 @@ public class Alcaldias extends Activity {
 							+ " AND state = " + state, null);
 					widgets.setDialog(Alcaldias.this, query);
 				} catch (Exception e) {
+					Vibrator vibra = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+					vibra.vibrate(300);
 					widgets.setToast(getApplicationContext(),
 							getString(R.string.error_db));
 				}
