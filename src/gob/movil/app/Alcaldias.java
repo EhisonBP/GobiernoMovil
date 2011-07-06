@@ -23,6 +23,7 @@ import static gob.movil.info.Constants.MUNICIPALITIES;
 import static gob.movil.info.Constants.SELECT;
 import gob.movil.R;
 import gob.movil.info.DatabaseHelper;
+import gob.movil.info.Preferences;
 import gob.movil.info.Show;
 import android.app.Activity;
 import android.content.Intent;
@@ -79,8 +80,9 @@ public class Alcaldias extends Activity {
 							+ " AND state = " + state, null);
 					widgets.setDialog(Alcaldias.this, query);
 				} catch (Exception e) {
-					Vibrator vibra = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-					vibra.vibrate(300);
+					if (Preferences.getVibration(getApplicationContext())) {
+						setVibration(400);
+					}
 					widgets.setToast(getApplicationContext(),
 							getString(R.string.error_db));
 				}
@@ -90,5 +92,11 @@ public class Alcaldias extends Activity {
 
 	public void onMainClick(View button) {
 		finish();
+	}
+
+	/** Alerta vibrante. */
+	public void setVibration(int miliSeconds) {
+		Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+		v.vibrate(miliSeconds);
 	}
 }
