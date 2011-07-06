@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -69,8 +70,17 @@ public class GobiernoMovil extends Activity {
 
 	/** Mostramos la opción seleccionada. */
 	public void showActivity(Class<?> c) {
+		if (Preferences.getVibration(getApplicationContext())) {
+			setVibration(300);
+		}
 		Intent intent = new Intent();
 		intent.setComponent(new ComponentName(this, c));
 		startActivity(intent);
+	}
+
+	/** Utilizamos la alerta vibrante. */
+	public void setVibration(int miliSeconds) {
+		Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+		v.vibrate(miliSeconds);
 	}
 }
