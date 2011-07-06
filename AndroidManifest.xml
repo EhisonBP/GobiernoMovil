@@ -10,7 +10,7 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="gob.movil" android:versionName="0.6.98" android:versionCode="98">
+	package="gob.movil" android:versionName="0.6.99" android:versionCode="99">
 	<uses-sdk android:minSdkVersion="7" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 
@@ -61,5 +61,14 @@
 				android:value=".info.Search"></meta-data>
 		</activity>
 		<activity android:name=".info.Preferences" android:label="@string/preferences"></activity>
+
+		<activity android:name=".twitter.Twitter" android:label="@string/twitter"
+			android:theme="@android:style/Theme.NoTitleBar"></activity>
+
+		<activity android:name=".twitter.Timeline"></activity>
+
+		<activity android:name=".twitter.Mentions"></activity>
+
+		<activity android:name=".twitter.Retweets"></activity>
 	</application>
 </manifest>
