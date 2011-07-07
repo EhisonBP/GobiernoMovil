@@ -43,23 +43,23 @@ public class Timeline extends Activity implements ViewFactory {
 		switcher.setText(getString(R.string.max_length));
 		watcher = new TextWatcher() {
 			@Override
-			public void afterTextChanged(Editable s) {
+			public void afterTextChanged(Editable text) {
 				// TODO Auto-generated method stub
 			}
 
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
+			public void beforeTextChanged(CharSequence text, int start,
+					int count, int after) {
 				// TODO Auto-generated method stub
 			}
 
 			@Override
-			public void onTextChanged(CharSequence s, int start, int count,
+			public void onTextChanged(CharSequence text, int start, int count,
 					int after) {
 				// TODO Auto-generated method stub
 				switcher.setText(String.valueOf(Integer.parseInt(getString(
 						R.string.max_length).toString())
-						- s.length()));
+						- text.length()));
 			}
 		};
 		status.addTextChangedListener(watcher);
@@ -68,6 +68,7 @@ public class Timeline extends Activity implements ViewFactory {
 	@Override
 	public View makeView() {
 		TextView text = new TextView(this);
+		text.setTextSize(20);
 		return text;
 	}
 }
