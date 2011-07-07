@@ -42,9 +42,9 @@ public class Timeline extends Activity implements ViewFactory {
 		setContentView(R.layout.timeline);
 		switcher = (TextSwitcher) findViewById(R.id.switcher);
 		switcher.setFactory(this);
+		switcher.setText(getString(R.string.max_length));
 		status = (EditText) findViewById(R.id.status);
 		update = (Button) findViewById(R.id.update);
-		switcher.setText(getString(R.string.max_length));
 		watcher = new TextWatcher() {
 			@Override
 			public void afterTextChanged(Editable text) {
@@ -64,7 +64,7 @@ public class Timeline extends Activity implements ViewFactory {
 				switcher.setText(String.valueOf(Integer.parseInt(getString(
 						R.string.max_length).toString())
 						- text.length()));
-				update.setEnabled(text.length() != 0 ? true : false);
+				update.setEnabled(text.length() > 0 ? true : false);
 			}
 		};
 		status.addTextChangedListener(watcher);
