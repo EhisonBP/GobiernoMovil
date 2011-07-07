@@ -5,16 +5,14 @@
 	<EditText android:id="@+id/status" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:hint="@string/update_status"
 		android:maxLength="@string/max_length"></EditText>
-	<LinearLayout android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:orientation="horizontal">
-		<ImageView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:src="@android:drawable/ic_menu_mylocation"></ImageView>
-		<TextSwitcher android:id="@+id/switcher"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:inAnimation="@android:anim/fade_in" android:outAnimation="@android:anim/fade_out"
-			android:textSize="60sp" android:text="@string/max_length"></TextSwitcher>
-		<Button android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/timeline">
-		</Button>
-	</LinearLayout>
+	<TableLayout android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:stretchColumns="1">
+		<TableRow>
+			<ImageView android:src="@android:drawable/ic_menu_mylocation"
+				android:layout_gravity="center_vertical|left" />
+			<TextSwitcher android:id="@+id/switcher"
+				android:inAnimation="@android:anim/fade_in" android:layout_gravity="center_vertical|right" />
+			<Button android:text="@string/update" android:layout_gravity="center_vertical" />
+		</TableRow>
+	</TableLayout>
 </LinearLayout>
