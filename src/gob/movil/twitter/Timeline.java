@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
@@ -32,6 +33,8 @@ import android.widget.ViewSwitcher.ViewFactory;
 public class Timeline extends Activity implements ViewFactory {
 	private TextSwitcher switcher;
 	private TextWatcher watcher;
+	private EditText status;
+	private Button update;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,8 @@ public class Timeline extends Activity implements ViewFactory {
 		setContentView(R.layout.timeline);
 		switcher = (TextSwitcher) findViewById(R.id.switcher);
 		switcher.setFactory(this);
-		EditText status = (EditText) findViewById(R.id.status);
+		status = (EditText) findViewById(R.id.status);
+		update = (Button) findViewById(R.id.update);
 		switcher.setText(getString(R.string.max_length));
 		watcher = new TextWatcher() {
 			@Override
@@ -60,11 +64,13 @@ public class Timeline extends Activity implements ViewFactory {
 				switcher.setText(String.valueOf(Integer.parseInt(getString(
 						R.string.max_length).toString())
 						- text.length()));
+				update.setEnabled(text.length() != 0 ? true : false);
 			}
 		};
 		status.addTextChangedListener(watcher);
 	}
 
+	/** @return Texto del TextSwitcher. */
 	@Override
 	public View makeView() {
 		TextView text = new TextView(this);
