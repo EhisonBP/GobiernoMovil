@@ -12,7 +12,8 @@
 				android:layout_gravity="center_vertical|left" />
 			<TextSwitcher android:id="@+id/switcher"
 				android:inAnimation="@android:anim/fade_in" android:layout_gravity="center_vertical|right" />
-			<Button android:text="@string/update" android:layout_gravity="center_vertical" />
+			<Button android:id="@+id/update" android:text="@string/update"
+				android:layout_gravity="center_vertical" android:enabled="false" />
 		</TableRow>
 	</TableLayout>
 </LinearLayout>
