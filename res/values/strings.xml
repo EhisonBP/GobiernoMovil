@@ -10,6 +10,7 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 	
 <resources>
+	<string name="update">Actualizar</string>
 	<string name="max_length">140</string>
 	<string name="update_status">¿Qué está pasando?</string>
 	<string name="timeline">Cronología</string>
