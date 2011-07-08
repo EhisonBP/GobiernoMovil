@@ -29,7 +29,6 @@ import gob.movil.info.Show;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -50,8 +49,7 @@ public class Directorio extends Activity {
 		setContentView(R.layout.directorio);
 
 		/** Utilizamos el arreglo de los poderes. */
-		Resources res = getResources();
-		String[] items = res.getStringArray(R.array.powers);
+		String[] items = getResources().getStringArray(R.array.powers);
 
 		final DatabaseHelper helper = new DatabaseHelper(this);
 		final SQLiteDatabase db = helper.getReadableDatabase();
