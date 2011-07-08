@@ -90,7 +90,7 @@ public class GobiernoMovil extends Activity {
 	/** Mostramos la opción seleccionada. */
 	public void showActivity(Class<?> c) {
 		if (Preferences.getVibration(getApplicationContext())) {
-			setVibration(300);
+			setVibration(30);
 		}
 		Intent intent = new Intent();
 		intent.setComponent(new ComponentName(this, c));
