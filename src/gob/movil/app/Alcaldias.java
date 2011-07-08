@@ -81,7 +81,7 @@ public class Alcaldias extends Activity {
 					widgets.setDialog(Alcaldias.this, query);
 				} catch (Exception e) {
 					if (Preferences.getVibration(getApplicationContext())) {
-						setVibration(400);
+						setVibration(80);
 					}
 					widgets.setToast(getApplicationContext(),
 							getString(R.string.error_db));
