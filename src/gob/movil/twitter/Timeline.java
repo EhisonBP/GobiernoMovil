@@ -64,7 +64,7 @@ public class Timeline extends Activity implements ViewFactory {
 				switcher.setText(String.valueOf(Integer.parseInt(getString(
 						R.string.max_length).toString())
 						- text.length()));
-				update.setEnabled(text.length() > 0 ? true : false);
+				update.setEnabled(text.length() > 0);
 			}
 		};
 		status.addTextChangedListener(watcher);
