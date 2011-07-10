@@ -11,7 +11,8 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<CheckBoxPreference android:key="vibration"
-		android:title="@string/vibration" android:summary="@string/vibration_summary"
+		android:title="@string/vibration" android:summaryOn="@string/vibration_summary_on"
+		android:summaryOff="@string/vibration_summary_off"
 		android:defaultValue="true"></CheckBoxPreference>
 	<PreferenceCategory android:key="twitter_preferences"
 		android:title="@string/twitter_preferences">
