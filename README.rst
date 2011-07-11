@@ -4,6 +4,27 @@ Aplicación Gobierno Móvil
 
 Funciona mejor en terminales Android OS 2.1.
 
+Módulos
+#######
+
+Directorio
+==========
+
+Trámites
+========
+
+Gobierno
+========
+
+Cliente Twitter
+===============
+
+Servicio INAMEH
+===============
+
+Acerca de
+=========
+
 Licencia GPL v3
 ###############
 
