@@ -30,7 +30,6 @@ public class Twitter extends TabActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.twitter);
-
 		tabSpec("timeline", getString(R.string.timeline), R.drawable.twitter,
 				Timeline.class);
 		tabSpec("mentions", getString(R.string.mentions), R.drawable.twitter,
