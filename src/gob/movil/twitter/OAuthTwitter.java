@@ -18,38 +18,52 @@
 
 package gob.movil.twitter;
 
+import static gob.movil.twitter.Keys.CONSUMER_KEY;
+import static gob.movil.twitter.Keys.CONSUMER_SECRET;
+import gob.movil.R;
 import oauth.signpost.OAuthProvider;
+import oauth.signpost.basic.DefaultOAuthProvider;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
-import android.app.Activity;
-import android.os.Bundle;
 
-public class OAuth extends Activity {
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.Toast;
+
+public class OAuthTwitter extends Activity {
 	private String CALLBACK_URL = "callback://gm";
 	private String REQUEST_TOKEN_URL = "http://api.twitter.com/oauth/request_token";
 	private String ACCESS_TOKEN_URL = "http://api.twitter.com/oauth/access_token";
 	private String AUTHORIZE_URL = "http://api.twitter.com/oauth/authorize";
 	private OAuthProvider provider;
 	private CommonsHttpOAuthConsumer consumer;
+	HttpClient client = new DefaultHttpClient();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.oauth);
+		askOAuth();
 	}
 
-	// public void askOAuth() {
-	// try {
-	// consumer = new CommonsHttpOAuthConsumer(CONSUMER_KEY,
-	// CONSUMER_SECRET);
-	// provider = new DefaultOAuthProvider(REQUEST_TOKEN_URL,
-	// ACCESS_TOKEN_URL, AUTHORIZE_URL);
-	// String authURL = provider.retrieveRequestToken(consumer,
-	// CALLBACK_URL);
-	// Toast.makeText(this, "Please authorize this app!",
-	// Toast.LENGTH_LONG).show();
-	// // setConsumerProvider();
-	// startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(authURL)));
-	// } catch (Exception e) {
-	// Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-	// }
-	// }
+	public void askOAuth() {
+		try {
+			consumer = new CommonsHttpOAuthConsumer(CONSUMER_KEY,
+					CONSUMER_SECRET);
+			provider = new DefaultOAuthProvider(REQUEST_TOKEN_URL,
+					ACCESS_TOKEN_URL, AUTHORIZE_URL);
+			String authURL = provider.retrieveRequestToken(consumer,
+					CALLBACK_URL);
+			// Toast.makeText(this, "Please authorize this app!",
+			// Toast.LENGTH_LONG).show();
+			// setConsumerProvider();
+			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(authURL)));
+		} catch (Exception e) {
+			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+		}
+	}
 }
