@@ -61,8 +61,8 @@
 				android:value=".info.Search"></meta-data>
 		</activity>
 		<activity android:name=".info.Preferences" android:label="@string/preferences"></activity>
-		<activity android:name=".twitter.Twitter" android:label="@string/twitter"
-			android:theme="@android:style/Theme.NoTitleBar"></activity>
+		<activity android:name=".twitter.TwitterActivity"
+			android:label="@string/twitter" android:theme="@android:style/Theme.NoTitleBar"></activity>
 		<activity android:name=".twitter.Timeline"></activity>
 		<activity android:name=".twitter.Mentions"></activity>
 		<activity android:name=".twitter.Retweets"></activity>
