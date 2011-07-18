@@ -18,6 +18,7 @@
 
 package gob.movil.app;
 
+import static gob.movil.info.Constants.VIBRATION_INTENT;
 import gob.movil.R;
 import gob.movil.info.About;
 import gob.movil.info.Help;
@@ -90,7 +91,7 @@ public class GobiernoMovil extends Activity {
 	/** Mostramos la opción seleccionada. */
 	public void showActivity(Class<?> c) {
 		if (Preferences.getVibration(getApplicationContext())) {
-			setVibration(30);
+			setVibration(VIBRATION_INTENT);
 		}
 		Intent intent = new Intent();
 		intent.setComponent(new ComponentName(this, c));
