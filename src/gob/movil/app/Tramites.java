@@ -34,7 +34,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class Tramites extends Activity {
-
+	// TODO Agregar manejo de excepciones y alerta vibrante.
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
