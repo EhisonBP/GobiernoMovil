@@ -25,7 +25,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-public class Twitter extends TabActivity {
+public class TwitterActivity extends TabActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,11 +36,6 @@ public class Twitter extends TabActivity {
 				Mentions.class);
 		tabSpec("retweets", getString(R.string.retweets), R.drawable.twitter,
 				Retweets.class);
-		// ProgressDialog progress =
-		// ProgressDialog.show(getApplicationContext(),
-		// "", "Authenticating");
-		Intent i = new Intent(this, OAuthTwitter.class);
-		startActivity(i);
 	}
 
 	private void tabSpec(String tag, String tab, int resId, Class<?> c) {
