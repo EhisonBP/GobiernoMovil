@@ -25,7 +25,6 @@ import gob.movil.info.Help;
 import gob.movil.info.Preferences;
 import gob.movil.twitter.TwitterActivity;
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -93,9 +92,8 @@ public class GobiernoMovil extends Activity {
 		if (Preferences.getVibration(getApplicationContext())) {
 			setVibration(VIBRATION_INTENT);
 		}
-		Intent intent = new Intent();
-		intent.setComponent(new ComponentName(this, c));
-		startActivity(intent);
+		Intent i = new Intent(this, c);
+		startActivity(i);
 	}
 
 	/** Utilizamos la alerta vibrante. */
