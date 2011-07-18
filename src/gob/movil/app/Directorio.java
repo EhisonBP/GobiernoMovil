@@ -23,6 +23,7 @@ import static gob.movil.info.Constants.INSERT;
 import static gob.movil.info.Constants.POWERS;
 import static gob.movil.info.Constants.SELECT;
 import static gob.movil.info.Constants.STATES;
+import static gob.movil.info.Constants.VIBRATION_ERROR;
 import gob.movil.R;
 import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Show;
@@ -32,6 +33,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -138,12 +140,19 @@ public class Directorio extends Activity {
 								+ (position + POS), null);
 						widgets.setDialog(Directorio.this, officers);
 					} catch (Exception e) {
+						setVibration(VIBRATION_ERROR);
 						widgets.setToast(getApplicationContext(),
 								getString(R.string.error_db));
 					}
 				}
 			}
 		});
+	}
+
+	/** Alerta vibrante. */
+	public void setVibration(int miliSeconds) {
+		Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+		v.vibrate(miliSeconds);
 	}
 
 	/** Enviamos la entidad estatal seleccionada. */
