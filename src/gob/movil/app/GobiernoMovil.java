@@ -23,7 +23,7 @@ import gob.movil.R;
 import gob.movil.info.About;
 import gob.movil.info.Help;
 import gob.movil.info.Preferences;
-import gob.movil.twitter.Twitter;
+import gob.movil.twitter.TwitterActivity;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -63,7 +63,7 @@ public class GobiernoMovil extends Activity {
 			showActivity(Preferences.class);
 			return true;
 		case R.id.twitter:
-			showActivity(Twitter.class);
+			showActivity(TwitterActivity.class);
 			return true;
 		case R.id.quit:
 			finish();
