@@ -21,6 +21,7 @@ package gob.movil.app;
 import static gob.movil.info.Constants.MAYORALTIES;
 import static gob.movil.info.Constants.MUNICIPALITIES;
 import static gob.movil.info.Constants.SELECT;
+import static gob.movil.info.Constants.VIBRATION_ERROR;
 import gob.movil.R;
 import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Preferences;
@@ -81,7 +82,7 @@ public class Alcaldias extends Activity {
 					widgets.setDialog(Alcaldias.this, query);
 				} catch (Exception e) {
 					if (Preferences.getVibration(getApplicationContext())) {
-						setVibration(80);
+						setVibration(VIBRATION_ERROR);
 					}
 					widgets.setToast(getApplicationContext(),
 							getString(R.string.error_db));
