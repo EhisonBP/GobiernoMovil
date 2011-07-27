@@ -13,17 +13,12 @@
 	<CheckBoxPreference android:key="vibration"
 		android:title="@string/vibration" android:summaryOn="@string/vibration_summary_on"
 		android:summaryOff="@string/vibration_summary_off"
-		android:defaultValue="true"></CheckBoxPreference>
+		android:defaultValue="true" />
 	<PreferenceCategory android:key="twitter_preferences"
 		android:title="@string/twitter_preferences">
 		<EditTextPreference android:dialogTitle="@string/username_edit"
 			android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel"
 			android:key="username" android:title="@string/username"
-			android:summary="@string/username_summary"></EditTextPreference>
-		<EditTextPreference android:dialogTitle="@string/password_edit"
-			android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel"
-			android:key="password" android:title="@string/password"
-			android:summary="@string/password_summary" android:dependency="username"
-			android:inputType="textPassword"></EditTextPreference>
+			android:summary="@string/username_summary" />
 	</PreferenceCategory>
 </PreferenceScreen>
