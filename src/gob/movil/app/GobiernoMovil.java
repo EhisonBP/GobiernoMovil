@@ -82,7 +82,7 @@ public class GobiernoMovil extends Activity {
 			showActivity(Tramites.class);
 			break;
 		case R.id.main_gob:
-			showActivity(Gobierno.class);
+			showActivity(Government.class);
 			break;
 		}
 	}
