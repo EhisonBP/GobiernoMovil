@@ -26,7 +26,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-public class Gobierno extends Activity {
+public class Government extends Activity {
 	EditText NAME;
 	EditText EMAILTEXT;
 	RadioButton SUBJECT;
@@ -34,7 +34,7 @@ public class Gobierno extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.gobierno);
+		setContentView(R.layout.government);
 
 		NAME = (EditText) findViewById(R.id.name);
 		EMAILTEXT = (EditText) findViewById(R.id.email_text);
@@ -58,7 +58,7 @@ public class Gobierno extends Activity {
 		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
 				EMAILTEXT.getText() + "\n\n----------\n" + NAME.getText()
 						+ "\n\n" + getString(R.string.signature));
-		Gobierno.this.startActivity(Intent.createChooser(emailIntent,
+		Government.this.startActivity(Intent.createChooser(emailIntent,
 				getString(R.string.select)));
 	}
 
