@@ -35,11 +35,11 @@
 			<meta-data android:name="android.app.default_searchable"
 				android:value=".info.Search"></meta-data>
 		</activity>
-		<activity android:name=".app.Alcaldias" android:label="@string/alcaldias">
+		<activity android:name=".app.Mayoralties" android:label="@string/mayoralties_title">
 			<meta-data android:name="android.app.default_searchable"
 				android:value=".info.Search"></meta-data>
 		</activity>
-		<activity android:name=".app.Tramites" android:label="@string/tramites">
+		<activity android:name=".app.Procedures" android:label="@string/procedures_title">
 			<meta-data android:name="android.app.default_searchable"
 				android:value=".info.Search"></meta-data>
 		</activity>
