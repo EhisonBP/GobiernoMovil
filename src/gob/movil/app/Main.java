@@ -75,13 +75,13 @@ public class Main extends Activity {
 	/** Vista seleccionada. */
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.main_dir:
+		case R.id.directory_main:
 			showActivity(Directory.class);
 			break;
-		case R.id.main_tra:
-			showActivity(Tramites.class);
+		case R.id.procedures_main:
+			showActivity(Procedures.class);
 			break;
-		case R.id.main_gob:
+		case R.id.government_main:
 			showActivity(Government.class);
 			break;
 		}
