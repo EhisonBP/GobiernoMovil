@@ -33,12 +33,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class Tramites extends Activity {
+public class Procedures extends Activity {
 	// TODO Agregar manejo de excepciones y alerta vibrante.
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.tramites);
+		setContentView(R.layout.procedures);
 
 		Intent receive = getIntent();
 		final int procedure = receive.getIntExtra("item", 0);
@@ -57,7 +57,7 @@ public class Tramites extends Activity {
 			} while (procedures.moveToNext());
 		}
 
-		final Spinner spinner = (Spinner) findViewById(R.id.spinner_tra);
+		final Spinner spinner = (Spinner) findViewById(R.id.spinner_procedures);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, items);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -84,7 +84,7 @@ public class Tramites extends Activity {
 	}
 
 	public void setTextProcedure(Cursor query) {
-		TextView text = (TextView) findViewById(R.id.text_tra);
+		TextView text = (TextView) findViewById(R.id.text_procedures);
 		text.setText("Trámite: " + query.getString(1) + ".\n\n"
 				+ getString(R.string.requirements) + ":\n" + query.getString(2)
 				+ ".\n\n" + getString(R.string.hours) + ": "
