@@ -38,11 +38,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class Alcaldias extends Activity {
+public class Mayoralties extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.alcaldias);
+		setContentView(R.layout.mayoralties);
 
 		/** Recibimos la entidad estatal. */
 		Intent receive = getIntent();
@@ -79,7 +79,7 @@ public class Alcaldias extends Activity {
 					Cursor query = db.rawQuery(SELECT + MAYORALTIES
 							+ " WHERE municipality = " + (position + 1)
 							+ " AND state = " + state, null);
-					widgets.setDialog(Alcaldias.this, query);
+					widgets.setDialog(Mayoralties.this, query);
 				} catch (Exception e) {
 					if (Preferences.getVibration(getApplicationContext())) {
 						setVibration(VIBRATION_ERROR);
