@@ -23,7 +23,7 @@ import static gob.movil.info.Constants.MAYORALTIES;
 import static gob.movil.info.Constants.PROCEDURES;
 import static gob.movil.info.Constants.SELECT;
 import gob.movil.R;
-import gob.movil.app.Tramites;
+import gob.movil.app.Procedures;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -164,7 +164,7 @@ public class Search extends ListActivity {
 
 	public void showIntent(int item) {
 		Intent i = new Intent();
-		i.setComponent(new ComponentName(this, Tramites.class));
+		i.setComponent(new ComponentName(this, Procedures.class));
 		i.putExtra("item", item);
 		startActivity(i);
 	}
