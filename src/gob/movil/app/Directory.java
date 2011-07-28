@@ -41,14 +41,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-public class Directorio extends Activity {
+public class Directory extends Activity {
 	public final int POS = 1;
 	public int powerPosition = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.directorio);
+		setContentView(R.layout.directory);
 
 		/** Utilizamos el arreglo de los poderes. */
 		String[] items = getResources().getStringArray(R.array.powers);
@@ -128,7 +128,7 @@ public class Directorio extends Activity {
 									+ lv.getItemAtPosition(position)
 									+ "' AND power = " + powerPosition, null);
 					agencies.moveToFirst();
-					widgets.setDialog(Directorio.this, agencies);
+					widgets.setDialog(Directory.this, agencies);
 				} else if (type < 0) {
 					// Mostramos los municipios.
 					showIntent(position + POS);
@@ -138,7 +138,7 @@ public class Directorio extends Activity {
 						Cursor officers = sql.rawQuery(SELECT + AGENCIES
 								+ " WHERE power = 6 AND state = "
 								+ (position + POS), null);
-						widgets.setDialog(Directorio.this, officers);
+						widgets.setDialog(Directory.this, officers);
 					} catch (Exception e) {
 						setVibration(VIBRATION_ERROR);
 						widgets.setToast(getApplicationContext(),
