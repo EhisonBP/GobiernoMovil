@@ -43,7 +43,7 @@
 			<meta-data android:name="android.app.default_searchable"
 				android:value=".info.Search"></meta-data>
 		</activity>
-		<activity android:name=".app.Gobierno" android:label="@string/gobierno">
+		<activity android:name=".app.Government" android:label="@string/government_title">
 			<meta-data android:name="android.app.default_searchable"
 				android:value=".info.Search"></meta-data>
 		</activity>
