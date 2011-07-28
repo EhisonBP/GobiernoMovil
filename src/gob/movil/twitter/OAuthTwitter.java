@@ -36,7 +36,6 @@ public class OAuthTwitter extends Activity {
 	private Twitter twitter;
 	private OAuthProvider provider;
 	private CommonsHttpOAuthConsumer consumer;
-
 	// HttpClient client = new DefaultHttpClient();
 
 	@Override
@@ -44,12 +43,11 @@ public class OAuthTwitter extends Activity {
 		System.setProperty("http.keepAlive", "false");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.oauth);
-		
 		Button authentication = (Button) findViewById(R.id.authenticate);
 		authentication.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
+				
 			}
 		});
 	}
