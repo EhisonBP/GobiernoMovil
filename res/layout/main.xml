@@ -52,13 +52,13 @@
 						android:onClick="onClick"></ImageView>
 				</TableRow>
 				<TableRow>
-					<TextView android:id="@id/main_dir" android:text="@string/main_dir"
+					<TextView android:id="@id/main_dir" android:text="@string/directory"
 						android:gravity="center" android:textColor="@color/text"
 						android:clickable="true" android:onClick="onClick"></TextView>
-					<TextView android:id="@id/main_tra" android:text="@string/main_tra"
+					<TextView android:id="@id/main_tra" android:text="@string/procedures"
 						android:gravity="center" android:textColor="@color/text"
 						android:clickable="true" android:onClick="onClick"></TextView>
-					<TextView android:id="@id/main_gob" android:text="@string/main_gob"
+					<TextView android:id="@id/main_gob" android:text="@string/government"
 						android:gravity="center" android:textColor="@color/text"
 						android:clickable="true" android:onClick="onClick"></TextView>
 				</TableRow>
