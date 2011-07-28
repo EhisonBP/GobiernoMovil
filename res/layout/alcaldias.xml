@@ -20,7 +20,7 @@
 		<TextView android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:clickable="true"
 			android:onClick="onMainClick" android:textColor="@color/text"
-			android:text="@string/directorio" />
+			android:text="@string/directory_title" />
 
 		<TextView android:text=" | " android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:textColor="@color/text" />
