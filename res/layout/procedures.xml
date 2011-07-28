@@ -27,7 +27,7 @@
 
 		<TextView android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:textColor="@color/text"
-			android:text="@string/tramites" />
+			android:text="@string/procedures_title" />
 
 		<LinearLayout android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:gravity="right">
@@ -48,8 +48,8 @@
 			android:textSize="18sp" android:textColor="@color/text"
 			android:paddingRight="10sp"></TextView>
 
-		<Spinner android:id="@+id/spinner_tra" android:layout_width="fill_parent"
-			android:layout_height="wrap_content" android:prompt="@string/tramites"></Spinner>
+		<Spinner android:id="@+id/spinner_procedures" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:prompt="@string/procedures_title"></Spinner>
 
 	</LinearLayout>
 
@@ -59,7 +59,7 @@
 		<LinearLayout android:layout_width="fill_parent"
 			android:layout_height="fill_parent" android:padding="8sp">
 
-			<TextView android:id="@+id/text_tra" android:layout_width="fill_parent"
+			<TextView android:id="@+id/text_procedures" android:layout_width="fill_parent"
 				android:layout_height="fill_parent" android:linksClickable="true"
 				android:autoLink="all" android:textColor="#FFFFFF" android:textSize="16sp"></TextView>
 
