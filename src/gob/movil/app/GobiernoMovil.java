@@ -76,7 +76,7 @@ public class GobiernoMovil extends Activity {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.main_dir:
-			showActivity(Directorio.class);
+			showActivity(Directory.class);
 			break;
 		case R.id.main_tra:
 			showActivity(Tramites.class);
