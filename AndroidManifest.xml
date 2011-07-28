@@ -31,7 +31,7 @@
 			<meta-data android:name="android.app.searchable"
 				android:resource="@xml/searchable"></meta-data>
 		</activity>
-		<activity android:name=".app.Directorio" android:label="@string/directorio">
+		<activity android:name=".app.Directory" android:label="@string/directory_title">
 			<meta-data android:name="android.app.default_searchable"
 				android:value=".info.Search"></meta-data>
 		</activity>
