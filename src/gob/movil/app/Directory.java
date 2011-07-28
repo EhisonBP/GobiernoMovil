@@ -62,7 +62,7 @@ public class Directory extends Activity {
 					+ "\")");
 		}
 
-		Spinner spinner = (Spinner) findViewById(R.id.spinner_dir);
+		Spinner spinner = (Spinner) findViewById(R.id.spinner_directory);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, items);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -112,7 +112,7 @@ public class Directory extends Activity {
 			} while (list.moveToNext());
 		}
 
-		final ListView lv = (ListView) findViewById(R.id.list_dir);
+		final ListView lv = (ListView) findViewById(R.id.list_directory);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, items);
 		lv.setAdapter(listAdapter);
@@ -158,7 +158,7 @@ public class Directory extends Activity {
 	/** Enviamos la entidad estatal seleccionada. */
 	public void showIntent(int item) {
 		Intent i = new Intent();
-		i.setComponent(new ComponentName(this, Alcaldias.class));
+		i.setComponent(new ComponentName(this, Mayoralties.class));
 		i.putExtra("item", item);
 		startActivity(i);
 	}
