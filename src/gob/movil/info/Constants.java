@@ -18,7 +18,9 @@
 
 package gob.movil.info;
 
-public interface Constants {
+import android.provider.BaseColumns;
+
+public interface Constants extends BaseColumns {
 	public static final String POWERS = "powers";
 	public static final String STATES = "states";
 	public static final String MUNICIPALITIES = "municipalities";
