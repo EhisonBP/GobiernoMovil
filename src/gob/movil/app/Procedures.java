@@ -38,6 +38,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class Procedures extends Activity {
+	private DatabaseHelper helper;
+	private SQLiteDatabase db;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,8 +49,8 @@ public class Procedures extends Activity {
 		Intent receive = getIntent();
 		final int procedure = receive.getIntExtra("item", 0);
 
-		final DatabaseHelper helper = new DatabaseHelper(this);
-		final SQLiteDatabase db = helper.getReadableDatabase();
+		helper = new DatabaseHelper(this);
+		db = helper.getReadableDatabase();
 
 		Cursor procedures = db.rawQuery(SELECT + PROCEDURES, null);
 
