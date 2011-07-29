@@ -36,7 +36,6 @@ public class OAuthTwitter extends Activity {
 	private Twitter twitter;
 	private OAuthProvider provider;
 	private CommonsHttpOAuthConsumer consumer;
-	// HttpClient client = new DefaultHttpClient();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,8 @@ public class OAuthTwitter extends Activity {
 		authentication.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+				// TODO Agregar la lógica para la implementación de la
+				// autenticación.
 			}
 		});
 	}
