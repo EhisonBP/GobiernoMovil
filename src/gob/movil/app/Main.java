@@ -62,6 +62,7 @@ public class Main extends Activity {
 			showActivity(Preferences.class);
 			return true;
 		case R.id.twitter:
+			// TODO Agregar condición para revisar las preferencias.
 			showActivity(TwitterActivity.class);
 			return true;
 		case R.id.quit:
