@@ -31,7 +31,6 @@ import java.util.List;
 
 import android.app.ListActivity;
 import android.app.SearchManager;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -48,18 +47,17 @@ import android.widget.TextView;
 public class Search extends ListActivity {
 	private static final String WHERE = " WHERE ";
 	private static final String OR = " OR ";
+	private DatabaseHelper helper;
+	private SQLiteDatabase db;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search);
-
-		DatabaseHelper dbHelper = new DatabaseHelper(this);
-		SQLiteDatabase db = dbHelper.getReadableDatabase();
-
+		helper = new DatabaseHelper(this);
+		db = helper.getReadableDatabase();
 		Intent queryIntent = getIntent();
 		String queryAction = queryIntent.getAction();
-
 		if (Intent.ACTION_SEARCH.equalsIgnoreCase(queryAction)) {
 			String searchKeywords = queryIntent
 					.getStringExtra(SearchManager.QUERY);
@@ -68,17 +66,14 @@ public class Search extends ListActivity {
 							+ OR + replace("officer", searchKeywords) + OR
 							+ replace("office", searchKeywords) + OR
 							+ replace("twitter", searchKeywords), null);
-
 			Cursor searchMayoralties = db.rawQuery(
 					SELECT + MAYORALTIES + WHERE
 							+ replace("name", searchKeywords) + OR
 							+ replace("mayor", searchKeywords) + OR
 							+ replace("office", searchKeywords) + OR
 							+ replace("twitter", searchKeywords), null);
-
 			Cursor searchProcedures = db.rawQuery(SELECT + PROCEDURES + WHERE
 					+ replace("name", searchKeywords), null);
-
 			if (!searchAgencies.moveToFirst()
 					&& !searchMayoralties.moveToFirst()
 					&& !searchProcedures.moveToFirst()) {
@@ -86,7 +81,6 @@ public class Search extends ListActivity {
 				String text = String.format(
 						res.getString(R.string.search_none), searchKeywords);
 				CharSequence styledText = Html.fromHtml(text);
-
 				TextView noFound = (TextView) findViewById(R.id.search_result);
 				noFound.setText(styledText);
 				noFound.setVisibility(0);
@@ -94,10 +88,8 @@ public class Search extends ListActivity {
 				String[] resultsAgencies = listResults(searchAgencies);
 				String[] resultsMayoralties = listResults(searchMayoralties);
 				String[] resultsProcedures = listResults(searchProcedures);
-
 				String[] results = mergeArrays(resultsAgencies,
 						resultsMayoralties, resultsProcedures);
-
 				onResultClick(results);
 			}
 		}
@@ -137,7 +129,6 @@ public class Search extends ListActivity {
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, results);
 		resultsList.setAdapter(listAdapter);
-
 		resultsList.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> a, View v, int position,
 					long id) {
@@ -163,15 +154,12 @@ public class Search extends ListActivity {
 	}
 
 	public void showIntent(int item) {
-		Intent i = new Intent();
-		i.setComponent(new ComponentName(this, Procedures.class));
+		Intent i = new Intent(this, Procedures.class);
 		i.putExtra("item", item);
 		startActivity(i);
 	}
 
 	private Cursor queryItemClicked(String table, String item) {
-		DatabaseHelper dbHelper = new DatabaseHelper(this);
-		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		Cursor query = db.rawQuery(SELECT + table + WHERE + "name = '" + item
 				+ "'", null);
 		return query;
