@@ -42,8 +42,10 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 public class Directory extends Activity {
-	public final int POS = 1;
-	public int powerPosition = 0;
+	private int POS = 1;
+	private int powerPosition = 0;
+	private DatabaseHelper helper;
+	private SQLiteDatabase db;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -53,8 +55,8 @@ public class Directory extends Activity {
 		/** Utilizamos el arreglo de los poderes. */
 		String[] items = getResources().getStringArray(R.array.powers);
 
-		final DatabaseHelper helper = new DatabaseHelper(this);
-		final SQLiteDatabase db = helper.getReadableDatabase();
+		helper = new DatabaseHelper(this);
+		db = helper.getReadableDatabase();
 
 		/** Guardamos los poderes en la base de datos. */
 		for (int i = 0; i < items.length; i++) {
@@ -94,11 +96,6 @@ public class Directory extends Activity {
 				// TODO Auto-generated method stub
 			}
 		});
-
-	}
-
-	public void onMainClick(View button) {
-		finish();
 	}
 
 	public void addItems(final DatabaseHelper help, final SQLiteDatabase sql,
@@ -147,6 +144,10 @@ public class Directory extends Activity {
 				}
 			}
 		});
+	}
+
+	public void onMainClick(View button) {
+		finish();
 	}
 
 	/** Alerta vibrante. */
