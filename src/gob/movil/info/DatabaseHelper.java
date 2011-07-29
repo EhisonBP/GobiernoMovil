@@ -18,6 +18,7 @@
 
 package gob.movil.info;
 
+import static android.provider.BaseColumns._ID;
 import static gob.movil.info.Constants.AGENCIES;
 import static gob.movil.info.Constants.INSERT;
 import static gob.movil.info.Constants.MAYORALTIES;
@@ -31,7 +32,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "gm.db";
-	private static final int DB_VERSION = 1;
+	private static final int DB_VERSION = 2;
 	
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -39,9 +40,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("CREATE TABLE " + POWERS + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");
+		db.execSQL("CREATE TABLE " + POWERS + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");
 		
-		db.execSQL("CREATE TABLE " + STATES + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");
+		db.execSQL("CREATE TABLE " + STATES + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");
 		
 		db.execSQL(INSERT + STATES + " VALUES (null, 'Distrito Capital')");
 		db.execSQL(INSERT + STATES + " VALUES (null, 'Amazonas')");
@@ -68,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + STATES + " VALUES (null, 'Yaracuy')");
 		db.execSQL(INSERT + STATES + " VALUES (null, 'Zulia')");
 		
-		db.execSQL("CREATE TABLE " + MUNICIPALITIES + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, state INTEGER NOT NULL, FOREIGN KEY(state) REFERENCES states(_id))");
+		db.execSQL("CREATE TABLE " + MUNICIPALITIES + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, state INTEGER NOT NULL, FOREIGN KEY(state) REFERENCES states(" + _ID + "))");
 		db.execSQL(INSERT + MUNICIPALITIES + " (name, state) VALUES ('Baruta', '1')");
 		db.execSQL(INSERT + MUNICIPALITIES + " (name, state) VALUES ('Chacao', '1')");
 		db.execSQL(INSERT + MUNICIPALITIES + " (name, state) VALUES ('Distrito Metropolitano', '1')");
@@ -412,7 +413,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + MUNICIPALITIES + " (name, state) VALUES ('Sucre', '24')");
 		db.execSQL(INSERT + MUNICIPALITIES + " (name, state) VALUES ('Valmore Rodríguez', '24')");
 		
-		db.execSQL("CREATE TABLE " + AGENCIES + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, officer STRING, office STRING, address TEXT, phone STRING, web STRING, twitter STRING, power INTEGER NOT NULL, state INTEGER NOT NULL, FOREIGN KEY(power) REFERENCES powers(_id), FOREIGN KEY(state) REFERENCES states(_id))");
+		db.execSQL("CREATE TABLE " + AGENCIES + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, officer STRING, office STRING, address TEXT, phone STRING, web STRING, twitter STRING, power INTEGER NOT NULL, state INTEGER NOT NULL, FOREIGN KEY(power) REFERENCES powers(" + _ID + "), FOREIGN KEY(state) REFERENCES states(" + _ID + "))");
 		
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Presidencia de la República', 'Hugo Rafael Chávez Frías', 'Presidente de la República', 'Palacio de Miraflores', 'No disponible.', 'http://www.chavez.org.ve', '@chavezcandanga', '1', '1')");
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Vicepresidencia de la República', 'Elías José Jaua Milano', 'Vicepresidente de la República', 'Av. Urdaneta. Esquina de Carmelitas. Caracas', '(0212)8603335 / (0212)8608822', 'http://www.vicepresidencia.gob.ve', '', '1', '1')");
@@ -503,7 +504,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Estado Yaracuy', 'Julio León', 'Gobernador del Estado Yaracuy', 'Frente a la plaza Bolívar San Felipe, Palacio de Gobierno, Edo. Yaracuy', '(0254)2313276 / (0254)2312597 / (0254)2343028', 'http://www.yaracuy.gob.ve', '', '6', '23')");
 		db.execSQL(INSERT + AGENCIES + " (name, officer, office, address, phone, web, twitter, power, state) VALUES ('Gobernación del Estado Zulia', 'Pablo Pérez', 'Gobernador del Estado Zulia', 'Palacio de Gobierno, calle A-5 frente a Plaza Bolívar. Maracaibo, Edo. Zulia', '(0261)7251090 / (0261)7921111 / (0261)7921150 / Fax: (0261)7251087 / (0261)7922622', 'http://www.gobernaciondelzulia.gov.ve', '', '6', '24')");
 				
-		db.execSQL("CREATE TABLE " + PROCEDURES + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, requeriments TEXT, schedule TEXT, cost STRING, info TEXT, organism STRING)");
+		db.execSQL("CREATE TABLE " + PROCEDURES + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, requeriments TEXT, schedule TEXT, cost STRING, info TEXT, organism STRING)");
 		
 		db.execSQL(INSERT + PROCEDURES + " (name, requeriments, schedule, cost, info, organism) VALUES ('Conformación de Comunas', '1. Notificar a los ciudadanos la constitución de la Comisión Promotora que conformará la comuna.\n2. Elegir la Asamblea Constitutiva.\n3. Consejo electoral Provisional.\n4. Conformar la Comisión Redactora.\n5. Realizar un referendo aprobatorio', 'No aplica', 'No aplica', 'Debe tener en cuenta las siguientes definiciones:\n\nBanco de las Comunas:\nOrganización económico-financiera de carácter social que gestiona y administra los recursos financieros, impulsando políticas económicas con la participación democrática y protagónica del pueblo.\n\nCartas Comunales:\nInstrumento donde se establecen las normas elaboradas por los habitantes de la comuna en Parlamento Comunal con el propósito de regular la vida social y comunitaria de conformidad con la Constitución Bolivariana de Venezuela.\n\nCarta Fundacional:\nInstrumento aprobado en referendo popular, donde las comunidades expresan su voluntad de constituirse en comuna.\n\nEstado Comunal:\nForma de organización político-social, fundada en el estado social de derecho y justicia establecido en la constitución, en la cual se le otorga poder al pueblo, con un modelo de propiedad social y de desarrollo endógeno sustentable.\n\nParlamento Comunal:\nMáxima instancia del autogobierno en la comuna, constituido por asambleas de ciudadanos, establecidos en cada uno de sus respectivos ámbitos territoriales', 'Ministerio del Poder Popular para las Comunas y Protección Social')");
 		db.execSQL(INSERT + PROCEDURES + " (name, requeriments, schedule, cost, info, organism) VALUES ('Legalización de Títulos Universitarios', '1. Título Original debidamente firmado y sellado por el Registro Público correspondiente (Ver Registro de Títulos Universitarios).\n2. Original del Acta de grado o Notas Certificadas.\n3. Copia de la Cédula de Identidad del titular (Si el titular no es quien entrega la documentación, deberá traer autorización por escrito y copia de CI de ambas partes)', 'Lapso de un día hábil para retirar', 'Cancelar, en timbres fiscales, Bs. 27,50 en la taquilla autorizada ubicada en dicho Ministerio, o en los siguientes bancos:\n\nBanco de Venezuela, Cuenta Corriente, N° 0102-0552-21-0000024439, a nombre de GOB. DTTO. CAPITAL ING. TIMBRES FISCALES.\n\nBanco del Tesoro, Cuenta Corriente, N° 0163-0903-62-9032000282, a nombre del GOBIERNO DEL DISTRITO CAPITAL.\n\nSi el titular posee varios documentos, puede depositar el total de los mismos en un solo depósito', 'NOTA: LOS TÍTULOS DE LAS UNIVERSIDADES PRIVADAS NO NECESITAN REALIZAR ESTE TRÁMITE YA QUE TIENEN LA FIRMA DEL MINISTRO', 'Ministerio del Poder Popular para la Educación Universitaria')");
@@ -511,7 +512,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + PROCEDURES + " (name, requeriments, schedule, cost, info, organism) VALUES ('Mi casa bien equipada', '1. Fotocopia de la cédula de identidad.\n2. Constancia de trabajo con emisión no mayor a tres meses.\n3. Tres referencias personales con dirección, números telefónicos y copia de la cédula del emisor.\n4. Copia de un recibo de servicio (agua, electricidad, teléfono)', 'Lunes a viernes en horario de 9:00am a 5:00pm', 'Los productos de línea blanca son de la empresa china Haier Electric Appliances. Existen varios modelos. Los precios varían desde cocinas por Bs. 600 hasta neveras de 12 pies cúbicos por Bs. 1600. Se recomienda asistir al Mercal Hogar o Abasto Bicentenario de su preferencia, consultar los modelos en existencia y sus precios para iniciar el trámite', 'Para mayor información debe dirigirse, en horario de oficina, a las oficinas de atención al usuario de los establecimientos: Mercal Hogar y Bicentenario', 'Corporación de Mercados Socialistas (COMERSO) ente adscrito al Ministerio del Poder Popular para el Comercio')");
 		db.execSQL(INSERT + PROCEDURES + " (name, requeriments, schedule, cost, info, organism) VALUES ('Registro de Títulos Universitarios', '1. Título original.\n2. Si el título tiene enmiendas (notas certificadas).\n3. Cédula de identidad laminada de la persona que realiza el trámite.\n4. Firmas de los profesores en el título', 'Lunes a viernes en horario de 8:00am a 1:00pm', 'Ordinario (3 días hábiles): Bs. 285,16', 'Para registrar su título universitario deberá dirigirse a las Oficinas del Registro Principal, consignar su Título debidamente firmado y sellado (Hacer firmar el título por dos profesores de la Facultad, tomar nota del nombre completo de cada uno y su No. de Cédula de Identidad), posteriormente será verificado por un registrador quien le suministrará la planilla de depósito bancario. Usted consignará: planilla con su depósito bancario ya realizado y timbres fiscales por el monto de (trece) Bs. 13,00', 'Registro Principal de Caracas')");
 		
-		db.execSQL("CREATE TABLE " + MAYORALTIES + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, mayor STRING, office STRING, address TEXT, phone STRING, web STRING, twitter STRING, state INTEGER NOT NULL, municipality INTEGER NOT NULL, FOREIGN KEY(state) REFERENCES states(_id), FOREIGN KEY(municipality) REFERENCES municipalities(_id))");
+		db.execSQL("CREATE TABLE " + MAYORALTIES + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, mayor STRING, office STRING, address TEXT, phone STRING, web STRING, twitter STRING, state INTEGER NOT NULL, municipality INTEGER NOT NULL, FOREIGN KEY(state) REFERENCES states(" + _ID + "), FOREIGN KEY(municipality) REFERENCES municipalities(" + _ID + "))");
 		
 		db.execSQL(INSERT + MAYORALTIES + " (name, mayor, office, address, phone, web, twitter, state, municipality) VALUES ('Alcaldía de Baruta', 'Gerardo Blyde', 'Alcalde de Baruta', 'Edif. Sede, entre Av. Principal de Colinas de Bello Monte y Av. Beethoven, Caracas', '(0212)7017455 / (0212)7017456 / (0212)7017431', 'http://www.alcaldiadebaruta.gob.ve', '', '1', '1')");
 //		db.execSQL(INSERT + MAYORALTIES + " (name, mayor, office, address, phone, web, twitter, state, municipality) VALUES ('Alcaldía de ', '', '', '', '', '', '', '1', '1')");
