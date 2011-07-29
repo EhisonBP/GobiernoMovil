@@ -39,6 +39,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class Mayoralties extends Activity {
+	private DatabaseHelper helper;
+	private SQLiteDatabase db;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,13 +51,12 @@ public class Mayoralties extends Activity {
 		Intent receive = getIntent();
 		final int state = receive.getIntExtra("item", 0);
 
-		final DatabaseHelper helper = new DatabaseHelper(this);
-		final SQLiteDatabase db = helper.getReadableDatabase();
+		helper = new DatabaseHelper(this);
+		db = helper.getReadableDatabase();
 
 		/** Consultamos los municipios pertenecientes a esa entidad estatal. */
 		Cursor municipalities = db.rawQuery(SELECT + MUNICIPALITIES
 				+ " WHERE state = " + state, null);
-
 		String[] items = new String[municipalities.getCount()];
 		int i = 0;
 		if (municipalities.moveToFirst()) {
