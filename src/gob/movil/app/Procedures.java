@@ -20,13 +20,17 @@ package gob.movil.app;
 
 import static gob.movil.info.Constants.PROCEDURES;
 import static gob.movil.info.Constants.SELECT;
+import static gob.movil.info.Constants.VIBRATION_ERROR;
 import gob.movil.R;
 import gob.movil.info.DatabaseHelper;
+import gob.movil.info.Preferences;
+import gob.movil.info.Show;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,7 +38,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class Procedures extends Activity {
-	// TODO Agregar manejo de excepciones y alerta vibrante.
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,12 +71,21 @@ public class Procedures extends Activity {
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
-				Cursor procedures = db.rawQuery(
-						SELECT + PROCEDURES + " WHERE name = '"
-								+ spinner.getItemAtPosition(position) + "'",
-						null);
-				procedures.moveToFirst();
-				setTextProcedure(procedures);
+				Show widgets = new Show();
+				try {
+					Cursor procedures = db.rawQuery(
+							SELECT + PROCEDURES + " WHERE name = '"
+									+ spinner.getItemAtPosition(position) + "'",
+							null);
+					procedures.moveToFirst();
+					setTextProcedure(procedures);
+				} catch (Exception e) {
+					if (Preferences.getVibration(getApplicationContext())) {
+						setVibration(VIBRATION_ERROR);
+					}
+					widgets.setToast(getApplicationContext(),
+							getString(R.string.error_db));
+				}
 			}
 
 			public void onNothingSelected(AdapterView<?> arg0) {
@@ -97,5 +109,11 @@ public class Procedures extends Activity {
 
 	public void onMainClick(View button) {
 		finish();
+	}
+
+	/** Alerta vibrante. */
+	public void setVibration(int miliSeconds) {
+		Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+		v.vibrate(miliSeconds);
 	}
 }
