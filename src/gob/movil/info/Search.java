@@ -81,7 +81,7 @@ public class Search extends ListActivity {
 				String text = String.format(
 						res.getString(R.string.search_none), searchKeywords);
 				CharSequence styledText = Html.fromHtml(text);
-				TextView noFound = (TextView) findViewById(R.id.search_result);
+				TextView noFound = (TextView) findViewById(R.id.search_results);
 				noFound.setText(styledText);
 				noFound.setVisibility(0);
 			} else {
