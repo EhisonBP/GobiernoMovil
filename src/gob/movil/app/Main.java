@@ -105,9 +105,4 @@ public class Main extends Activity {
 		Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 		v.vibrate(miliSeconds);
 	}
-
-	@Override
-	public boolean onSearchRequested() {
-		return super.onSearchRequested();
-	}
 }
