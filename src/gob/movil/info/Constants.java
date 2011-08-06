@@ -30,5 +30,5 @@ public interface Constants extends BaseColumns {
 	public final String INSERT = "INSERT INTO ";
 	public final String SELECT = "SELECT * FROM ";
 	public static final int VIBRATION_ERROR = 80;
-	public static final int VIBRATION_INTENT = 30;
+	public static final int VIBRATION_INTENT = 20;
 }
