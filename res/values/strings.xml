@@ -10,6 +10,8 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 	
 <resources>
+	<string name="settings_description">Funcionarios y trámites del Estado</string>
+	<string name="search">Buscar</string>
 	<string name="authenticate">Autenticarse en Twitter</string>
 	<string name="no_authenticated">No se ha autenticado</string>
 	<string name="update">Actualizar</string>
@@ -82,7 +84,6 @@
 	<string name="requirements">Requisitos</string>
 	<string name="search_hint">Buscar en Gobierno Móvil</string>
 	<string name="search_instructions">Presione la tecla "SEARCH" de su teléfono para buscar dentro de la aplicación.</string>
-	<string name="search_label">Resultados de la búsqueda</string>
 	<string name="search_none">No se encontró nada relacionado con &lt;b>%1$s&lt;/b></string>
 	<string name="select">Seleccione</string>
 	<string name="selected">Seleccionado: </string>
