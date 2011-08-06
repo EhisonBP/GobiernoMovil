@@ -58,6 +58,9 @@ public class Main extends Activity {
 		case R.id.help:
 			showActivity(Help.class);
 			return true;
+		case R.id.search:
+			onSearchRequested();
+			return true;
 		case R.id.preferences:
 			showActivity(Preferences.class);
 			return true;
@@ -101,5 +104,10 @@ public class Main extends Activity {
 	public void setVibration(int miliSeconds) {
 		Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 		v.vibrate(miliSeconds);
+	}
+
+	@Override
+	public boolean onSearchRequested() {
+		return super.onSearchRequested();
 	}
 }
