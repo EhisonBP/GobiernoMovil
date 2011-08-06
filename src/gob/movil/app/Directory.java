@@ -41,7 +41,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-public class Directory extends Activity {
+public class Directory extends Main {
 	private int POS = 1;
 	private int powerPosition = 0;
 	private DatabaseHelper helper;

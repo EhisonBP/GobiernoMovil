@@ -37,7 +37,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class Procedures extends Activity {
+public class Procedures extends Main {
 	private DatabaseHelper helper;
 	private SQLiteDatabase db;
 

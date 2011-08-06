@@ -38,7 +38,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class Mayoralties extends Activity {
+public class Mayoralties extends Main {
 	private DatabaseHelper helper;
 	private SQLiteDatabase db;
 

@@ -26,7 +26,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-public class Government extends Activity {
+public class Government extends Main {
 	EditText NAME;
 	EditText EMAILTEXT;
 	RadioButton SUBJECT;
