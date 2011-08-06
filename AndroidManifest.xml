@@ -10,7 +10,7 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="gob.movil" android:versionName="0.7.1" android:versionCode="101">
+	package="gob.movil" android:versionName="0.7.2" android:versionCode="102">
 	<uses-sdk android:minSdkVersion="7" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -21,51 +21,47 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 			<meta-data android:name="android.app.default_searchable"
-				android:value=".info.Search"></meta-data>
+				android:value=".info.Search" />
 		</activity>
-		<activity android:name=".info.Search" android:label="@string/search_label">
+		<activity android:name=".info.Search" android:theme="@android:style/Theme.NoTitleBar">
 			<intent-filter>
-				<action android:name="android.intent.action.SEARCH">
-				</action>
+				<action android:name="android.intent.action.SEARCH" />
 			</intent-filter>
 			<meta-data android:name="android.app.searchable"
-				android:resource="@xml/searchable"></meta-data>
+				android:resource="@xml/searchable" />
 		</activity>
 		<activity android:name=".app.Directory" android:label="@string/directory_title">
 			<meta-data android:name="android.app.default_searchable"
-				android:value=".info.Search"></meta-data>
+				android:value=".info.Search" />
 		</activity>
 		<activity android:name=".app.Mayoralties" android:label="@string/mayoralties_title">
 			<meta-data android:name="android.app.default_searchable"
-				android:value=".info.Search"></meta-data>
+				android:value=".info.Search" />
 		</activity>
 		<activity android:name=".app.Procedures" android:label="@string/procedures_title">
 			<meta-data android:name="android.app.default_searchable"
-				android:value=".info.Search"></meta-data>
+				android:value=".info.Search" />
 		</activity>
 		<activity android:name=".app.Government" android:label="@string/government_title">
 			<meta-data android:name="android.app.default_searchable"
-				android:value=".info.Search"></meta-data>
+				android:value=".info.Search" />
 		</activity>
 		<activity android:name=".info.About" android:label="@string/about"
 			android:theme="@android:style/Theme.Dialog">
 			<meta-data android:name="android.app.default_searchable"
-				android:value=".info.Search"></meta-data>
+				android:value=".info.Search" />
 		</activity>
 		<activity android:name=".info.Help" android:label="@string/help">
 			<meta-data android:name="android.app.default_searchable"
-				android:value=".info.Search"></meta-data>
+				android:value=".info.Search" />
 		</activity>
-		<activity android:name=".info.Show">
-			<meta-data android:name="android.app.default_searchable"
-				android:value=".info.Search"></meta-data>
-		</activity>
-		<activity android:name=".info.Preferences" android:label="@string/preferences"></activity>
+		<activity android:name=".info.Show" />
+		<activity android:name=".info.Preferences" android:label="@string/preferences" />
 		<activity android:name=".twitter.TwitterActivity"
-			android:label="@string/twitter" android:theme="@android:style/Theme.NoTitleBar"></activity>
-		<activity android:name=".twitter.Timeline"></activity>
-		<activity android:name=".twitter.Mentions"></activity>
-		<activity android:name=".twitter.Retweets"></activity>
+			android:label="@string/twitter" android:theme="@android:style/Theme.NoTitleBar" />
+		<activity android:name=".twitter.Timeline" />
+		<activity android:name=".twitter.Mentions" />
+		<activity android:name=".twitter.Retweets" />
 
 		<activity android:name=".twitter.OAuthTwitter">
 			<intent-filter>
