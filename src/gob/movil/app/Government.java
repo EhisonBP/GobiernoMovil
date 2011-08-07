@@ -19,7 +19,6 @@
 package gob.movil.app;
 
 import gob.movil.R;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -53,16 +52,13 @@ public class Government extends Main {
 		emailIntent.setType("plain/text");
 		emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
 				new String[] { getString(R.string.email) });
-		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT + " - "
-				+ getString(R.string.government_online), radioButtonSelected);
+		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+				getString(R.string.government_online) + " - "
+						+ radioButtonSelected.toString());
 		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
 				EMAILTEXT.getText() + "\n\n----------\n" + NAME.getText()
 						+ "\n\n" + getString(R.string.signature));
 		Government.this.startActivity(Intent.createChooser(emailIntent,
 				getString(R.string.select)));
-	}
-
-	public void onMainClick(View button) {
-		finish();
 	}
 }
