@@ -42,9 +42,9 @@ public class Show extends Activity {
 		text.setText(query.getString(3) + ".\n"
 				+ context.getString(R.string.address) + ": "
 				+ query.getString(4) + ".\n"
-				+ context.getString(R.string.phones) + ": " + query.getString(5)
-				+ "\n" + context.getString(R.string.web) + ": "
-				+ query.getString(6) + "\n");
+				+ context.getString(R.string.phones) + ": "
+				+ query.getString(5) + "\n" + context.getString(R.string.web)
+				+ ": " + query.getString(6) + "\n");
 		Button ok = (Button) dialog.findViewById(R.id.ok);
 		ok.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -65,9 +65,6 @@ public class Show extends Activity {
 	}
 
 	public void setToast(Context context, String message) {
-		CharSequence text = message;
-		int duration = Toast.LENGTH_SHORT;
-		Toast toast = Toast.makeText(context, text, duration);
-		toast.show();
+		Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
 	}
 }
