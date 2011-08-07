@@ -10,7 +10,7 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="gob.movil" android:versionName="0.7.4" android:versionCode="104">
+	package="gob.movil" android:versionName="0.7.5" android:versionCode="105">
 	<uses-sdk android:minSdkVersion="7" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -49,8 +49,14 @@
 				android:value=".info.Search" />
 		</activity>
 		<activity android:name=".info.About" android:label="@string/about"
-			android:theme="@android:style/Theme.Dialog" />
-		<activity android:name=".info.Help" android:label="@string/help" />
+			android:theme="@android:style/Theme.Dialog">
+			<meta-data android:name="android.app.default_searchable"
+				android:value=".info.Search" />
+		</activity>
+		<activity android:name=".info.Help" android:label="@string/help">
+			<meta-data android:name="android.app.default_searchable"
+				android:value=".info.Search" />
+		</activity>
 		<activity android:name=".info.Show" />
 		<activity android:name=".info.Preferences" android:label="@string/preferences" />
 		<activity android:name=".twitter.TwitterActivity"
