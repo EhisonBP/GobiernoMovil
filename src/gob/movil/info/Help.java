@@ -19,18 +19,13 @@
 package gob.movil.info;
 
 import gob.movil.R;
-import android.app.Activity;
+import gob.movil.app.Main;
 import android.os.Bundle;
-import android.view.View;
 
-public class Help extends Activity {
+public class Help extends Main {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.help);
-	}
-
-	public void onOkClick(View button) {
-		finish();
 	}
 }
