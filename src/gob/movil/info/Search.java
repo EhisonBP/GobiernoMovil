@@ -36,6 +36,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.SearchRecentSuggestions;
 import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
@@ -56,30 +57,33 @@ public class Search extends ListActivity {
 		setContentView(R.layout.search);
 		helper = new DatabaseHelper(this);
 		db = helper.getReadableDatabase();
-		Intent queryIntent = getIntent();
-		String queryAction = queryIntent.getAction();
-		if (Intent.ACTION_SEARCH.equalsIgnoreCase(queryAction)) {
-			String searchKeywords = queryIntent
-					.getStringExtra(SearchManager.QUERY);
+		Intent intent = getIntent();
+		if (Intent.ACTION_SEARCH.equalsIgnoreCase(intent.getAction())) {
+			String query = intent.getStringExtra(SearchManager.QUERY);
+			if (Preferences.getSuggestions(getApplicationContext())) {
+				SearchRecentSuggestions suggestions = new SearchRecentSuggestions(
+						this, SuggestionProvider.AUTHORITY,
+						SuggestionProvider.MODE);
+				suggestions.saveRecentQuery(query, null);
+			}
 			Cursor searchAgencies = db.rawQuery(
-					SELECT + AGENCIES + WHERE + replace("name", searchKeywords)
-							+ OR + replace("officer", searchKeywords) + OR
-							+ replace("office", searchKeywords) + OR
-							+ replace("twitter", searchKeywords), null);
+					SELECT + AGENCIES + WHERE + replace("name", query) + OR
+							+ replace("officer", query) + OR
+							+ replace("office", query) + OR
+							+ replace("twitter", query), null);
 			Cursor searchMayoralties = db.rawQuery(
-					SELECT + MAYORALTIES + WHERE
-							+ replace("name", searchKeywords) + OR
-							+ replace("mayor", searchKeywords) + OR
-							+ replace("office", searchKeywords) + OR
-							+ replace("twitter", searchKeywords), null);
+					SELECT + MAYORALTIES + WHERE + replace("name", query) + OR
+							+ replace("mayor", query) + OR
+							+ replace("office", query) + OR
+							+ replace("twitter", query), null);
 			Cursor searchProcedures = db.rawQuery(SELECT + PROCEDURES + WHERE
-					+ replace("name", searchKeywords), null);
+					+ replace("name", query), null);
 			if (!searchAgencies.moveToFirst()
 					&& !searchMayoralties.moveToFirst()
 					&& !searchProcedures.moveToFirst()) {
 				Resources res = getResources();
 				String text = String.format(
-						res.getString(R.string.search_none), searchKeywords);
+						res.getString(R.string.search_none), query);
 				CharSequence styledText = Html.fromHtml(text);
 				TextView noFound = (TextView) findViewById(R.id.search_results);
 				noFound.setText(styledText);
