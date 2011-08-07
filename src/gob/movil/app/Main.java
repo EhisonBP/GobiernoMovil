@@ -21,11 +21,13 @@ package gob.movil.app;
 import static gob.movil.info.Constants.VIBRATION_INTENT;
 import gob.movil.R;
 import gob.movil.info.About;
+import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Help;
 import gob.movil.info.Preferences;
 import gob.movil.twitter.TwitterActivity;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.Menu;
@@ -34,6 +36,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class Main extends Activity {
+	protected DatabaseHelper helper;
+	protected SQLiteDatabase db;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,20 +58,20 @@ public class Main extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.about:
-			showActivity(About.class);
+			showActivity(About.class, 0);
 			return true;
 		case R.id.help:
-			showActivity(Help.class);
+			showActivity(Help.class, 0);
 			return true;
 		case R.id.search:
 			onSearchRequested();
 			return true;
 		case R.id.preferences:
-			showActivity(Preferences.class);
+			showActivity(Preferences.class, 0);
 			return true;
 		case R.id.twitter:
 			// TODO Agregar condición para revisar las preferencias.
-			showActivity(TwitterActivity.class);
+			showActivity(TwitterActivity.class, 0);
 			return true;
 		case R.id.quit:
 			finish();
@@ -80,23 +85,24 @@ public class Main extends Activity {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.directory_main:
-			showActivity(Directory.class);
+			showActivity(Directory.class, 0);
 			break;
 		case R.id.procedures_main:
-			showActivity(Procedures.class);
+			showActivity(Procedures.class, 0);
 			break;
 		case R.id.government_main:
-			showActivity(Government.class);
+			showActivity(Government.class, 0);
 			break;
 		}
 	}
 
 	/** Mostramos la opción seleccionada. */
-	public void showActivity(Class<?> c) {
+	public void showActivity(Class<?> c, int item) {
 		if (Preferences.getVibration(getApplicationContext())) {
 			setVibration(VIBRATION_INTENT);
 		}
 		Intent i = new Intent(this, c);
+		i.putExtra("item", item);
 		startActivity(i);
 	}
 
@@ -104,5 +110,9 @@ public class Main extends Activity {
 	public void setVibration(int miliSeconds) {
 		Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 		v.vibrate(miliSeconds);
+	}
+
+	public void onMainClick(View button) {
+		finish();
 	}
 }
