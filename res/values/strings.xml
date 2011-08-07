@@ -10,6 +10,15 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 	
 <resources>
+	<string name="yes">Sí</string>
+	<string name="no">No</string>
+	<string name="clear_history_dialog">¿Desea borrar el historial de búsquedas?</string>
+	<string name="suggestions_title">Guardar historial</string>
+	<string name="suggestions_summary">Guarda el historial de búsquedas</string>
+	<string name="cleared">El historial ha sido borrado</string>
+	<string name="clear_history_summary">Borra el historial de búsquedas</string>
+	<string name="clear_history">Borrar historial</string>
+	<string name="search_preferences">Preferencias de búsqueda</string>
 	<string name="settings_description">Funcionarios y trámites del Estado</string>
 	<string name="search">Buscar</string>
 	<string name="authenticate">Autenticarse en Twitter</string>
