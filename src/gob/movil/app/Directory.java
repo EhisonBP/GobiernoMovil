@@ -27,13 +27,9 @@ import static gob.movil.info.Constants.VIBRATION_ERROR;
 import gob.movil.R;
 import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Show;
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -44,8 +40,6 @@ import android.widget.Spinner;
 public class Directory extends Main {
 	private int POS = 1;
 	private int powerPosition = 0;
-	private DatabaseHelper helper;
-	private SQLiteDatabase db;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -128,7 +122,7 @@ public class Directory extends Main {
 					widgets.setDialog(Directory.this, agencies);
 				} else if (type < 0) {
 					// Mostramos los municipios.
-					showIntent(position + POS);
+					showActivity(Mayoralties.class, position + POS);
 				} else {
 					try {
 						// Mostramos las gobernaciones.
@@ -144,23 +138,5 @@ public class Directory extends Main {
 				}
 			}
 		});
-	}
-
-	public void onMainClick(View button) {
-		finish();
-	}
-
-	/** Alerta vibrante. */
-	public void setVibration(int miliSeconds) {
-		Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-		v.vibrate(miliSeconds);
-	}
-
-	/** Enviamos la entidad estatal seleccionada. */
-	public void showIntent(int item) {
-		Intent i = new Intent();
-		i.setComponent(new ComponentName(this, Mayoralties.class));
-		i.putExtra("item", item);
-		startActivity(i);
 	}
 }
