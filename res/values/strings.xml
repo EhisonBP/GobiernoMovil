@@ -38,7 +38,6 @@
 	<string name="username_summary">Nombre de usuario en Twitter</string>
 	<string name="preferences">Preferencias</string>
 	<string name="more">Más</string>
-	<string name="home">Gobierno Móvil</string>
 	<string name="government_online">Gobierno en Línea</string>
 	<string name="signature">Enviado desde \"Gobierno Móvil\" para Android</string>
 	<string name="executive">Poder Ejecutivo</string>
@@ -58,7 +57,7 @@
 	<string name="compose">Redactar</string>
 	<string name="cost">Costo</string>
 	<string name="directory_title">Directorio del Estado</string>
-	<string name="email">pordefinir@gobiernoenlinea.gob.ve</string>
+	<string name="email">no-reply@gobiernoenlinea.gob.ve</string>
 	<string name="error_db">Error. No se logró la conexión con la base de datos o no existe ningún registro</string>
 	<string name="general">General</string>
 	<string name="government_title">Escríbele al Gobierno</string>
@@ -88,7 +87,7 @@
 	<string name="ok">Aceptar</string>
 	<string name="organism">Organismo al cual pertenece</string>
 	<string name="info">Otra información a tener en cuenta</string>
-	<string name="phone">Teléfonos</string>
+	<string name="phones">Teléfonos</string>
 	<string name="quit">Salir</string>
 	<string name="requirements">Requisitos</string>
 	<string name="search_hint">Buscar en Gobierno Móvil</string>
