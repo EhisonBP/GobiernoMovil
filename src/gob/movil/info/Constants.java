@@ -27,8 +27,11 @@ public interface Constants extends BaseColumns {
 	public static final String AGENCIES = "agencies";
 	public static final String PROCEDURES = "procedures";
 	public static final String MAYORALTIES = "mayoralties";
-	public final String INSERT = "INSERT INTO ";
-	public final String SELECT = "SELECT * FROM ";
+	public static final String INSERT = "INSERT INTO ";
+	public static final String SELECT = "SELECT * FROM ";
+	public static final String WHERE = " WHERE ";
+	public static final String OR = " OR ";
 	public static final int VIBRATION_ERROR = 80;
 	public static final int VIBRATION_INTENT = 20;
+	
 }
