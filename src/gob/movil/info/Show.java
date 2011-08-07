@@ -42,7 +42,7 @@ public class Show extends Activity {
 		text.setText(query.getString(3) + ".\n"
 				+ context.getString(R.string.address) + ": "
 				+ query.getString(4) + ".\n"
-				+ context.getString(R.string.phone) + ": " + query.getString(5)
+				+ context.getString(R.string.phones) + ": " + query.getString(5)
 				+ "\n" + context.getString(R.string.web) + ": "
 				+ query.getString(6) + "\n");
 		Button ok = (Button) dialog.findViewById(R.id.ok);
