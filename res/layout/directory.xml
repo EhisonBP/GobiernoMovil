@@ -20,14 +20,14 @@
 		<TextView android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:clickable="true"
 			android:onClick="onMainClick" android:textColor="@color/text"
-			android:text="@string/home" />
+			android:text="@string/app_name" />
 
 		<TextView android:text=" | " android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:textColor="@color/text" />
 
 		<TextView android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:textColor="@color/text"
-			android:text="@string/directory_title" />
+			android:text="@string/directory" />
 
 		<LinearLayout android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:gravity="right">
