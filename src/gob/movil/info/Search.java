@@ -20,21 +20,22 @@ package gob.movil.info;
 
 import static gob.movil.info.Constants.AGENCIES;
 import static gob.movil.info.Constants.MAYORALTIES;
+import static gob.movil.info.Constants.OR;
 import static gob.movil.info.Constants.PROCEDURES;
 import static gob.movil.info.Constants.SELECT;
+import static gob.movil.info.Constants.WHERE;
 import gob.movil.R;
+import gob.movil.app.Main;
 import gob.movil.app.Procedures;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
 import android.text.Html;
@@ -45,12 +46,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Search extends ListActivity {
-	private static final String WHERE = " WHERE ";
-	private static final String OR = " OR ";
-	private DatabaseHelper helper;
-	private SQLiteDatabase db;
-
+public class Search extends Main {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -151,16 +147,10 @@ public class Search extends ListActivity {
 					widgets.setDialog(Search.this, queryMayoralties);
 				}
 				if (queryProcedures.moveToFirst()) {
-					showIntent(queryProcedures.getInt(0));
+					showActivity(Procedures.class, queryProcedures.getInt(0));
 				}
 			}
 		});
-	}
-
-	public void showIntent(int item) {
-		Intent i = new Intent(this, Procedures.class);
-		i.putExtra("item", item);
-		startActivity(i);
 	}
 
 	private Cursor queryItemClicked(String table, String item) {
