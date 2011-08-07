@@ -21,4 +21,12 @@
 			android:key="username" android:title="@string/username"
 			android:summary="@string/username_summary" />
 	</PreferenceCategory>
+	<PreferenceCategory android:key="search_preferences"
+		android:title="@string/search_preferences">
+		<CheckBoxPreference android:key="suggestions"
+			android:title="@string/suggestions_title" android:summary="@string/suggestions_summary"
+			android:defaultValue="true" />
+		<Preference android:key="search" android:title="@string/clear_history"
+			android:summary="@string/clear_history_summary" />
+	</PreferenceCategory>
 </PreferenceScreen>
