@@ -27,8 +27,6 @@
 		<menu>
 			<item android:id="@+id/twitter" android:title="@string/twitter"
 				android:alphabeticShortcut="t" />
-			<item android:id="@+id/quit" android:title="@string/quit"
-				android:alphabeticShortcut="q" />
 		</menu>
 	</item>
 </menu>
