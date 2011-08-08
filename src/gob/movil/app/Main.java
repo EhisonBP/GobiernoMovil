@@ -73,9 +73,6 @@ public class Main extends Activity {
 			// TODO Agregar condición para revisar las preferencias.
 			showActivity(TwitterActivity.class, 0);
 			return true;
-		case R.id.quit:
-			finish();
-			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
