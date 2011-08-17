@@ -14,7 +14,8 @@
 	<uses-sdk android:minSdkVersion="7" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
-	<application android:icon="@drawable/icon" android:label="@string/app_name">
+	<application android:icon="@drawable/icon" android:label="@string/app_name"
+		android:debuggable="true">
 		<provider android:name=".info.SuggestionProvider"
 			android:authorities="gob.movil.info.SuggestionProvider" />
 		<activity android:name=".app.Main" android:label="@string/app_name">
