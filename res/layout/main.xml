@@ -21,7 +21,7 @@
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:gravity="center" android:padding="10dip">
 			<ImageView android:src="@drawable/logo"
-				android:layout_height="wrap_content" android:layout_width="wrap_content"></ImageView>
+				android:layout_height="wrap_content" android:layout_width="wrap_content" />
 		</LinearLayout>
 
 		<LinearLayout android:orientation="horizontal"
@@ -29,7 +29,7 @@
 			android:gravity="center" android:padding="20dip">
 			<TextView android:text="@string/search_instructions"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:gravity="center" android:textSize="18sp" android:textColor="@color/text"></TextView>
+				android:gravity="center" android:textSize="18sp" android:textColor="@color/text" />
 		</LinearLayout>
 
 		<LinearLayout android:orientation="horizontal"
@@ -43,24 +43,24 @@
 				<TableRow>
 					<ImageView android:id="@+id/directory_main"
 						android:gravity="center" android:src="@color/effect_dir"
-						android:clickable="true" android:onClick="onClick"></ImageView>
+						android:clickable="true" android:onClick="onClick" />
 					<ImageView android:id="@+id/procedures_main"
 						android:gravity="center" android:src="@color/effect_tra"
-						android:clickable="true" android:onClick="onClick"></ImageView>
+						android:clickable="true" android:onClick="onClick" />
 					<ImageView android:id="@+id/government_main"
 						android:gravity="center" android:src="@color/effect_gob"
-						android:clickable="true" android:onClick="onClick"></ImageView>
+						android:clickable="true" android:onClick="onClick" />
 				</TableRow>
 				<TableRow>
 					<TextView android:id="@id/directory_main" android:text="@string/directory"
 						android:gravity="center" android:textColor="@color/text"
-						android:clickable="true" android:onClick="onClick"></TextView>
+						android:clickable="true" android:onClick="onClick" />
 					<TextView android:id="@id/procedures_main" android:text="@string/procedures"
 						android:gravity="center" android:textColor="@color/text"
-						android:clickable="true" android:onClick="onClick"></TextView>
+						android:clickable="true" android:onClick="onClick" />
 					<TextView android:id="@id/government_main" android:text="@string/government"
 						android:gravity="center" android:textColor="@color/text"
-						android:clickable="true" android:onClick="onClick"></TextView>
+						android:clickable="true" android:onClick="onClick" />
 				</TableRow>
 			</TableLayout>
 		</LinearLayout>
