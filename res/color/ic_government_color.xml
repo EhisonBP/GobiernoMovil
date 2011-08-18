@@ -10,9 +10,9 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:drawable="@drawable/tramites_pressed"
+	<item android:drawable="@drawable/ic_main_government_pressed"
 		android:state_pressed="true" />
-	<item android:drawable="@drawable/tramites_pressed"
+	<item android:drawable="@drawable/ic_main_government_focused"
 		android:state_focused="true" />
-	<item android:drawable="@drawable/tramites" />
+	<item android:drawable="@drawable/ic_main_government" />
 </selector>
