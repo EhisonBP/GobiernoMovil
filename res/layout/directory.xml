@@ -20,7 +20,7 @@
 		<TextView android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:clickable="true"
 			android:onClick="onMainClick" android:textColor="@color/text"
-			android:text="@string/app_name" />
+			android:text="@string/app_name" android:focusable="true" />
 
 		<TextView android:text=" | " android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:textColor="@color/text" />
@@ -32,9 +32,10 @@
 		<LinearLayout android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:gravity="right">
 
-			<ImageView android:src="@color/effect_icon"
+			<ImageView android:src="@color/ic_logo_color"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:clickable="true" android:onClick="onMainClick" />
+				android:clickable="true" android:onClick="onMainClick"
+				android:focusable="true" />
 		</LinearLayout>
 
 	</LinearLayout>
@@ -48,17 +49,18 @@
 			android:textSize="18dip" android:textColor="@color/text"
 			android:paddingRight="10dip"></TextView>
 
-		<Spinner android:id="@+id/spinner_directory" android:layout_width="fill_parent"
-			android:layout_height="wrap_content" android:prompt="@string/directory_title"></Spinner>
+		<Spinner android:id="@+id/spinner_directory"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:prompt="@string/directory_title"></Spinner>
 
 	</LinearLayout>
 
 	<LinearLayout android:layout_width="fill_parent"
 		android:layout_height="fill_parent">
 
-		<ListView android:id="@+id/list_directory" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" android:dividerHeight="1dip"
-			android:textFilterEnabled="true"></ListView>
+		<ListView android:id="@+id/list_directory"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:dividerHeight="1dip" android:textFilterEnabled="true"></ListView>
 
 	</LinearLayout>
 
