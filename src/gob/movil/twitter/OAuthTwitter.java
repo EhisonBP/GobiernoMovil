@@ -18,15 +18,21 @@
 
 package gob.movil.twitter;
 
+import static gob.movil.info.Constants.CONSUMER_KEY;
+import static gob.movil.info.Constants.CONSUMER_SECRET;
 import gob.movil.R;
 import oauth.signpost.OAuthProvider;
+import oauth.signpost.basic.DefaultOAuthProvider;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import twitter4j.Twitter;
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class OAuthTwitter extends Activity {
 	private String CALLBACK_URL = "callback://gm";
@@ -34,8 +40,8 @@ public class OAuthTwitter extends Activity {
 	private String ACCESS_TOKEN_URL = "http://api.twitter.com/oauth/access_token";
 	private String AUTHORIZE_URL = "http://api.twitter.com/oauth/authorize";
 	private Twitter twitter;
-	private OAuthProvider provider;
 	private CommonsHttpOAuthConsumer consumer;
+	private OAuthProvider provider;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,9 +52,24 @@ public class OAuthTwitter extends Activity {
 		authentication.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Agregar la lógica para la implementación de la
-				// autenticación.
+				getOAuth();
 			}
 		});
+	}
+
+	private void getOAuth() {
+		try {
+			consumer = new CommonsHttpOAuthConsumer(CONSUMER_KEY,
+					CONSUMER_SECRET);
+			provider = new DefaultOAuthProvider(REQUEST_TOKEN_URL,
+					ACCESS_TOKEN_URL, AUTHORIZE_URL);
+			String url = provider.retrieveRequestToken(consumer, CALLBACK_URL);
+			Toast.makeText(getApplicationContext(), "Please, authorize!",
+					Toast.LENGTH_SHORT);
+			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+		} catch (Exception e) {
+			Toast.makeText(getApplicationContext(), "Authentication error!",
+					Toast.LENGTH_SHORT);
+		}
 	}
 }
