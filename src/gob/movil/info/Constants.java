@@ -32,7 +32,7 @@ public interface Constants extends BaseColumns {
 	public static final String WHERE = " WHERE ";
 	public static final String OR = " OR ";
 	public static final int VIBRATION_ERROR = 80;
-	public static final int VIBRATION_INTENT = 20;
+	public static final int VIBRATION_INTENT = 30;
 	public static final String CONSUMER_KEY = "Your consumer key here";
 	public static final String CONSUMER_SECRET = "Your consumer secret here";
 }
