@@ -91,7 +91,7 @@
 	<string name="quit">Quit</string>
 	<string name="requirements">Requirements</string>
 	<string name="search_hint">Mobile Government Search</string>
-	<string name="search_instructions">Press "SEARCH" key to search in this app.</string>
+	<string name="search_instructions">Press "SEARCH" key to search in this app</string>
 	<string name="search_none">No results for &lt;b>%1$s&lt;/b></string>
 	<string name="select">Select</string>
 	<string name="selected">Selected: </string>
