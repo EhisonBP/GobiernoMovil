@@ -64,11 +64,12 @@ public class OAuthTwitter extends Activity {
 			provider = new DefaultOAuthProvider(REQUEST_TOKEN_URL,
 					ACCESS_TOKEN_URL, AUTHORIZE_URL);
 			String url = provider.retrieveRequestToken(consumer, CALLBACK_URL);
-			Toast.makeText(getApplicationContext(), "Please, authorize!",
-					Toast.LENGTH_SHORT);
+			Toast.makeText(getApplicationContext(),
+					getString(R.string.authorize), Toast.LENGTH_SHORT);
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 		} catch (Exception e) {
-			Toast.makeText(getApplicationContext(), "Authentication error!",
+			Toast.makeText(getApplicationContext(),
+					getString(R.string.authentication_error),
 					Toast.LENGTH_SHORT);
 		}
 	}
