@@ -10,6 +10,8 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 	
 <resources>
+	<string name="authentication_error">ERROR: No se pudo autorizar esta aplicación</string>
+	<string name="authorize">Por favor, autorice esta aplicación</string>
 	<string name="yes">Sí</string>
 	<string name="no">No</string>
 	<string name="clear_history_dialog">¿Desea borrar el historial de búsquedas?</string>
@@ -58,7 +60,7 @@
 	<string name="cost">Costo</string>
 	<string name="directory_title">Directorio del Estado</string>
 	<string name="email">no-reply@gobiernoenlinea.gob.ve</string>
-	<string name="error_db">Error. No se logró la conexión con la base de datos o no existe ningún registro</string>
+	<string name="error_db">ERROR: No se logró la conexión con la base de datos o no existe ningún registro</string>
 	<string name="general">General</string>
 	<string name="government_title">Escríbele al Gobierno</string>
 	<string name="help_text">\<b><big>Directorio</big></b>

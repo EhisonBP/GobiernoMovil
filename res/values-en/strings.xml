@@ -10,6 +10,8 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 	
 <resources>
+	<string name="authentication_error">ERROR: Could not authorize this app</string>
+	<string name="authorize">Please, authorize this app</string>
 	<string name="yes">Yes</string>
 	<string name="no">No</string>
 	<string name="clear_history_dialog">Are you sure you want to clear history?</string>
@@ -58,7 +60,7 @@
 	<string name="cost">Cost</string>
 	<string name="directory_title">Government\'s Directory</string>
 	<string name="email">no-reply@gobiernoenlinea.gob.ve</string>
-	<string name="error_db">Error. Could not connect to database or there are no data.</string>
+	<string name="error_db">ERROR: Could not connect to database or there are no data.</string>
 	<string name="general">General</string>
 	<string name="government_title">Email Government</string>
 	<string name="help_text">\<b><big>Directory</big></b>
