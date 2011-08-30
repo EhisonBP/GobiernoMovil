@@ -18,6 +18,7 @@
 
 package gob.movil.app;
 
+import static android.provider.BaseColumns._ID;
 import static gob.movil.info.Constants.MAYORALTIES;
 import static gob.movil.info.Constants.MUNICIPALITIES;
 import static gob.movil.info.Constants.SELECT;
@@ -71,10 +72,15 @@ public class Mayoralties extends Main {
 					long id) {
 				Show widgets = new Show();
 				try {
-					// Consultamos la alcaldía del municipio seleccionado.
-					Cursor query = db.rawQuery(SELECT + MAYORALTIES
-							+ " WHERE municipality = " + (position + 1)
-							+ " AND state = " + state, null);
+					/** Consultamos la alcaldía del municipio seleccionado. */
+					Cursor query = db.rawQuery(
+							"SELECT " + MAYORALTIES + ".* FROM " + MAYORALTIES
+									+ ", " + MUNICIPALITIES + " WHERE "
+									+ MUNICIPALITIES + ".name = '"
+									+ lv.getItemAtPosition(position) + "' AND "
+									+ MUNICIPALITIES + "." + _ID + " = "
+									+ MAYORALTIES + ".municipality AND "
+									+ MAYORALTIES + ".state = " + state, null);
 					widgets.setDialog(Mayoralties.this, query);
 				} catch (Exception e) {
 					if (Preferences.getVibration(getApplicationContext())) {
