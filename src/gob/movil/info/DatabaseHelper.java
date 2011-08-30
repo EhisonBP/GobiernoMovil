@@ -589,6 +589,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de Ciudad de Nutrias', 'Wilfredo Guevara', 'Alcalde de Ciudad de Nutrias', 'Calle Julián Pino entre avenida Cruz Paredes y Rodríguez Domínguez, frente a la Plaza Bolívar', '(0273)4146185 / (0273)4154595 / Fax: (0273)4146185', 'No disponible.', '', '6', '68')");
 		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de Santa Bárbara', 'Francisco Hurtado', 'Alcalde de Santa Bárbara', 'Carretera 5 con Esquina calle 11, frente a la plaza Bolívar, Edif. Concejo Municipal Santa Bárbara, Edo. Barinas', '(0273)5521444', 'No disponible.', '', '6', '69')");
 		
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, Alcaldía de San Félix', 'José Ramón López', 'Alcalde de San Félix', 'Calle Bolívar Diagonal Plaza Bolívar. Palacio Municipal. San Félix, Edo. Bolívar', '(0286)9711223 / (0286)9711655 / Fax: (0286)9711223', 'No disponible.', '', '7', '70')");
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, Alcaldía de Caicara del Orinoco', 'Milthon Tovar', 'Alcalde de Caicara del Orinoco', 'Prolongación Paseo Orinoco con calle Av. Carabobo, Edif. Alma-Cedeño. Caicara del Orinoco, Edo. Bolívar', '(0284)6667728 / Fax: (0284)6667728', 'No disponible.', '', '7', '71')");
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, Alcaldía de El Callao', 'Orlenia Scipio', 'Alcaldesa de El Callao', 'Boulevard Carlos Manuel Piar con calle Ricaurte, Palacio Municipal, El Callao. Edo. Bolívar', '(0288)7620806 / (0288)7620808 / Fax: (0288)7620280', 'No disponible.', '', '7', '72')");
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, Alcaldía de Santa Elena de Uairén', 'Manuel de Jesús Valles', 'Alcalde de Santa Elena de Uairén', 'Calle Ikabarú, Casco Central. Santa Elena de Uairén, Edo. Bolívar', '(0289)4160831 / (0289)9951148 / Fax: (0289)9951148', 'No disponible.', '', '7', '73')");
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, Alcaldía de Ciudad Bolívar', 'Victor Fuenmayor', 'Alcalde de Ciudad Bolívar', 'Calle Igualdad con calle Libertad, Casa Histórica, Ciudad Bolívar, Edo. Bolívar', '(0285)6324690 / Fax: (0285)6324690', 'No disponible.', '', '7', '74')");
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, Alcaldía de El Palmar', 'Aquilino Márquez', 'Alcalde de El Palmar', 'Calle Dalla Costa de El Palmar, Plaza Bolívar, El Palmar. Edo. Bolívar', '(0288)8811157 / Fax: (0288)8811157', 'No disponible.', '', '7', '75')");
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, Alcaldía de Upata', 'Gustavo Muñoz', 'Alcalde de Upata', 'Calle Urdaneta, edificio Centro Cívico frente a la Plaza Bolívar. Upata, Edo. Bolívar', '(0288)2216587 / (0288)2210514 / Fax: (0288)2216211', 'No disponible.', '', '7', '76')");
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, Alcaldía de Ciudad Piar', 'Yusleibi Ramírez', 'Alcaldesa de Ciudad Piar', 'Calle Principal, Módulo de Servicio, Frente a la Plaza Bolívar, Maripas, Edo. Bolívar', 'No disponible.', 'No disponible.', '', '7', '77')");
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, Alcaldía de Guasipati', 'José Martínez', 'Alcalde de Guasipati', 'Calle Bolívar al lado de la prefectura, sede del Palacio Municipal. Guasipati. Edo. Bolívar', '+(0288)7671973 / Fax: (0288)7671708', 'No disponible.', '', '7', '78')");
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, Alcaldía de Tumeremo', 'Carlos Chancellor', 'Alcalde de Tumeremo', 'Calle Roscio, A una cuadra de la Plaza Bolívar, Casa Municipal, Tumeremo, Edo. Bolívar', '(0414)3035107', 'No disponible.', '', '7', '79')");
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, Alcaldía de Maripas', 'Amelia Falcón', 'Alcaldesa de Maripas', 'Calle Bolívar frente Plaza Sucre. Maripa, Edo. Bolívar', '(0285)8081504 / (0285)8081505 / Fax: (0285)8081504', 'No disponible.', '', '7', '80')");
+
+		
+		
+		
+		
 //		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de ', '', '', '', '', '', '', '1', '1')");
 		
 	}
