@@ -45,7 +45,7 @@ public class Main extends Activity {
 		setContentView(R.layout.main);
 	}
 
-	/** Creamos el menú de opciones. */
+	/** Creating the menu. */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -53,7 +53,7 @@ public class Main extends Activity {
 		return true;
 	}
 
-	/** Opción seleccionada. */
+	/** Option selected. */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -78,7 +78,7 @@ public class Main extends Activity {
 		}
 	}
 
-	/** Vista seleccionada. */
+	/** Selected view. */
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.directory_main:
@@ -93,7 +93,7 @@ public class Main extends Activity {
 		}
 	}
 
-	/** Mostramos la opción seleccionada. */
+	/** Show the activity. */
 	public void showActivity(Class<?> c, int item) {
 		if (Preferences.getVibration(getApplicationContext())) {
 			setVibration(VIBRATION_INTENT);
@@ -103,7 +103,7 @@ public class Main extends Activity {
 		startActivity(i);
 	}
 
-	/** Utilizamos la alerta vibrante. */
+	/** Set vibrate. */
 	public void setVibration(int miliSeconds) {
 		Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 		v.vibrate(miliSeconds);
