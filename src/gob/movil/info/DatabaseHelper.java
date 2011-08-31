@@ -32,7 +32,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "gm.db";
-	private static final int DB_VERSION = 32;
+	private static final int DB_VERSION = 33;
 	
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -857,7 +857,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de Santa Rita', 'Andry Oviedo', 'Alcalde de Santa Rita', 'Av. Principal, Edif. El Concejo, Santa Rita, Edo. Zulia', '(0264)9340460', 'No disponible.', '', '24', '318')");
 		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de Tía Juana', 'Gustavo Torres', 'Alcalde de Tía Juana', 'Av. Intercomunal, Sector Las Palmas, al lado de la Tasca Bergel, Tía Juana, Edo. Zulia', 'No disponible.', 'No disponible.', '', '24', '319')");
 		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de Bobures', 'Jorge Barboza', 'Alcalde de Bobures', 'Av. Principal, Edif. Sede Poderes Públicos, frente a la Plaza Sucre, Bobures, Edo. Zulia', '(0271)7791064', 'No disponible.', '', '24', '320')");
-		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de Bachaquero', 'Javier Briceño', 'Alcalde de Bachaquero', 'Av. El Muro, Casa Municipal, al lado de la Inspectoría de Tránsito, Bachaquero, Edo. Zulia', '(0267)4147678 / Fax: (0267)3521718', 'No disponible.', '', '24', '321')");		
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de Bachaquero', 'Javier Briceño', 'Alcalde de Bachaquero', 'Av. El Muro, Casa Municipal, al lado de la Inspectoría de Tránsito, Bachaquero, Edo. Zulia', '(0267)4147678 / Fax: (0267)3521718', 'No disponible.', '', '24', '321')");
 	}
 
 	@Override
