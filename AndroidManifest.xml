@@ -10,12 +10,12 @@
 	If not, see http://www.gnu.org/licenses\n\n -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="gob.movil" android:versionName="0.7.6" android:versionCode="108">
+	package="gob.movil" android:versionName="0.7.7" android:versionCode="111">
 	<uses-sdk android:minSdkVersion="7" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<application android:icon="@drawable/icon" android:label="@string/app_name"
-		android:debuggable="true">
+		android:debuggable="true" android:name=".twitter.TwitterApplication">
 		<provider android:name=".info.SuggestionProvider"
 			android:authorities="gob.movil.info.SuggestionProvider" />
 		<activity android:name=".app.Main" android:label="@string/app_name">
