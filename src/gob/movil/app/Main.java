@@ -18,15 +18,18 @@
 
 package gob.movil.app;
 
+import static gob.movil.info.Constants.TWITTER_PREFERENCES;
 import static gob.movil.info.Constants.VIBRATION_INTENT;
 import gob.movil.R;
 import gob.movil.info.About;
 import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Help;
 import gob.movil.info.Preferences;
+import gob.movil.twitter.OAuthTwitter;
 import gob.movil.twitter.TwitterActivity;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -70,8 +73,15 @@ public class Main extends Activity {
 			showActivity(Preferences.class, 0);
 			return true;
 		case R.id.twitter:
-			// TODO Agregar condición para revisar las preferencias.
-			showActivity(TwitterActivity.class, 0);
+			SharedPreferences preferences = getSharedPreferences(
+					TWITTER_PREFERENCES, MODE_PRIVATE);
+			if (!preferences.getString("access", "").equalsIgnoreCase("")
+					|| !preferences.getString("secret", "")
+							.equalsIgnoreCase("")) {
+				showActivity(TwitterActivity.class, 0);
+			} else {
+				showActivity(OAuthTwitter.class, 0);
+			}
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
