@@ -12,19 +12,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:orientation="vertical">
-	<EditText android:id="@+id/status" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:hint="@string/update_status"
-		android:maxLength="@string/max_length"></EditText>
 	<TableLayout android:layout_height="wrap_content"
 		android:layout_width="fill_parent" android:stretchColumns="1">
 		<TableRow>
-			<ImageView android:src="@android:drawable/ic_menu_mylocation"
-				android:layout_gravity="center_vertical|left" />
 			<TextSwitcher android:id="@+id/switcher"
-				android:inAnimation="@android:anim/fade_in" android:layout_gravity="center_vertical|right"
+				android:inAnimation="@android:anim/fade_in" android:layout_gravity="center_vertical|left"
 				android:padding="4dip" />
 			<Button android:id="@+id/update" android:text="@string/update"
-				android:layout_gravity="center_vertical" android:enabled="false" />
+				android:layout_gravity="center_vertical|right" android:enabled="false" />
 		</TableRow>
 	</TableLayout>
+	<EditText android:id="@+id/status" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:hint="@string/update_status"
+		android:maxLength="@string/max_length"></EditText>
 </LinearLayout>
