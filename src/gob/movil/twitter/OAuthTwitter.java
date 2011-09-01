@@ -64,7 +64,6 @@ public class OAuthTwitter extends Activity {
 	}
 
 	private void checkCredentials() {
-		// TODO @method
 		AccessToken access = getAccessToken();
 		if (access == null)
 			return;
@@ -113,7 +112,7 @@ public class OAuthTwitter extends Activity {
 		} catch (Exception e) {
 			Toast.makeText(getApplicationContext(),
 					getString(R.string.authentication_error),
-					Toast.LENGTH_SHORT);
+					Toast.LENGTH_SHORT).show();
 		}
 	}
 
