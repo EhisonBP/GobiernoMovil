@@ -149,7 +149,6 @@ public class OAuthTwitter extends Activity {
 							.show();
 				}
 			}
-
 		}
 	}
 
