@@ -106,7 +106,7 @@ public class OAuthTwitter extends Activity {
 					ACCESS_TOKEN_URL, AUTHORIZE_URL);
 			String url = provider.retrieveRequestToken(consumer, CALLBACK_URL);
 			Toast.makeText(getApplicationContext(),
-					getString(R.string.authorize), Toast.LENGTH_SHORT);
+					getString(R.string.authorize), Toast.LENGTH_SHORT).show();
 			setConsumerProvider();
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 		} catch (Exception e) {
@@ -136,7 +136,6 @@ public class OAuthTwitter extends Activity {
 					AccessToken a = new AccessToken(consumer.getToken(),
 							consumer.getTokenSecret());
 					storeAccessToken(a);
-					//
 					twitter = new TwitterFactory().getInstance();
 					twitter.setOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
 					twitter.setOAuthAccessToken(a);
