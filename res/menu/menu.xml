@@ -22,11 +22,7 @@
 	<item android:id="@+id/preferences" android:title="@string/preferences"
 		android:icon="@android:drawable/ic_menu_preferences"
 		android:alphabeticShortcut="p" />
-	<item android:title="@string/more" android:icon="@android:drawable/ic_menu_more"
-		android:alphabeticShortcut="m">
-		<menu>
-			<item android:id="@+id/twitter" android:title="@string/twitter"
-				android:alphabeticShortcut="t" />
-		</menu>
-	</item>
+	<!-- <item android:title="@string/more" android:icon="@android:drawable/ic_menu_more" 
+		android:alphabeticShortcut="m"> <menu> <item android:id="@+id/twitter" android:title="@string/twitter" 
+		android:alphabeticShortcut="t" /> </menu> </item> -->
 </menu>
