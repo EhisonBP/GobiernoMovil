@@ -93,7 +93,6 @@
 	<string name="quit">Salir</string>
 	<string name="requirements">Requisitos</string>
 	<string name="search_hint">Buscar en Gobierno Móvil</string>
-	<string name="search_instructions">Presione la tecla "SEARCH" de su teléfono para buscar dentro de la aplicación</string>
 	<string name="search_none">No se encontró nada relacionado con &lt;b>%1$s&lt;/b></string>
 	<string name="select">Seleccione</string>
 	<string name="selected">Seleccionado: </string>

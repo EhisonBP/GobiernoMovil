@@ -27,9 +27,9 @@
 		<LinearLayout android:orientation="horizontal"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:gravity="center" android:padding="20dip">
-			<TextView android:text="@string/search_instructions"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:gravity="center" android:textSize="18sp" android:textColor="@color/text" />
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:gravity="center"
+				android:textSize="18sp" android:textColor="@color/text" />
 		</LinearLayout>
 
 		<LinearLayout android:orientation="horizontal"
