@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
+	This program is free software: you can redistribute it and/or modify it under 
+	the terms of the GNU General Public License as published by the Free Software 
+	Foundation, either version 3 of the License, or any later version. This program 
+	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+	PURPOSE. See the GNU General Public License for more details. You should 
+	have received a copy of the GNU General Public License along with this program. 
+	If not, see http://www.gnu.org/licenses\n\n -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<CheckBoxPreference android:key="vibration"
+		android:title="@string/vibration" android:summaryOn="@string/vibration_summary_on"
+		android:summaryOff="@string/vibration_summary_off"
+		android:defaultValue="true" />
+	<PreferenceCategory android:key="twitter_preferences"
+		android:title="@string/twitter_preferences">
+		<EditTextPreference android:dialogTitle="@string/username_edit"
+			android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel"
+			android:key="username" android:title="@string/username"
+			android:summary="@string/username_summary" />
+	</PreferenceCategory>
+	<PreferenceCategory android:key="search_preferences"
+		android:title="@string/search_preferences">
+		<CheckBoxPreference android:key="suggestions"
+			android:title="@string/suggestions_title" android:summary="@string/suggestions_summary"
+			android:defaultValue="true" />
+		<Preference android:key="search" android:title="@string/clear_history"
+			android:summary="@string/clear_history_summary" />
+	</PreferenceCategory>
+</PreferenceScreen>

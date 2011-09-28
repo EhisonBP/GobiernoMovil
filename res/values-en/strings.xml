@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
+	This program is free software: you can redistribute it and/or modify it under 
+	the terms of the GNU General Public License as published by the Free Software 
+	Foundation, either version 3 of the License, or any later version. This program 
+	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+	PURPOSE. See the GNU General Public License for more details. You should 
+	have received a copy of the GNU General Public License along with this program. 
+	If not, see http://www.gnu.org/licenses\n\n -->
+	
+<resources>
+	<string name="authentication_error">ERROR: Could not authorize this app</string>
+	<string name="authorize">Please, authorize this app</string>
+	<string name="yes">Yes</string>
+	<string name="no">No</string>
+	<string name="clear_history_dialog">Are you sure you want to clear history?</string>
+	<string name="suggestions_title">Save history</string>
+	<string name="suggestions_summary">Save search history</string>
+	<string name="cleared">Search history cleared</string>
+	<string name="clear_history_summary">Clear previous searches from showing up in the Search Box</string>
+	<string name="clear_history">Clear search history</string>
+	<string name="search_preferences">Search preferences</string>
+	<string name="settings_description">Officers and procedures of venezuelan government</string>
+	<string name="search">Search</string>
+	<string name="authenticate">Authenticate with Twitter</string>
+	<string name="no_authenticated">You are not authenticated</string>
+	<string name="update">Update</string>
+	<string name="max_length">140</string>
+	<string name="update_status">What\'s happening?</string>
+	<string name="timeline">Timeline</string>
+	<string name="mentions">Mentions</string>
+	<string name="retweets">Retweets</string>
+	<string name="vibration">Vibrate</string>
+	<string name="vibration_summary_on">Vibration on</string>
+	<string name="vibration_summary_off">Vibration off</string>
+	<string name="twitter_preferences">Twitter preferences</string>
+	<string name="username">Username</string>
+	<string name="username_edit">Edit your username</string>
+	<string name="username_summary">Your username on Twitter</string>
+	<string name="preferences">Preferences</string>
+	<string name="more">More</string>
+	<string name="government_online">Gobierno en Línea</string>
+	<string name="signature">Sent from Mobile Government Venezuela for Android</string>
+	<string name="executive">Executive Power</string>
+	<string name="legislative">Legislative Power</string>
+	<string name="judicial">Judicial Power</string>
+	<string name="electoral">Electoral Power</string>
+	<string name="citizen">Citizen Power</string>
+	<string name="state">States Power</string>
+	<string name="municipality">Municipalities Power</string>
+	<string name="security">Nation\'s Security Organisms</string>
+	<string name="about">About</string>
+	<string name="address">Address</string>
+	<string name="mayoralties_title">Mayoralties</string>
+	<string name="app_name">Mobile Government</string>
+	<string name="body">Body</string>
+	<string name="cancel">Cancel</string>
+	<string name="compose">Compose</string>
+	<string name="cost">Cost</string>
+	<string name="directory_title">Government\'s Directory</string>
+	<string name="email">no-reply@gobiernoenlinea.gob.ve</string>
+	<string name="error_db">ERROR: Could not connect to database or there are no data.</string>
+	<string name="general">General</string>
+	<string name="government_title">Email Government</string>
+	<string name="help_text">\<b><big>Directory</big></b>
+		\n\nEn la sección \"Directorio\" usted podrá consultar el Directorio
+		del Estado en donde encontrará información sobre los representantes
+		principales de la Administración Pública Nacional.\n\n\
+		<b><big>Procedures</big></b>
+		\n\nEn la sección \"Trámites\" usted podrá consultar información sobre
+		los trámites disponibles para realizar en los respectivos entes de la
+		Administración Pública Nacional.\n\n\
+		<b><big>Government</big></b>
+		\n\nEn la sección \"Gobierno\" usted podrá interactuar con el Centro
+		Nacional de Tecnologías de Información para enviar algún comentario
+		que considere importante sobre Gobierno en Línea.\n\n\
+		<b><big>About</big></b>
+		\n\nEn la sección \"Acerca de\" encontrará información sobre la
+		licencia de esta aplicación.
+	</string>
+	<string name="help">Help</string>
+	<string name="hours">Opening hours</string>
+	<string name="directory">Directory</string>
+	<string name="government">Government</string>
+	<string name="procedures">Procedures</string>
+	<string name="name">Name</string>
+	<string name="news">News</string>
+	<string name="ok">Ok</string>
+	<string name="organism">Organism to which it belongs</string>
+	<string name="info">Other information</string>
+	<string name="phones">Phones</string>
+	<string name="quit">Quit</string>
+	<string name="requirements">Requirements</string>
+	<string name="search_hint">Mobile Government Search</string>
+	<string name="search_none">No results for &lt;b>%1$s&lt;/b></string>
+	<string name="select">Select</string>
+	<string name="selected">Selected: </string>
+	<string name="send">Send</string>
+	<string name="subject">Subject</string>
+	<string name="procedures_title">Procedures and Services</string>
+	<string name="twitter">Twitter</string>
+	<string name="web">Web Page</string>
+	<string name="license">\<b><big>GPL v3 License</big></b>
+		\n\n<b>\"Gobierno Móvil\"</b> is a product from <b>\"Gobierno en Línea\"</b>.
+		\n\nThis program is free software: you can redistribute it and/or
+		modify
+		it under the terms of the GNU General Public License as
+		published by
+		the Free Software Foundation, either version 3 of the
+		License, or any
+		later version.
+
+		\n\nThis program is distributed in the
+		hope that it will be useful,
+		but WITHOUT ANY WARRANTY; without even the
+		implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR
+		PURPOSE. See the
+		GNU General Public License for more details.
+
+		\n\nYou
+		should have received a copy of the GNU General Public License along
+		with this program. If not, see http://www.gnu.org/licenses
+	</string>
+</resources>

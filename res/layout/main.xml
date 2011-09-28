@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
+	This program is free software: you can redistribute it and/or modify it under 
+	the terms of the GNU General Public License as published by the Free Software 
+	Foundation, either version 3 of the License, or any later version. This program 
+	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+	PURPOSE. See the GNU General Public License for more details. You should 
+	have received a copy of the GNU General Public License along with this program. 
+	If not, see http://www.gnu.org/licenses\n\n -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:fillViewport="true">
+	<LinearLayout android:orientation="vertical"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:background="@color/background">
+
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center" android:padding="10dip">
+			<ImageView android:src="@drawable/logo"
+				android:layout_height="wrap_content" android:layout_width="wrap_content" />
+		</LinearLayout>
+
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center" android:padding="20dip">
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:gravity="center"
+				android:textSize="18sp" android:textColor="@color/text" />
+		</LinearLayout>
+
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:gravity="center">
+
+			<TableLayout android:layout_height="wrap_content"
+				android:layout_width="wrap_content" android:layout_gravity="center"
+				android:stretchColumns="*">
+
+				<TableRow>
+					<ImageView android:id="@+id/directory_main"
+						android:gravity="center" android:src="@color/ic_directory_color"
+						android:clickable="true" android:onClick="onClick"
+						android:focusable="true" />
+					<ImageView android:id="@+id/procedures_main"
+						android:gravity="center" android:src="@color/ic_procedures_color"
+						android:clickable="true" android:onClick="onClick"
+						android:focusable="true" />
+					<ImageView android:id="@+id/government_main"
+						android:gravity="center" android:src="@color/ic_government_color"
+						android:clickable="true" android:onClick="onClick"
+						android:focusable="true" />
+				</TableRow>
+				<TableRow>
+					<TextView android:id="@id/directory_main" android:text="@string/directory"
+						android:gravity="center" android:textColor="@color/text"
+						android:clickable="true" android:onClick="onClick"
+						android:focusable="true" />
+					<TextView android:id="@id/procedures_main" android:text="@string/procedures"
+						android:gravity="center" android:textColor="@color/text"
+						android:clickable="true" android:onClick="onClick"
+						android:focusable="true" />
+					<TextView android:id="@id/government_main" android:text="@string/government"
+						android:gravity="center" android:textColor="@color/text"
+						android:clickable="true" android:onClick="onClick"
+						android:focusable="true" />
+				</TableRow>
+			</TableLayout>
+		</LinearLayout>
+	</LinearLayout>
+</ScrollView>
