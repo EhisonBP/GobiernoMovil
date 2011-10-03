@@ -59,7 +59,11 @@
 	<string name="compose">Compose</string>
 	<string name="cost">Cost</string>
 	<string name="directory_title">Government\'s Directory</string>
+<<<<<<< HEAD
 	<string name="email">atencionusuario@cnti.gob.ve</string>
+=======
+	<string name="email">no-reply@gobiernoenlinea.gob.ve</string>
+>>>>>>> db6b13f5d40469ac5bdfe30e768fb2713c799f47
 	<string name="error_db">ERROR: Could not connect to database or there are no data.</string>
 	<string name="general">General</string>
 	<string name="government_title">Email Government</string>
