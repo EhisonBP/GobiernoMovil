@@ -87,7 +87,7 @@
 	<string name="name">Name</string>
 	<string name="news">News</string>
 	<string name="ok">Ok</string>
-	<string name="organism">Organism to which it belongs</string>
+	<string name="organism">Organism to which it belongs to</string>
 	<string name="info">Other information</string>
 	<string name="phones">Phones</string>
 	<string name="quit">Quit</string>
