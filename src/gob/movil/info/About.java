@@ -20,9 +20,7 @@ package gob.movil.info;
 
 import gob.movil.R;
 import gob.movil.app.Main;
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
 
 public class About extends Main {
 	@Override
