@@ -113,10 +113,13 @@ public class Main extends Activity {
 		startActivity(i);
 	}
 
-	/** Set vibrate. */
-	public void setVibration(int miliSeconds) {
+	/**
+	 * @param milliSeconds
+	 *            Set vibration in milliseconds.
+	 * */
+	public void setVibration(int milliSeconds) {
 		Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-		v.vibrate(miliSeconds);
+		v.vibrate(milliSeconds);
 	}
 
 	public void onMainClick(View button) {
