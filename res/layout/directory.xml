@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
+<!--
+    Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
 	This program is free software: you can redistribute it and/or modify it under 
 	the terms of the GNU General Public License as published by the Free Software 
 	Foundation, either version 3 of the License, or any later version. This program 
@@ -7,61 +8,91 @@
 	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
 	PURPOSE. See the GNU General Public License for more details. You should 
 	have received a copy of the GNU General Public License along with this program. 
-	If not, see http://www.gnu.org/licenses\n\n -->
+	If not, see http://www.gnu.org/licenses
+-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-	<LinearLayout android:orientation="horizontal"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:gravity="left" android:padding="4dip">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:padding="4dip" >
 
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:clickable="true"
-			android:onClick="onMainClick" android:textColor="@color/text"
-			android:text="@string/app_name" android:focusable="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onMainClick"
+            android:text="@string/app_name"
+            android:textColor="@color/text" />
 
-		<TextView android:text=" | " android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:textColor="@color/text" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" | "
+            android:textColor="@color/text" />
 
-		<TextView android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:textColor="@color/text"
-			android:text="@string/directory" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/directory"
+            android:textColor="@color/text" />
 
-		<LinearLayout android:layout_width="fill_parent"
-			android:layout_height="wrap_content" android:gravity="right">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right" >
 
-			<ImageView android:src="@color/ic_logo_color"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:clickable="true" android:onClick="onMainClick"
-				android:focusable="true" />
-		</LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onMainClick"
+                android:src="@color/ic_logo_color" />
+        </LinearLayout>
+    </LinearLayout>
 
-	</LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dip" >
 
-	<LinearLayout android:gravity="center"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:padding="10dip">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dip"
+            android:text="@string/selected"
+            android:textColor="@color/text"
+            android:textSize="18dip" >
+        </TextView>
 
-		<TextView android:text="@string/selected"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:textSize="18dip" android:textColor="@color/text"
-			android:paddingRight="10dip"></TextView>
+        <Spinner
+            android:id="@+id/spinner_directory"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:prompt="@string/directory_title" >
+        </Spinner>
+    </LinearLayout>
 
-		<Spinner android:id="@+id/spinner_directory"
-			android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:prompt="@string/directory_title"></Spinner>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-	</LinearLayout>
-
-	<LinearLayout android:layout_width="fill_parent"
-		android:layout_height="fill_parent">
-
-		<ListView android:id="@+id/list_directory"
-			android:layout_width="fill_parent" android:layout_height="fill_parent"
-			android:dividerHeight="1dip" android:textFilterEnabled="true"></ListView>
-
-	</LinearLayout>
+        <ListView
+            android:id="@+id/list_directory"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:dividerHeight="1dip"
+            android:textFilterEnabled="true" >
+        </ListView>
+    </LinearLayout>
 
 </LinearLayout>
