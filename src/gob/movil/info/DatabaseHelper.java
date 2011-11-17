@@ -132,6 +132,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Santos Michelena', '5')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Tovar', '5')");
 		
+		// TODO Fix this block.
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Alberto Arvelo Torrealba', '6')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Andrés Eloy Blanco', '6')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Antonio José de Sucre', '6')");
