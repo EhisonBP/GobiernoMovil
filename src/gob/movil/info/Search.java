@@ -34,7 +34,6 @@ import java.util.List;
 
 import android.app.SearchManager;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
@@ -47,6 +46,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class Search extends Main {
+	private ListView resultsList;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -74,24 +75,15 @@ public class Search extends Main {
 							+ replace("twitter", query), null);
 			Cursor searchProcedures = db.rawQuery(SELECT + PROCEDURES + WHERE
 					+ replace("name", query), null);
-			if (!searchAgencies.moveToFirst()
-					&& !searchMayoralties.moveToFirst()
-					&& !searchProcedures.moveToFirst()) {
-				Resources res = getResources();
-				String text = String.format(
-						res.getString(R.string.search_none), query);
-				CharSequence styledText = Html.fromHtml(text);
-				TextView noFound = (TextView) findViewById(R.id.search_results);
-				noFound.setText(styledText);
-				noFound.setVisibility(0);
-			} else {
-				String[] resultsAgencies = listResults(searchAgencies);
-				String[] resultsMayoralties = listResults(searchMayoralties);
-				String[] resultsProcedures = listResults(searchProcedures);
-				String[] results = mergeArrays(resultsAgencies,
-						resultsMayoralties, resultsProcedures);
-				onResultClick(results);
-			}
+			TextView noResults = (TextView) findViewById(R.id.search_results);
+			noResults.setText(Html.fromHtml(getString(R.string.search_none,
+					query)));
+			String[] resultsAgencies = listResults(searchAgencies);
+			String[] resultsMayoralties = listResults(searchMayoralties);
+			String[] resultsProcedures = listResults(searchProcedures);
+			String[] results = mergeArrays(resultsAgencies, resultsMayoralties,
+					resultsProcedures);
+			onResultClick(results);
 		}
 	}
 
@@ -125,7 +117,7 @@ public class Search extends Main {
 	}
 
 	public void onResultClick(String[] results) {
-		final ListView resultsList = (ListView) findViewById(R.id.list_result);
+		resultsList = (ListView) findViewById(R.id.list_result);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, results);
 		resultsList.setAdapter(listAdapter);
@@ -151,6 +143,8 @@ public class Search extends Main {
 				}
 			}
 		});
+		resultsList.setVisibility(View.VISIBLE);
+		resultsList.setEmptyView(findViewById(R.id.search_results));
 	}
 
 	private Cursor queryItemClicked(String table, String item) {

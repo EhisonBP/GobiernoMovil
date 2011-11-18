@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
+<!--
+    Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
 	This program is free software: you can redistribute it and/or modify it under 
 	the terms of the GNU General Public License as published by the Free Software 
 	Foundation, either version 3 of the License, or any later version. This program 
@@ -7,101 +8,113 @@
 	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
 	PURPOSE. See the GNU General Public License for more details. You should 
 	have received a copy of the GNU General Public License along with this program. 
-	If not, see http://www.gnu.org/licenses\n\n -->
-	
+	If not, see http://www.gnu.org/licenses
+-->
+
 <resources>
-	<string name="authentication_error">ERROR: No se pudo autorizar esta aplicación</string>
-	<string name="authorize">Por favor, autorice esta aplicación</string>
-	<string name="yes">Sí</string>
-	<string name="no">No</string>
-	<string name="clear_history_dialog">¿Desea borrar el historial de búsquedas?</string>
-	<string name="suggestions_title">Guardar historial</string>
-	<string name="suggestions_summary">Guarda el historial de búsquedas</string>
-	<string name="cleared">El historial ha sido borrado</string>
-	<string name="clear_history_summary">Borra el historial de búsquedas</string>
-	<string name="clear_history">Borrar historial</string>
-	<string name="search_preferences">Preferencias de búsqueda</string>
-	<string name="settings_description">Funcionarios y trámites del Estado</string>
-	<string name="search">Buscar</string>
-	<string name="authenticate">Autenticarse en Twitter</string>
-	<string name="no_authenticated">No se ha autenticado</string>
-	<string name="update">Actualizar</string>
-	<string name="max_length">140</string>
-	<string name="update_status">¿Qué está pasando?</string>
-	<string name="timeline">Cronología</string>
-	<string name="mentions">Menciones</string>
-	<string name="retweets">Retweets</string>
-	<string name="vibration">Vibración</string>
-	<string name="vibration_summary_on">Vibración activada</string>
-	<string name="vibration_summary_off">Vibración desactivada</string>
-	<string name="twitter_preferences">Preferencias del cliente Twitter</string>
-	<string name="username">Usuario</string>
-	<string name="username_edit">Editar nombre de usuario</string>
-	<string name="username_summary">Nombre de usuario en Twitter</string>
-	<string name="preferences">Preferencias</string>
-	<string name="more">Más</string>
-	<string name="government_online">Gobierno en Línea</string>
-	<string name="signature">Enviado desde \"Gobierno Móvil\" para Android</string>
-	<string name="executive">Poder Ejecutivo</string>
-	<string name="legislative">Poder Legislativo</string>
-	<string name="judicial">Poder Judicial</string>
-	<string name="electoral">Poder Electoral</string>
-	<string name="citizen">Poder Ciudadano</string>
-	<string name="state">Poder Estatal</string>
-	<string name="municipality">Poder Municipal</string>
-	<string name="security">Órganos de Seguridad de la Nación</string>
-	<string name="about">Acerca de</string>
-	<string name="address">Dirección</string>
-	<string name="mayoralties_title">Alcaldías</string>
-	<string name="app_name">Gobierno Móvil</string>
-	<string name="body">Comentario</string>
-	<string name="cancel">Cancelar</string>
-	<string name="compose">Redactar</string>
-	<string name="cost">Costo</string>
-	<string name="directory_title">Directorio del Estado</string>
-	<string name="email">atencionusuario@cnti.gob.ve</string>
-	<string name="error_db">ERROR: No se logró la conexión con la base de datos o no existe ningún registro</string>
-	<string name="general">General</string>
-	<string name="government_title">Escríbele al Gobierno</string>
-	<string name="help_text">\<b><big>Directorio</big></b>
+
+    <string name="authentication_error">ERROR: No se pudo autorizar esta aplicación</string>
+    <string name="authorize">Por favor, autorice esta aplicación</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="clear_history_dialog">¿Desea borrar el historial de búsquedas?</string>
+    <string name="suggestions_title">Guardar historial</string>
+    <string name="suggestions_summary">Guarda el historial de búsquedas</string>
+    <string name="cleared">El historial ha sido borrado</string>
+    <string name="clear_history_summary">Borra el historial de búsquedas</string>
+    <string name="clear_history">Borrar historial</string>
+    <string name="search_preferences">Preferencias de búsqueda</string>
+    <string name="settings_description">Funcionarios y trámites del Estado</string>
+    <string name="search">Buscar</string>
+    <string name="authenticate">Autenticarse en Twitter</string>
+    <string name="no_authenticated">No se ha autenticado</string>
+    <string name="update">Actualizar</string>
+    <string name="max_length">140</string>
+    <string name="update_status">¿Qué está pasando?</string>
+    <string name="timeline">Cronología</string>
+    <string name="mentions">Menciones</string>
+    <string name="retweets">Retweets</string>
+    <string name="vibration">Vibración</string>
+    <string name="vibration_summary_on">Vibración activada</string>
+    <string name="vibration_summary_off">Vibración desactivada</string>
+    <string name="twitter_preferences">Preferencias del cliente Twitter</string>
+    <string name="username">Usuario</string>
+    <string name="username_edit">Editar nombre de usuario</string>
+    <string name="username_summary">Nombre de usuario en Twitter</string>
+    <string name="preferences">Preferencias</string>
+    <string name="more">Más</string>
+    <string name="government_online">Gobierno en Línea</string>
+    <string name="signature">Enviado desde \"Gobierno Móvil\" para Android</string>
+    <string name="executive">Poder Ejecutivo</string>
+    <string name="legislative">Poder Legislativo</string>
+    <string name="judicial">Poder Judicial</string>
+    <string name="electoral">Poder Electoral</string>
+    <string name="citizen">Poder Ciudadano</string>
+    <string name="state">Poder Estatal</string>
+    <string name="municipality">Poder Municipal</string>
+    <string name="security">Órganos de Seguridad de la Nación</string>
+    <string name="about">Acerca de</string>
+    <string name="address">Dirección</string>
+    <string name="mayoralties_title">Alcaldías</string>
+    <string name="app_name">Gobierno Móvil</string>
+    <string name="body">Comentario</string>
+    <string name="cancel">Cancelar</string>
+    <string name="compose">Redactar</string>
+    <string name="cost">Costo</string>
+    <string name="directory_title">Directorio del Estado</string>
+    <string name="email">atencionusuario@cnti.gob.ve</string>
+    <string name="error_db">ERROR: No se logró la conexión con la base de datos o no existe ningún registro</string>
+    <string name="general">General</string>
+    <string name="government_title">Escríbele al Gobierno</string>
+    <string name="help_text">\<b>
+            <big>Directorio</big>
+        </b>
 		\n\nEn la sección \"Directorio\" usted podrá consultar el Directorio
 		del Estado en donde encontrará información sobre los representantes
 		principales de la Administración Pública Nacional.\n\n\
-		<b><big>Trámites</big></b>
+		<b>
+            <big>Trámites</big>
+        </b>
 		\n\nEn la sección \"Trámites\" usted podrá consultar información sobre
 		los trámites disponibles para realizar en los respectivos entes de la
 		Administración Pública Nacional.\n\n\
-		<b><big>Gobierno</big></b>
+		<b>
+            <big>Gobierno</big>
+        </b>
 		\n\nEn la sección \"Gobierno\" usted podrá interactuar con el Centro
 		Nacional de Tecnologías de Información para enviar algún comentario
 		que considere importante sobre Gobierno en Línea.\n\n\
-		<b><big>Acerca de</big></b>
+		<b>
+            <big>Acerca de</big>
+        </b>
 		\n\nEn la sección \"Acerca de\" encontrará información sobre la
 		licencia de esta aplicación.
 	</string>
-	<string name="help">Ayuda</string>
-	<string name="hours">Horarios de atención</string>
-	<string name="directory">Directorio</string>
-	<string name="government">Gobierno</string>
-	<string name="procedures">Trámites</string>
-	<string name="name">Nombre</string>
-	<string name="news">Noticias</string>
-	<string name="ok">Aceptar</string>
-	<string name="organism">Organismo al cual pertenece</string>
-	<string name="info">Otra información a tener en cuenta</string>
-	<string name="phones">Teléfonos</string>
-	<string name="quit">Salir</string>
-	<string name="requirements">Requisitos</string>
-	<string name="search_hint">Buscar en Gobierno Móvil</string>
-	<string name="search_none">No se encontró nada relacionado con &lt;b>%1$s&lt;/b></string>
-	<string name="select">Seleccione</string>
-	<string name="selected">Seleccionado: </string>
-	<string name="send">Enviar</string>
-	<string name="subject">Asunto</string>
-	<string name="procedures_title">Trámites y Servicios</string>
-	<string name="twitter">Twitter</string>
-	<string name="web">Página Web</string>
-	<string name="license">\<b><big>Licencia GPL v3</big></b>
+    <string name="help">Ayuda</string>
+    <string name="hours">Horarios de atención</string>
+    <string name="directory">Directorio</string>
+    <string name="government">Gobierno</string>
+    <string name="procedures">Trámites</string>
+    <string name="name">Nombre</string>
+    <string name="news">Noticias</string>
+    <string name="ok">Aceptar</string>
+    <string name="organism">Organismo al cual pertenece</string>
+    <string name="info">Otra información a tener en cuenta</string>
+    <string name="phones">Teléfonos</string>
+    <string name="quit">Salir</string>
+    <string name="requirements">Requisitos</string>
+    <string name="search_hint">Buscar en Gobierno Móvil</string>
+    <string name="search_none">No se encontró nada relacionado con &lt;b>%1$s&lt;/b></string>
+    <string name="select">Seleccione</string>
+    <string name="selected">Seleccionado: </string>
+    <string name="send">Enviar</string>
+    <string name="subject">Asunto</string>
+    <string name="procedures_title">Trámites y Servicios</string>
+    <string name="twitter">Twitter</string>
+    <string name="web">Página Web</string>
+    <string name="license">\<b>
+            <big>Licencia GPL v3</big>
+        </b>
 		\n\n<b>\"Gobierno Móvil\"</b> es un producto de <b>\"Gobierno en Línea\"</b>.
 		\n\nThis program is free software: you can redistribute it and/or
 		modify
@@ -123,4 +136,5 @@
 		should have received a copy of the GNU General Public License along
 		with this program. If not, see http://www.gnu.org/licenses
 	</string>
+
 </resources>
