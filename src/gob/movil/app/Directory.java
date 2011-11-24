@@ -55,6 +55,7 @@ public class Directory extends Main {
 			db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + power + "\")");
 
 		String[] statesArray = getResources().getStringArray(R.array.states);
+		
 		for (String state : statesArray)
 			db.execSQL(INSERT + STATES + " (name) VALUES (\"" + state + "\")");
 
