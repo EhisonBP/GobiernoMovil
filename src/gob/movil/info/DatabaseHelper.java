@@ -32,7 +32,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "gm.db";
-	private static final int DB_VERSION = 38;
+	private static final int DB_VERSION = 39;
 	
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -838,17 +838,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		android.util.Log.v(POWERS, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + POWERS);
-		android.util.Log.v(STATES, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + STATES);
-		android.util.Log.v(MUNICIPALITIES, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + MUNICIPALITIES);
-		android.util.Log.v(AGENCIES, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + AGENCIES);
-		android.util.Log.v(PROCEDURES, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + PROCEDURES);
-		android.util.Log.v(MAYORALTIES, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + MAYORALTIES);
 		onCreate(db);
 	}
