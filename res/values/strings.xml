@@ -136,5 +136,29 @@
 		should have received a copy of the GNU General Public License along
 		with this program. If not, see http://www.gnu.org/licenses
 	</string>
+    <string name="capital">Distrito Capital</string>
+    <string name="amazonas">Amazonas</string>
+    <string name="anzoategui">Anzoátegui</string>
+    <string name="apure">Apure</string>
+    <string name="aragua">Aragua</string>
+    <string name="barinas">Barinas</string>
+    <string name="bolivar">Bolívar</string>
+    <string name="carabobo">Carabobo</string>
+    <string name="cojedes">Cojedes</string>
+    <string name="delta_amacuro">Delta Amacuro</string>
+    <string name="falcon">Falcón</string>
+    <string name="guarico">Guárico</string>
+    <string name="lara">Lara</string>
+    <string name="merida">Mérida</string>
+    <string name="miranda">Miranda</string>
+    <string name="monagas">Monagas</string>
+    <string name="nueva_esparta">Nueva Esparta</string>
+    <string name="portuguesa">Portuguesa</string>
+    <string name="sucre">Sucre</string>
+    <string name="tachira">Táchira</string>
+    <string name="trujillo">Trujillo</string>
+    <string name="vargas">Vargas</string>
+    <string name="yaracuy">Yaracuy</string>
+    <string name="zulia">Zulia</string>
 
 </resources>
