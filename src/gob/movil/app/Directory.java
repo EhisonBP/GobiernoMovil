@@ -46,21 +46,21 @@ public class Directory extends Main {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.directory);
 
-		/** Utilizamos el arreglo de los poderes. */
-		String[] items = getResources().getStringArray(R.array.powers);
-
 		helper = new DatabaseHelper(this);
 		db = helper.getReadableDatabase();
 
-		/** Guardamos los poderes en la base de datos. */
-		for (int i = 0; i < items.length; i++) {
-			db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + items[i]
-					+ "\")");
-		}
+		String[] powersArray = getResources().getStringArray(R.array.powers);
+
+		for (String power : powersArray)
+			db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + power + "\")");
+
+		String[] statesArray = getResources().getStringArray(R.array.states);
+		for (String state : statesArray)
+			db.execSQL(INSERT + STATES + " (name) VALUES (\"" + state + "\")");
 
 		Spinner spinner = (Spinner) findViewById(R.id.spinner_directory);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, items);
+				android.R.layout.simple_spinner_item, powersArray);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
 
