@@ -59,7 +59,8 @@ public class Directory extends Main {
 				db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + power
 						+ "\")");
 
-		String[] statesArray = getResources().getStringArray(R.array.states);
+		final String[] statesArray = getResources().getStringArray(
+				R.array.states);
 		if (!states.moveToFirst())
 			for (String state : statesArray)
 				db.execSQL(INSERT + STATES + " (name) VALUES (\"" + state
@@ -83,13 +84,13 @@ public class Directory extends Main {
 				Cursor states = db.rawQuery(SELECT + STATES, null);
 				if (position == 5)
 					// Poder Estatal.
-					addItems(helper, db, states, 0);
+					addItems(helper, db, statesArray, 0);
 				else if (position == 6)
 					// Poder Municipal.
-					addItems(helper, db, states, -1);
+					addItems(helper, db, statesArray, -1);
 				else
 					// Poder Nacional.
-					addItems(helper, db, agencies, 1);
+					addItems(helper, db, getArray(agencies), 1);
 			}
 
 			public void onNothingSelected(AdapterView<?> arg0) {
@@ -98,8 +99,7 @@ public class Directory extends Main {
 		});
 	}
 
-	public void addItems(final DatabaseHelper help, final SQLiteDatabase sql,
-			Cursor list, final int type) {
+	private String[] getArray(Cursor list) {
 		String[] items = new String[list.getCount()];
 		int i = 0;
 		if (list.moveToFirst()) {
@@ -108,6 +108,11 @@ public class Directory extends Main {
 				i++;
 			} while (list.moveToNext());
 		}
+		return items;
+	}
+
+	public void addItems(final DatabaseHelper help, final SQLiteDatabase sql,
+			String[] items, final int type) {
 
 		final ListView lv = (ListView) findViewById(R.id.list_directory);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
