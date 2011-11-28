@@ -80,8 +80,6 @@ public class Directory extends Main {
 				Cursor agencies = db.rawQuery(SELECT + AGENCIES
 						+ " WHERE power = " + (position + POS), null);
 				powerPosition = position + POS;
-				// Consultamos las entidades estatales.
-				Cursor states = db.rawQuery(SELECT + STATES, null);
 				if (position == 5)
 					// Poder Estatal.
 					addItems(helper, db, statesArray, 0);
