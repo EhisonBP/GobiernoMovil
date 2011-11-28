@@ -51,13 +51,19 @@ public class Directory extends Main {
 
 		String[] powersArray = getResources().getStringArray(R.array.powers);
 
-		for (String power : powersArray)
-			db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + power + "\")");
+		Cursor powers = db.rawQuery(SELECT + POWERS, null);
+		Cursor states = db.rawQuery(SELECT + STATES, null);
+
+		if (!powers.moveToFirst())
+			for (String power : powersArray)
+				db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + power
+						+ "\")");
 
 		String[] statesArray = getResources().getStringArray(R.array.states);
-
-		for (String state : statesArray)
-			db.execSQL(INSERT + STATES + " (name) VALUES (\"" + state + "\")");
+		if (!states.moveToFirst())
+			for (String state : statesArray)
+				db.execSQL(INSERT + STATES + " (name) VALUES (\"" + state
+						+ "\")");
 
 		Spinner spinner = (Spinner) findViewById(R.id.spinner_directory);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
