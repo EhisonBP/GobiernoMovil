@@ -55,7 +55,7 @@ public class Directory extends Main {
 			db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + power + "\")");
 
 		String[] statesArray = getResources().getStringArray(R.array.states);
-		
+
 		for (String state : statesArray)
 			db.execSQL(INSERT + STATES + " (name) VALUES (\"" + state + "\")");
 
@@ -75,16 +75,15 @@ public class Directory extends Main {
 				powerPosition = position + POS;
 				// Consultamos las entidades estatales.
 				Cursor states = db.rawQuery(SELECT + STATES, null);
-				if (position == 5) {
+				if (position == 5)
 					// Poder Estatal.
 					addItems(helper, db, states, 0);
-				} else if (position == 6) {
+				else if (position == 6)
 					// Poder Municipal.
 					addItems(helper, db, states, -1);
-				} else {
+				else
 					// Poder Nacional.
 					addItems(helper, db, agencies, 1);
-				}
 			}
 
 			public void onNothingSelected(AdapterView<?> arg0) {
