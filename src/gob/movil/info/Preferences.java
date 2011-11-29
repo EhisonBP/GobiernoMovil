@@ -54,18 +54,31 @@ public class Preferences extends PreferenceActivity {
 				});
 	}
 
-	/** Obtenemos el valor actual de la opción de vibración. */
+	/**
+	 * @param context
+	 *            where the method is called.
+	 * @return true or false.
+	 */
 	public static boolean getVibration(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context)
 				.getBoolean(OPT_VIBRATION, OPT_VIBRATION_DEF);
 	}
 
+	/**
+	 * @param context
+	 *            where the method is called.
+	 * @return true or false.
+	 */
 	public static boolean getResults(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context)
 				.getBoolean(OPT_RESULTS, OPT_RESULTS_DEF);
 	}
 
-	/** Obtenemos el valor actual de la opción de sugerencias. */
+	/**
+	 * @param context
+	 *            where method is called.
+	 * @return true or false.
+	 */
 	public static boolean getSuggestions(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context)
 				.getBoolean(OPT_SUGGESTIONS, OPT_SUGGESTIONS_DEF);
