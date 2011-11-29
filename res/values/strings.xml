@@ -150,5 +150,7 @@
     <string name="vargas">Vargas</string>
     <string name="yaracuy">Yaracuy</string>
     <string name="zulia">Zulia</string>
-
+    <string name="results_summary">Mostrar resultados de búsquedas anteriores</string>
+    <string name="results_title">Resultados previos</string>
+    
 </resources>

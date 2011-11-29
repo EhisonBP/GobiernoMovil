@@ -124,5 +124,7 @@
 		with this program. If not, see http://www.gnu.org/licenses
 	</string>
     <string name="capital">Capital District</string>
+    <string name="results_summary">Show previous search results</string>
+    <string name="results_title">Previous results</string>
 
 </resources>
