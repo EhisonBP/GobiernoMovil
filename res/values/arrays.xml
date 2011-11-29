@@ -23,5 +23,31 @@
         <item>@string/municipality</item>
         <item>@string/security</item>
     </string-array>
+    <string-array name="states">
+        <item>@string/capital</item>
+        <item>@string/amazonas</item>
+        <item>@string/anzoategui</item>
+        <item>@string/apure</item>
+        <item>@string/aragua</item>
+        <item>@string/barinas</item>
+        <item>@string/bolivar</item>
+        <item>@string/carabobo</item>
+        <item>@string/cojedes</item>
+        <item>@string/delta_amacuro</item>
+        <item>@string/falcon</item>
+        <item>@string/guarico</item>
+        <item>@string/lara</item>
+        <item>@string/merida</item>
+        <item>@string/miranda</item>
+        <item>@string/monagas</item>
+        <item>@string/nueva_esparta</item>
+        <item>@string/portuguesa</item>
+        <item>@string/sucre</item>
+        <item>@string/tachira</item>
+        <item>@string/trujillo</item>
+        <item>@string/vargas</item>
+        <item>@string/yaracuy</item>
+        <item>@string/zulia</item>
+    </string-array>
 
 </resources>

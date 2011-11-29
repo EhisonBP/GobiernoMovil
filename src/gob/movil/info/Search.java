@@ -87,6 +87,13 @@ public class Search extends Main {
 		}
 	}
 
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (!Preferences.getResults(this))
+			finish();
+	}
+
 	public String replace(String column, String keyword) {
 		String replacement = "REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE("
 				+ column.toLowerCase()

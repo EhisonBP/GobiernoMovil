@@ -46,21 +46,29 @@ public class Directory extends Main {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.directory);
 
-		/** Utilizamos el arreglo de los poderes. */
-		String[] items = getResources().getStringArray(R.array.powers);
-
 		helper = new DatabaseHelper(this);
 		db = helper.getReadableDatabase();
 
-		/** Guardamos los poderes en la base de datos. */
-		for (int i = 0; i < items.length; i++) {
-			db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + items[i]
-					+ "\")");
-		}
+		String[] powersArray = getResources().getStringArray(R.array.powers);
+
+		Cursor powers = db.rawQuery(SELECT + POWERS, null);
+		Cursor states = db.rawQuery(SELECT + STATES, null);
+
+		if (!powers.moveToFirst())
+			for (String power : powersArray)
+				db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + power
+						+ "\")");
+
+		final String[] statesArray = getResources().getStringArray(
+				R.array.states);
+		if (!states.moveToFirst())
+			for (String state : statesArray)
+				db.execSQL(INSERT + STATES + " (name) VALUES (\"" + state
+						+ "\")");
 
 		Spinner spinner = (Spinner) findViewById(R.id.spinner_directory);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, items);
+				android.R.layout.simple_spinner_item, powersArray);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
 
@@ -72,18 +80,15 @@ public class Directory extends Main {
 				Cursor agencies = db.rawQuery(SELECT + AGENCIES
 						+ " WHERE power = " + (position + POS), null);
 				powerPosition = position + POS;
-				// Consultamos las entidades estatales.
-				Cursor states = db.rawQuery(SELECT + STATES, null);
-				if (position == 5) {
+				if (position == 5)
 					// Poder Estatal.
-					addItems(helper, db, states, 0);
-				} else if (position == 6) {
+					addItems(helper, db, statesArray, 0);
+				else if (position == 6)
 					// Poder Municipal.
-					addItems(helper, db, states, -1);
-				} else {
+					addItems(helper, db, statesArray, -1);
+				else
 					// Poder Nacional.
-					addItems(helper, db, agencies, 1);
-				}
+					addItems(helper, db, getArray(agencies), 1);
 			}
 
 			public void onNothingSelected(AdapterView<?> arg0) {
@@ -92,8 +97,7 @@ public class Directory extends Main {
 		});
 	}
 
-	public void addItems(final DatabaseHelper help, final SQLiteDatabase sql,
-			Cursor list, final int type) {
+	private String[] getArray(Cursor list) {
 		String[] items = new String[list.getCount()];
 		int i = 0;
 		if (list.moveToFirst()) {
@@ -102,6 +106,11 @@ public class Directory extends Main {
 				i++;
 			} while (list.moveToNext());
 		}
+		return items;
+	}
+
+	public void addItems(final DatabaseHelper help, final SQLiteDatabase sql,
+			String[] items, final int type) {
 
 		final ListView lv = (ListView) findViewById(R.id.list_directory);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,

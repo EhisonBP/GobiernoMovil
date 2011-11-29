@@ -35,6 +35,12 @@
 
         <CheckBoxPreference
             android:defaultValue="true"
+            android:key="results"
+            android:summary="@string/results_summary"
+            android:title="@string/results_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
             android:key="suggestions"
             android:summary="@string/suggestions_summary"
             android:title="@string/suggestions_title" />

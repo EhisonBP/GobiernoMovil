@@ -32,7 +32,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "gm.db";
-	private static final int DB_VERSION = 34;
+	private static final int DB_VERSION = 39;
 	
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -43,31 +43,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL("CREATE TABLE " + POWERS + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");
 		
 		db.execSQL("CREATE TABLE " + STATES + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");
-		
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Distrito Capital')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Amazonas')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Anzoátegui')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Apure')"); 
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Aragua')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Barinas')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Bolívar')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Carabobo')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Cojedes')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Delta Amacuro')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Falcón')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Guárico')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Lara')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Mérida')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Miranda')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Monagas')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Nueva Esparta')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Portuguesa')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Sucre')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Táchira')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Trujillo')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Vargas')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Yaracuy')");
-		db.execSQL(INSERT + STATES + " VALUES (null, 'Zulia')");
 		
 		db.execSQL("CREATE TABLE " + MUNICIPALITIES + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, state INTEGER NOT NULL, FOREIGN KEY(state) REFERENCES states(" + _ID + "))");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Baruta', '1')");
@@ -863,17 +838,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		android.util.Log.v(POWERS, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + POWERS);
-		android.util.Log.v(STATES, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + STATES);
-		android.util.Log.v(MUNICIPALITIES, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + MUNICIPALITIES);
-		android.util.Log.v(AGENCIES, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + AGENCIES);
-		android.util.Log.v(PROCEDURES, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + PROCEDURES);
-		android.util.Log.v(MAYORALTIES, "Upgrading database, which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + MAYORALTIES);
 		onCreate(db);
 	}

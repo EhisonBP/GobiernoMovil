@@ -66,29 +66,18 @@
     <string name="error_db">ERROR: Could not connect to database or there are no data.</string>
     <string name="general">General</string>
     <string name="government_title">Email Government</string>
-    <string name="help_text">\<b>
-            <big>Directory</big>
-        </b>
-		\n\nEn la sección \"Directorio\" usted podrá consultar el Directorio
-		del Estado en donde encontrará información sobre los representantes
-		principales de la Administración Pública Nacional.\n\n\
-		<b>
-            <big>Procedures</big>
-        </b>
-		\n\nEn la sección \"Trámites\" usted podrá consultar información sobre
-		los trámites disponibles para realizar en los respectivos entes de la
-		Administración Pública Nacional.\n\n\
-		<b>
-            <big>Government</big>
-        </b>
-		\n\nEn la sección \"Gobierno\" usted podrá interactuar con el Centro
-		Nacional de Tecnologías de Información para enviar algún comentario
-		que considere importante sobre Gobierno en Línea.\n\n\
-		<b>
-            <big>About</big>
-        </b>
-		\n\nEn la sección \"Acerca de\" encontrará información sobre la
-		licencia de esta aplicación.
+    <string name="help_text">\<b><big>Directory</big></b>
+		\n\nIn the \"Directory\" you can query the government\'s directory
+		where you can find information about the main representatives of 
+		National Public Administration.\n\n\
+		<b><big>Procedures</big></b>
+		\n\nIn the \"Procedures\" you can query information
+		about available procedures.\n\n\
+		<b><big>Government</big></b>
+		\n\nIn the \"Government\" you can send a comment via email
+		to Mobile Government team.\n\n\
+		<b><big>About</big></b>
+		\n\nIn the \"About\" you can find information about the license.
 	</string>
     <string name="help">Help</string>
     <string name="hours">Opening hours</string>
@@ -112,9 +101,7 @@
     <string name="procedures_title">Procedures and Services</string>
     <string name="twitter">Twitter</string>
     <string name="web">Web Page</string>
-    <string name="license">\<b>
-            <big>GPL v3 License</big>
-        </b>
+    <string name="license">\<b><big>GPL v3 License</big></b>
 		\n\n<b>\"Gobierno Móvil\"</b> is a product from <b>\"Gobierno en Línea\"</b>.
 		\n\nThis program is free software: you can redistribute it and/or
 		modify
@@ -136,5 +123,8 @@
 		should have received a copy of the GNU General Public License along
 		with this program. If not, see http://www.gnu.org/licenses
 	</string>
+    <string name="capital">Capital District</string>
+    <string name="results_summary">Show previous search results</string>
+    <string name="results_title">Previous results</string>
 
 </resources>

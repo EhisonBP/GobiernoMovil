@@ -66,27 +66,19 @@
     <string name="error_db">ERROR: No se logró la conexión con la base de datos o no existe ningún registro</string>
     <string name="general">General</string>
     <string name="government_title">Escríbele al Gobierno</string>
-    <string name="help_text">\<b>
-            <big>Directorio</big>
-        </b>
+    <string name="help_text">\<b><big>Directorio</big></b>
 		\n\nEn la sección \"Directorio\" usted podrá consultar el Directorio
 		del Estado en donde encontrará información sobre los representantes
 		principales de la Administración Pública Nacional.\n\n\
-		<b>
-            <big>Trámites</big>
-        </b>
+		<b><big>Trámites</big></b>
 		\n\nEn la sección \"Trámites\" usted podrá consultar información sobre
 		los trámites disponibles para realizar en los respectivos entes de la
 		Administración Pública Nacional.\n\n\
-		<b>
-            <big>Gobierno</big>
-        </b>
+		<b><big>Gobierno</big></b>
 		\n\nEn la sección \"Gobierno\" usted podrá interactuar con el Centro
 		Nacional de Tecnologías de Información para enviar algún comentario
 		que considere importante sobre Gobierno en Línea.\n\n\
-		<b>
-            <big>Acerca de</big>
-        </b>
+		<b><big>Acerca de</big></b>
 		\n\nEn la sección \"Acerca de\" encontrará información sobre la
 		licencia de esta aplicación.
 	</string>
@@ -112,9 +104,7 @@
     <string name="procedures_title">Trámites y Servicios</string>
     <string name="twitter">Twitter</string>
     <string name="web">Página Web</string>
-    <string name="license">\<b>
-            <big>Licencia GPL v3</big>
-        </b>
+    <string name="license">\<b><big>Licencia GPL v3</big></b>
 		\n\n<b>\"Gobierno Móvil\"</b> es un producto de <b>\"Gobierno en Línea\"</b>.
 		\n\nThis program is free software: you can redistribute it and/or
 		modify
@@ -136,5 +126,31 @@
 		should have received a copy of the GNU General Public License along
 		with this program. If not, see http://www.gnu.org/licenses
 	</string>
-
+    <string name="capital">Distrito Capital</string>
+    <string name="amazonas">Amazonas</string>
+    <string name="anzoategui">Anzoátegui</string>
+    <string name="apure">Apure</string>
+    <string name="aragua">Aragua</string>
+    <string name="barinas">Barinas</string>
+    <string name="bolivar">Bolívar</string>
+    <string name="carabobo">Carabobo</string>
+    <string name="cojedes">Cojedes</string>
+    <string name="delta_amacuro">Delta Amacuro</string>
+    <string name="falcon">Falcón</string>
+    <string name="guarico">Guárico</string>
+    <string name="lara">Lara</string>
+    <string name="merida">Mérida</string>
+    <string name="miranda">Miranda</string>
+    <string name="monagas">Monagas</string>
+    <string name="nueva_esparta">Nueva Esparta</string>
+    <string name="portuguesa">Portuguesa</string>
+    <string name="sucre">Sucre</string>
+    <string name="tachira">Táchira</string>
+    <string name="trujillo">Trujillo</string>
+    <string name="vargas">Vargas</string>
+    <string name="yaracuy">Yaracuy</string>
+    <string name="zulia">Zulia</string>
+    <string name="results_summary">Mostrar resultados de búsquedas anteriores</string>
+    <string name="results_title">Resultados previos</string>
+    
 </resources>
