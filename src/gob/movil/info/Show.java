@@ -62,6 +62,7 @@ public class Show extends Activity {
 			});
 		}
 		dialog.show();
+		query.close();
 	}
 
 	public void setToast(Context context, String message) {
