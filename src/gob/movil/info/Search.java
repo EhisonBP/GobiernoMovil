@@ -83,6 +83,9 @@ public class Search extends Main {
 			String[] resultsProcedures = listResults(searchProcedures);
 			String[] results = mergeArrays(resultsAgencies, resultsMayoralties,
 					resultsProcedures);
+			searchAgencies.close();
+			searchMayoralties.close();
+			searchProcedures.close();
 			onResultClick(results);
 		}
 	}
@@ -112,6 +115,7 @@ public class Search extends Main {
 				i++;
 			} while (list.moveToNext());
 		}
+		list.close();
 		return items;
 	}
 
@@ -141,12 +145,15 @@ public class Search extends Main {
 						itemClicked);
 				if (queryAgencies.moveToFirst()) {
 					widgets.setDialog(Search.this, queryAgencies);
+					queryAgencies.close();
 				}
 				if (queryMayoralties.moveToFirst()) {
 					widgets.setDialog(Search.this, queryMayoralties);
+					queryAgencies.close();
 				}
 				if (queryProcedures.moveToFirst()) {
 					showActivity(Procedures.class, queryProcedures.getInt(0));
+					queryAgencies.close();
 				}
 			}
 		});
