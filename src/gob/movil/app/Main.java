@@ -28,8 +28,10 @@ import gob.movil.info.Preferences;
 import gob.movil.twitter.OAuthTwitter;
 import gob.movil.twitter.TwitterActivity;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -39,8 +41,38 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class Main extends Activity {
-	protected DatabaseHelper helper;
-	protected SQLiteDatabase db;
+	private static DatabaseHelper helper;
+	private static SQLiteDatabase db;
+
+	public static void openDatabase(Context context) {
+		helper = new DatabaseHelper(context);
+		db = helper.getWritableDatabase();
+	}
+
+	public void closeDatabase() {
+		db.close();
+	}
+
+	public String[] getListItems(Context context, String query) {
+		openDatabase(context);
+		Cursor cursor = db.rawQuery(query, null);
+		String[] items = new String[cursor.getCount()];
+		short i = 0;
+		if (cursor.moveToFirst())
+			do {
+				items[i] = cursor.getString(1);
+				i++;
+			} while (cursor.moveToNext());
+		cursor.close();
+		closeDatabase();
+		return items;
+	}
+
+	public void execQuery(Context context, String query) {
+		openDatabase(context);
+		db.execSQL(query, null);
+		closeDatabase();
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
