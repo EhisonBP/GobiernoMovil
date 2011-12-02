@@ -31,30 +31,30 @@ import android.widget.Toast;
 
 public class Show extends Activity {
 
-	public void setDialog(Context context, Cursor query) {
-		query.moveToFirst();
+	public static void setDialog(Context context, Cursor cursor) {
+		cursor.moveToFirst();
 		final Dialog dialog = new Dialog(context);
 		dialog.setContentView(R.layout.show);
-		dialog.setTitle(query.getString(2));
+		dialog.setTitle(cursor.getString(2));
 		dialog.setCancelable(true);
 		dialog.setCanceledOnTouchOutside(true);
 		TextView text = (TextView) dialog.findViewById(R.id.public_official);
-		text.setText(query.getString(3) + ".\n"
+		text.setText(cursor.getString(3) + ".\n"
 				+ context.getString(R.string.address) + ": "
-				+ query.getString(4) + ".\n"
+				+ cursor.getString(4) + ".\n"
 				+ context.getString(R.string.phones) + ": "
-				+ query.getString(5) + "\n" + context.getString(R.string.web)
-				+ ": " + query.getString(6) + "\n");
+				+ cursor.getString(5) + "\n" + context.getString(R.string.web)
+				+ ": " + cursor.getString(6) + "\n");
 		Button ok = (Button) dialog.findViewById(R.id.ok);
 		ok.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				dialog.dismiss();
 			}
 		});
-		if (!query.getString(7).equals("")) {
+		if (!cursor.getString(7).equals("")) {
 			Button twitter = (Button) dialog.findViewById(R.id.twitter);
 			twitter.setVisibility(0);
-			twitter.setText(query.getString(7));
+			twitter.setText(cursor.getString(7));
 			twitter.setOnClickListener(new OnClickListener() {
 				public void onClick(View v) {
 					dialog.dismiss();
@@ -62,7 +62,7 @@ public class Show extends Activity {
 			});
 		}
 		dialog.show();
-		query.close();
+		cursor.close();
 	}
 
 	public void setToast(Context context, String message) {
