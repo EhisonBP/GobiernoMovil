@@ -48,7 +48,6 @@ public class Mayoralties extends Main {
 		String[] items = getListItems(this, SELECT + MUNICIPALITIES
 				+ " WHERE state = " + state);
 
-		
 		final ListView lv = (ListView) findViewById(R.id.list_mayor);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, items);
