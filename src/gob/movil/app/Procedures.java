@@ -18,11 +18,11 @@
 
 package gob.movil.app;
 
+import static gob.movil.app.Main.db;
 import static gob.movil.info.Constants.PROCEDURES;
 import static gob.movil.info.Constants.SELECT;
 import static gob.movil.info.Constants.VIBRATION_ERROR;
 import gob.movil.R;
-import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Preferences;
 import gob.movil.info.Show;
 import android.content.Intent;
@@ -39,18 +39,11 @@ public class Procedures extends Main {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.procedures);
 		Intent receive = getIntent();
+
 		final int procedure = receive.getIntExtra("item", 0);
-		helper = new DatabaseHelper(this);
-		db = helper.getReadableDatabase();
-		Cursor procedures = db.rawQuery(SELECT + PROCEDURES, null);
-		String[] items = new String[procedures.getCount()];
-		int i = 0;
-		if (procedures.moveToFirst()) {
-			do {
-				items[i] = procedures.getString(1);
-				i++;
-			} while (procedures.moveToNext());
-		}
+
+		String[] items = getListItems(this, SELECT + PROCEDURES);
+
 		final Spinner spinner = (Spinner) findViewById(R.id.spinner_procedures);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, items);
