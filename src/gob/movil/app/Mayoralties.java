@@ -42,14 +42,13 @@ public class Mayoralties extends Main {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mayoralties);
 
-		/** Recibimos la entidad estatal. */
 		Intent receive = getIntent();
 		final int state = receive.getIntExtra("item", 0);
 
 		String[] items = getListItems(this, SELECT + MUNICIPALITIES
 				+ " WHERE state = " + state);
 
-		/** Mostramos el listado de municipios. */
+		
 		final ListView lv = (ListView) findViewById(R.id.list_mayor);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, items);
