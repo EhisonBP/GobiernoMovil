@@ -19,12 +19,12 @@
 package gob.movil.app;
 
 import static android.provider.BaseColumns._ID;
+import static gob.movil.app.Main.db;
 import static gob.movil.info.Constants.MAYORALTIES;
 import static gob.movil.info.Constants.MUNICIPALITIES;
 import static gob.movil.info.Constants.SELECT;
 import static gob.movil.info.Constants.VIBRATION_ERROR;
 import gob.movil.R;
-import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Preferences;
 import gob.movil.info.Show;
 import android.content.Intent;
@@ -46,20 +46,8 @@ public class Mayoralties extends Main {
 		Intent receive = getIntent();
 		final int state = receive.getIntExtra("item", 0);
 
-		helper = new DatabaseHelper(this);
-		db = helper.getReadableDatabase();
-
-		/** Consultamos los municipios pertenecientes a esa entidad estatal. */
-		Cursor municipalities = db.rawQuery(SELECT + MUNICIPALITIES
-				+ " WHERE state = " + state, null);
-		String[] items = new String[municipalities.getCount()];
-		int i = 0;
-		if (municipalities.moveToFirst()) {
-			do {
-				items[i] = municipalities.getString(1);
-				i++;
-			} while (municipalities.moveToNext());
-		}
+		String[] items = getListItems(this, SELECT + MUNICIPALITIES
+				+ " WHERE state = " + state);
 
 		/** Mostramos el listado de municipios. */
 		final ListView lv = (ListView) findViewById(R.id.list_mayor);
