@@ -50,6 +50,7 @@ public class Main extends Activity {
 	}
 
 	public void closeDatabase() {
+		helper.close();
 		db.close();
 	}
 
