@@ -109,7 +109,6 @@ public class Preferences extends PreferenceActivity {
 		alert.show();
 	}
 
-	/** Borra el historial de búsquedas realizadas. */
 	public void clearSuggestions() {
 		SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,
 				SuggestionProvider.AUTHORITY, SuggestionProvider.MODE);
