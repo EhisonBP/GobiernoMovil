@@ -18,6 +18,8 @@
 
 package gob.movil.app;
 
+import static android.provider.BaseColumns._ID;
+import static gob.movil.info.Constants.INSERT;
 import static gob.movil.info.Constants.TWITTER_PREFERENCES;
 import static gob.movil.info.Constants.VIBRATION_INTENT;
 import gob.movil.R;
@@ -50,6 +52,7 @@ public class Main extends Activity {
 	}
 
 	public void closeDatabase() {
+		helper.close();
 		db.close();
 	}
 
@@ -68,10 +71,26 @@ public class Main extends Activity {
 		return items;
 	}
 
-	public void execQuery(Context context, String query) {
+	public void execQuery(Context context, String sql) {
 		openDatabase(context);
-		db.execSQL(query, null);
+		db.execSQL(sql);
 		closeDatabase();
+	}
+
+	public void insertValues(Context context, String table, String[] array) {
+		execQuery(context, "DROP TABLE IF EXISTS " + table);
+		execQuery(context, "CREATE TABLE " + table + "(" + _ID
+				+ " INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");
+		for (String element : array)
+			execQuery(this, INSERT + table + " (name) VALUES (\"" + element
+					+ "\")");
+	}
+
+	public Cursor getCursor(Context context, String query) {
+		openDatabase(context);
+		Cursor cursor = db.rawQuery(query.toString(), null);
+		closeDatabase();
+		return cursor;
 	}
 
 	@Override
@@ -127,7 +146,7 @@ public class Main extends Activity {
 			showActivity(Directory.class, 0);
 			break;
 		case R.id.procedures_main:
-			showActivity(Procedures.class, 0);
+			// showActivity(Procedures.class, 0);
 			break;
 		case R.id.government_main:
 			showActivity(Government.class, 0);

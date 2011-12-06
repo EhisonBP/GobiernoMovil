@@ -19,17 +19,14 @@
 package gob.movil.app;
 
 import static gob.movil.info.Constants.AGENCIES;
-import static gob.movil.info.Constants.INSERT;
 import static gob.movil.info.Constants.POWERS;
 import static gob.movil.info.Constants.SELECT;
 import static gob.movil.info.Constants.STATES;
-import static gob.movil.info.Constants.VIBRATION_ERROR;
 import gob.movil.R;
-import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Show;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -38,33 +35,19 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 public class Directory extends Main {
-	private int POS = 1;
-	private int powerPosition = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.directory);
 
-		helper = new DatabaseHelper(this);
-		db = helper.getReadableDatabase();
-
 		String[] powersArray = getResources().getStringArray(R.array.powers);
-
-		Cursor powers = db.rawQuery(SELECT + POWERS, null);
-		Cursor states = db.rawQuery(SELECT + STATES, null);
-
-		if (!powers.moveToFirst())
-			for (String power : powersArray)
-				db.execSQL(INSERT + POWERS + " (name) VALUES (\"" + power
-						+ "\")");
 
 		final String[] statesArray = getResources().getStringArray(
 				R.array.states);
-		if (!states.moveToFirst())
-			for (String state : statesArray)
-				db.execSQL(INSERT + STATES + " (name) VALUES (\"" + state
-						+ "\")");
+
+		insertValues(this, POWERS, powersArray);
+		insertValues(this, STATES, statesArray);
 
 		Spinner spinner = (Spinner) findViewById(R.id.spinner_directory);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -72,23 +55,22 @@ public class Directory extends Main {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
 
-		/** Mostramos los poderes. */
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
-				// Consultamos las instituciones del poder elegido.
-				Cursor agencies = db.rawQuery(SELECT + AGENCIES
-						+ " WHERE power = " + (position + POS), null);
-				powerPosition = position + POS;
-				if (position == 5)
-					// Poder Estatal.
-					addItems(helper, db, statesArray, 0);
-				else if (position == 6)
-					// Poder Municipal.
-					addItems(helper, db, statesArray, -1);
-				else
-					// Poder Nacional.
-					addItems(helper, db, getArray(agencies), 1);
+				String[] agencies = getListItems(getApplicationContext(),
+						SELECT + AGENCIES + " WHERE power = " + (position + 1));
+				switch (position) {
+				case 5:
+					addItems(statesArray, 5);
+					break;
+				case 6:
+					addItems(statesArray, 6);
+					break;
+				default:
+					addItems(agencies, position);
+					break;
+				}
 			}
 
 			public void onNothingSelected(AdapterView<?> arg0) {
@@ -97,55 +79,40 @@ public class Directory extends Main {
 		});
 	}
 
-	private String[] getArray(Cursor list) {
-		String[] items = new String[list.getCount()];
-		int i = 0;
-		if (list.moveToFirst()) {
-			do {
-				items[i] = list.getString(POS);
-				i++;
-			} while (list.moveToNext());
-		}
-		return items;
-	}
+	private void addItems(String[] items, final int power) {
 
-	public void addItems(final DatabaseHelper help, final SQLiteDatabase sql,
-			String[] items, final int type) {
-
-		final ListView lv = (ListView) findViewById(R.id.list_directory);
+		final ListView list = (ListView) findViewById(R.id.list_directory);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, items);
-		lv.setAdapter(listAdapter);
+				android.R.layout.simple_list_item_1, items); // Test simple
+																// checked!!
+		list.setAdapter(listAdapter);
 
-		lv.setOnItemClickListener(new OnItemClickListener() {
+		list.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> a, View v, int position,
 					long id) {
-				Show widgets = new Show();
-				if (type > 0) {
-					// Mostramos el listado de instituciones del Poder Nacional.
-					Cursor agencies = sql.rawQuery(
-							SELECT + AGENCIES + " WHERE name = '"
-									+ lv.getItemAtPosition(position)
-									+ "' AND power = " + powerPosition, null);
-					agencies.moveToFirst();
-					widgets.setDialog(Directory.this, agencies);
-				} else if (type < 0) {
-					// Mostramos los municipios.
-					showActivity(Mayoralties.class, position + POS);
-				} else {
-					try {
-						// Mostramos las gobernaciones.
-						Cursor officers = sql.rawQuery(SELECT + AGENCIES
-								+ " WHERE power = 6 AND state = "
-								+ (position + POS), null);
-						widgets.setDialog(Directory.this, officers);
-					} catch (Exception e) {
-						setVibration(VIBRATION_ERROR);
-						widgets.setToast(getApplicationContext(),
-								getString(R.string.error_db));
-					}
-				}
+				// TODO Call a method for each case.
+				itemAction(power, position, list.getItemAtPosition(position)
+						.toString());
 			}
 		});
+	}
+
+	private void itemAction(int power, int position, String item) {
+		switch (power) {
+		case 5:
+			Log.i("POWER", "Gobernadores. Poder Estatal.");
+			Cursor officers = getCursor(this, SELECT + AGENCIES
+					+ " WHERE power = 6 AND state = " + (position + 1));
+			officers.moveToFirst();
+			Show.setDialog(this, officers);
+			break;
+		case 6:
+			// showActivity(Mayoralties.class, position + 1);
+		default:
+			Cursor agencies = getCursor(this, SELECT + AGENCIES
+					+ " WHERE name = '" + item + "' AND power = " + power);
+			Show.setDialog(this, agencies);
+			break;
+		}
 	}
 }
