@@ -18,7 +18,6 @@
 
 package gob.movil.app;
 
-import static gob.movil.app.Main.db;
 import static gob.movil.info.Constants.PROCEDURES;
 import static gob.movil.info.Constants.SELECT;
 import static gob.movil.info.Constants.VIBRATION_ERROR;
@@ -26,7 +25,6 @@ import gob.movil.R;
 import gob.movil.info.Preferences;
 import gob.movil.info.Show;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -53,19 +51,17 @@ public class Procedures extends Main {
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
-				Show widgets = new Show();
 				try {
-					Cursor procedures = db.rawQuery(
+					String[] procedures = getArrayFromCursor(
+							getApplicationContext(),
 							SELECT + PROCEDURES + " WHERE name = '"
-									+ spinner.getItemAtPosition(position) + "'",
-							null);
-					procedures.moveToFirst();
+									+ spinner.getItemAtPosition(position) + "'");
 					setTextProcedure(procedures);
 				} catch (Exception e) {
 					if (Preferences.getVibration(getApplicationContext())) {
 						setVibration(VIBRATION_ERROR);
 					}
-					widgets.setToast(getApplicationContext(),
+					Show.setToast(getApplicationContext(),
 							getString(R.string.error_db));
 				}
 			}
@@ -76,15 +72,13 @@ public class Procedures extends Main {
 		});
 	}
 
-	public void setTextProcedure(Cursor query) {
+	public void setTextProcedure(String[] data) {
 		TextView text = (TextView) findViewById(R.id.text_procedures);
-		text.setText("Trámite: " + query.getString(1) + ".\n\n"
-				+ getString(R.string.requirements) + ":\n" + query.getString(2)
-				+ ".\n\n" + getString(R.string.hours) + ": "
-				+ query.getString(3) + ".\n\n" + getString(R.string.cost)
-				+ ": " + query.getString(4) + ".\n\n"
-				+ getString(R.string.info) + ": " + query.getString(5)
-				+ ".\n\n" + getString(R.string.organism) + ": "
-				+ query.getString(6) + ".");
+		text.setText("Trámite: " + data[1] + ".\n\n"
+				+ getString(R.string.requirements) + ":\n" + data[2] + ".\n\n"
+				+ getString(R.string.hours) + ": " + data[3] + ".\n\n"
+				+ getString(R.string.cost) + ": " + data[4] + ".\n\n"
+				+ getString(R.string.info) + ": " + data[5] + ".\n\n"
+				+ getString(R.string.organism) + ": " + data[6] + ".");
 	}
 }

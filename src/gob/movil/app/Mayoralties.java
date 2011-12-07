@@ -19,7 +19,6 @@
 package gob.movil.app;
 
 import static android.provider.BaseColumns._ID;
-import static gob.movil.app.Main.db;
 import static gob.movil.info.Constants.MAYORALTIES;
 import static gob.movil.info.Constants.MUNICIPALITIES;
 import static gob.movil.info.Constants.SELECT;
@@ -28,7 +27,6 @@ import gob.movil.R;
 import gob.movil.info.Preferences;
 import gob.movil.info.Show;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -56,23 +54,22 @@ public class Mayoralties extends Main {
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> a, View v, int position,
 					long id) {
-				Show widgets = new Show();
 				try {
-					/** Consultamos la alcaldía del municipio seleccionado. */
-					Cursor query = db.rawQuery(
+					String[] mayoralties = getArrayFromCursor(
+							getApplicationContext(),
 							"SELECT " + MAYORALTIES + ".* FROM " + MAYORALTIES
 									+ ", " + MUNICIPALITIES + " WHERE "
 									+ MUNICIPALITIES + ".name = '"
 									+ lv.getItemAtPosition(position) + "' AND "
 									+ MUNICIPALITIES + "." + _ID + " = "
 									+ MAYORALTIES + ".municipality AND "
-									+ MAYORALTIES + ".state = " + state, null);
-					widgets.setDialog(Mayoralties.this, query);
+									+ MAYORALTIES + ".state = " + state);
+					Show.setDialog(Mayoralties.this, mayoralties);
 				} catch (Exception e) {
 					if (Preferences.getVibration(getApplicationContext())) {
 						setVibration(VIBRATION_ERROR);
 					}
-					widgets.setToast(getApplicationContext(),
+					Show.setToast(getApplicationContext(),
 							getString(R.string.error_db));
 				}
 			}
