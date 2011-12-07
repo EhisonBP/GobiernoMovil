@@ -52,8 +52,8 @@ public class Main extends Activity {
 	}
 
 	public void closeDatabase() {
-		helper.close();
 		db.close();
+		helper.close();
 	}
 
 	public String[] getListItems(Context context, String query) {
@@ -88,7 +88,7 @@ public class Main extends Activity {
 
 	public Cursor getCursor(Context context, String query) {
 		openDatabase(context);
-		Cursor cursor = db.rawQuery(query.toString(), null);
+		Cursor cursor = db.rawQuery(query, null);
 		closeDatabase();
 		return cursor;
 	}
