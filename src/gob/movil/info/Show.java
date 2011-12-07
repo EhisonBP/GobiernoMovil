@@ -22,7 +22,6 @@ import gob.movil.R;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.database.Cursor;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -31,30 +30,27 @@ import android.widget.Toast;
 
 public class Show extends Activity {
 
-	public static void setDialog(Context context, Cursor cursor) {
-		cursor.moveToFirst();
+	public static void setDialog(Context context, String[] data) {
 		final Dialog dialog = new Dialog(context);
 		dialog.setContentView(R.layout.show);
-		dialog.setTitle(cursor.getString(2));
+		dialog.setTitle(data[2]);
 		dialog.setCancelable(true);
 		dialog.setCanceledOnTouchOutside(true);
 		TextView text = (TextView) dialog.findViewById(R.id.public_official);
-		text.setText(cursor.getString(3) + ".\n"
-				+ context.getString(R.string.address) + ": "
-				+ cursor.getString(4) + ".\n"
-				+ context.getString(R.string.phones) + ": "
-				+ cursor.getString(5) + "\n" + context.getString(R.string.web)
-				+ ": " + cursor.getString(6) + "\n");
+		text.setText(data[3] + ".\n" + context.getString(R.string.address)
+				+ ": " + data[4] + ".\n" + context.getString(R.string.phones)
+				+ ": " + data[5] + "\n" + context.getString(R.string.web)
+				+ ": " + data[6] + "\n");
 		Button ok = (Button) dialog.findViewById(R.id.ok);
 		ok.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				dialog.dismiss();
 			}
 		});
-		if (!cursor.getString(7).equals("")) {
+		if (!data[7].equals("")) {
 			Button twitter = (Button) dialog.findViewById(R.id.twitter);
 			twitter.setVisibility(0);
-			twitter.setText(cursor.getString(7));
+			twitter.setText(data[7]);
 			twitter.setOnClickListener(new OnClickListener() {
 				public void onClick(View v) {
 					dialog.dismiss();
@@ -62,10 +58,9 @@ public class Show extends Activity {
 			});
 		}
 		dialog.show();
-		cursor.close();
 	}
 
-	public void setToast(Context context, String message) {
+	public static void setToast(Context context, String message) {
 		Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
 	}
 }
