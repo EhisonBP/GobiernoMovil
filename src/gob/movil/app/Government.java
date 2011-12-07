@@ -56,8 +56,8 @@ public class Government extends Main {
 				getString(R.string.government_online) + " - "
 						+ radioButtonSelected.toString());
 		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
-				EMAILTEXT.getText() + "\n\n----------\n" + NAME.getText()
-						+ "\n\n" + getString(R.string.signature));
+				EMAILTEXT.getText() + "\n\n\n" + NAME.getText() + "\n\n"
+						+ getString(R.string.signature));
 		Government.this.startActivity(Intent.createChooser(emailIntent,
 				getString(R.string.select)));
 	}
