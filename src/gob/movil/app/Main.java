@@ -86,11 +86,16 @@ public class Main extends Activity {
 					+ "\")");
 	}
 
-	public Cursor getCursor(Context context, String query) {
+	public String[] getArrayFromCursor(Context context, String query) {
 		openDatabase(context);
-		Cursor cursor = db.rawQuery(query, null);
+		Cursor cursor = db.rawQuery(query.toString(), null);
+		String[] data = new String[cursor.getColumnCount()];
+		if (cursor.moveToFirst())
+			for (short i = 0; i < cursor.getColumnCount(); i++)
+				data[i] = cursor.getString(i);
+		cursor.close();
 		closeDatabase();
-		return cursor;
+		return data;
 	}
 
 	@Override
