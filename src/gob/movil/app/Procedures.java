@@ -74,10 +74,9 @@ public class Procedures extends Main {
 
 	public void setTextProcedure(String[] data) {
 		TextView text = (TextView) findViewById(R.id.text_procedures);
-		text.setText("Trámite: " + data[1] + ".\n\n"
-				+ getString(R.string.requirements) + ":\n" + data[2] + ".\n\n"
-				+ getString(R.string.hours) + ": " + data[3] + ".\n\n"
-				+ getString(R.string.cost) + ": " + data[4] + ".\n\n"
+		text.setText(getString(R.string.requirements) + ":\n" + data[2]
+				+ ".\n\n" + getString(R.string.hours) + ": " + data[3]
+				+ ".\n\n" + getString(R.string.cost) + ": " + data[4] + ".\n\n"
 				+ getString(R.string.info) + ": " + data[5] + ".\n\n"
 				+ getString(R.string.organism) + ": " + data[6] + ".");
 	}
