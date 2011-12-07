@@ -24,9 +24,7 @@ import static gob.movil.info.Constants.SELECT;
 import static gob.movil.info.Constants.STATES;
 import gob.movil.R;
 import gob.movil.info.Show;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -100,17 +98,16 @@ public class Directory extends Main {
 	private void itemAction(int power, int position, String item) {
 		switch (power) {
 		case 5:
-			Log.i("POWER", "Gobernadores. Poder Estatal.");
-			Cursor officers = getCursor(this, SELECT + AGENCIES
+			String[] officers = getArrayFromCursor(this, SELECT + AGENCIES
 					+ " WHERE power = 6 AND state = " + (position + 1));
-			officers.moveToFirst();
 			Show.setDialog(this, officers);
 			break;
 		case 6:
-			// showActivity(Mayoralties.class, position + 1);
+			showActivity(Mayoralties.class, position + 1);
+			break;
 		default:
-			Cursor agencies = getCursor(this, SELECT + AGENCIES
-					+ " WHERE name = '" + item + "' AND power = " + power);
+			String[] agencies = getArrayFromCursor(this, SELECT + AGENCIES
+					+ " WHERE name = '" + item + "' AND power = " + (power + 1));
 			Show.setDialog(this, agencies);
 			break;
 		}
