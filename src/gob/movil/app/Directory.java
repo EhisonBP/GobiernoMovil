@@ -88,7 +88,6 @@ public class Directory extends Main {
 		list.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> a, View v, int position,
 					long id) {
-				// TODO Call a method for each case.
 				itemAction(power, position, list.getItemAtPosition(position)
 						.toString());
 			}

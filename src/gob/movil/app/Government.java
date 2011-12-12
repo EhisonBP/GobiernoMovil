@@ -47,7 +47,6 @@ public class Government extends Main {
 		} else {
 			radioButtonSelected = getString(R.string.news);
 		}
-		/** Llamando a la aplicación de correo para enviar el mensaje. */
 		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 		emailIntent.setType("plain/text");
 		emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
