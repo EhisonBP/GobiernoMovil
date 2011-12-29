@@ -152,5 +152,6 @@
     <string name="zulia">Zulia</string>
     <string name="results_summary">Mostrar resultados de búsquedas inmediatamente anteriores</string>
     <string name="results_title">Resultados previos</string>
+    <string name="confirm">Confirmar</string>
     
 </resources>

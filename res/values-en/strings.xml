@@ -126,5 +126,6 @@
     <string name="capital">Capital District</string>
     <string name="results_summary">Show previous search results</string>
     <string name="results_title">Previous results</string>
+    <string name="confirm">Confirm</string>
 
 </resources>
