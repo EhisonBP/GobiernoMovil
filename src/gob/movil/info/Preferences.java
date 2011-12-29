@@ -87,6 +87,7 @@ public class Preferences extends PreferenceActivity {
 	private void alertDialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(getString(R.string.clear_history_dialog))
+				.setTitle(getString(R.string.confirm))
 				.setCancelable(false)
 				.setPositiveButton(getString(R.string.yes),
 						new DialogInterface.OnClickListener() {
