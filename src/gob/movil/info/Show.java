@@ -47,16 +47,16 @@ public class Show extends Activity {
 				dialog.dismiss();
 			}
 		});
-		if (!data[7].equals("")) {
-			Button twitter = (Button) dialog.findViewById(R.id.twitter);
-			twitter.setVisibility(0);
-			twitter.setText(data[7]);
-			twitter.setOnClickListener(new OnClickListener() {
-				public void onClick(View v) {
-					dialog.dismiss();
-				}
-			});
-		}
+		// if (!data[7].equals("")) {
+		// Button twitter = (Button) dialog.findViewById(R.id.twitter);
+		// twitter.setVisibility(0);
+		// twitter.setText(data[7]);
+		// twitter.setOnClickListener(new OnClickListener() {
+		// public void onClick(View v) {
+		// dialog.dismiss();
+		// }
+		// });
+		// }
 		dialog.show();
 	}
 
