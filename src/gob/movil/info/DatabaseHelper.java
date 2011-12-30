@@ -32,7 +32,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "gm.db";
-	private static final int DB_VERSION = 42;
+	private static final int DB_VERSION = 43;
 	
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -113,6 +113,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Antonio José de Sucre', '6')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Arismendi', '6')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Barinas', '6')");
+		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Barinitas', '6')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Cruz Paredes', '6')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Obispos', '6')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Pedraza', '6')");
