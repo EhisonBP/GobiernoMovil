@@ -143,11 +143,13 @@ public class Search extends Main {
 								+ resultsList.getItemAtPosition(position)
 										.toString() + "'");
 
-				if (!agenciesResults[1].equals("null"))
+				if (agenciesResults != null)
 					Show.setDialog(Search.this, agenciesResults);
-				if (!mayoraltiesResults[1].equals("null"))
+
+				if (mayoraltiesResults != null)
 					Show.setDialog(Search.this, mayoraltiesResults);
-				if (!proceduresResults[1].equals("null"))
+
+				if (proceduresResults != null)
 					showActivity(Procedures.class,
 							Integer.parseInt(proceduresResults[0]));
 			}
