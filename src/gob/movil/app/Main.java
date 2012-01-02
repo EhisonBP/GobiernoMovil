@@ -71,19 +71,14 @@ public class Main extends Activity {
 		return items;
 	}
 
-	public void execQuery(Context context, String sql) {
-		openDatabase(context);
-		db.execSQL(sql);
-		closeDatabase();
-	}
-
 	public void insertValues(Context context, String table, String[] array) {
-		execQuery(context, "DROP TABLE IF EXISTS " + table);
-		execQuery(context, "CREATE TABLE " + table + "(" + _ID
+		openDatabase(context);
+		db.execSQL("DROP TABLE IF EXISTS " + table);
+		db.execSQL("CREATE TABLE " + table + "(" + _ID
 				+ " INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)");
 		for (String element : array)
-			execQuery(this, INSERT + table + " (name) VALUES (\"" + element
-					+ "\")");
+			db.execSQL(INSERT + table + " (name) VALUES (\"" + element + "\")");
+		closeDatabase();
 	}
 
 	public String[] getArrayFromCursor(Context context, String query) {
