@@ -32,7 +32,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "gm.db";
-	private static final int DB_VERSION = 43;
+	private static final int DB_VERSION = 44;
 	
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -308,7 +308,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Valdés', '19')");
 		
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Andrés Bello', '20')");
-		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Antonio Acosta', '20')");
+		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Antonio Rómulo Costa', '20')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Ayacucho', '20')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Bolívar', '20')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Cárdenas', '20')");
@@ -321,6 +321,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Jáuregui', '20')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'José María Vargas', '20')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Junín', '20')");
+		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Libertad', '20')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Libertador', '20')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Lobatera', '20')");
 		db.execSQL(INSERT + MUNICIPALITIES + " VALUES (null, 'Michelena', '20')");
@@ -758,7 +759,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de San Antonio del Táchira', 'Vicente Cañas', 'Alcalde de San Antonio del Táchira', 'Av. Primero de Mayo, Edif. Centro Cívico, Piso 3, San Antonio del Táchira, Edo. Táchira', '(0276)7715190 / (0276)7713301 / (0276)7714655', 'No disponible.', '', '20', '246')");
 		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de Táriba', 'Maryury Pernía', 'Alcaldesa de Táriba', 'Calle 3 entre carreras 4 y 5, Casa Municipal, Táriba, Edo. Táchira', 'No disponible.', 'No disponible.', '', '20', '247')");
 		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de Santa Ana del Táchira', 'Virginia Vivas', 'Alcaldesa de Santa Ana del Táchira', 'Calle 10, frente al Parque Bolívar, Edif. Municipal, Santa Ana, Edo. Táchira', '(0276)7667134 / (0276)7667856', 'No disponible.', '', '20', '248')");
-		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de San Rafael del Peñal', 'Williams Pulido', 'Alcalde de San Rafael del Peñal', 'No disponible.', '(0277)2347390 / (0277)2347388', 'No disponible.', '', '20', '249')");
+		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de San Rafael del Piñal', 'Williams Pulido', 'Alcalde de San Rafael del Piñal', 'No disponible.', '(0277)2347390 / (0277)2347388', 'No disponible.', '', '20', '249')");
 		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de San José de Bolívar', 'Yordi Sánchez', 'Alcalde de San José de Bolívar', 'Calle 3, entre carreras 2 y 3, Casa Junta Municipal, El Arbejal, San José de Bolívar, Edo. Táchira', '(0276)3573055', 'No disponible.', '', '20', '250')");
 		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de La Fría', 'Willington Vivas B.', 'Alcalde de La Fría', 'Final Calle 2, Edif. Municipal, La Fría, Edo. Táchira', '(0277)5411914 / (0277)5412441', 'No disponible.', '', '20', '251')");
 		db.execSQL(INSERT + MAYORALTIES + " VALUES (null, 'Alcaldía de Palmira', 'Evaristo Zambrano', 'Alcalde de Palmira', 'Antiguo Local de la Junta Comunal, diagonal a la Plaza Bolívar, Palmira, Edo. Táchira', 'No disponible.', 'No disponible.', '', '20', '252')");
