@@ -58,12 +58,12 @@ public class Main extends Activity {
 
 	public String[] getListItems(Context context, String query) {
 		openDatabase(context);
-		Cursor cursor = db.rawQuery(query, null);
+		Cursor cursor = db.rawQuery("SELECT name FROM " + query, null);
 		String[] items = new String[cursor.getCount()];
 		short i = 0;
 		if (cursor.moveToFirst())
 			do {
-				items[i] = cursor.getString(1);
+				items[i] = cursor.getString(0);
 				i++;
 			} while (cursor.moveToNext());
 		cursor.close();

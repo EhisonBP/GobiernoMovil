@@ -21,7 +21,6 @@ package gob.movil.app;
 import static android.provider.BaseColumns._ID;
 import static gob.movil.info.Constants.MAYORALTIES;
 import static gob.movil.info.Constants.MUNICIPALITIES;
-import static gob.movil.info.Constants.SELECT;
 import static gob.movil.info.Constants.VIBRATION_ERROR;
 import gob.movil.R;
 import gob.movil.info.Preferences;
@@ -43,8 +42,8 @@ public class Mayoralties extends Main {
 		Intent receive = getIntent();
 		final int state = receive.getIntExtra("item", 0);
 
-		String[] items = getListItems(this, SELECT + MUNICIPALITIES
-				+ " WHERE state = " + state);
+		String[] items = getListItems(this, MUNICIPALITIES + " WHERE state = "
+				+ state);
 
 		final ListView lv = (ListView) findViewById(R.id.list_mayor);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,

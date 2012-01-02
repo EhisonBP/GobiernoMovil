@@ -20,7 +20,6 @@ package gob.movil.app;
 
 import static gob.movil.info.Constants.AGENCIES;
 import static gob.movil.info.Constants.POWERS;
-import static gob.movil.info.Constants.SELECT;
 import static gob.movil.info.Constants.STATES;
 import gob.movil.R;
 import gob.movil.info.Show;
@@ -56,8 +55,8 @@ public class Directory extends Main {
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
-				String[] agencies = getListItems(getApplicationContext(),
-						SELECT + AGENCIES + " WHERE power = " + (position + 1));
+				String[] agencies = getListItems(Directory.this, AGENCIES
+						+ " WHERE power = " + (position + 1));
 				switch (position) {
 				case 5:
 					addItems(statesArray, 5);
@@ -97,16 +96,18 @@ public class Directory extends Main {
 	private void itemAction(int power, int position, String item) {
 		switch (power) {
 		case 5:
-			String[] officers = getArrayFromCursor(this, SELECT + AGENCIES
-					+ " WHERE power = 6 AND state = " + (position + 1));
+			String[] officers = getArrayFromCursor(this, "SELECT * FROM "
+					+ AGENCIES + " WHERE power = 6 AND state = "
+					+ (position + 1));
 			Show.setDialog(this, officers);
 			break;
 		case 6:
 			showActivity(Mayoralties.class, position + 1);
 			break;
 		default:
-			String[] agencies = getArrayFromCursor(this, SELECT + AGENCIES
-					+ " WHERE name = '" + item + "' AND power = " + (power + 1));
+			String[] agencies = getArrayFromCursor(this, "SELECT * FROM "
+					+ AGENCIES + " WHERE name = '" + item + "' AND power = "
+					+ (power + 1));
 			Show.setDialog(this, agencies);
 			break;
 		}

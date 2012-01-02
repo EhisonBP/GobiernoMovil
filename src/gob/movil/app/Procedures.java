@@ -19,7 +19,6 @@
 package gob.movil.app;
 
 import static gob.movil.info.Constants.PROCEDURES;
-import static gob.movil.info.Constants.SELECT;
 import static gob.movil.info.Constants.VIBRATION_ERROR;
 import gob.movil.R;
 import gob.movil.info.Preferences;
@@ -40,7 +39,7 @@ public class Procedures extends Main {
 
 		final int procedure = receive.getIntExtra("item", 0);
 
-		String[] items = getListItems(this, SELECT + PROCEDURES);
+		String[] items = getListItems(this, PROCEDURES);
 
 		final Spinner spinner = (Spinner) findViewById(R.id.spinner_procedures);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -54,7 +53,7 @@ public class Procedures extends Main {
 				try {
 					String[] procedures = getArrayFromCursor(
 							getApplicationContext(),
-							SELECT + PROCEDURES + " WHERE name = '"
+							"SELECT * FROM " + PROCEDURES + " WHERE name = '"
 									+ spinner.getItemAtPosition(position) + "'");
 					setTextProcedure(procedures);
 				} catch (Exception e) {
