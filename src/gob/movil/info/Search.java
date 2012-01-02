@@ -22,7 +22,6 @@ import static gob.movil.info.Constants.AGENCIES;
 import static gob.movil.info.Constants.MAYORALTIES;
 import static gob.movil.info.Constants.OR;
 import static gob.movil.info.Constants.PROCEDURES;
-import static gob.movil.info.Constants.SELECT;
 import static gob.movil.info.Constants.WHERE;
 import gob.movil.R;
 import gob.movil.app.Main;
@@ -62,20 +61,20 @@ public class Search extends Main {
 
 			String[] agencies = getListItems(
 					this,
-					SELECT + AGENCIES + WHERE + replace("name", query) + OR
+					AGENCIES + WHERE + replace("name", query) + OR
 							+ replace("officer", query) + OR
 							+ replace("office", query) + OR
 							+ replace("twitter", query));
 
 			String[] mayoralties = getListItems(
 					this,
-					SELECT + MAYORALTIES + WHERE + replace("name", query) + OR
+					MAYORALTIES + WHERE + replace("name", query) + OR
 							+ replace("mayor", query) + OR
 							+ replace("office", query) + OR
 							+ replace("twitter", query));
 
-			String[] procedures = getListItems(this, SELECT + PROCEDURES
-					+ WHERE + replace("name", query));
+			String[] procedures = getListItems(this, PROCEDURES + WHERE
+					+ replace("name", query));
 
 			TextView noResults = (TextView) findViewById(R.id.search_results);
 			noResults.setText(Html.fromHtml(getString(R.string.search_none,
@@ -123,37 +122,34 @@ public class Search extends Main {
 			public void onItemClick(AdapterView<?> adapter, View view,
 					int position, long id) {
 				String[] agenciesResults = getArrayFromCursor(Search.this,
-						SELECT
+						"SELECT * FROM "
 								+ AGENCIES
 								+ WHERE
 								+ "name = '"
 								+ resultsList.getItemAtPosition(position)
 										.toString() + "'");
 				String[] mayoraltiesResults = getArrayFromCursor(Search.this,
-						SELECT
+						"SELECT * FROM "
 								+ MAYORALTIES
 								+ WHERE
 								+ "name = '"
 								+ resultsList.getItemAtPosition(position)
 										.toString() + "'");
 				String[] proceduresResults = getArrayFromCursor(Search.this,
-						SELECT
+						"SELECT * FROM "
 								+ PROCEDURES
 								+ WHERE
 								+ "name = '"
 								+ resultsList.getItemAtPosition(position)
 										.toString() + "'");
 
-				try {
+				if (!agenciesResults[1].equals("null"))
 					Show.setDialog(Search.this, agenciesResults);
-				} catch (Exception e) {
-					try {
-						Show.setDialog(Search.this, mayoraltiesResults);
-					} catch (Exception e1) {
-						showActivity(Procedures.class,
-								Integer.parseInt(proceduresResults[0]));
-					}
-				}
+				if (!mayoraltiesResults[1].equals("null"))
+					Show.setDialog(Search.this, mayoraltiesResults);
+				if (!proceduresResults[1].equals("null"))
+					showActivity(Procedures.class,
+							Integer.parseInt(proceduresResults[0]));
 			}
 		});
 		resultsList.setVisibility(View.VISIBLE);
