@@ -93,6 +93,8 @@ public class Main extends Activity {
 		if (cursor.moveToFirst())
 			for (short i = 0; i < cursor.getColumnCount(); i++)
 				data[i] = cursor.getString(i);
+		else
+			return null;
 		cursor.close();
 		closeDatabase();
 		return data;
