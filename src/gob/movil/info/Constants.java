@@ -20,19 +20,25 @@ package gob.movil.info;
 
 import android.provider.BaseColumns;
 
+/**
+ * Interfaz de constantes.
+ * 
+ * @author Richard Ricciardelli
+ * @author Ehison Pérez
+ * 
+ */
 public interface Constants extends BaseColumns {
-	public static final String POWERS = "powers";
-	public static final String STATES = "states";
-	public static final String MUNICIPALITIES = "municipalities";
-	public static final String AGENCIES = "agencies";
-	public static final String PROCEDURES = "procedures";
-	public static final String MAYORALTIES = "mayoralties";
-	public static final String INSERT = "INSERT INTO ";
+	public static final String POWERS = "poder";
+	public static final String STATES = "estado";
+	public static final String MUNICIPALITIES = "municipios";
+	public static final String AGENCIES = "institucion";
+	public static final String PROCEDURES = "tramites";
+	public static final String MAYORALTIES = "alcaldias";
 	public static final String WHERE = " WHERE ";
 	public static final String OR = " OR ";
 	public static final int VIBRATION_ERROR = 80;
 	public static final int VIBRATION_INTENT = 30;
-	public static final String TWITTER_PREFERENCES = "twitter_preferences";
-	public static final String CONSUMER_KEY = "Consumer key here";
-	public static final String CONSUMER_SECRET = "Consumer secret here";
+	public static final String namespace = "http://www.cnti.gob.ve/servicio/ServicioDirectorioEstadoVenezolano";
+	public static final String url = "http://10.16.101.54:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
+
 }
