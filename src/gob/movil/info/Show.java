@@ -37,7 +37,7 @@ public class Show extends Activity {
 		dialog.setCancelable(true);
 		dialog.setCanceledOnTouchOutside(true);
 		TextView text = (TextView) dialog.findViewById(R.id.public_official);
-		text.setText(data[3] + ".\n" + context.getString(R.string.address)
+		text.setText(data[1] + ".\n" + context.getString(R.string.address)
 				+ ": " + data[4] + ".\n" + context.getString(R.string.phones)
 				+ ": " + data[5] + "\n" + context.getString(R.string.web)
 				+ ": " + data[6] + "\n");
