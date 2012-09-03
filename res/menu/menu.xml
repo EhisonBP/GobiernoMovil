@@ -18,28 +18,25 @@
         android:alphabeticShortcut="a"
         android:icon="@android:drawable/ic_menu_info_details"
         android:title="@string/about"/>
-
+    <item
+        android:id="@+id/update"
+        android:alphabeticShortcut="c"
+        android:icon="@android:drawable/ic_menu_rotate"
+        android:title="@string/update"/>
     <item
         android:id="@+id/help"
         android:alphabeticShortcut="h"
         android:icon="@android:drawable/ic_menu_help"
         android:title="@string/help"/>
-
     <item
         android:id="@+id/search"
         android:alphabeticShortcut="s"
         android:icon="@android:drawable/ic_menu_search"
         android:title="@string/search"/>
-
     <item
         android:id="@+id/preferences"
         android:alphabeticShortcut="p"
         android:icon="@android:drawable/ic_menu_preferences"
         android:title="@string/preferences"/>
-    <!--
-         <item android:title="@string/more" android:icon="@android:drawable/ic_menu_more" 
-		android:alphabeticShortcut="m"> <menu> <item android:id="@+id/twitter" android:title="@string/twitter" 
-		android:alphabeticShortcut="t" /> </menu> </item>
-    -->
 
 </menu>

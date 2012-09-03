@@ -16,8 +16,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 
 	// La carpeta por defecto donde Android espera encontrar la Base de Datos de
-	// tu aplicaci�n
-	private static String DB_PATH = "/data/data/ve.gob.cnti.app/databases/";
+	// tu aplicación
 	private static String DB_NAME = "GobiernoMovil.db";
 	private SQLiteDatabase db;
 	private final Context myContext;
@@ -261,7 +260,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 		db.execSQL(" UPDATE " + MAYORALTIES + " SET nombre='" + nombre + "', "
 				+ " director = '" + director + "'," + " direccion = '"
 				+ direccion + "'," + " telefono = '" + telefono + "',"
-				+ " web = '" + web + "'," + " twitter = '" + correo + "',"
+				+ " web = '" + web + "'," + " twitter = '" + correo + "'"
 				+ " WHERE identificador = " + identificador + "");
 		db.close();
 	}

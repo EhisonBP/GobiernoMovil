@@ -1,17 +1,18 @@
-package ve.gob.cnti.info;
+package gob.movil.info;
 
+
+import gob.movil.R;
+import gob.movil.app.Main;
+import gob.movil.model.Alcaldia;
+import gob.movil.model.Institucion;
+import gob.movil.model.Tramite;
+import gob.movil.service.SoapClient;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.xmlpull.v1.XmlPullParserException;
 
-import ve.gob.cnti.app.Main;
-import ve.gob.cnti.app.R;
-import ve.gob.cnti.model.Alcaldia;
-import ve.gob.cnti.model.Institucion;
-import ve.gob.cnti.model.Tramite;
-import ve.gob.cnti.service.SoapClient;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;

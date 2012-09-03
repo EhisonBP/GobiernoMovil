@@ -1,5 +1,4 @@
-package ve.gob.cnti.model;
-
+package gob.movil.model;
 public class Alcaldia {
     
     private int idAlcaldia;

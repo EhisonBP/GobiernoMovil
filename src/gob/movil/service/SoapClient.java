@@ -1,12 +1,22 @@
 package gob.movil.service;
 
+import gob.movil.info.Constants;
+import gob.movil.model.Alcaldia;
+import gob.movil.model.Institucion;
+import gob.movil.model.Tramite;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.PropertyInfo;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
-public class SoapClient {
+public class SoapClient implements Constants  {
 
 	/**
 	 * Metodo para la conectar con el Servicio web Directorio del Estado
@@ -129,7 +139,7 @@ public class SoapClient {
 	@SuppressWarnings("unchecked")
 	public static List<Tramite> ListarTramites(String fecha)
 			throws XmlPullParserException, IOException {
-		final String Metodo = "listarTramitesPorInstitucion";
+		final String Metodo = "listarTramitesPorPerfiles";
 		final String accionSoap = namespace + Metodo;
 		// request
 		SoapObject request = new SoapObject(namespace, Metodo);

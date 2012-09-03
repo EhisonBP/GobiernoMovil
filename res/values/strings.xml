@@ -30,10 +30,6 @@
     <string name="no_authenticated">No se ha autenticado</string>
     <string name="update">Actualizar</string>
     <string name="max_length">140</string>
-    <string name="update_status">¿Qué está pasando?</string>
-    <string name="timeline">Cronología</string>
-    <string name="mentions">Menciones</string>
-    <string name="retweets">Retweets</string>
     <string name="vibration">Vibración</string>
     <string name="vibration_summary_on">Vibración activada</string>
     <string name="vibration_summary_off">Vibración desactivada</string>
@@ -153,5 +149,12 @@
     <string name="results_summary">Mostrar resultados de búsquedas inmediatamente anteriores</string>
     <string name="results_title">Resultados previos</string>
     <string name="confirm">Confirmar</string>
+	<!-- ehison -->
+    <string name="message_update">¿Esta seguro que desea Realizar la Actualización?</string>
+    <string name="message_updated_version">La base de datos de la aplicación se encuentra actualizada.</string>
+    <string name="message_connection_error ">Ha ocurrido un error de red. Intenta nuevamente, o cancela y regresa a la pantalla principal.</string>
+    <string name="tryAgain">Intentar nuevamente</string>
+    <string name="warning">Advertencia</string>
+    <string name="fullUpdate">La actualización se ha realizado con éxito.</string>
     
 </resources>

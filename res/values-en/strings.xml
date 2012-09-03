@@ -150,5 +150,12 @@
     <string name="results_summary">Show previous search results</string>
     <string name="results_title">Previous results</string>
     <string name="confirm">Confirm</string>
+    
+    <string name="message_update">Are you sure you want to update?</string>
+    <string name="message_updated_version">Database is already updated to lastest version</string>
+    <string name="message_connection_error ">Network error. Try again later</string>
+    <string name="tryAgain">Try again</string>
+    <string name="warning">Warning</string>
+    <string name="fullUpdate">Successfully updated</string>
 
 </resources>
