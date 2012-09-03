@@ -21,18 +21,18 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
     <application
-        android:debuggable="false"
+        android:name=".twitter.TwitterApplication"
+        android:debuggable="true"
         android:icon="@drawable/icon"
-        android:label="@string/app_name"
-        android:name=".twitter.TwitterApplication" >
+        android:label="@string/app_name" >
         <provider
-            android:authorities="gob.movil.info.SuggestionProvider"
-            android:name=".info.SuggestionProvider" />
+            android:name=".info.SuggestionProvider"
+            android:authorities="gob.movil.info.SuggestionProvider" />
 
         <activity
-            android:label="@string/app_name"
-            android:name=".app.Main" >
-            <intent-filter >
+            android:name=".app.Main"
+            android:label="@string/app_name" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -45,7 +45,7 @@
         <activity
             android:name=".info.Search"
             android:theme="@android:style/Theme.NoTitleBar" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
 
@@ -54,75 +54,52 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:label="@string/directory_title"
-            android:name=".app.Directory" >
+            android:name=".app.Directory"
+            android:label="@string/directory_title" >
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".info.Search" />
         </activity>
         <activity
-            android:label="@string/mayoralties_title"
-            android:name=".app.Mayoralties" >
+            android:name=".app.Mayoralties"
+            android:label="@string/mayoralties_title" >
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".info.Search" />
         </activity>
         <activity
-            android:label="@string/procedures_title"
-            android:name=".app.Procedures" >
+            android:name=".app.Procedures"
+            android:label="@string/procedures_title" >
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".info.Search" />
         </activity>
         <activity
-            android:label="@string/government_title"
-            android:name=".app.Government" >
+            android:name=".app.Government"
+            android:label="@string/government_title" >
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".info.Search" />
         </activity>
         <activity
-            android:label="@string/about"
             android:name=".info.About"
+            android:label="@string/about"
             android:theme="@android:style/Theme.Dialog" >
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".info.Search" />
         </activity>
         <activity
-            android:label="@string/help"
-            android:name=".info.Help" >
+            android:name=".info.Help"
+            android:label="@string/help" >
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".info.Search" />
         </activity>
         <activity android:name=".info.Show" />
         <activity
-            android:label="@string/preferences"
-            android:name=".info.Preferences" />
-        <!--
-        <activity
-            android:label="@string/twitter"
-            android:name=".twitter.TwitterActivity"
-            android:theme="@android:style/Theme.NoTitleBar" />
-        <activity android:name=".twitter.Timeline" />
-        <activity android:name=".twitter.Mentions" />
-        <activity android:name=".twitter.Retweets" />
-        <activity android:name=".twitter.OAuthTwitter" >
-            <intent-filter >
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                
-                     <data
-                    android:host="gm"
-                    android:scheme="callback" />
-               
-            </intent-filter>
-        </activity>
-        -->
+            android:name=".info.Preferences"
+            android:label="@string/preferences" />
     </application>
 
 </manifest>
