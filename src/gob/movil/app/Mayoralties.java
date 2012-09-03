@@ -18,10 +18,6 @@
 
 package gob.movil.app;
 
-import static android.provider.BaseColumns._ID;
-import static gob.movil.info.Constants.MAYORALTIES;
-import static gob.movil.info.Constants.MUNICIPALITIES;
-import static gob.movil.info.Constants.VIBRATION_ERROR;
 import gob.movil.R;
 import gob.movil.info.Preferences;
 import gob.movil.info.Show;
@@ -42,7 +38,7 @@ public class Mayoralties extends Main {
 		Intent receive = getIntent();
 		final int state = receive.getIntExtra("item", 0);
 
-		String[] items = getListItems(this, MUNICIPALITIES + " WHERE state = "
+		String[] items = getListItems(this, MUNICIPALITIES + " WHERE estado = "
 				+ state);
 
 		final ListView lv = (ListView) findViewById(R.id.list_mayor);
@@ -53,16 +49,17 @@ public class Mayoralties extends Main {
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> a, View v, int position,
 					long id) {
+
 				try {
 					String[] mayoralties = getArrayFromCursor(
 							getApplicationContext(),
 							"SELECT " + MAYORALTIES + ".* FROM " + MAYORALTIES
 									+ ", " + MUNICIPALITIES + " WHERE "
-									+ MUNICIPALITIES + ".name = '"
+									+ MUNICIPALITIES + ".nombre = '"
 									+ lv.getItemAtPosition(position) + "' AND "
-									+ MUNICIPALITIES + "." + _ID + " = "
-									+ MAYORALTIES + ".municipality AND "
-									+ MAYORALTIES + ".state = " + state);
+									+ MUNICIPALITIES + "._id" + " = "
+									+ MAYORALTIES + ".municipio AND "
+									+ MAYORALTIES + ".estado = " + state);
 					Show.setDialog(Mayoralties.this, mayoralties);
 				} catch (Exception e) {
 					if (Preferences.getVibration(getApplicationContext())) {

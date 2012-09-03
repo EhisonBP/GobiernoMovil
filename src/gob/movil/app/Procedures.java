@@ -18,8 +18,6 @@
 
 package gob.movil.app;
 
-import static gob.movil.info.Constants.PROCEDURES;
-import static gob.movil.info.Constants.VIBRATION_ERROR;
 import gob.movil.R;
 import gob.movil.info.Preferences;
 import gob.movil.info.Show;
@@ -52,8 +50,8 @@ public class Procedures extends Main {
 					android.view.View v, int position, long id) {
 				try {
 					String[] procedures = getArrayFromCursor(
-							getApplicationContext(),
-							"SELECT * FROM " + PROCEDURES + " WHERE name = '"
+							getApplicationContext(), "SELECT * FROM "
+									+ PROCEDURES + " WHERE nombre = '"
 									+ spinner.getItemAtPosition(position) + "'");
 					setTextProcedure(procedures);
 				} catch (Exception e) {
@@ -74,9 +72,11 @@ public class Procedures extends Main {
 	public void setTextProcedure(String[] data) {
 		TextView text = (TextView) findViewById(R.id.text_procedures);
 		text.setText(getString(R.string.requirements) + ":\n" + data[2]
-				+ ".\n\n" + getString(R.string.hours) + ": " + data[3]
-				+ ".\n\n" + getString(R.string.cost) + ": " + data[4] + ".\n\n"
-				+ getString(R.string.info) + ": " + data[5] + ".\n\n"
-				+ getString(R.string.organism) + ": " + data[6] + ".");
+				+ "\n\n" + getString(R.string.address) + ": " + data[8]
+				+ "\n\n" + getString(R.string.phones) + ": " + data[7] + "\n\n"
+				+ getString(R.string.hours) + ": " + data[3] + "\n\n"
+				+ getString(R.string.cost) + ": " + data[4] + "\n\n"
+				+ getString(R.string.info) + ": " + data[5] + "\n\n"
+				+ getString(R.string.organism) + ": " + data[6]);
 	}
 }

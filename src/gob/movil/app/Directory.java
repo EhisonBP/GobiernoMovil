@@ -18,9 +18,6 @@
 
 package gob.movil.app;
 
-import static gob.movil.info.Constants.AGENCIES;
-import static gob.movil.info.Constants.POWERS;
-import static gob.movil.info.Constants.STATES;
 import gob.movil.R;
 import gob.movil.info.Show;
 import android.os.Bundle;
@@ -43,9 +40,6 @@ public class Directory extends Main {
 		final String[] statesArray = getResources().getStringArray(
 				R.array.states);
 
-		insertValues(this, POWERS, powersArray);
-		insertValues(this, STATES, statesArray);
-
 		Spinner spinner = (Spinner) findViewById(R.id.spinner_directory);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, powersArray);
@@ -56,7 +50,7 @@ public class Directory extends Main {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
 				String[] agencies = getListItems(Directory.this, AGENCIES
-						+ " WHERE power = " + (position + 1));
+						+ " WHERE poder = " + (position + 1));
 				switch (position) {
 				case 5:
 					addItems(statesArray, 5);
@@ -97,7 +91,7 @@ public class Directory extends Main {
 		switch (power) {
 		case 5:
 			String[] officers = getArrayFromCursor(this, "SELECT * FROM "
-					+ AGENCIES + " WHERE power = 6 AND state = "
+					+ AGENCIES + " WHERE poder = 6 AND estado = "
 					+ (position + 1));
 			Show.setDialog(this, officers);
 			break;
@@ -106,7 +100,7 @@ public class Directory extends Main {
 			break;
 		default:
 			String[] agencies = getArrayFromCursor(this, "SELECT * FROM "
-					+ AGENCIES + " WHERE name = '" + item + "' AND power = "
+					+ AGENCIES + " WHERE nombre = '" + item + "' AND poder = "
 					+ (power + 1));
 			Show.setDialog(this, agencies);
 			break;
