@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
-	This program is free software: you can redistribute it and/or modify it under 
-	the terms of the GNU General Public License as published by the Free Software 
-	Foundation, either version 3 of the License, or any later version. This program 
-	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
-	PURPOSE. See the GNU General Public License for more details. You should 
-	have received a copy of the GNU General Public License along with this program. 
-	If not, see http://www.gnu.org/licenses
+ *
+ * Licencia GPL v3
+ * 
+ * Copyright (C) 2012 Centro Nacional de Tecnologías de Información.
+ * Gobierno Móvil es un producto de Gobierno en Línea Venezuela.
+ * 
+ * Copyright (C) 2012 Richard Ricciardelli. All Rights Reserved.
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses
+ *
 -->
-
 <resources>
 
-    <string name="authentication_error">ERROR: Could not authorize this app</string>
-    <string name="authorize">Please, authorize this app</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="clear_history_dialog">Are you sure you want to clear history?</string>
@@ -26,23 +35,11 @@
     <string name="search_preferences">Search preferences</string>
     <string name="settings_description">Officers and procedures of venezuelan government</string>
     <string name="search">Search</string>
-    <string name="authenticate">Authenticate with Twitter</string>
-    <string name="no_authenticated">You are not authenticated</string>
     <string name="update">Update</string>
-    <string name="max_length">140</string>
-    <string name="update_status">What\'s happening?</string>
-    <string name="timeline">Timeline</string>
-    <string name="mentions">Mentions</string>
-    <string name="retweets">Retweets</string>
     <string name="vibration">Vibrate</string>
     <string name="vibration_summary_on">Vibration on</string>
     <string name="vibration_summary_off">Vibration off</string>
-    <string name="twitter_preferences">Twitter preferences</string>
-    <string name="username">Username</string>
-    <string name="username_edit">Edit your username</string>
-    <string name="username_summary">Your username on Twitter</string>
     <string name="preferences">Preferences</string>
-    <string name="more">More</string>
     <string name="government_online">Gobierno en Línea</string>
     <string name="signature">Sent from Mobile Government Venezuela for Android</string>
     <string name="executive">Executive Power</string>
@@ -150,12 +147,18 @@
     <string name="results_summary">Show previous search results</string>
     <string name="results_title">Previous results</string>
     <string name="confirm">Confirm</string>
-    
-    <string name="message_update">Are you sure you want to update?</string>
+    <!-- ehison -->
+    <string name="message_update">Are you sure you want to update data?</string>
     <string name="message_updated_version">Database is already updated to lastest version</string>
-    <string name="message_connection_error ">Network error. Try again later</string>
-    <string name="tryAgain">Try again</string>
+    <string name="message_connection_error ">Connection error. Please try again later</string>
+    <string name="try_again">Try again</string>
     <string name="warning">Warning</string>
-    <string name="fullUpdate">Successfully updated</string>
+    <string name="full_update">Successfully updated</string>
+    <string name="pipe"> | </string>
+    <string name="ic_logo_color_description">Mobile Government icon. It closes this screen</string>
+    <string name="logo_description">Mobile Government Venezuela icon</string>
+    <string name="ic_directory_color_description">Tap here to access directory</string>
+    <string name="ic_procedures_color_description">Tap here to access procedures</string>
+    <string name="ic_government_color_description">Tap here to send an email to venezuelan government</string>
 
 </resources>

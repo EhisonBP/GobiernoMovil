@@ -35,8 +35,6 @@
     <string name="search_preferences">Preferencias de búsqueda</string>
     <string name="settings_description">Funcionarios y trámites del Estado</string>
     <string name="search">Buscar</string>
-    <string name="authenticate">Autenticarse en Twitter</string>
-    <string name="no_authenticated">No se ha autenticado</string>
     <string name="update">Actualizar</string>
     <string name="vibration">Vibración</string>
     <string name="vibration_summary_on">Vibración activada</string>
