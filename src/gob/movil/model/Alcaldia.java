@@ -1,106 +1,126 @@
+/*
+ * Licencia GPL v3
+ * 
+ * Copyright (C) 2012 Centro Nacional de Tecnologías de Información.
+ * Gobierno Móvil es un producto de Gobierno en Línea Venezuela.
+ * 
+ * Copyright (C) 2012 Richard Ricciardelli. All Rights Reserved.
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses
+ */
 package gob.movil.model;
+
 public class Alcaldia {
-    
-    private int idAlcaldia;
-    private String nombreAlcaldia;
-    private String directorAlcaldia;
-    private String direccionAlcaldia;
-    private String telefonoAlcaldia;
-    private String webAlcaldia;
-    private String correoAlcaldia;
-    private String fecha;
-    private int estado;
 
+	private int idAlcaldia;
+	private String nombreAlcaldia;
+	private String directorAlcaldia;
+	private String direccionAlcaldia;
+	private String telefonoAlcaldia;
+	private String webAlcaldia;
+	private String correoAlcaldia;
+	private String fecha;
+	private int estado;
 
-    public Alcaldia() {
-    }
+	public Alcaldia() {
+	}
 
-    public Alcaldia(int idAlcaldia, String nombreAlcaldia, String directorAlcaldia, String direccionAlcaldia
-            , String telefonoAlcaldia, String webAlcaldia, String correoAlcaldia, String fecha, int estado) {
-        this.idAlcaldia = idAlcaldia;
-        this.nombreAlcaldia = nombreAlcaldia;
-        this.directorAlcaldia = directorAlcaldia;
-        this.direccionAlcaldia = direccionAlcaldia;
-        this.telefonoAlcaldia = telefonoAlcaldia;
-        this.webAlcaldia = webAlcaldia;
-        this.correoAlcaldia = correoAlcaldia;
-        this.fecha = fecha;
-        this.estado = estado;
-    }
+	public Alcaldia(int idAlcaldia, String nombreAlcaldia,
+			String directorAlcaldia, String direccionAlcaldia,
+			String telefonoAlcaldia, String webAlcaldia, String correoAlcaldia,
+			String fecha, int estado) {
+		this.idAlcaldia = idAlcaldia;
+		this.nombreAlcaldia = nombreAlcaldia;
+		this.directorAlcaldia = directorAlcaldia;
+		this.direccionAlcaldia = direccionAlcaldia;
+		this.telefonoAlcaldia = telefonoAlcaldia;
+		this.webAlcaldia = webAlcaldia;
+		this.correoAlcaldia = correoAlcaldia;
+		this.fecha = fecha;
+		this.estado = estado;
+	}
 
+	public String getFecha() {
+		return fecha;
+	}
 
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
 
-    public String getFecha() {
-        return fecha;
-    }
+	public int getEstado() {
+		return estado;
+	}
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
 
-    public int getEstado() {
-        return estado;
-    }
+	public String getCorreoAlcaldia() {
+		return correoAlcaldia;
+	}
 
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
+	public void setCorreoAlcaldia(String correoAlcaldia) {
+		this.correoAlcaldia = correoAlcaldia;
+	}
 
-    public String getCorreoAlcaldia() {
-        return correoAlcaldia;
-    }
+	public String getWebAlcaldia() {
+		return webAlcaldia;
+	}
 
-    public void setCorreoAlcaldia(String correoAlcaldia) {
-        this.correoAlcaldia = correoAlcaldia;
-    }
+	public void setWebAlcaldia(String web) {
+		this.webAlcaldia = web;
+	}
 
-    public String getWebAlcaldia() {
-        return webAlcaldia;
-    }
+	public String getTelefonoAlcaldia() {
+		return telefonoAlcaldia;
+	}
 
-    public void setWebAlcaldia(String web) {
-        this.webAlcaldia = web;
-    }
+	public void setTelefonoAlcaldia(String telefonoAlcaldia) {
+		this.telefonoAlcaldia = telefonoAlcaldia;
+	}
 
-    public String getTelefonoAlcaldia() {
-        return telefonoAlcaldia;
-    }
+	public String getDireccionALcaldia() {
+		return direccionAlcaldia;
+	}
 
-    public void setTelefonoAlcaldia(String telefonoAlcaldia) {
-        this.telefonoAlcaldia = telefonoAlcaldia;
-    }
+	public void setDireccionAlcaldia(String direccionAlcaldia) {
+		this.direccionAlcaldia = direccionAlcaldia;
+	}
 
-    public String getDireccionALcaldia() {
-        return direccionAlcaldia;
-    }
+	public String getDirectorALcaldia() {
+		return directorAlcaldia;
+	}
 
-    public void setDireccionAlcaldia(String direccionAlcaldia) {
-        this.direccionAlcaldia = direccionAlcaldia;
-    }
+	public void setDirectorAlcaldia(String director) {
+		this.directorAlcaldia = director;
+	}
 
-    public String getDirectorALcaldia() {
-        return directorAlcaldia;
-    }
+	public int getIdAlcaldia() {
+		return idAlcaldia;
+	}
 
-    public void setDirectorAlcaldia(String director) {
-        this.directorAlcaldia = director;
-    }
+	public String getNombreAlcaldia() {
+		return nombreAlcaldia;
+	}
 
-    public int getIdAlcaldia() {
-        return idAlcaldia;
-    }
+	public void setIdAlcaldia(int idPoder) {
+		this.idAlcaldia = idPoder;
+	}
 
-    public String getNombreAlcaldia() {
-        return nombreAlcaldia;
-    }
-
-
-    public void setIdAlcaldia(int idPoder) {
-        this.idAlcaldia = idPoder;
-    }
-
-    public void setNombreAlcaldia(String nombrePoder) {
-        this.nombreAlcaldia = nombrePoder;
-    }
+	public void setNombreAlcaldia(String nombrePoder) {
+		this.nombreAlcaldia = nombrePoder;
+	}
 
 }

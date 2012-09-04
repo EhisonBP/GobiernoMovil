@@ -1,7 +1,11 @@
 /*
  * Licencia GPL v3
- * "Gobierno Móvil" es un producto de "Gobierno en Línea".
- * Copyright (C) 2011 Richard Ricciardelli. Centro Nacional de Tecnologías de Información. All Rights Reserved.
+ * 
+ * Copyright (C) 2012 Centro Nacional de Tecnologías de Información.
+ * Gobierno Móvil es un producto de Gobierno en Línea Venezuela.
+ * 
+ * Copyright (C) 2012 Richard Ricciardelli. All Rights Reserved.
+ * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or any
@@ -15,7 +19,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see http://www.gnu.org/licenses
  */
-
 package gob.movil.info;
 
 import gob.movil.R;
@@ -26,6 +29,6 @@ public class About extends Main {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		 setContentView(R.layout.about);
+		setContentView(R.layout.about);
 	}
 }

@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
-	This program is free software: you can redistribute it and/or modify it under 
-	the terms of the GNU General Public License as published by the Free Software 
-	Foundation, either version 3 of the License, or any later version. This program 
-	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
-	PURPOSE. See the GNU General Public License for more details. You should 
-	have received a copy of the GNU General Public License along with this program. 
-	If not, see http://www.gnu.org/licenses
+ *
+ * Licencia GPL v3
+ * 
+ * Copyright (C) 2012 Centro Nacional de Tecnologías de Información.
+ * Gobierno Móvil es un producto de Gobierno en Línea Venezuela.
+ * 
+ * Copyright (C) 2012 Richard Ricciardelli. All Rights Reserved.
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses
+ *
 -->
-
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <CheckBoxPreference
@@ -19,26 +30,15 @@
         android:summaryOff="@string/vibration_summary_off"
         android:summaryOn="@string/vibration_summary_on"
         android:title="@string/vibration" />
-    <!--
-    <PreferenceCategory android:key="twitter_preferences"
-		android:title="@string/twitter_preferences">
-		<EditTextPreference android:dialogTitle="@string/username_edit"
-			android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel"
-			android:key="username" android:title="@string/username"
-			android:summary="@string/username_summary" />
-	</PreferenceCategory>
-    -->
 
     <PreferenceCategory
         android:key="search_preferences"
         android:title="@string/search_preferences" >
-
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="results"
             android:summary="@string/results_summary"
             android:title="@string/results_title" />
-
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="suggestions"

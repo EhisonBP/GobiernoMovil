@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
-	This program is free software: you can redistribute it and/or modify it under 
-	the terms of the GNU General Public License as published by the Free Software 
-	Foundation, either version 3 of the License, or any later version. This program 
-	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
-	PURPOSE. See the GNU General Public License for more details. You should 
-	have received a copy of the GNU General Public License along with this program. 
-	If not, see http://www.gnu.org/licenses
+ *
+ * Licencia GPL v3
+ * 
+ * Copyright (C) 2012 Centro Nacional de Tecnologías de Información.
+ * Gobierno Móvil es un producto de Gobierno en Línea Venezuela.
+ * 
+ * Copyright (C) 2012 Richard Ricciardelli. All Rights Reserved.
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses
+ *
 -->
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -19,7 +30,7 @@
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:background="@color/background"
         android:orientation="vertical" >
 
@@ -33,6 +44,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/logo_description"
                 android:src="@drawable/logo" />
         </LinearLayout>
 
@@ -51,76 +63,72 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
+        <TableLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal" >
+            android:layout_gravity="center"
+            android:stretchColumns="*" >
 
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:stretchColumns="*" >
+            <TableRow>
 
-                <TableRow >
+                <ImageView
+                    android:id="@+id/directory_main"
+                    android:clickable="true"
+                    android:contentDescription="@string/ic_directory_color_description"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:src="@color/ic_directory_color" />
 
-                    <ImageView
-                        android:id="@+id/directory_main"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="onClick"
-                        android:src="@color/ic_directory_color" />
+                <ImageView
+                    android:id="@+id/procedures_main"
+                    android:clickable="true"
+                    android:contentDescription="@string/ic_procedures_color_description"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:src="@color/ic_procedures_color" />
 
-                    <ImageView
-                        android:id="@+id/procedures_main"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="onClick"
-                        android:src="@color/ic_procedures_color" />
+                <ImageView
+                    android:id="@+id/government_main"
+                    android:clickable="true"
+                    android:contentDescription="@string/ic_government_color_description"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:src="@color/ic_government_color" />
+            </TableRow>
 
-                    <ImageView
-                        android:id="@+id/government_main"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="onClick"
-                        android:src="@color/ic_government_color" />
-                </TableRow>
+            <TableRow>
 
-                <TableRow >
+                <TextView
+                    android:id="@id/directory_main"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="@string/directory"
+                    android:textColor="@color/text" />
 
-                    <TextView
-                        android:id="@id/directory_main"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="onClick"
-                        android:text="@string/directory"
-                        android:textColor="@color/text" />
+                <TextView
+                    android:id="@id/procedures_main"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="@string/procedures"
+                    android:textColor="@color/text" />
 
-                    <TextView
-                        android:id="@id/procedures_main"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="onClick"
-                        android:text="@string/procedures"
-                        android:textColor="@color/text" />
-
-                    <TextView
-                        android:id="@id/government_main"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:onClick="onClick"
-                        android:text="@string/government"
-                        android:textColor="@color/text" />
-                </TableRow>
-            </TableLayout>
-        </LinearLayout>
+                <TextView
+                    android:id="@id/government_main"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:text="@string/government"
+                    android:textColor="@color/text" />
+            </TableRow>
+        </TableLayout>
     </LinearLayout>
 
 </ScrollView>
