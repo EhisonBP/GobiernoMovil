@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Licencia GPL v3 "Gobierno Móvil" es un producto de "Gobierno en Línea". 
-	This program is free software: you can redistribute it and/or modify it under 
-	the terms of the GNU General Public License as published by the Free Software 
-	Foundation, either version 3 of the License, or any later version. This program 
-	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
-	PURPOSE. See the GNU General Public License for more details. You should 
-	have received a copy of the GNU General Public License along with this program. 
-	If not, see http://www.gnu.org/licenses
+ *
+ * Licencia GPL v3
+ * 
+ * Copyright (C) 2012 Centro Nacional de Tecnologías de Información.
+ * Gobierno Móvil es un producto de Gobierno en Línea Venezuela.
+ * 
+ * Copyright (C) 2012 Richard Ricciardelli. All Rights Reserved.
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or any
+ * later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://www.gnu.org/licenses
+ *
 -->
-
 <resources>
 
-    <string name="authentication_error">ERROR: No se pudo autorizar esta aplicación</string>
-    <string name="authorize">Por favor, autorice esta aplicación</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="clear_history_dialog">¿Desea borrar el historial de búsquedas?</string>
@@ -29,16 +38,10 @@
     <string name="authenticate">Autenticarse en Twitter</string>
     <string name="no_authenticated">No se ha autenticado</string>
     <string name="update">Actualizar</string>
-    <string name="max_length">140</string>
     <string name="vibration">Vibración</string>
     <string name="vibration_summary_on">Vibración activada</string>
     <string name="vibration_summary_off">Vibración desactivada</string>
-    <string name="twitter_preferences">Preferencias del cliente Twitter</string>
-    <string name="username">Usuario</string>
-    <string name="username_edit">Editar nombre de usuario</string>
-    <string name="username_summary">Nombre de usuario en Twitter</string>
     <string name="preferences">Preferencias</string>
-    <string name="more">Más</string>
     <string name="government_online">Gobierno en Línea</string>
     <string name="signature">Enviado desde \"Gobierno Móvil\" para Android</string>
     <string name="executive">Poder Ejecutivo</string>
@@ -150,11 +153,16 @@
     <string name="results_title">Resultados previos</string>
     <string name="confirm">Confirmar</string>
 	<!-- ehison -->
-    <string name="message_update">¿Esta seguro que desea Realizar la Actualización?</string>
-    <string name="message_updated_version">La base de datos de la aplicación se encuentra actualizada.</string>
-    <string name="message_connection_error ">Ha ocurrido un error de red. Intenta nuevamente, o cancela y regresa a la pantalla principal.</string>
-    <string name="tryAgain">Intentar nuevamente</string>
+    <string name="message_update">¿Está seguro que desea actualizar los datos?</string>
+    <string name="message_updated_version">La base de datos de la aplicación se encuentra actualizada</string>
+    <string name="message_connection_error ">Ha ocurrido un error de conexión. Intente nuevamente</string>
+    <string name="try_again">Intentar nuevamente</string>
     <string name="warning">Advertencia</string>
-    <string name="fullUpdate">La actualización se ha realizado con éxito.</string>
-    
+    <string name="full_update">La actualización se ha realizado exitosamente</string>
+    <string name="pipe"> | </string>
+    <string name="ic_logo_color_description">Ícono de Gobierno en Línea que sirve para cerrar esta ventana</string>
+    <string name="logo_description">Logotipo de Gobierno en Línea Venezuela</string>
+    <string name="ic_directory_color_description">Presione aquí para acceder al directorio del Estado venezolano</string>
+    <string name="ic_procedures_color_description">Presione aquí para acceder a los trámites de las instituciones del Estado</string>
+    <string name="ic_government_color_description">Presione aquí para enviar un correo electrónico al gobierno venezolano</string>
 </resources>
