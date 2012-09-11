@@ -178,7 +178,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 		db.execSQL(" INSERT INTO " + AGENCIES + " VALUES (null, '" + nombre
 				+ "'," + " '" + director + "'," + " null," + " '" + direccion
 				+ "'," + " '" + telefono + "'," + " '" + web + "'," + " '"
-				+ correo + "'," + " '" + poder + "'," + " '1'," + " '"
+				+ correo + "'," + " '" + poder + "'," + " '"
 				+ identificador + "')");
 	}
 
@@ -186,12 +186,10 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 			String direccion, String telefono, String web, String correo,
 			int estado, int identificador) {
 		db = getWritableDatabase();
-		int i = 321;// colocar desde el numero que quede
 		db.execSQL(" INSERT INTO " + MAYORALTIES + " VALUES (null, '" + nombre
 				+ "'," + " '" + director + "'," + " null," + " '" + direccion
 				+ "'," + " '" + telefono + "'," + " '" + web + "'," + " '"
-				+ correo + "'," + " '" + estado + "'," + " '" + (i++) + "',"
-				+ " '" + identificador + "')");
+				+ correo + "'," + " '" + estado + "'," + " '" + identificador + "')");
 	}
 
 	/**
