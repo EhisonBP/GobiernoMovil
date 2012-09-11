@@ -41,7 +41,7 @@ public class Mayoralties extends Main {
 		Intent receive = getIntent();
 		final int state = receive.getIntExtra("item", 0);
 
-		String[] items = getListItems(this, MUNICIPALITIES + " WHERE estado = "
+		String[] items = getListItems(this, MAYORALTIES + " WHERE estado = "
 				+ state);
 
 		final ListView lv = (ListView) findViewById(R.id.list_mayor);
@@ -56,13 +56,9 @@ public class Mayoralties extends Main {
 				try {
 					String[] mayoralties = getArrayFromCursor(
 							getApplicationContext(),
-							"SELECT " + MAYORALTIES + ".* FROM " + MAYORALTIES
-									+ ", " + MUNICIPALITIES + " WHERE "
-									+ MUNICIPALITIES + ".nombre = '"
-									+ lv.getItemAtPosition(position) + "' AND "
-									+ MUNICIPALITIES + "._id" + " = "
-									+ MAYORALTIES + ".municipio AND "
-									+ MAYORALTIES + ".estado = " + state);
+							"SELECT * FROM " + MAYORALTIES
+									+ " WHERE nombre = '"+ lv.getItemAtPosition(position) +"' AND "
+									+ " estado = " + state);
 					Show.setDialog(Mayoralties.this, mayoralties);
 				} catch (Exception e) {
 					if (Preferences.getVibration(getApplicationContext())) {

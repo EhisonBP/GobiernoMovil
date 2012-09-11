@@ -49,7 +49,6 @@ public class Preferences extends PreferenceActivity {
 		addPreferencesFromResource(R.xml.preferences);
 		getPreferenceManager().findPreference(OPT_SEARCH)
 				.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-					@Override
 					public boolean onPreferenceClick(Preference preference) {
 						alertDialog();
 						return false;

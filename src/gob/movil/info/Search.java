@@ -116,7 +116,6 @@ public class Search extends Main {
 		resultsList.setAdapter(adapter);
 		resultsList.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override
 			public void onItemClick(AdapterView<?> adapter, View view,
 					int position, long id) {
 				String[] agenciesResults = getArrayFromCursor(Search.this,

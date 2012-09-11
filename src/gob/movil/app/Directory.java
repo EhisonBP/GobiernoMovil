@@ -56,7 +56,7 @@ public class Directory extends Main {
 						+ " WHERE poder = " + (position + 1));
 				switch (position) {
 				case 5:
-					addItems(statesArray, 5);
+					addItems(agencies, 5);
 					break;
 				case 6:
 					addItems(statesArray, 6);
@@ -94,8 +94,8 @@ public class Directory extends Main {
 		switch (power) {
 		case 5:
 			String[] officers = getArrayFromCursor(this, "SELECT * FROM "
-					+ AGENCIES + " WHERE poder = 6 AND estado = "
-					+ (position + 1));
+					+ AGENCIES + " WHERE nombre = '"+ item + "' AND poder = "
+					+ (power + 1));
 			Show.setDialog(this, officers);
 			break;
 		case 6:
