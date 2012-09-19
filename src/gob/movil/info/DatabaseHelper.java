@@ -162,13 +162,13 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	 */
 	public void insertDatabaseProcedures(String nombre, String requisitos,
 			String horarios, String costo, String descripcion, String telefono,
-			String direccion, int identificador) {
+			String direccion, int identificador, int perfil) {
 		db = getWritableDatabase();
 		db.execSQL(" INSERT INTO " + PROCEDURES + " VALUES (null, '" + nombre
 				+ "'," + " '" + requisitos + "'," + " '" + horarios + "', "
 				+ " '" + costo + "', " + " '" + descripcion + "', "
 				+ " 'Información no disponible.', " + " '" + telefono + "', '"
-				+ direccion + "'," + " '" + identificador + "')");
+				+ direccion + "'," + " '" + identificador + "', '"+perfil+"')");
 	}
 
 	public void insertDatabaseAgencies(String nombre, String director,

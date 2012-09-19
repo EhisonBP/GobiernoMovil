@@ -77,17 +77,16 @@ public class SoapClient implements Constants {
 
 		for (SoapObject miresultado : resultado) {
 			Institucion institucion = new Institucion(
-					Integer.parseInt(miresultado.getProperty("idInstitucion")
-							.toString()), miresultado.getProperty(
-							"nombreInstitucion").toString(), miresultado
-							.getProperty("director").toString(), miresultado
-							.getProperty("direccion").toString(), miresultado
-							.getProperty("telefono").toString(), miresultado
-							.getProperty("paginaWeb").toString(), miresultado
-							.getProperty("correoElect").toString(),
-					Integer.parseInt(miresultado.getProperty("poder")
-							.toString()), miresultado.getProperty("fecha")
-							.toString());
+					Integer.parseInt(miresultado.getProperty("idInstitucion").toString()),
+					miresultado.getProperty("nombreSector").toString(), 
+					miresultado.getProperty("nombreInstitucion").toString(), 
+					miresultado.getProperty("director").toString(),
+					miresultado.getProperty("direccion").toString(), 
+					miresultado.getProperty("telefono").toString(), 
+					miresultado.getProperty("paginaWeb").toString(), 
+					miresultado.getProperty("correoElect").toString(),
+					Integer.parseInt(miresultado.getProperty("poder").toString()), 
+					miresultado.getProperty("fecha").toString());
 			instituciones.add(institucion);
 
 		}
@@ -131,17 +130,16 @@ public class SoapClient implements Constants {
 		List<SoapObject> resultado = (List<SoapObject>) sobre.getResponse();
 
 		for (SoapObject miresultado : resultado) {
-			Alcaldia alcaldia = new Alcaldia(Integer.parseInt(miresultado
-					.getProperty("idAlcaldia").toString()), miresultado
-					.getProperty("nombreAlcaldia").toString(), miresultado
-					.getProperty("directorAlcaldia").toString(), miresultado
-					.getProperty("direccionAlcaldia").toString(), miresultado
-					.getProperty("telefonoAlcaldia").toString(), miresultado
-					.getProperty("webAlcaldia").toString(), miresultado
-					.getProperty("correoAlcaldia").toString(), miresultado
-					.getProperty("fecha").toString(),
-					Integer.parseInt(miresultado.getProperty("estado")
-							.toString()));
+			Alcaldia alcaldia = new Alcaldia(Integer.parseInt(miresultado.getProperty("idAlcaldia").toString()),
+					miresultado.getProperty("nombreMunicipio").toString(),
+					miresultado.getProperty("nombreAlcaldia").toString(), 
+					miresultado.getProperty("directorAlcaldia").toString(), 
+					miresultado.getProperty("direccionAlcaldia").toString(),
+					miresultado.getProperty("telefonoAlcaldia").toString(), 
+					miresultado.getProperty("webAlcaldia").toString(), 
+					miresultado.getProperty("correoAlcaldia").toString(),
+					miresultado.getProperty("fecha").toString(),
+					Integer.parseInt(miresultado.getProperty("estado").toString()));
 			alcaldias.add(alcaldia);
 
 		}
@@ -185,16 +183,16 @@ public class SoapClient implements Constants {
 		List<SoapObject> resultado = (List<SoapObject>) sobre.getResponse();
 
 		for (SoapObject miresultado : resultado) {
-			Tramite tramite = new Tramite(Integer.parseInt(miresultado
-					.getProperty("idTramite").toString()), miresultado
-					.getProperty("nombreTramite").toString(), miresultado
-					.getProperty("telefono").toString(), miresultado
-					.getProperty("horarios").toString(), miresultado
-					.getProperty("direccion").toString(), miresultado
-					.getProperty("descripcion").toString(), miresultado
-					.getProperty("costo").toString(), miresultado.getProperty(
-					"requisitos").toString(), miresultado.getProperty("fecha")
-					.toString());
+			Tramite tramite = new Tramite(Integer.parseInt(miresultado.getProperty("idTramite").toString()), 
+					miresultado.getProperty("nombreTramite").toString(), 
+					miresultado.getProperty("telefono").toString(), 
+					miresultado.getProperty("horarios").toString(), 
+					miresultado.getProperty("direccion").toString(), 
+					miresultado.getProperty("descripcion").toString(), 
+					miresultado.getProperty("costo").toString(), 
+					miresultado.getProperty("requisitos").toString(), 
+					miresultado.getProperty("fecha").toString(), 
+					Integer.parseInt(miresultado.getProperty("idPerfil").toString()));
 			tramites.add(tramite);
 
 		}

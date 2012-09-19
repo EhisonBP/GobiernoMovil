@@ -53,7 +53,7 @@ public class Directory extends Main {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
 				String[] agencies = getListItems(Directory.this, AGENCIES
-						+ " WHERE poder = " + (position + 1));
+						+ " WHERE poder = " + (position + 1)+" ORDER BY nombre");
 				switch (position) {
 				case 5:
 					addItems(agencies, 5);

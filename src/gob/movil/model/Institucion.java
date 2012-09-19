@@ -25,6 +25,7 @@ public class Institucion {
 
 	private int idInstitucion;
 	private String nombreInstitucion;
+	private String nombreSector; 
 	private String director;
 	private String direccion;
 	private String telefono;
@@ -36,11 +37,12 @@ public class Institucion {
 	public Institucion() {
 	}
 
-	public Institucion(int idInstituto, String nombreInstituto,
+	public Institucion(int idInstituto, String nombreSector, String nombreInstituto,
 			String director, String direccion, String telefono, String web,
 			String correoElect, int poder, String fecha) {
 		this.idInstitucion = idInstituto;
 		this.nombreInstitucion = nombreInstituto;
+		this.nombreSector = nombreSector;
 		this.director = director;
 		this.direccion = direccion;
 		this.telefono = telefono;
@@ -120,5 +122,13 @@ public class Institucion {
 
 	public void setPaginaWeb(String web) {
 		this.paginaWeb = web;
+	}
+	
+	public String getNombreSector() {
+		return nombreSector;
+	}
+
+	public void setNombreSector(String nombreSector) {
+		this.nombreSector = nombreSector;
 	}
 }

@@ -32,13 +32,14 @@ public class Tramite {
 	private String costo;
 	private String requisitos;
 	private String fecha;
+	int perfil; 
 
 	public Tramite() {
 	}
 
 	public Tramite(int idTramite, String nombreTramite, String telefono,
 			String horarios, String direccion, String descripcion,
-			String costo, String requisitos, String fecha) {
+			String costo, String requisitos, String fecha, int perfil) {
 		this.idTramite = idTramite;
 		this.nombreTramite = nombreTramite;
 		this.telefono = telefono;
@@ -48,6 +49,7 @@ public class Tramite {
 		this.costo = costo;
 		this.requisitos = requisitos;
 		this.fecha = fecha;
+		this.perfil = perfil; 
 	}
 
 	public String getFecha() {
@@ -120,5 +122,13 @@ public class Tramite {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+	
+	public int getIPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(int perfil) {
+		this.perfil = perfil;
 	}
 }

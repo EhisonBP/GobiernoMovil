@@ -155,23 +155,24 @@ public class Update extends Main {
 						.getIdTramite());
 				if (a == true) {
 					helper.updateDatabaseProcedures(
-
-					resultado.get(i).getNombreTramite(), resultado.get(i)
-							.getRequisitos(), resultado.get(i).getHorarios(),
-							resultado.get(i).getCosto(), resultado.get(i)
-									.getDescripcion(), resultado.get(i)
-									.getTelefono(), resultado.get(i)
-									.getDireccion(), resultado.get(i)
-									.getIdTramite());
+					resultado.get(i).getNombreTramite(), 
+					resultado.get(i).getRequisitos(), 
+					resultado.get(i).getHorarios(),
+					resultado.get(i).getCosto(), 
+					resultado.get(i).getDescripcion(),
+					resultado.get(i).getTelefono(), 
+					resultado.get(i).getDireccion(), 
+					resultado.get(i).getIdTramite());
 				} else {
-					helper.insertDatabaseProcedures(resultado.get(i)
-							.getNombreTramite(), resultado.get(i)
-							.getRequisitos(), resultado.get(i).getHorarios(),
-							resultado.get(i).getCosto(), resultado.get(i)
-									.getDescripcion(), resultado.get(i)
-									.getTelefono(), resultado.get(i)
-									.getDireccion(), resultado.get(i)
-									.getIdTramite());
+					helper.insertDatabaseProcedures(resultado.get(i).getNombreTramite(), 
+							resultado.get(i).getRequisitos(), 
+							resultado.get(i).getHorarios(),
+							resultado.get(i).getCosto(), 
+							resultado.get(i).getDescripcion(), 
+							resultado.get(i).getTelefono(), 
+							resultado.get(i).getDireccion(), 
+							resultado.get(i).getIdTramite(), 
+							resultado.get(i).getIPerfil());
 				}
 			}
 			resultado.clear();

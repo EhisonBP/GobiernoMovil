@@ -25,6 +25,7 @@ public class Alcaldia {
 
 	private int idAlcaldia;
 	private String nombreAlcaldia;
+	private String nombreMunicipio;
 	private String directorAlcaldia;
 	private String direccionAlcaldia;
 	private String telefonoAlcaldia;
@@ -37,11 +38,12 @@ public class Alcaldia {
 	}
 
 	public Alcaldia(int idAlcaldia, String nombreAlcaldia,
-			String directorAlcaldia, String direccionAlcaldia,
+			String directorAlcaldia, String nombreMunicipio, String direccionAlcaldia,
 			String telefonoAlcaldia, String webAlcaldia, String correoAlcaldia,
 			String fecha, int estado) {
 		this.idAlcaldia = idAlcaldia;
 		this.nombreAlcaldia = nombreAlcaldia;
+		this.nombreMunicipio = nombreMunicipio;
 		this.directorAlcaldia = directorAlcaldia;
 		this.direccionAlcaldia = direccionAlcaldia;
 		this.telefonoAlcaldia = telefonoAlcaldia;
@@ -119,8 +121,14 @@ public class Alcaldia {
 		this.idAlcaldia = idPoder;
 	}
 
-	public void setNombreAlcaldia(String nombrePoder) {
-		this.nombreAlcaldia = nombrePoder;
+	public void setNombreAlcaldia(String nombreAlcaldia) {
+		this.nombreAlcaldia = nombreAlcaldia;
 	}
 
+	public String getNombreMunicipio() {
+		return nombreMunicipio;
+	}
+	public void setNombreMunicipio(String nombreMunicipio) {
+		this.nombreMunicipio = nombreMunicipio;
+	}
 }
