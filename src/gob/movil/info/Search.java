@@ -56,14 +56,12 @@ public class Search extends Main {
 						SuggestionProvider.MODE);
 				suggestions.saveRecentQuery(query, null);
 			}
-
 			String[] agencies = getListItems(
 					this,
 					AGENCIES + WHERE + replace("nombre", query) + OR
 							+ replace("director", query) + OR
 							+ replace("institucion", query) + OR
 							+ replace("twitter", query));
-
 			String[] mayoralties = getListItems(
 					this,
 					MAYORALTIES + WHERE + replace("nombre", query) + OR
@@ -77,11 +75,8 @@ public class Search extends Main {
 			TextView noResults = (TextView) findViewById(R.id.search_results);
 			noResults.setText(Html.fromHtml(getString(R.string.search_none,
 					query)));
-
 			String[] results = mergeArrays(agencies, mayoralties, procedures);
-
 			inflateList(results);
-
 		}
 	}
 
