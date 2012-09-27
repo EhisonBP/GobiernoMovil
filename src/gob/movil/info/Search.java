@@ -59,20 +59,20 @@ public class Search extends Main {
 
 			String[] agencies = getListItems(
 					this,
-					AGENCIES + WHERE + replace("name", query) + OR
-							+ replace("officer", query) + OR
-							+ replace("office", query) + OR
+					AGENCIES + WHERE + replace("nombre", query) + OR
+							+ replace("director", query) + OR
+							+ replace("institucion", query) + OR
 							+ replace("twitter", query));
 
 			String[] mayoralties = getListItems(
 					this,
-					MAYORALTIES + WHERE + replace("name", query) + OR
-							+ replace("mayor", query) + OR
-							+ replace("office", query) + OR
+					MAYORALTIES + WHERE + replace("nombre", query) + OR
+							+ replace("director", query) + OR
+							+ replace("alcaldia", query) + OR
 							+ replace("twitter", query));
 
 			String[] procedures = getListItems(this, PROCEDURES + WHERE
-					+ replace("name", query));
+					+ replace("nombre", query));
 
 			TextView noResults = (TextView) findViewById(R.id.search_results);
 			noResults.setText(Html.fromHtml(getString(R.string.search_none,
@@ -122,21 +122,21 @@ public class Search extends Main {
 						"SELECT * FROM "
 								+ AGENCIES
 								+ WHERE
-								+ "name = '"
+								+ "nombre = '"
 								+ resultsList.getItemAtPosition(position)
 										.toString() + "'");
 				String[] mayoraltiesResults = getArrayFromCursor(Search.this,
 						"SELECT * FROM "
 								+ MAYORALTIES
 								+ WHERE
-								+ "name = '"
+								+ "nombre = '"
 								+ resultsList.getItemAtPosition(position)
 										.toString() + "'");
 				String[] proceduresResults = getArrayFromCursor(Search.this,
 						"SELECT * FROM "
 								+ PROCEDURES
 								+ WHERE
-								+ "name = '"
+								+ "nombre = '"
 								+ resultsList.getItemAtPosition(position)
 										.toString() + "'");
 
