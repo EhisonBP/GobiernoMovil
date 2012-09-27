@@ -27,7 +27,7 @@ import gob.movil.info.Constants;
 import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Help;
 import gob.movil.info.Preferences;
-import gob.movil.info.Update;
+
 
 import java.io.IOException;
 
@@ -76,10 +76,10 @@ public class Main extends Activity implements Constants {
 			Intent help = new Intent(this, Help.class);
 			startActivity(help);
 			break;
-		case R.id.update:
+		/**case R.id.update:
 			Intent update = new Intent(this, Update.class);
 			startActivity(update);
-			break;
+			break;*/
 		case R.id.preferences:
 			Intent preferences = new Intent(this, Preferences.class);
 			startActivity(preferences);

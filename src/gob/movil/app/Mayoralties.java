@@ -42,7 +42,7 @@ public class Mayoralties extends Main {
 		final int state = receive.getIntExtra("item", 0);
 
 		String[] items = getListItems(this, MAYORALTIES + " WHERE estado = "
-				+ state);
+				+ state +" ORDER BY nombre");
 
 		final ListView lv = (ListView) findViewById(R.id.list_mayor);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,

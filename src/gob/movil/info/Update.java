@@ -155,14 +155,15 @@ public class Update extends Main {
 						.getIdTramite());
 				if (a == true) {
 					helper.updateDatabaseProcedures(
-					resultado.get(i).getNombreTramite(), 
-					resultado.get(i).getRequisitos(), 
-					resultado.get(i).getHorarios(),
-					resultado.get(i).getCosto(), 
-					resultado.get(i).getDescripcion(),
-					resultado.get(i).getTelefono(), 
-					resultado.get(i).getDireccion(), 
-					resultado.get(i).getIdTramite());
+							resultado.get(i).getNombreTramite(), 
+							resultado.get(i).getRequisitos(), 
+							resultado.get(i).getHorarios(),
+							resultado.get(i).getCosto(), 
+							resultado.get(i).getDescripcion(),
+							resultado.get(i).getTelefono(), 
+							resultado.get(i).getDireccion(), 
+							resultado.get(i).getIdTramite(),
+							resultado.get(i).getIPerfil());
 				} else {
 					helper.insertDatabaseProcedures(resultado.get(i).getNombreTramite(), 
 							resultado.get(i).getRequisitos(), 
@@ -186,23 +187,25 @@ public class Update extends Main {
 				boolean a = helper.updateDatabaseAgencies(resultado.get(i)
 						.getIdInstitucion());
 				if (a == true) {
-					helper.updateDatabaseAgencies(resultado.get(i)
-							.getNombreInstitucion(), resultado.get(i)
-							.getDirector(), resultado.get(i).getDireccion(),
-							resultado.get(i).getTelefono(), resultado.get(i)
-									.getPaginatWeb(), resultado.get(i)
-									.getCorreoElect(), resultado.get(i)
-									.getPoder(), resultado.get(i)
-									.getIdInstitucion());
+					helper.updateDatabaseAgencies(resultado.get(i).getNombreSector(), 
+							resultado.get(i).getDirector(),
+							resultado.get(i).getNombreInstitucion(),
+							resultado.get(i).getDireccion(),
+							resultado.get(i).getTelefono(), 
+							resultado.get(i).getPaginatWeb(), 
+							resultado.get(i).getCorreoElect(), 
+							resultado.get(i).getPoder(), 
+							resultado.get(i).getIdInstitucion());
 				} else {
-					helper.insertDatabaseAgencies(resultado.get(i)
-							.getNombreInstitucion(), resultado.get(i)
-							.getDirector(), resultado.get(i).getDireccion(),
-							resultado.get(i).getTelefono(), resultado.get(i)
-									.getPaginatWeb(), resultado.get(i)
-									.getCorreoElect(), resultado.get(i)
-									.getPoder(), resultado.get(i)
-									.getIdInstitucion());
+					helper.insertDatabaseAgencies(resultado.get(i).getNombreSector(),
+							resultado.get(i).getDirector(), 
+							resultado.get(i).getNombreInstitucion(),
+							resultado.get(i).getDireccion(),
+							resultado.get(i).getTelefono(), 
+							resultado.get(i).getPaginatWeb(), 
+							resultado.get(i).getCorreoElect(), 
+							resultado.get(i).getPoder(), 
+							resultado.get(i).getIdInstitucion());
 				}
 			}
 			resultado.clear();
@@ -216,22 +219,23 @@ public class Update extends Main {
 				boolean a = helper.updateDatabaseMayoralties(resultado.get(i)
 						.getIdAlcaldia());
 				if (a == true) {
-					helper.updateDatabaseMayoralties(resultado.get(i)
-							.getNombreAlcaldia(), resultado.get(i)
-							.getDirectorALcaldia(), resultado.get(i)
-							.getDireccionALcaldia(), resultado.get(i)
-							.getTelefonoAlcaldia(), resultado.get(i)
-							.getWebAlcaldia(), resultado.get(i)
-							.getCorreoAlcaldia(), resultado.get(i)
-							.getIdAlcaldia());
+					helper.updateDatabaseMayoralties(resultado.get(i).getNombreAlcaldia(), 
+							resultado.get(i).getDirectorALcaldia(),
+							resultado.get(i).getNombreMunicipio(),
+							resultado.get(i).getDireccionALcaldia(), 
+							resultado.get(i).getTelefonoAlcaldia(), 
+							resultado.get(i).getWebAlcaldia(),
+							resultado.get(i).getCorreoAlcaldia(), 
+							resultado.get(i).getIdAlcaldia());
 				} else {
-					helper.insertDatabaseMayoralties(resultado.get(i)
-							.getNombreAlcaldia(), resultado.get(i)
-							.getDirectorALcaldia(), resultado.get(i)
-							.getDireccionALcaldia(), resultado.get(i)
-							.getTelefonoAlcaldia(), resultado.get(i)
-							.getWebAlcaldia(), resultado.get(i)
-							.getCorreoAlcaldia(), resultado.get(i).getEstado(),
+					helper.insertDatabaseMayoralties(resultado.get(i).getNombreAlcaldia(), 
+							resultado.get(i).getDirectorALcaldia(),
+							resultado.get(i).getNombreMunicipio(),
+							resultado.get(i).getDireccionALcaldia(), 
+							resultado.get(i).getTelefonoAlcaldia(), 
+							resultado.get(i).getWebAlcaldia(), 
+							resultado.get(i).getCorreoAlcaldia(), 
+							resultado.get(i).getEstado(),
 							resultado.get(i).getIdAlcaldia());
 				}
 			}

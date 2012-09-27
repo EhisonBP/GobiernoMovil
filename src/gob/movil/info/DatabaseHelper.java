@@ -171,23 +171,23 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 				+ direccion + "'," + " '" + identificador + "', '"+perfil+"')");
 	}
 
-	public void insertDatabaseAgencies(String nombre, String director,
+	public void insertDatabaseAgencies(String nombre, String director, String institucion, 
 			String direccion, String telefono, String web, String correo,
 			int poder, int identificador) {
 		db = getWritableDatabase();
 		db.execSQL(" INSERT INTO " + AGENCIES + " VALUES (null, '" + nombre
-				+ "'," + " '" + director + "'," + " null," + " '" + direccion
+				+ "'," + " '" + director + "'," + " '"+ institucion +"'," + " '" + direccion
 				+ "'," + " '" + telefono + "'," + " '" + web + "'," + " '"
 				+ correo + "'," + " '" + poder + "'," + " '"
 				+ identificador + "')");
 	}
 
-	public void insertDatabaseMayoralties(String nombre, String director,
+	public void insertDatabaseMayoralties(String municipio, String director, String alcaldia,
 			String direccion, String telefono, String web, String correo,
 			int estado, int identificador) {
 		db = getWritableDatabase();
-		db.execSQL(" INSERT INTO " + MAYORALTIES + " VALUES (null, '" + nombre
-				+ "'," + " '" + director + "'," + " null," + " '" + direccion
+		db.execSQL(" INSERT INTO " + MAYORALTIES + " VALUES (null, '" + municipio
+				+ "'," + " '" + director + "'," + " '" + alcaldia + "'," + " '" + direccion
 				+ "'," + " '" + telefono + "'," + " '" + web + "'," + " '"
 				+ correo + "'," + " '" + estado + "'," + " '" + identificador + "')");
 	}
@@ -211,13 +211,13 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	 */
 	public void updateDatabaseProcedures(String nombre, String requisitos,
 			String horarios, String costo, String descripcion, String telefono,
-			String direccion, int identificador) {
+			String direccion, int identificador, int perfil) {
 		db = getWritableDatabase();
 		db.execSQL(" UPDATE " + PROCEDURES + " SET nombre='" + nombre + "', "
 				+ " requisitos = '" + requisitos + "'," + " horario = '"
 				+ horarios + "'," + " costo = '" + costo + "',"
 				+ " informacion = '" + descripcion + "'," + " telefono = '"
-				+ telefono + "'," + " direccion = '" + direccion + "'"
+				+ telefono + "'," + " direccion = '" + direccion + "'," + " perfil = '" + perfil + "'"
 				+ " WHERE identificador = " + identificador + "");
 		db.close();
 
@@ -240,12 +240,12 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 		}
 	}
 
-	public void updateDatabaseAgencies(String nombre, String director,
+	public void updateDatabaseAgencies(String nombre, String director, String institucion,
 			String direccion, String telefono, String web, String correo,
 			int poder, int identificador) {
 		db = getWritableDatabase();
 		db.execSQL(" UPDATE " + AGENCIES + " SET nombre='" + nombre + "', "
-				+ " director = '" + director + "'," + " direccion = '"
+				+ " director = '" + director + "'," + " institucion ='" + institucion + "', direccion = '"
 				+ direccion + "'," + " telefono = '" + telefono + "',"
 				+ " web = '" + web + "'," + " twitter = '" + correo + "',"
 				+ " poder = '" + poder + "'" + " WHERE identificador = "
@@ -270,12 +270,12 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 		}
 	}
 
-	public void updateDatabaseMayoralties(String nombre, String director,
+	public void updateDatabaseMayoralties(String nombre, String director, String alcaldia,
 			String direccion, String telefono, String web, String correo,
 			int identificador) {
 		db = getWritableDatabase();
 		db.execSQL(" UPDATE " + MAYORALTIES + " SET nombre='" + nombre + "', "
-				+ " director = '" + director + "'," + " direccion = '"
+				+ " director = '" + director + "'," + " alcaldia = '" + alcaldia + "'," + " direccion = '"
 				+ direccion + "'," + " telefono = '" + telefono + "',"
 				+ " web = '" + web + "'," + " twitter = '" + correo + "'"
 				+ " WHERE identificador = " + identificador + "");
