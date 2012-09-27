@@ -68,64 +68,7 @@ public class Update extends Main {
 				new DialogInterface.OnClickListener() {
 
 					public void onClick(DialogInterface dialog, int which) {
-						String fecha = helper.fechaActualizacion();
-						int errorException = 0;
-						int errorConection = 0;
-						try {
-							List<Tramite> resultado = SoapClient
-									.ListarTramites(fecha);
-							updateProcedures(resultado);
-							helper.updateFecha();
-							resultado.clear();
-						} catch (XmlPullParserException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							if (e.getMessage().equals("Exception")) {
-								errorException++;
-							} else {
-								errorConection++;
-							}
-						}
-						try {
-							List<Institucion> resultado = SoapClient
-									.ListarInstituciones(fecha);
-							updateAgencies(resultado);
-							helper.updateFecha();
-							resultado.clear();
-						} catch (XmlPullParserException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							if (e.getMessage().equals("Exception")) {
-								errorException++;
-							} else {
-								errorConection++;
-							}
-						}
-
-						try {
-							List<Alcaldia> resultado = SoapClient
-									.ListarAlcaldias(fecha);
-							updateMayoralties(resultado);
-							helper.updateFecha();
-							resultado.clear();
-						} catch (XmlPullParserException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							if (e.getMessage().equals("Exception")) {
-								errorException++;
-							} else {
-								errorConection++;
-							}
-						}
-						dialog.dismiss();
-
-						if (errorException == 3)
-							MessageUpdateComplete();
-						if (errorConection > 0)
-							UpdateMessageError();
+						update(dialog);
 					}
 				});
 
@@ -179,6 +122,62 @@ public class Update extends Main {
 			resultado.clear();
 
 		}
+	}
+
+	private void update(DialogInterface dialog) {
+		String fecha = helper.fechaActualizacion();
+		int errorException = 0;
+		int errorConection = 0;
+		try {
+			List<Tramite> resultado = SoapClient.ListarTramites(fecha);
+			updateProcedures(resultado);
+			helper.updateFecha();
+			resultado.clear();
+		} catch (XmlPullParserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			if (e.getMessage().equals("Exception")) {
+				errorException++;
+			} else {
+				errorConection++;
+			}
+		}
+		try {
+			List<Institucion> resultado = SoapClient.ListarInstituciones(fecha);
+			updateAgencies(resultado);
+			helper.updateFecha();
+			resultado.clear();
+		} catch (XmlPullParserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			if (e.getMessage().equals("Exception")) {
+				errorException++;
+			} else {
+				errorConection++;
+			}
+		}
+		try {
+			List<Alcaldia> resultado = SoapClient.ListarAlcaldias(fecha);
+			updateMayoralties(resultado);
+			helper.updateFecha();
+			resultado.clear();
+		} catch (XmlPullParserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			if (e.getMessage().equals("Exception")) {
+				errorException++;
+			} else {
+				errorConection++;
+			}
+		}
+		dialog.dismiss();
+		if (errorException == 3)
+			MessageUpdateComplete();
+		if (errorConection > 0)
+			UpdateMessageError();
 	}
 
 	public void updateAgencies(List<Institucion> resultado) {
@@ -278,7 +277,7 @@ public class Update extends Main {
 				new DialogInterface.OnClickListener() {
 
 					public void onClick(DialogInterface dialog, int which) {
-						UpdateMessage();
+						update(dialog);
 					}
 				});
 
