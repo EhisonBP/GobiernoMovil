@@ -28,6 +28,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+/**
+ * Módulo gobierno que muestra una interfaz para enviar un mensaje de correo
+ * electrónico a una cuenta del CNTI.
+ * 
+ * @author Richard Ricciardelli
+ * 
+ */
 public class Government extends Main {
 	EditText NAME;
 	EditText EMAILTEXT;
@@ -37,7 +44,6 @@ public class Government extends Main {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.government);
-
 		NAME = (EditText) findViewById(R.id.name);
 		EMAILTEXT = (EditText) findViewById(R.id.email_text);
 		SUBJECT = (RadioButton) findViewById(R.id.general);
@@ -45,11 +51,8 @@ public class Government extends Main {
 
 	public void onSendClick(View button) {
 		String radioButtonSelected;
-		if (SUBJECT.isChecked()) {
-			radioButtonSelected = getString(R.string.general);
-		} else {
-			radioButtonSelected = getString(R.string.news);
-		}
+		radioButtonSelected = SUBJECT.isChecked() ? getString(R.string.general)
+				: getString(R.string.news);
 		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 		emailIntent.setType("plain/text");
 		emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
