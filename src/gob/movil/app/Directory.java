@@ -31,29 +31,33 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+/**
+ * Módulo directorio que muestra los entes del Estado venezolano organizado por
+ * poderes nacionales.
+ * 
+ * @author Richard Ricciardelli
+ * 
+ */
 public class Directory extends Main {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.directory);
-
 		String[] powersArray = getResources().getStringArray(R.array.powers);
-
 		final String[] statesArray = getResources().getStringArray(
 				R.array.states);
-
 		Spinner spinner = (Spinner) findViewById(R.id.spinner_directory);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, powersArray);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
-
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
 				String[] agencies = getListItems(Directory.this, AGENCIES
-						+ " WHERE poder = " + (position + 1)+" ORDER BY nombre");
+						+ " WHERE poder = " + (position + 1)
+						+ " ORDER BY nombre");
 				switch (position) {
 				case 5:
 					addItems(agencies, 5);
@@ -68,19 +72,15 @@ public class Directory extends Main {
 			}
 
 			public void onNothingSelected(AdapterView<?> arg0) {
-				// TODO Auto-generated method stub
 			}
 		});
 	}
 
 	private void addItems(String[] items, final int power) {
-
 		final ListView list = (ListView) findViewById(R.id.list_directory);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, items); // Test simple
-																// checked!!
+				android.R.layout.simple_list_item_1, items);
 		list.setAdapter(listAdapter);
-
 		list.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> a, View v, int position,
 					long id) {
@@ -94,7 +94,7 @@ public class Directory extends Main {
 		switch (power) {
 		case 5:
 			String[] officers = getArrayFromCursor(this, "SELECT * FROM "
-					+ AGENCIES + " WHERE nombre = '"+ item + "' AND poder = "
+					+ AGENCIES + " WHERE nombre = '" + item + "' AND poder = "
 					+ (power + 1));
 			Show.setDialog(this, officers);
 			break;
