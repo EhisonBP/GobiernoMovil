@@ -32,32 +32,35 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/**
+ * Módulo de alcaldías pertenecientes a un estado. Se accede a través del poder
+ * municipal.
+ * 
+ * @author Richard Ricciardelli
+ * 
+ */
 public class Mayoralties extends Main {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mayoralties);
-
 		Intent receive = getIntent();
 		final int state = receive.getIntExtra("item", 0);
-
 		String[] items = getListItems(this, MAYORALTIES + " WHERE estado = "
-				+ state +" ORDER BY nombre");
-
+				+ state + " ORDER BY nombre");
 		final ListView lv = (ListView) findViewById(R.id.list_mayor);
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, items);
 		lv.setAdapter(listAdapter);
-
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> a, View v, int position,
 					long id) {
-
 				try {
 					String[] mayoralties = getArrayFromCursor(
 							getApplicationContext(),
 							"SELECT * FROM " + MAYORALTIES
-									+ " WHERE nombre = '"+ lv.getItemAtPosition(position) +"' AND "
+									+ " WHERE nombre = '"
+									+ lv.getItemAtPosition(position) + "' AND "
 									+ " estado = " + state);
 					Show.setDialog(Mayoralties.this, mayoralties);
 				} catch (Exception e) {

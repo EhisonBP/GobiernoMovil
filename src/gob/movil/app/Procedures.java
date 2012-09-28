@@ -31,17 +31,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+/**
+ * Módulo de trámites del Estado venezolano.
+ * 
+ * @author Richard Ricciardelli
+ * 
+ */
 public class Procedures extends Main {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.procedures);
 		Intent receive = getIntent();
-
 		final int procedure = receive.getIntExtra("item", 0);
-
 		String[] items = getListItems(this, PROCEDURES);
-
 		final Spinner spinner = (Spinner) findViewById(R.id.spinner_procedures);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, items);
@@ -67,7 +70,6 @@ public class Procedures extends Main {
 			}
 
 			public void onNothingSelected(AdapterView<?> v) {
-				// TODO Auto-generated method stub
 			}
 		});
 	}
