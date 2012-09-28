@@ -28,7 +28,6 @@ import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Help;
 import gob.movil.info.Preferences;
 
-
 import java.io.IOException;
 
 import android.app.Activity;
@@ -43,6 +42,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+/**
+ * Módulo principal de la aplicación que muestra la pantalla de bienvenida y las
+ * opciones para los módulos.
+ * 
+ * @author Richard Ricciardelli
+ * @author Ehison Pérez
+ * 
+ */
 public class Main extends Activity implements Constants {
 
 	public static DatabaseHelper helper;
@@ -56,7 +63,9 @@ public class Main extends Activity implements Constants {
 		setContentView(R.layout.main);
 	}
 
-	/** creando el menu. */
+	/**
+	 * Crea el menú de opciones.
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -64,7 +73,9 @@ public class Main extends Activity implements Constants {
 		return true;
 	}
 
-	/** Seleccionar opcion. */
+	/**
+	 * Método que ejecuta las acciones según la opción escogida.
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -76,10 +87,11 @@ public class Main extends Activity implements Constants {
 			Intent help = new Intent(this, Help.class);
 			startActivity(help);
 			break;
-		/**case R.id.update:
-			Intent update = new Intent(this, Update.class);
-			startActivity(update);
-			break;*/
+		// TODO Comentada mientras se desarrollan otros componentes.
+		/**
+		 * case R.id.update: Intent update = new Intent(this, Update.class);
+		 * startActivity(update); break;
+		 */
 		case R.id.preferences:
 			Intent preferences = new Intent(this, Preferences.class);
 			startActivity(preferences);
@@ -92,14 +104,19 @@ public class Main extends Activity implements Constants {
 	}
 
 	/**
-	 * metodo para abrir la base de datos
+	 * Método para abrir la conexión a la base de datos.
 	 * 
+	 * @param context
+	 *            Contexto del Activity donde se ejecuta.
 	 */
 	public static void openDatabase(Context context) {
 		helper = new DatabaseHelper(context);
 		db = helper.getWritableDatabase();
 	}
 
+	/**
+	 * Método para cerrar la conexión a la base de datos.
+	 */
 	public void closeDatabase() {
 		db.close();
 		helper.close();
@@ -167,14 +184,18 @@ public class Main extends Activity implements Constants {
 	}
 
 	/**
-	 * metodo para crear la base de datos dentro de la actividad princiapl
+	 * Método para crear la base de datos dentro de la Activity principal.
 	 * 
+	 * @author Ehison Pérez
 	 */
 	public void crearBBDD() {
 		helper = new DatabaseHelper(this);
 		try {
 			helper.crearDataBase();
 		} catch (IOException ioe) {
+			// TODO Este error no puede estar escrito de esta manera, debe
+			// utilizarse los recursos de cadenas de texto para
+			// internacionalizarlo correctamente.
 			throw new Error("Unable to create database");
 		}
 	}
