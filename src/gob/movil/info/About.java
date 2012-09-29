@@ -25,6 +25,12 @@ import gob.movil.R;
 import gob.movil.app.Main;
 import android.os.Bundle;
 
+/**
+ * Módulo de información sobre la aplicación.
+ * 
+ * @author Richard Ricciardelli
+ * 
+ */
 public class About extends Main {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
