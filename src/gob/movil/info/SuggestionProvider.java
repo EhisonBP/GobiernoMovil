@@ -23,6 +23,12 @@ package gob.movil.info;
 
 import android.content.SearchRecentSuggestionsProvider;
 
+/**
+ * Proveedor de sugerencias de búsqueda basado en búsquedas previas.
+ * 
+ * @author Richard Ricciardelli
+ * 
+ */
 public class SuggestionProvider extends SearchRecentSuggestionsProvider {
 	public final static String AUTHORITY = "gob.movil.info.SuggestionProvider";
 	public final static int MODE = DATABASE_MODE_QUERIES;
