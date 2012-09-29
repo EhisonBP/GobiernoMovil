@@ -38,6 +38,7 @@ import android.widget.TextView;
  * 
  */
 public class Procedures extends Main {
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
