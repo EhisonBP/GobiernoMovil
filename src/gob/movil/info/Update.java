@@ -37,6 +37,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+/**
+ * Clase para actualizar la base de datos realizando una conexión al servicio
+ * web de Gobierno en Línea.
+ * 
+ * @author Ehison Pérez
+ * 
+ */
 public class Update extends Main {
 
 	@Override
@@ -66,15 +73,12 @@ public class Update extends Main {
 		builder.setCancelable(false);
 		builder.setPositiveButton(R.string.yes,
 				new DialogInterface.OnClickListener() {
-
 					public void onClick(DialogInterface dialog, int which) {
 						update(dialog);
 					}
 				});
-
 		builder.setNegativeButton(R.string.no,
 				new DialogInterface.OnClickListener() {
-
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.cancel();
 						finish();
@@ -82,7 +86,6 @@ public class Update extends Main {
 				});
 		AlertDialog alert = builder.create();
 		alert.show();
-
 	}
 
 	/**
