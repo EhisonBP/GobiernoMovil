@@ -57,14 +57,14 @@ public class Update extends Main {
 		UpdateMessage();
 	}
 
+	// TODO What's this?
 	/**
 	 * Mensaje que mostrara mientras los usuarios espera que se carguen los
 	 * nuevos datos
 	 */
 
 	/**
-	 * Mensaje y metodos usados al usar el botos de actualizar del menu
-	 * principal
+	 * Mensaje usado al presionar el botón actualizar del menú principal
 	 */
 	private void UpdateMessage() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -89,17 +89,16 @@ public class Update extends Main {
 	}
 
 	/**
-	 * Proceso para la actualizacion de la tabla tramite
+	 * Procedimiento para la actualización de la tabla de trámites.
 	 * 
 	 * @param resultado
+	 *            Listado de trámites
 	 */
 	public void updateProcedures(List<Tramite> resultado) {
 		if (resultado != null) {
-
 			for (int i = 0; i < resultado.size(); i++) {
-				boolean a = helper.updateDatabaseProcedures(resultado.get(i)
-						.getIdTramite());
-				if (a == true) {
+				if (helper.updateDatabaseProcedures(resultado.get(i)
+						.getIdTramite())) {
 					helper.updateDatabaseProcedures(resultado.get(i)
 							.getNombreTramite(), resultado.get(i)
 							.getRequisitos(), resultado.get(i).getHorarios(),
@@ -122,10 +121,15 @@ public class Update extends Main {
 				}
 			}
 			resultado.clear();
-
 		}
 	}
 
+	/**
+	 * Separación de la lógica de actualización.
+	 * 
+	 * @param dialog
+	 *            Diálogo donde se lleva a cabo la actualización.
+	 */
 	private void update(DialogInterface dialog) {
 		String fecha = helper.fechaActualizacion();
 		int errorException = 0;
@@ -139,11 +143,10 @@ public class Update extends Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			if (e.getMessage().equals("Exception")) {
+			if (e.getMessage().equals("Exception"))
 				errorException++;
-			} else {
+			else
 				errorConection++;
-			}
 		}
 		try {
 			List<Institucion> resultado = SoapClient.ListarInstituciones(fecha);
@@ -151,14 +154,12 @@ public class Update extends Main {
 			helper.updateFecha();
 			resultado.clear();
 		} catch (XmlPullParserException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			if (e.getMessage().equals("Exception")) {
+			if (e.getMessage().equals("Exception"))
 				errorException++;
-			} else {
+			else
 				errorConection++;
-			}
 		}
 		try {
 			List<Alcaldia> resultado = SoapClient.ListarAlcaldias(fecha);
@@ -166,7 +167,6 @@ public class Update extends Main {
 			helper.updateFecha();
 			resultado.clear();
 		} catch (XmlPullParserException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			if (e.getMessage().equals("Exception")) {
@@ -185,9 +185,8 @@ public class Update extends Main {
 	public void updateAgencies(List<Institucion> resultado) {
 		if (resultado != null) {
 			for (int i = 0; i < resultado.size(); i++) {
-				boolean a = helper.updateDatabaseAgencies(resultado.get(i)
-						.getIdInstitucion());
-				if (a == true) {
+				if (helper.updateDatabaseAgencies(resultado.get(i)
+						.getIdInstitucion())) {
 					helper.updateDatabaseAgencies(resultado.get(i)
 							.getNombreSector(), resultado.get(i).getDirector(),
 							resultado.get(i).getNombreInstitucion(), resultado
@@ -210,16 +209,14 @@ public class Update extends Main {
 				}
 			}
 			resultado.clear();
-
 		}
 	}
 
 	public void updateMayoralties(List<Alcaldia> resultado) {
 		if (resultado != null) {
 			for (int i = 0; i < resultado.size(); i++) {
-				boolean a = helper.updateDatabaseMayoralties(resultado.get(i)
-						.getIdAlcaldia());
-				if (a == true) {
+				if (helper.updateDatabaseMayoralties(resultado.get(i)
+						.getIdAlcaldia())) {
 					helper.updateDatabaseMayoralties(resultado.get(i)
 							.getNombreAlcaldia(), resultado.get(i)
 							.getDirectorALcaldia(), resultado.get(i)
@@ -242,13 +239,12 @@ public class Update extends Main {
 				}
 			}
 			resultado.clear();
-
 		}
 	}
 
 	/**
 	 * Mensaje en caso de que la base de datos ya se encuentre actualizada a la
-	 * fecha
+	 * fecha.
 	 */
 	private void MessageUpdateComplete() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -257,7 +253,6 @@ public class Update extends Main {
 		builder.setCancelable(false);
 		builder.setPositiveButton(R.string.ok,
 				new DialogInterface.OnClickListener() {
-
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.cancel();
 						finish();
@@ -268,8 +263,8 @@ public class Update extends Main {
 	}
 
 	/**
-	 * Mensaje usado en caso de no haber conexión con el servicio o falla en la
-	 * señal del dispositivo
+	 * Mensaje usado en caso de no existir conexión con el servicio web o falla
+	 * en la señal del dispositivo.
 	 */
 	private void UpdateMessageError() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -278,15 +273,12 @@ public class Update extends Main {
 		builder.setCancelable(false);
 		builder.setPositiveButton(R.string.try_again,
 				new DialogInterface.OnClickListener() {
-
 					public void onClick(DialogInterface dialog, int which) {
 						update(dialog);
 					}
 				});
-
 		builder.setNegativeButton(R.string.cancel,
 				new DialogInterface.OnClickListener() {
-
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.cancel();
 						finish();
