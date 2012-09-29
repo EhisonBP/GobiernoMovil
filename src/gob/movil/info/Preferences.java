@@ -33,6 +33,12 @@ import android.preference.PreferenceManager;
 import android.provider.SearchRecentSuggestions;
 import android.widget.Toast;
 
+/**
+ * Clase de preferencias de la aplicación.
+ * 
+ * @author Richard Ricciardelli
+ * 
+ */
 public class Preferences extends PreferenceActivity {
 	private static final String OPT_VIBRATION = "vibration";
 	private static final boolean OPT_VIBRATION_DEF = true;
