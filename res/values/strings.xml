@@ -165,6 +165,7 @@
     <string name="ic_government_color_description">Presione aquí para enviar un correo electrónico al gobierno venezolano</string>
     <string name="about_summary">Acerca de esta aplicación</string>
     <string name="about_title">Versión %1$s</string>
-    <string name="version">1.5</string>
+    <string name="version">1.5.1</string>
+    <string name="version_code">142</string>
     
 </resources>
