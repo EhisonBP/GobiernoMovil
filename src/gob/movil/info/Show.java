@@ -31,6 +31,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Clase para mostrar diálogos personalizados con información sobre cada item
+ * seleccionado, generalmente aplicado al módulo del directorio.
+ * 
+ * @author Richard Ricciardelli
+ * 
+ */
 public class Show extends Activity {
 
 	public static void setDialog(Context context, String[] data) {
