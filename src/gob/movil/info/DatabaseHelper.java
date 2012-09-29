@@ -34,6 +34,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * Clase para la conexión y modelado de la base de datos de la aplicación.
+ * 
+ * @author Richard Ricciardelli
+ * @author Ehison Pérez
+ * 
+ */
 public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 
 	private static String DB_NAME = "GobiernoMovil.db";
@@ -41,12 +48,12 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	private final Context myContext;
 
 	/**
-	 * Constructor
-	 * 
-	 * Guarda una referencia al contexto para acceder a la carpeta assets de la
-	 * aplicaci�n y a los recursos
+	 * Guarda una referencia al contexto para acceder a la carpeta assets y los
+	 * recursos de la aplicación
 	 * 
 	 * @param contexto
+	 *            Contexto de la aplicación
+	 * @author Ehison Pérez
 	 */
 	public DatabaseHelper(Context contexto) {
 		super(contexto, DB_NAME, null, 1);
@@ -54,31 +61,29 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	}
 
 	/**
-	 * Crea una base de datos vacia en el sistema y la sobreescribe con la que
-	 * hemos puesto en Assets
+	 * Crea una base de datos vacía en el sistema y la sobreescribe con la que
+	 * está colocada en la carpeta assets.
+	 * 
+	 * @throws IOException
+	 * @author Ehison Pérez
 	 */
 	public void crearDataBase() throws IOException {
 		boolean dbExist = comprobarBaseDatos();
-		if (dbExist) {
-			// Si ya existe no hacemos nada
-		} else {
-			// Si no existe, creamos una nueva Base de datos en la carpeta por
-			// defecto de nuestra aplicaci�n,
-			// de esta forma el Sistema nos permitir� sobreescribirla con la que
-			// tenemos en la carpeta Assets
+		if (!dbExist) {
 			this.getReadableDatabase();
 			try {
 				copiarBaseDatos();
 			} catch (IOException e) {
+				// TODO Este mensaje debe estar internacionalizado.
 				throw new Error("Error al copiar la Base de Datos");
 			}
 		}
 	}
 
 	/**
-	 * Comprobamos si la base de datos existe
+	 * Comprobamos que la base de datos exista.
 	 * 
-	 * @return true si existe, false en otro caso
+	 * @return true si existe, false de lo contrario.
 	 */
 	private boolean comprobarBaseDatos() {
 		SQLiteDatabase checkDB = null;
@@ -87,44 +92,56 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 			checkDB = SQLiteDatabase.openDatabase(myPath, null,
 					SQLiteDatabase.OPEN_READONLY);
 		} catch (SQLiteException e) {
-			// No existe
+			// TODO Se debe escribir en alguna parte que no existe esta base de
+			// datos.
 		}
-		if (checkDB != null) {
+		if (checkDB != null)
 			checkDB.close();
-		}
-		return checkDB != null ? true : false;
+		return checkDB != null;
 	}
 
 	/**
-	 * Copia la base de datos desde la carpeta Assets sobre la base de datos
-	 * vac�a reci�n creada en la carpeta del sistema, desde donde es accesible
+	 * Copia la base de datos desde la carpeta assets hasta la base de datos
+	 * vacía recién creada en la carpeta del sistema, desde donde es accesible.
+	 * 
+	 * @throws IOException
+	 * @author Ehison Pérez
 	 */
 	private void copiarBaseDatos() throws IOException {
-
-		// Abrimos la BBDD de la carpeta Assets como un InputStream
+		/**
+		 * Abrimos la base de datos de la carpeta assets con un objeto de la
+		 * clase InputStream.
+		 */
 		InputStream myInput = myContext.getAssets().open(DB_NAME);
-
-		// Carpeta de destino (donde hemos creado la BBDD vacia)
+		/**
+		 * Carpeta de destino donde hemos creado la base de datos vacía.
+		 */
 		String outFileName = DB_PATH + DB_NAME;
-
-		// Abrimos la BBDD vacia como OutputStream
+		/**
+		 * Abrimos la base de datos vacía con un objeto de la clase
+		 * OutputStream.
+		 */
 		OutputStream myOutput = new FileOutputStream(outFileName);
-
-		// Transfiere los Bytes entre el Stream de entrada y el de Salida
+		/**
+		 * Transfiere los bytes entre el stream de entrada y el de salida.
+		 */
 		byte[] buffer = new byte[1024];
 		int length;
 		while ((length = myInput.read(buffer)) > 0) {
 			myOutput.write(buffer, 0, length);
 		}
-
-		// Cerramos los ficheros abiertos
+		/**
+		 * Cerramos los ficheros abiertos.
+		 */
 		myOutput.flush();
 		myOutput.close();
 		myInput.close();
 	}
 
 	/**
-	 * Abre la base de datos
+	 * Abre la base de datos.
+	 * 
+	 * @throws SQLException
 	 */
 	public void abrirBaseDatos() throws SQLException {
 		String myPath = DB_PATH + DB_NAME;
@@ -134,7 +151,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	}
 
 	/**
-	 * Cierra la base de datos
+	 * Cierra la conexión a la base de datos.
 	 */
 	@Override
 	public synchronized void close() {
@@ -144,21 +161,44 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	}
 
 	/**
-	 * Metodos Obligatorios en la clase BaseDatosHelper
-	 * 
+	 * Método obligatorio en la clase DatabaseHelper.
 	 */
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 	}
 
+	/**
+	 * Método obligatorio en la clase DatabaseHelper.
+	 */
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	}
 
 	/**
-	 * Metodos para insertar datos de las tablas Intituciones, Tramites y
-	 * servicios Dentro de la aplicacion en caso de que no exista
+	 * Método para insertar datos de los trámites y servicios dentro de la
+	 * aplicación en caso de que no exista.
 	 * 
+	 * @param nombre
+	 *            Nombre que identifica al trámite.
+	 * @param requisitos
+	 *            Requisitos para llevar a cabo el trámite.
+	 * @param horarios
+	 *            Horarios de atención de la oficina o ente para atender el
+	 *            trámite.
+	 * @param costo
+	 *            Costo monetario que tiene el trámite.
+	 * @param descripcion
+	 *            Descripción del trámite o los pasos para llevarlo a cabo.
+	 * @param telefono
+	 *            Teléfono de contacto donde se puede pedir más información
+	 *            sobre el trámite.
+	 * @param direccion
+	 *            Dirección a la que se puede acudir para llevar a cabo el
+	 *            trámite.
+	 * @param identificador
+	 *            Identificador único de este contenido.
+	 * @param perfil
+	 *            Tipo de perfil al que está asociado el trámite.
 	 */
 	public void insertDatabaseProcedures(String nombre, String requisitos,
 			String horarios, String costo, String descripcion, String telefono,
@@ -168,32 +208,82 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 				+ "'," + " '" + requisitos + "'," + " '" + horarios + "', "
 				+ " '" + costo + "', " + " '" + descripcion + "', "
 				+ " 'Información no disponible.', " + " '" + telefono + "', '"
-				+ direccion + "'," + " '" + identificador + "', '"+perfil+"')");
-	}
-
-	public void insertDatabaseAgencies(String nombre, String director, String institucion, 
-			String direccion, String telefono, String web, String correo,
-			int poder, int identificador) {
-		db = getWritableDatabase();
-		db.execSQL(" INSERT INTO " + AGENCIES + " VALUES (null, '" + nombre
-				+ "'," + " '" + director + "'," + " '"+ institucion +"'," + " '" + direccion
-				+ "'," + " '" + telefono + "'," + " '" + web + "'," + " '"
-				+ correo + "'," + " '" + poder + "'," + " '"
-				+ identificador + "')");
-	}
-
-	public void insertDatabaseMayoralties(String municipio, String director, String alcaldia,
-			String direccion, String telefono, String web, String correo,
-			int estado, int identificador) {
-		db = getWritableDatabase();
-		db.execSQL(" INSERT INTO " + MAYORALTIES + " VALUES (null, '" + municipio
-				+ "'," + " '" + director + "'," + " '" + alcaldia + "'," + " '" + direccion
-				+ "'," + " '" + telefono + "'," + " '" + web + "'," + " '"
-				+ correo + "'," + " '" + estado + "'," + " '" + identificador + "')");
+				+ direccion + "'," + " '" + identificador + "', '" + perfil
+				+ "')");
 	}
 
 	/**
-	 * metodos para actualizar la fecha de actualizacion de la base de datos
+	 * Método para insertar datos de las instituciones dentro de la aplicación
+	 * en caso de que no exista.
+	 * 
+	 * @param nombre
+	 *            Nombre de la institución en forma resumida.
+	 * @param director
+	 *            Representante público de la entidad.
+	 * @param institucion
+	 *            Nombre completo de la institución.
+	 * @param direccion
+	 *            Dirección física de la institución.
+	 * @param telefono
+	 *            Teléfonos de contacto de la institución.
+	 * @param web
+	 *            Página web de la institución.
+	 * @param correo
+	 *            Correo electrónico de la institución.
+	 * @param poder
+	 *            Poder público al cual pertenece.
+	 * @param identificador
+	 *            Identificador único de este contenido.
+	 */
+	public void insertDatabaseAgencies(String nombre, String director,
+			String institucion, String direccion, String telefono, String web,
+			String correo, int poder, int identificador) {
+		db = getWritableDatabase();
+		db.execSQL(" INSERT INTO " + AGENCIES + " VALUES (null, '" + nombre
+				+ "'," + " '" + director + "'," + " '" + institucion + "',"
+				+ " '" + direccion + "'," + " '" + telefono + "'," + " '" + web
+				+ "'," + " '" + correo + "'," + " '" + poder + "'," + " '"
+				+ identificador + "')");
+	}
+
+	/**
+	 * Método para insertar datos de las alcaldías dentro de la aplicación en
+	 * caso de que no exista.
+	 * 
+	 * @param municipio
+	 *            Municipio al cual pertenece esta alcaldía.
+	 * @param director
+	 *            Representante público de la entidad.
+	 * @param alcaldia
+	 *            Nombre de la alcaldía.
+	 * @param direccion
+	 *            Dirección física de la alcaldía.
+	 * @param telefono
+	 *            Teléfono de la alcaldía.
+	 * @param web
+	 *            Página web de la alcaldía.
+	 * @param correo
+	 *            Correo electrónico de la alcaldía.
+	 * @param estado
+	 *            Entidad estatal a la que pertenece esta alcaldía.
+	 * @param identificador
+	 *            Identificador único de este contenido.
+	 */
+	public void insertDatabaseMayoralties(String municipio, String director,
+			String alcaldia, String direccion, String telefono, String web,
+			String correo, int estado, int identificador) {
+		db = getWritableDatabase();
+		db.execSQL(" INSERT INTO " + MAYORALTIES + " VALUES (null, '"
+				+ municipio + "'," + " '" + director + "'," + " '" + alcaldia
+				+ "'," + " '" + direccion + "'," + " '" + telefono + "',"
+				+ " '" + web + "'," + " '" + correo + "'," + " '" + estado
+				+ "'," + " '" + identificador + "')");
+	}
+
+	/**
+	 * Método para actualizar la fecha de actualización de la base de datos.
+	 * 
+	 * @author Ehison Pérez
 	 */
 	public void updateFecha() {
 		long time = new Date().getTime();
@@ -205,9 +295,30 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	}
 
 	/**
-	 * Metodos usados para actualizar los datos de intituciones, alcaldias y
-	 * tramites
+	 * Método para actualizar los datos de los trámites y servicios dentro de la
+	 * aplicación en caso de que no exista.
 	 * 
+	 * @param nombre
+	 *            Nombre que identifica al trámite.
+	 * @param requisitos
+	 *            Requisitos para llevar a cabo el trámite.
+	 * @param horarios
+	 *            Horarios de atención de la oficina o ente para atender el
+	 *            trámite.
+	 * @param costo
+	 *            Costo monetario que tiene el trámite.
+	 * @param descripcion
+	 *            Descripción del trámite o los pasos para llevarlo a cabo.
+	 * @param telefono
+	 *            Teléfono de contacto donde se puede pedir más información
+	 *            sobre el trámite.
+	 * @param direccion
+	 *            Dirección a la que se puede acudir para llevar a cabo el
+	 *            trámite.
+	 * @param identificador
+	 *            Identificador único de este contenido.
+	 * @param perfil
+	 *            Tipo de perfil al que está asociado el trámite.
 	 */
 	public void updateDatabaseProcedures(String nombre, String requisitos,
 			String horarios, String costo, String descripcion, String telefono,
@@ -217,106 +328,140 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 				+ " requisitos = '" + requisitos + "'," + " horario = '"
 				+ horarios + "'," + " costo = '" + costo + "',"
 				+ " informacion = '" + descripcion + "'," + " telefono = '"
-				+ telefono + "'," + " direccion = '" + direccion + "'," + " perfil = '" + perfil + "'"
-				+ " WHERE identificador = " + identificador + "");
+				+ telefono + "'," + " direccion = '" + direccion + "',"
+				+ " perfil = '" + perfil + "'" + " WHERE identificador = "
+				+ identificador + "");
 		db.close();
-
 	}
 
+	// TODO ¿Qué hace este método?
 	public boolean updateDatabaseProcedures(int identificador) {
 		db = getWritableDatabase();
 		int i = 0;
 		Cursor c = db.rawQuery("SELECT identificador FROM " + PROCEDURES
 				+ " WHERE identificador = " + identificador + "", null);
-		if (c.moveToFirst()) {
+		if (c.moveToFirst())
 			do {
 				i = c.getInt(0);
 			} while (c.moveToNext());
-		}
-		if (i == identificador) {
-			return true;
-		} else {
-			return false;
-		}
+		return i == identificador;
 	}
 
-	public void updateDatabaseAgencies(String nombre, String director, String institucion,
-			String direccion, String telefono, String web, String correo,
-			int poder, int identificador) {
+	/**
+	 * Método para actualizar los datos de las instituciones dentro de la
+	 * aplicación en caso de que no exista.
+	 * 
+	 * @param nombre
+	 *            Nombre de la institución en forma resumida.
+	 * @param director
+	 *            Representante público de la entidad.
+	 * @param institucion
+	 *            Nombre completo de la institución.
+	 * @param direccion
+	 *            Dirección física de la institución.
+	 * @param telefono
+	 *            Teléfonos de contacto de la institución.
+	 * @param web
+	 *            Página web de la institución.
+	 * @param correo
+	 *            Correo electrónico de la institución.
+	 * @param poder
+	 *            Poder público al cual pertenece.
+	 * @param identificador
+	 *            Identificador único de este contenido.
+	 */
+	public void updateDatabaseAgencies(String nombre, String director,
+			String institucion, String direccion, String telefono, String web,
+			String correo, int poder, int identificador) {
 		db = getWritableDatabase();
 		db.execSQL(" UPDATE " + AGENCIES + " SET nombre='" + nombre + "', "
-				+ " director = '" + director + "'," + " institucion ='" + institucion + "', direccion = '"
-				+ direccion + "'," + " telefono = '" + telefono + "',"
-				+ " web = '" + web + "'," + " twitter = '" + correo + "',"
-				+ " poder = '" + poder + "'" + " WHERE identificador = "
-				+ identificador + "");
+				+ " director = '" + director + "'," + " institucion ='"
+				+ institucion + "', direccion = '" + direccion + "',"
+				+ " telefono = '" + telefono + "'," + " web = '" + web + "',"
+				+ " twitter = '" + correo + "'," + " poder = '" + poder + "'"
+				+ " WHERE identificador = " + identificador + "");
 		db.close();
 	}
 
+	// TODO ¿Qué hace este método?
 	public boolean updateDatabaseAgencies(int identificador) {
 		db = getWritableDatabase();
 		int i = 0;
 		Cursor c = db.rawQuery("SELECT identificador FROM " + AGENCIES
 				+ " WHERE identificador = " + identificador + "", null);
-		if (c.moveToFirst()) {
+		if (c.moveToFirst())
 			do {
 				i = c.getInt(0);
 			} while (c.moveToNext());
-		}
-		if (i == identificador) {
-			return true;
-		} else {
-			return false;
-		}
+		return i == identificador;
 	}
 
-	public void updateDatabaseMayoralties(String nombre, String director, String alcaldia,
-			String direccion, String telefono, String web, String correo,
-			int identificador) {
+	/**
+	 * Método para actualizar los datos de las alcaldías dentro de la aplicación
+	 * en caso de que no exista.
+	 * 
+	 * @param municipio
+	 *            Municipio al cual pertenece esta alcaldía.
+	 * @param director
+	 *            Representante público de la entidad.
+	 * @param alcaldia
+	 *            Nombre de la alcaldía.
+	 * @param direccion
+	 *            Dirección física de la alcaldía.
+	 * @param telefono
+	 *            Teléfono de la alcaldía.
+	 * @param web
+	 *            Página web de la alcaldía.
+	 * @param correo
+	 *            Correo electrónico de la alcaldía.
+	 * @param estado
+	 *            Entidad estatal a la que pertenece esta alcaldía.
+	 * @param identificador
+	 *            Identificador único de este contenido.
+	 */
+	public void updateDatabaseMayoralties(String nombre, String director,
+			String alcaldia, String direccion, String telefono, String web,
+			String correo, int identificador) {
 		db = getWritableDatabase();
 		db.execSQL(" UPDATE " + MAYORALTIES + " SET nombre='" + nombre + "', "
-				+ " director = '" + director + "'," + " alcaldia = '" + alcaldia + "'," + " direccion = '"
-				+ direccion + "'," + " telefono = '" + telefono + "',"
-				+ " web = '" + web + "'," + " twitter = '" + correo + "'"
-				+ " WHERE identificador = " + identificador + "");
+				+ " director = '" + director + "'," + " alcaldia = '"
+				+ alcaldia + "'," + " direccion = '" + direccion + "',"
+				+ " telefono = '" + telefono + "'," + " web = '" + web + "',"
+				+ " twitter = '" + correo + "'" + " WHERE identificador = "
+				+ identificador + "");
 		db.close();
 	}
 
+	// TODO ¿Qué hace este método?
+	// TODO Observación: La misma lógica parece repetirse tres veces, se puede
+	// optimizar para usar un único método e incrementar la cantidad de
+	// parámetros.
 	public boolean updateDatabaseMayoralties(int identificador) {
 		db = getWritableDatabase();
 		int i = 0;
 		Cursor c = db.rawQuery("SELECT identificador FROM " + MAYORALTIES
 				+ " WHERE identificador = " + identificador + "", null);
-		if (c.moveToFirst()) {
+		if (c.moveToFirst())
 			do {
 				i = c.getInt(0);
 			} while (c.moveToNext());
-		}
-		if (i == identificador) {
-			return true;
-		} else {
-			return false;
-		}
+		return i == identificador;
 	}
 
 	/**
-	 * Metodo para pasar el parametro fecha almacenado en la base de datos al
-	 * objeto tipo servicio
+	 * Método para enviar el parámetro de fecha de actualización almacenada en
+	 * la base de datos al objeto tipo servicio.
 	 * 
-	 * @return
+	 * @return Fecha de actualización en String.
 	 */
 	public String fechaActualizacion() {
 		String fecha = null;
 		db = getWritableDatabase();
 		Cursor c = db.rawQuery("SELECT fecha FROM fecha_actualizacion", null);
-		// Nos aseguramos de que existe al menos un registro
-		if (c.moveToFirst()) {
-			// Recorremos el cursor
+		if (c.moveToFirst())
 			do {
 				fecha = c.getString(0);
 			} while (c.moveToNext());
-		}
 		return fecha;
 	}
-
 }
