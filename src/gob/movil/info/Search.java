@@ -41,6 +41,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * Módulo de búsqueda aplicable a cualquier contexto de la aplicación.
+ * 
+ * @author Richard Ricciardelli
+ * 
+ */
 public class Search extends Main {
 
 	@Override
@@ -134,7 +140,6 @@ public class Search extends Main {
 								+ "nombre = '"
 								+ resultsList.getItemAtPosition(position)
 										.toString() + "'");
-
 				if (agenciesResults != null)
 					Show.setDialog(Search.this, agenciesResults);
 
