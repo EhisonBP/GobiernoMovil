@@ -74,10 +74,8 @@ public class Search extends Main {
 							+ replace("director", query) + OR
 							+ replace("alcaldia", query) + OR
 							+ replace("twitter", query));
-
 			String[] procedures = getListItems(this, PROCEDURES + WHERE
 					+ replace("nombre", query));
-
 			TextView noResults = (TextView) findViewById(R.id.search_results);
 			noResults.setText(Html.fromHtml(getString(R.string.search_none,
 					query)));
@@ -142,10 +140,8 @@ public class Search extends Main {
 										.toString() + "'");
 				if (agenciesResults != null)
 					Show.setDialog(Search.this, agenciesResults);
-
 				if (mayoraltiesResults != null)
 					Show.setDialog(Search.this, mayoraltiesResults);
-
 				if (proceduresResults != null)
 					showActivity(Procedures.class,
 							Integer.parseInt(proceduresResults[0]));
