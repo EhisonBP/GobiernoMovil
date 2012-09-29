@@ -163,4 +163,8 @@
     <string name="ic_directory_color_description">Presione aquí para acceder al directorio del Estado venezolano</string>
     <string name="ic_procedures_color_description">Presione aquí para acceder a los trámites de las instituciones del Estado</string>
     <string name="ic_government_color_description">Presione aquí para enviar un correo electrónico al gobierno venezolano</string>
+    <string name="about_summary">Acerca de esta aplicación</string>
+    <string name="about_title">Versión %1$s</string>
+    <string name="version">1.5</string>
+    
 </resources>
