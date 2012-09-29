@@ -25,6 +25,7 @@ import gob.movil.R;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -48,6 +49,8 @@ public class Preferences extends PreferenceActivity {
 	private static final boolean OPT_SUGGESTIONS_DEF = true;
 	private static final String OPT_RESULTS = "results";
 	private static final boolean OPT_RESULTS_DEF = true;
+	private static final String OPT_ABOUT = "about";
+	private static final boolean OPT_ABOUT_DEF = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,20 @@ public class Preferences extends PreferenceActivity {
 					public boolean onPreferenceClick(Preference preference) {
 						alertDialog();
 						return false;
+					}
+				});
+		Preference aboutPreference = getPreferenceManager().findPreference(
+				OPT_ABOUT);
+		aboutPreference.setTitle(getString(R.string.about_title,
+				getString(R.string.version)));
+		aboutPreference
+				.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+
+					public boolean onPreferenceClick(Preference preference) {
+						Intent about = new Intent(preference.getContext(),
+								About.class);
+						startActivity(about);
+						return !OPT_ABOUT_DEF;
 					}
 				});
 	}
