@@ -25,6 +25,12 @@ import gob.movil.R;
 import gob.movil.app.Main;
 import android.os.Bundle;
 
+/**
+ * Clase de ayuda de la aplicación.
+ * 
+ * @author Richard Ricciardelli
+ * 
+ */
 public class Help extends Main {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
