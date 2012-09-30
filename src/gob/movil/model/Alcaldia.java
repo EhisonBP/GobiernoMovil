@@ -21,6 +21,12 @@
  */
 package gob.movil.model;
 
+/**
+ * Modelo de alcaldías.
+ * 
+ * @author Ehison Pérez
+ * 
+ */
 public class Alcaldia {
 
 	private int idAlcaldia;
@@ -38,9 +44,9 @@ public class Alcaldia {
 	}
 
 	public Alcaldia(int idAlcaldia, String nombreAlcaldia,
-			String directorAlcaldia, String nombreMunicipio, String direccionAlcaldia,
-			String telefonoAlcaldia, String webAlcaldia, String correoAlcaldia,
-			String fecha, int estado) {
+			String directorAlcaldia, String nombreMunicipio,
+			String direccionAlcaldia, String telefonoAlcaldia,
+			String webAlcaldia, String correoAlcaldia, String fecha, int estado) {
 		this.idAlcaldia = idAlcaldia;
 		this.nombreAlcaldia = nombreAlcaldia;
 		this.nombreMunicipio = nombreMunicipio;
@@ -128,6 +134,7 @@ public class Alcaldia {
 	public String getNombreMunicipio() {
 		return nombreMunicipio;
 	}
+
 	public void setNombreMunicipio(String nombreMunicipio) {
 		this.nombreMunicipio = nombreMunicipio;
 	}

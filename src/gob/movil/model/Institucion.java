@@ -21,11 +21,17 @@
  */
 package gob.movil.model;
 
+/**
+ * Modelo de instituciones.
+ * 
+ * @author Ehison Pérez
+ * 
+ */
 public class Institucion {
 
 	private int idInstitucion;
 	private String nombreInstitucion;
-	private String nombreSector; 
+	private String nombreSector;
 	private String director;
 	private String direccion;
 	private String telefono;
@@ -37,9 +43,10 @@ public class Institucion {
 	public Institucion() {
 	}
 
-	public Institucion(int idInstituto, String nombreSector, String nombreInstituto,
-			String director, String direccion, String telefono, String web,
-			String correoElect, int poder, String fecha) {
+	public Institucion(int idInstituto, String nombreSector,
+			String nombreInstituto, String director, String direccion,
+			String telefono, String web, String correoElect, int poder,
+			String fecha) {
 		this.idInstitucion = idInstituto;
 		this.nombreInstitucion = nombreInstituto;
 		this.nombreSector = nombreSector;
@@ -123,7 +130,7 @@ public class Institucion {
 	public void setPaginaWeb(String web) {
 		this.paginaWeb = web;
 	}
-	
+
 	public String getNombreSector() {
 		return nombreSector;
 	}

@@ -21,6 +21,12 @@
  */
 package gob.movil.model;
 
+/**
+ * Módelo de trámites.
+ * 
+ * @author Ehison Pérez
+ * 
+ */
 public class Tramite {
 
 	private int idTramite;
@@ -32,7 +38,7 @@ public class Tramite {
 	private String costo;
 	private String requisitos;
 	private String fecha;
-	int perfil; 
+	int perfil;
 
 	public Tramite() {
 	}
@@ -49,7 +55,7 @@ public class Tramite {
 		this.costo = costo;
 		this.requisitos = requisitos;
 		this.fecha = fecha;
-		this.perfil = perfil; 
+		this.perfil = perfil;
 	}
 
 	public String getFecha() {
@@ -123,7 +129,7 @@ public class Tramite {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
+
 	public int getIPerfil() {
 		return perfil;
 	}
