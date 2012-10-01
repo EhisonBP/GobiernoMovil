@@ -37,14 +37,21 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
+/**
+ * Clase que se encarga de la conexión del cliente mediante SOAP.
+ * 
+ * @author Ehison Pérez
+ * 
+ */
 public class SoapClient implements Constants {
 
 	/**
-	 * Metodo para la conectar con el Servicio web Directorio del Estado
-	 * Venezolano con el webMetodo listarInstitucionesPorPoder
+	 * Método para conectar con el servcio web del Directorio del Estado
+	 * Venezolano llamando al método web <b>listarInstitucionesPorPoder</b>.
 	 * 
 	 * @param fecha
-	 * @return
+	 *            Fecha de actualización.
+	 * @return Lista de instituciones.
 	 * @throws XmlPullParserException
 	 * @throws IOException
 	 */
@@ -52,50 +59,57 @@ public class SoapClient implements Constants {
 	public static List<Institucion> ListarInstituciones(String fecha)
 			throws XmlPullParserException, IOException {
 		final String Metodo = "listarInstitucionesPorPoder";
-		final String accionSoap = namespace + Metodo;
-		// request
-		SoapObject request = new SoapObject(namespace, Metodo);
+		final String accionSoap = NAMESPACE + Metodo;
+		/**
+		 * Solicitud.
+		 */
+		SoapObject request = new SoapObject(NAMESPACE, Metodo);
 		PropertyInfo pi1 = new PropertyInfo();
 		pi1.setName("fecha");
 		pi1.setValue(fecha);
 		request.addProperty(pi1);
-
-		// Modelo Sobre
+		/**
+		 * Modelo sobre.
+		 */
 		SoapSerializationEnvelope sobre = new SoapSerializationEnvelope(
 				SoapEnvelope.VER11);
 		sobre.dotNet = false;
 		sobre.setOutputSoapObject(request);
-
-		// Modelo Trasporte
-		HttpTransportSE transporte = new HttpTransportSE(url);
-		// llamada
+		/**
+		 * Modelo transporte.
+		 */
+		HttpTransportSE transporte = new HttpTransportSE(WEB_SERVICE_URL);
+		/**
+		 * Llamada.
+		 */
 		transporte.call(accionSoap, sobre);
-		// Resultado
-
+		/**
+		 * Resultado.
+		 */
 		ArrayList<Institucion> instituciones = new ArrayList<Institucion>();
 		List<SoapObject> resultado = (List<SoapObject>) sobre.getResponse();
-
 		for (SoapObject miresultado : resultado) {
 			Institucion institucion = new Institucion(
-					Integer.parseInt(miresultado.getProperty("idInstitucion").toString()),
-					miresultado.getProperty("nombreSector").toString(), 
-					miresultado.getProperty("nombreInstitucion").toString(), 
-					miresultado.getProperty("director").toString(),
-					miresultado.getProperty("direccion").toString(), 
-					miresultado.getProperty("telefono").toString(), 
-					miresultado.getProperty("paginaWeb").toString(), 
-					miresultado.getProperty("correoElect").toString(),
-					Integer.parseInt(miresultado.getProperty("poder").toString()), 
-					miresultado.getProperty("fecha").toString());
+					Integer.parseInt(miresultado.getProperty("idInstitucion")
+							.toString()), miresultado.getProperty(
+							"nombreSector").toString(), miresultado
+							.getProperty("nombreInstitucion").toString(),
+					miresultado.getProperty("director").toString(), miresultado
+							.getProperty("direccion").toString(), miresultado
+							.getProperty("telefono").toString(), miresultado
+							.getProperty("paginaWeb").toString(), miresultado
+							.getProperty("correoElect").toString(),
+					Integer.parseInt(miresultado.getProperty("poder")
+							.toString()), miresultado.getProperty("fecha")
+							.toString());
 			instituciones.add(institucion);
-
 		}
 		return instituciones;
 	}
 
 	/**
-	 * Metodo para la conectar con el Servicio web Directorio del Estado
-	 * Venezolano con el webMetodo listarAlcaldia
+	 * Método para conectar con el servcio web del Directorio del Estado
+	 * Venezolano llamando al método web <b>listarAlcaldia</b>.
 	 * 
 	 * @param fecha
 	 * @return
@@ -106,9 +120,9 @@ public class SoapClient implements Constants {
 	public static List<Alcaldia> ListarAlcaldias(String fecha)
 			throws XmlPullParserException, IOException {
 		final String Metodo = "listarAlcaldia";
-		final String accionSoap = namespace + Metodo;
+		final String accionSoap = NAMESPACE + Metodo;
 		// request
-		SoapObject request = new SoapObject(namespace, Metodo);
+		SoapObject request = new SoapObject(NAMESPACE, Metodo);
 		PropertyInfo pi1 = new PropertyInfo();
 		pi1.setName("fecha");
 		pi1.setValue(fecha);
@@ -121,7 +135,7 @@ public class SoapClient implements Constants {
 		sobre.setOutputSoapObject(request);
 
 		// Modelo Trasporte
-		HttpTransportSE transporte = new HttpTransportSE(url);
+		HttpTransportSE transporte = new HttpTransportSE(WEB_SERVICE_URL);
 		// llamada
 		transporte.call(accionSoap, sobre);
 		// Resultado
@@ -130,16 +144,18 @@ public class SoapClient implements Constants {
 		List<SoapObject> resultado = (List<SoapObject>) sobre.getResponse();
 
 		for (SoapObject miresultado : resultado) {
-			Alcaldia alcaldia = new Alcaldia(Integer.parseInt(miresultado.getProperty("idAlcaldia").toString()),
-					miresultado.getProperty("nombreMunicipio").toString(),
-					miresultado.getProperty("nombreAlcaldia").toString(), 
-					miresultado.getProperty("directorAlcaldia").toString(), 
-					miresultado.getProperty("direccionAlcaldia").toString(),
-					miresultado.getProperty("telefonoAlcaldia").toString(), 
-					miresultado.getProperty("webAlcaldia").toString(), 
-					miresultado.getProperty("correoAlcaldia").toString(),
-					miresultado.getProperty("fecha").toString(),
-					Integer.parseInt(miresultado.getProperty("estado").toString()));
+			Alcaldia alcaldia = new Alcaldia(Integer.parseInt(miresultado
+					.getProperty("idAlcaldia").toString()), miresultado
+					.getProperty("nombreMunicipio").toString(), miresultado
+					.getProperty("nombreAlcaldia").toString(), miresultado
+					.getProperty("directorAlcaldia").toString(), miresultado
+					.getProperty("direccionAlcaldia").toString(), miresultado
+					.getProperty("telefonoAlcaldia").toString(), miresultado
+					.getProperty("webAlcaldia").toString(), miresultado
+					.getProperty("correoAlcaldia").toString(), miresultado
+					.getProperty("fecha").toString(),
+					Integer.parseInt(miresultado.getProperty("estado")
+							.toString()));
 			alcaldias.add(alcaldia);
 
 		}
@@ -159,9 +175,9 @@ public class SoapClient implements Constants {
 	public static List<Tramite> ListarTramites(String fecha)
 			throws XmlPullParserException, IOException {
 		final String Metodo = "listarTramitesPorPerfiles";
-		final String accionSoap = namespace + Metodo;
+		final String accionSoap = NAMESPACE + Metodo;
 		// request
-		SoapObject request = new SoapObject(namespace, Metodo);
+		SoapObject request = new SoapObject(NAMESPACE, Metodo);
 		PropertyInfo pi1 = new PropertyInfo();
 		pi1.setName("fecha");
 		pi1.setValue(fecha);
@@ -174,7 +190,7 @@ public class SoapClient implements Constants {
 		sobre.setOutputSoapObject(request);
 
 		// Modelo Trasporte
-		HttpTransportSE transporte = new HttpTransportSE(url);
+		HttpTransportSE transporte = new HttpTransportSE(WEB_SERVICE_URL);
 		// llamada
 		transporte.call(accionSoap, sobre);
 		// Resultado
@@ -183,20 +199,20 @@ public class SoapClient implements Constants {
 		List<SoapObject> resultado = (List<SoapObject>) sobre.getResponse();
 
 		for (SoapObject miresultado : resultado) {
-			Tramite tramite = new Tramite(Integer.parseInt(miresultado.getProperty("idTramite").toString()), 
-					miresultado.getProperty("nombreTramite").toString(), 
-					miresultado.getProperty("telefono").toString(), 
-					miresultado.getProperty("horarios").toString(), 
-					miresultado.getProperty("direccion").toString(), 
-					miresultado.getProperty("descripcion").toString(), 
-					miresultado.getProperty("costo").toString(), 
-					miresultado.getProperty("requisitos").toString(), 
-					miresultado.getProperty("fecha").toString(), 
-					Integer.parseInt(miresultado.getProperty("idPerfil").toString()));
+			Tramite tramite = new Tramite(Integer.parseInt(miresultado
+					.getProperty("idTramite").toString()), miresultado
+					.getProperty("nombreTramite").toString(), miresultado
+					.getProperty("telefono").toString(), miresultado
+					.getProperty("horarios").toString(), miresultado
+					.getProperty("direccion").toString(), miresultado
+					.getProperty("descripcion").toString(), miresultado
+					.getProperty("costo").toString(), miresultado.getProperty(
+					"requisitos").toString(), miresultado.getProperty("fecha")
+					.toString(), Integer.parseInt(miresultado.getProperty(
+					"idPerfil").toString()));
 			tramites.add(tramite);
 
 		}
 		return tramites;
 	}
-
 }
