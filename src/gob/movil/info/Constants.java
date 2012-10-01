@@ -41,8 +41,8 @@ public interface Constants extends BaseColumns {
 	public static final String OR = " OR ";
 	public static final int VIBRATION_ERROR = 80;
 	public static final int VIBRATION_INTENT = 30;
-	public static final String namespace = "http://www.cnti.gob.ve/servicio/ServicioDirectorioEstadoVenezolano";
-	public static final String url = "http://10.16.17.101:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
+	public static final String NAMESPACE = "http://www.cnti.gob.ve/servicio/ServicioDirectorioEstadoVenezolano";
+	public static final String WEB_SERVICE_URL = "http://10.16.17.101:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
 	public static final String DB_PATH = "/data/data/gob.movil/databases/";
 
 }
