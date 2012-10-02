@@ -126,10 +126,7 @@ public class Update extends Main {
 	}
 
 	/**
-	 * Separación de la lógica de actualización.
-	 * 
-	 * @param dialog
-	 *            Diálogo donde se lleva a cabo la actualización.
+	 * Separación de la lógica de la actualización.
 	 */
 	private void update() {
 		String fecha = helper.fechaActualizacion();
@@ -141,7 +138,6 @@ public class Update extends Main {
 			helper.updateFecha();
 			resultado.clear();
 		} catch (XmlPullParserException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			if (e.getMessage().equals("Exception"))
