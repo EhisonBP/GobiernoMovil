@@ -74,7 +74,8 @@ public class Update extends Main {
 		builder.setPositiveButton(R.string.yes,
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						update(dialog);
+						dialog.cancel();
+						update();
 					}
 				});
 		builder.setNegativeButton(R.string.no,
@@ -130,7 +131,7 @@ public class Update extends Main {
 	 * @param dialog
 	 *            Diálogo donde se lleva a cabo la actualización.
 	 */
-	private void update(DialogInterface dialog) {
+	private void update() {
 		String fecha = helper.fechaActualizacion();
 		int errorException = 0;
 		int errorConection = 0;
@@ -175,11 +176,10 @@ public class Update extends Main {
 				errorConection++;
 			}
 		}
-		dialog.dismiss();
 		if (errorException == 3)
-			MessageUpdateComplete();
+			messageUpdateComplete();
 		if (errorConection > 0)
-			UpdateMessageError();
+			updateMessageError();
 	}
 
 	public void updateAgencies(List<Institucion> resultado) {
@@ -246,7 +246,7 @@ public class Update extends Main {
 	 * Mensaje en caso de que la base de datos ya se encuentre actualizada a la
 	 * fecha.
 	 */
-	private void MessageUpdateComplete() {
+	private void messageUpdateComplete() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.warning);
 		builder.setMessage(R.string.message_updated_version);
@@ -266,7 +266,7 @@ public class Update extends Main {
 	 * Mensaje usado en caso de no existir conexión con el servicio web o falla
 	 * en la señal del dispositivo.
 	 */
-	private void UpdateMessageError() {
+	private void updateMessageError() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.warning);
 		builder.setMessage(R.string.message_connection_error);
@@ -274,7 +274,8 @@ public class Update extends Main {
 		builder.setPositiveButton(R.string.try_again,
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						update(dialog);
+						dialog.dismiss();
+						update();
 					}
 				});
 		builder.setNegativeButton(R.string.cancel,
