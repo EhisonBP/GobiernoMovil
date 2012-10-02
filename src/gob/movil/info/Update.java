@@ -17,10 +17,20 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
+/**
+ * Clase de actualización de los datos de la aplicación conforme a los otorgados
+ * por el servicio web.
+ * 
+ * @author Ehison Pérez
+ * @author Richard Ricciardelli
+ * 
+ */
 public class Update extends Main {
+	/**
+	 * Diálogo de progreso de actualización de los datos.
+	 */
 	ProgressDialog progressDialog;
 
 	@Override
@@ -29,6 +39,10 @@ public class Update extends Main {
 		updateConfirmation();
 	}
 
+	/**
+	 * Muestra mensaje de confirmación al usuario final sobre si realmente desea
+	 * actualizar la base de datos.
+	 */
 	public void updateConfirmation() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.confirm);
@@ -52,22 +66,51 @@ public class Update extends Main {
 		alert.show();
 	}
 
+	/**
+	 * Comienza el proceso de actualización de los datos, iniciando el diálogo
+	 * de progreso y el proceso asíncrono de actualización de los datos en
+	 * segundo plano.
+	 */
 	public void startUpdatingProcess() {
 		progressDialog = ProgressDialog.show(this,
 				getString(R.string.updating), getString(R.string.please_wait));
 		new ProgressTask().execute((Void) null);
 	}
 
+	/**
+	 * Clase asíncrona de progreso para la actualización de los datos con todos
+	 * los parámetros vacíos debido a que no se está usando una barra de
+	 * progreso con números sino un Spinner indeterminado.
+	 * 
+	 * @author Ehison Pérez
+	 * @author Richard Ricciardelli
+	 * 
+	 */
 	class ProgressTask extends AsyncTask<Void, Void, Void> {
+		/**
+		 * Contador de errores de conexión y red.
+		 */
 		private int errorConnection = 0;
+		/**
+		 * Contador de excepciones durante la actualización de los datos.
+		 */
 		private int errorException = 0;
 
+		/**
+		 * Sobreescribiendo el método para tarea asíncrona en segundo plano de
+		 * actualización de datos.
+		 */
 		@Override
 		protected Void doInBackground(Void... params) {
 			update();
 			return null;
 		}
 
+		/**
+		 * Sobreescribiendo el método para realizar comprobaciones de variables
+		 * de errores y mostrar el mensaje adecuado conforme la situación y el
+		 * resultado.
+		 */
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
@@ -85,8 +128,12 @@ public class Update extends Main {
 			}
 		}
 
+		/**
+		 * Lógica del negocio del método de actualización de datos.
+		 * 
+		 * @author Ehison Pérez
+		 */
 		private void update() {
-			Log.i("UPDATING...", "PLEASE WAIT...");
 			String fecha = helper.fechaActualizacion();
 			try {
 				List<Tramite> resultado = SoapClient.ListarTramites(fecha);
@@ -123,15 +170,22 @@ public class Update extends Main {
 			} catch (XmlPullParserException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
-				if (e.getMessage().equals("Exception")) {
+				if (e.getMessage().equals("Exception"))
 					errorException++;
-				} else {
+				else
 					errorConnection++;
-				}
 			}
 			progressDialog.dismiss();
 		}
 
+		/**
+		 * Método que actualiza las instituciones.
+		 * 
+		 * @param resultado
+		 *            Listado de instituciones
+		 * @author Ehison Pérez
+		 * 
+		 */
 		private void updateAgencies(List<Institucion> resultado) {
 			if (resultado != null) {
 				for (int i = 0; i < resultado.size(); i++) {
@@ -164,6 +218,14 @@ public class Update extends Main {
 			}
 		}
 
+		/**
+		 * Método que actualiza las alcaldías.
+		 * 
+		 * @param resultado
+		 *            Listado de alcaldías
+		 * @author Ehison Pérez
+		 * 
+		 */
 		private void updateMayoralties(List<Alcaldia> resultado) {
 			if (resultado != null) {
 				for (int i = 0; i < resultado.size(); i++) {
@@ -194,6 +256,14 @@ public class Update extends Main {
 			}
 		}
 
+		/**
+		 * Método que actualiza los trámites.
+		 * 
+		 * @param resultado
+		 *            Listado de trámites
+		 * @author Ehison Pérez
+		 * 
+		 */
 		private void updateProcedures(List<Tramite> resultado) {
 			if (resultado != null) {
 				for (int i = 0; i < resultado.size(); i++) {
@@ -224,6 +294,23 @@ public class Update extends Main {
 			}
 		}
 
+		/**
+		 * Método optimizado para mostrar mensajes de error en un diálogo.
+		 * 
+		 * @param title
+		 *            Título del diálogo
+		 * @param message
+		 *            Mensaje del diálogo
+		 * @param positive
+		 *            Botón positivo
+		 * @param negative
+		 *            Botón negativo
+		 * @param error
+		 *            <code>true</code> si se está mostrando un error
+		 * 
+		 * @author Richard Ricciardelli
+		 * 
+		 */
 		private void showAlertDialog(int title, int message, int positive,
 				int negative, final boolean error) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(Update.this);
