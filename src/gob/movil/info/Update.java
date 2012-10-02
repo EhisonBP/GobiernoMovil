@@ -1,24 +1,3 @@
-/*
- * Licencia GPL v3
- * 
- * Copyright (C) 2012 Centro Nacional de Tecnologías de Información.
- * Gobierno Móvil es un producto de Gobierno en Línea Venezuela.
- * 
- * Copyright (C) 2012 Richard Ricciardelli. All Rights Reserved.
- * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or any
- * later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see http://www.gnu.org/licenses
- */
 package gob.movil.info;
 
 import gob.movil.R;
@@ -38,39 +17,30 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 
-/**
- * Clase para actualizar la base de datos realizando una conexión al servicio
- * web de Gobierno en Línea.
- * 
- * @author Ehison Pérez
- * 
- */
 public class Update extends Main {
-	ProgressDialog progress;
-
-	@Override
-	public void crearBBDD() {
-		super.crearBBDD();
-	}
+	// Static so that the thread access the latest attribute
+	private static ProgressDialog progressDialog;
+	private static Handler handler;
+	private Thread thread;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		UpdateMessage();
+		// setContentView(R.layout.main);
+		// create a handler to update the ui
+		handler = new Handler();
+		// check if the thread is already running
+		thread = (Thread) getLastNonConfigurationInstance();
+		if (thread != null && thread.isAlive()) {
+			showProgressDialog();
+		}
+		updateConfirmation(this);
 	}
 
-	// TODO What's this?
-	/**
-	 * Mensaje que mostrara mientras los usuarios espera que se carguen los
-	 * nuevos datos
-	 */
-
-	/**
-	 * Mensaje usado al presionar el botón actualizar del menú principal
-	 */
-	private void UpdateMessage() {
-		final Context context = this;
+	public void updateConfirmation(final Context context) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setTitle(R.string.confirm);
 		builder.setMessage(R.string.message_update);
@@ -78,15 +48,16 @@ public class Update extends Main {
 		builder.setPositiveButton(R.string.yes,
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
 						dialog.cancel();
-						progress = ProgressDialog.show(context, "Updating",
-								"Please, wait...", true);
+						startThread();
 						update();
 					}
 				});
 		builder.setNegativeButton(R.string.no,
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
 						dialog.cancel();
 						finish();
 					}
@@ -95,49 +66,44 @@ public class Update extends Main {
 		alert.show();
 	}
 
-	/**
-	 * Procedimiento para la actualización de la tabla de trámites.
-	 * 
-	 * @param resultado
-	 *            Listado de trámites
-	 */
-	public void updateProcedures(List<Tramite> resultado) {
-		if (resultado != null) {
-			for (int i = 0; i < resultado.size(); i++) {
-				if (helper.updateDatabaseProcedures(resultado.get(i)
-						.getIdTramite())) {
-					helper.updateDatabaseProcedures(resultado.get(i)
-							.getNombreTramite(), resultado.get(i)
-							.getRequisitos(), resultado.get(i).getHorarios(),
-							resultado.get(i).getCosto(), resultado.get(i)
-									.getDescripcion(), resultado.get(i)
-									.getTelefono(), resultado.get(i)
-									.getDireccion(), resultado.get(i)
-									.getIdTramite(), resultado.get(i)
-									.getIPerfil());
-				} else {
-					helper.insertDatabaseProcedures(resultado.get(i)
-							.getNombreTramite(), resultado.get(i)
-							.getRequisitos(), resultado.get(i).getHorarios(),
-							resultado.get(i).getCosto(), resultado.get(i)
-									.getDescripcion(), resultado.get(i)
-									.getTelefono(), resultado.get(i)
-									.getDireccion(), resultado.get(i)
-									.getIdTramite(), resultado.get(i)
-									.getIPerfil());
-				}
-			}
-			resultado.clear();
-		}
+	@Override
+	public void crearBBDD() {
+		super.crearBBDD();
 	}
 
-	/**
-	 * Separación de la lógica de la actualización.
-	 */
+	public void startThread() {
+		showProgressDialog();
+		thread = new MyThread();
+		thread.start();
+	}
+
+	public void showProgressDialog() {
+		progressDialog = ProgressDialog.show(this, "Download", "downloading",
+				true);
+	}
+
+	// Save the thread
+	@Override
+	public Object onRetainNonConfigurationInstance() {
+		return thread;
+	}
+
+	// dismiss dialog if activity is destroyed
+	@Override
+	protected void onDestroy() {
+		if (progressDialog != null && progressDialog.isShowing()) {
+			progressDialog.dismiss();
+			progressDialog = null;
+		}
+		super.onDestroy();
+	}
+
 	private void update() {
+		// TODO Update logic here!
+		Log.i("UPDATING...", "PLEASE WAIT...");
 		String fecha = helper.fechaActualizacion();
 		int errorException = 0;
-		int errorConection = 0;
+		int errorConnection = 0;
 		try {
 			List<Tramite> resultado = SoapClient.ListarTramites(fecha);
 			updateProcedures(resultado);
@@ -149,7 +115,7 @@ public class Update extends Main {
 			if (e.getMessage().equals("Exception"))
 				errorException++;
 			else
-				errorConection++;
+				errorConnection++;
 		}
 		try {
 			List<Institucion> resultado = SoapClient.ListarInstituciones(fecha);
@@ -162,7 +128,7 @@ public class Update extends Main {
 			if (e.getMessage().equals("Exception"))
 				errorException++;
 			else
-				errorConection++;
+				errorConnection++;
 		}
 		try {
 			List<Alcaldia> resultado = SoapClient.ListarAlcaldias(fecha);
@@ -175,18 +141,20 @@ public class Update extends Main {
 			if (e.getMessage().equals("Exception")) {
 				errorException++;
 			} else {
-				errorConection++;
+				errorConnection++;
 			}
 		}
 		// TODO Va tan rápido que no hay tiempo para que aparezca la barra de
 		// progreso.
 		if (errorException == 3) {
-			progress.dismiss();
-			messageUpdateComplete();
+			handler.post(new MyRunnable());
+			Log.i("EXCEPTION", "ERROR EXCEPTION => " + errorException);
+			// messageUpdateComplete();
 		}
-		if (errorConection > 0) {
-			progress.dismiss();
-			updateMessageError();
+		if (errorConnection > 0) {
+			handler.post(new MyRunnable());
+			Log.i("CONNECTION", "ERROR CONNECTION => " + errorConnection);
+			// updateMessageError();
 		}
 	}
 
@@ -250,50 +218,54 @@ public class Update extends Main {
 		}
 	}
 
-	/**
-	 * Mensaje en caso de que la base de datos ya se encuentre actualizada a la
-	 * fecha.
-	 */
-	private void messageUpdateComplete() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle(R.string.warning);
-		builder.setMessage(R.string.message_updated_version);
-		builder.setCancelable(false);
-		builder.setPositiveButton(R.string.ok,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.cancel();
-						finish();
-					}
-				});
-		AlertDialog alert = builder.create();
-		alert.show();
+	public void updateProcedures(List<Tramite> resultado) {
+		if (resultado != null) {
+			for (int i = 0; i < resultado.size(); i++) {
+				if (helper.updateDatabaseProcedures(resultado.get(i)
+						.getIdTramite())) {
+					helper.updateDatabaseProcedures(resultado.get(i)
+							.getNombreTramite(), resultado.get(i)
+							.getRequisitos(), resultado.get(i).getHorarios(),
+							resultado.get(i).getCosto(), resultado.get(i)
+									.getDescripcion(), resultado.get(i)
+									.getTelefono(), resultado.get(i)
+									.getDireccion(), resultado.get(i)
+									.getIdTramite(), resultado.get(i)
+									.getIPerfil());
+				} else {
+					helper.insertDatabaseProcedures(resultado.get(i)
+							.getNombreTramite(), resultado.get(i)
+							.getRequisitos(), resultado.get(i).getHorarios(),
+							resultado.get(i).getCosto(), resultado.get(i)
+									.getDescripcion(), resultado.get(i)
+									.getTelefono(), resultado.get(i)
+									.getDireccion(), resultado.get(i)
+									.getIdTramite(), resultado.get(i)
+									.getIPerfil());
+				}
+			}
+			resultado.clear();
+		}
 	}
 
-	/**
-	 * Mensaje usado en caso de no existir conexión con el servicio web o falla
-	 * en la señal del dispositivo.
-	 */
-	private void updateMessageError() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle(R.string.warning);
-		builder.setMessage(R.string.message_connection_error);
-		builder.setCancelable(false);
-		builder.setPositiveButton(R.string.try_again,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-						update();
-					}
-				});
-		builder.setNegativeButton(R.string.cancel,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.cancel();
-						finish();
-					}
-				});
-		AlertDialog alert = builder.create();
-		alert.show();
+	public class MyThread extends Thread {
+		@Override
+		public void run() {
+			// Simulate a slow network
+			// try {
+			// update();
+			// new Thread().sleep(true);
+			// } catch (InterruptedException e) {
+			// e.printStackTrace();
+			// }
+			// update();
+			// handler.post(new MyRunnable());
+		}
+	}
+
+	static public class MyRunnable implements Runnable {
+		public void run() {
+			progressDialog.dismiss();
+		}
 	}
 }
