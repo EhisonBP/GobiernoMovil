@@ -166,5 +166,7 @@
     <string name="about_summary">Acerca de esta aplicación</string>
     <string name="about_title">Versión %1$s</string>
     <string name="version">1.5.1</string>
+    <string name="updating">Actualizando</string>
+    <string name="please_wait">Por favor, espere...</string>
     
 </resources>

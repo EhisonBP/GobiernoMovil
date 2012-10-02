@@ -162,5 +162,7 @@
     <string name="ic_government_color_description">Tap here to send an email to venezuelan government</string>
     <string name="about_summary">About this application</string>
     <string name="about_title">Version %1$s</string>
+    <string name="updating">Updating</string>
+    <string name="please_wait">Please wait...</string>
 
 </resources>
