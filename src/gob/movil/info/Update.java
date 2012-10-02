@@ -34,6 +34,8 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -45,6 +47,7 @@ import android.os.Bundle;
  * 
  */
 public class Update extends Main {
+	ProgressDialog progress;
 
 	@Override
 	public void crearBBDD() {
@@ -67,7 +70,8 @@ public class Update extends Main {
 	 * Mensaje usado al presionar el botón actualizar del menú principal
 	 */
 	private void UpdateMessage() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		final Context context = this;
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setTitle(R.string.confirm);
 		builder.setMessage(R.string.message_update);
 		builder.setCancelable(false);
@@ -75,6 +79,8 @@ public class Update extends Main {
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.cancel();
+						progress = ProgressDialog.show(context, "Updating",
+								"Please, wait...", true);
 						update();
 					}
 				});
@@ -172,10 +178,16 @@ public class Update extends Main {
 				errorConection++;
 			}
 		}
-		if (errorException == 3)
+		// TODO Va tan rápido que no hay tiempo para que aparezca la barra de
+		// progreso.
+		if (errorException == 3) {
+			progress.dismiss();
 			messageUpdateComplete();
-		if (errorConection > 0)
+		}
+		if (errorConection > 0) {
+			progress.dismiss();
 			updateMessageError();
+		}
 	}
 
 	public void updateAgencies(List<Institucion> resultado) {
