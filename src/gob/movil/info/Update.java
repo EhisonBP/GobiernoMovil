@@ -78,7 +78,8 @@ public class Update extends Main {
 	}
 
 	public void showProgressDialog() {
-		progressDialog = ProgressDialog.show(this, "Download", "downloading",
+		progressDialog = ProgressDialog.show(this,
+				getString(R.string.updating), getString(R.string.please_wait),
 				true);
 	}
 
@@ -144,9 +145,7 @@ public class Update extends Main {
 				errorConnection++;
 			}
 		}
-		// TODO Va tan rápido que no hay tiempo para que aparezca la barra de
-		// progreso.
-		if (errorException == 3) {
+		if (errorException == 4) {
 			handler.post(new MyRunnable());
 			Log.i("EXCEPTION", "ERROR EXCEPTION => " + errorException);
 			showAlertDialog(R.string.warning, R.string.message_updated_version,
