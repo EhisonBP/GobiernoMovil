@@ -145,7 +145,7 @@ public class Update extends Main {
 				errorConnection++;
 			}
 		}
-		if (errorException == 4) {
+		if (errorException == 3) {
 			handler.post(new MyRunnable());
 			Log.i("EXCEPTION", "ERROR EXCEPTION => " + errorException);
 			showAlertDialog(R.string.warning, R.string.message_updated_version,
