@@ -149,13 +149,44 @@ public class Update extends Main {
 		if (errorException == 3) {
 			handler.post(new MyRunnable());
 			Log.i("EXCEPTION", "ERROR EXCEPTION => " + errorException);
+			showAlertDialog(R.string.warning, R.string.message_updated_version,
+					R.string.ok, R.string.cancel, false);
 			// messageUpdateComplete();
-		}
-		if (errorConnection > 0) {
+		} else if (errorConnection > 0) {
 			handler.post(new MyRunnable());
 			Log.i("CONNECTION", "ERROR CONNECTION => " + errorConnection);
+			showAlertDialog(R.string.warning,
+					R.string.message_connection_error, R.string.try_again,
+					R.string.cancel, true);
 			// updateMessageError();
 		}
+	}
+
+	private void showAlertDialog(int title, int message, int positive,
+			int negative, final boolean error) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(title);
+		builder.setMessage(message);
+		builder.setCancelable(false);
+		builder.setPositiveButton(positive,
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						if (error)
+							update();
+						else
+							finish();
+					}
+				});
+		builder.setNegativeButton(negative,
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.cancel();
+						finish();
+					}
+				});
+		AlertDialog alert = builder.create();
+		alert.show();
 	}
 
 	public void updateAgencies(List<Institucion> resultado) {
