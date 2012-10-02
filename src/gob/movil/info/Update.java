@@ -51,7 +51,6 @@ public class Update extends Main {
 						// TODO Auto-generated method stub
 						dialog.cancel();
 						startThread();
-						update();
 					}
 				});
 		builder.setNegativeButton(R.string.no,
@@ -288,8 +287,8 @@ public class Update extends Main {
 			// } catch (InterruptedException e) {
 			// e.printStackTrace();
 			// }
-			// update();
-			// handler.post(new MyRunnable());
+			update();
+			handler.post(new MyRunnable());
 		}
 	}
 
