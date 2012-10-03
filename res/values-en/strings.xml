@@ -164,5 +164,7 @@
     <string name="about_title">Version %1$s</string>
     <string name="updating">Updating</string>
     <string name="please_wait">Please wait...</string>
+    <string name="connection_error">Connection error</string>
+    <string name="connection_unavailable">Connection unavailable</string>
 
 </resources>
