@@ -14,7 +14,10 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -102,7 +105,13 @@ public class Update extends Main {
 		 */
 		@Override
 		protected Void doInBackground(Void... params) {
-			update();
+			try {
+				Thread.sleep(WAITING_PERIOD);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			if (isOnline())
+				update();
 			return null;
 		}
 
@@ -114,18 +123,22 @@ public class Update extends Main {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			if (errorException == 3) {
+			progressDialog.dismiss();
+			if (!isOnline())
+				showAlertDialog(R.string.connection_error,
+						R.string.connection_unavailable, R.string.try_again,
+						R.string.cancel, true);
+			else if (errorException == 3)
 				showAlertDialog(R.string.warning,
 						R.string.message_updated_version, R.string.ok,
 						R.string.cancel, false);
-			} else if (errorConnection > 0) {
+			else if (errorConnection > 0)
 				showAlertDialog(R.string.warning,
 						R.string.message_connection_error, R.string.try_again,
 						R.string.cancel, true);
-			} else {
+			else
 				Toast.makeText(Update.this, getString(R.string.full_update),
 						Toast.LENGTH_LONG).show();
-			}
 		}
 
 		/**
@@ -175,7 +188,6 @@ public class Update extends Main {
 				else
 					errorConnection++;
 			}
-			progressDialog.dismiss();
 		}
 
 		/**
@@ -321,8 +333,14 @@ public class Update extends Main {
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
+							// Si es un diálogo de error, permitir generar
+							// nuevamente el proceso de actualización para
+							// intentar otra vez.
 							if (error) {
-								progressDialog.show();
+								progressDialog = ProgressDialog.show(
+										Update.this,
+										getString(R.string.updating),
+										getString(R.string.please_wait));
 								new ProgressTask().execute((Void) null);
 							} else
 								finish();
@@ -338,5 +356,19 @@ public class Update extends Main {
 			AlertDialog alert = builder.create();
 			alert.show();
 		}
+	}
+
+	/**
+	 * Permite conocer si el dispositivo se encuentra conectado a Internet.
+	 * 
+	 * @return <code>true</code> si está conectado, <code>false</code> de lo
+	 *         contrario.
+	 * @author Richard Ricciardelli
+	 * 
+	 */
+	public boolean isOnline() {
+		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+		return networkInfo != null && networkInfo.isConnectedOrConnecting();
 	}
 }
