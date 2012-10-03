@@ -75,6 +75,10 @@ public class SoapClient implements Constants {
 				SoapEnvelope.VER11);
 		sobre.dotNet = false;
 		sobre.setOutputSoapObject(request);
+		// TODO Supuestamente debería manejarse el Connection Timeout de esta
+		// manera pero parece que no genera ningún efecto. He leído sobre esto y
+		// parece que es en la versión 2.5 de ksoap que funciona bien, pero esta
+		// es una versión posterior así que no lo comprendo del todo.
 		/**
 		 * Modelo transporte.
 		 */
