@@ -17,7 +17,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -322,7 +321,6 @@ public class Update extends Main {
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
-							Log.i("ERROR => ", "" + error);
 							if (error) {
 								progressDialog.show();
 								new ProgressTask().execute((Void) null);
