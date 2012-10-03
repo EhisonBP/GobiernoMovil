@@ -78,7 +78,8 @@ public class SoapClient implements Constants {
 		/**
 		 * Modelo transporte.
 		 */
-		HttpTransportSE transporte = new HttpTransportSE(WEB_SERVICE_URL);
+		HttpTransportSE transporte = new HttpTransportSE(WEB_SERVICE_URL,
+				CONNECTION_TIMEOUT);
 		/**
 		 * Llamada.
 		 */
