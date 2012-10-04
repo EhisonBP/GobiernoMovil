@@ -41,7 +41,7 @@ public interface Constants extends BaseColumns {
 	public static final String OR = " OR ";
 	public static final int VIBRATION_ERROR = 80;
 	public static final int VIBRATION_INTENT = 30;
-	public static final int WAITING_PERIOD = 3000;
+	public static final int WAITING_PERIOD = 2000;
 	public static final int CONNECTION_TIMEOUT = 1000; // 8000
 	public static final String NAMESPACE = "http://www.cnti.gob.ve/servicio/ServicioDirectorioEstadoVenezolano";
 	public static final String WEB_SERVICE_URL = "http://192.168.1.100:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
