@@ -9,21 +9,19 @@ Módulos
 
 Directorio
 ==========
+Módulo que muestra información sobre el directorio del Estado venezolano. Organizado por poderes estatales.
 
 Trámites
 ========
+Módulo que muestra información sobre los trámites de las instituciones públicas del Estado venezolano.
 
 Gobierno
 ========
-
-Cliente Twitter
-===============
-
-Servicio INAMEH
-===============
+Módulo que permite enviar un correo electrónico al ente desarrollador de la aplicación.
 
 Acerca de
 =========
+Desarrollada por Richard Ricciardelli para el Centro Nacional de Tecnologías de Información. Modificaciones al código fuente a partir de la versión 1.5 de parte de Ehison Pérez.
 
 Licencia GPL v3
 ###############
