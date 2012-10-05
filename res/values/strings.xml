@@ -170,5 +170,8 @@
     <string name="please_wait">Por favor, espere...</string>
     <string name="connection_error">Error de conexión</string>
     <string name="connection_unavailable">Conexión no disponible</string>
+    <string name="automatic_update_summary_off">Actualización automática desactivada</string>
+    <string name="automatic_update_summary_on">Actualización automática activada</string>
+    <string name="automatic_update">Actualización automática</string>
     
 </resources>
