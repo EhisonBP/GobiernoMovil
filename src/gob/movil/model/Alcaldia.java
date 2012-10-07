@@ -22,7 +22,7 @@
 package gob.movil.model;
 
 /**
- * Modelo de alcaldías.
+ * Modelo de datos para alcaldías.
  * 
  * @author Ehison Pérez
  * 

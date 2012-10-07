@@ -22,7 +22,7 @@
 package gob.movil.model;
 
 /**
- * Módelo de trámites.
+ * Módelo de datospara los trámites.
  * 
  * @author Ehison Pérez
  * 

@@ -22,7 +22,7 @@
 package gob.movil.model;
 
 /**
- * Modelo de instituciones.
+ * Modelo de datos para las instituciones.
  * 
  * @author Ehison Pérez
  * 

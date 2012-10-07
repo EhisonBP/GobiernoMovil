@@ -38,6 +38,7 @@ import android.widget.Toast;
  * Clase de preferencias de la aplicación.
  * 
  * @author Richard Ricciardelli
+ * @author Ehison Perez
  * 
  */
 public class Preferences extends PreferenceActivity {
