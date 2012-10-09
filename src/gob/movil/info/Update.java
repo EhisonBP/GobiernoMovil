@@ -170,7 +170,7 @@ public class Update extends Main {
 		private void update() {
 			String fecha = helper.fechaActualizacion();
 			try {
-				List<Tramite> resultado = SoapClient.ListarTramites(fecha);
+				List<Tramite> resultado = SoapClient.ListarTramites(fecha, 1);
 				updateProcedures(resultado);
 				helper.updateFecha();
 				resultado.clear();
@@ -184,7 +184,7 @@ public class Update extends Main {
 			}
 			try {
 				List<Institucion> resultado = SoapClient
-						.ListarInstituciones(fecha);
+						.ListarInstituciones(fecha, 1);
 				updateAgencies(resultado);
 				helper.updateFecha();
 				resultado.clear();
@@ -197,7 +197,7 @@ public class Update extends Main {
 					errorConnection++;
 			}
 			try {
-				List<Alcaldia> resultado = SoapClient.ListarAlcaldias(fecha);
+				List<Alcaldia> resultado = SoapClient.ListarAlcaldias(fecha, 1);
 				updateMayoralties(resultado);
 				helper.updateFecha();
 				resultado.clear();
@@ -222,8 +222,8 @@ public class Update extends Main {
 		private void updateAgencies(List<Institucion> resultado) {
 			if (resultado != null) {
 				for (int i = 0; i < resultado.size(); i++) {
-					if (helper.updateDatabaseAgencies(resultado.get(i)
-							.getIdInstitucion())) {
+					if (helper.seekRegistration(resultado.get(i)
+							.getIdInstitucion(), AGENCIES)) {
 						helper.updateDatabaseAgencies(resultado.get(i)
 								.getNombreSector(), resultado.get(i)
 								.getDirector(), resultado.get(i)
@@ -262,8 +262,8 @@ public class Update extends Main {
 		private void updateMayoralties(List<Alcaldia> resultado) {
 			if (resultado != null) {
 				for (int i = 0; i < resultado.size(); i++) {
-					if (helper.updateDatabaseMayoralties(resultado.get(i)
-							.getIdAlcaldia())) {
+					if (helper.seekRegistration(resultado.get(i)
+							.getIdAlcaldia(), MAYORALTIES)) {
 						helper.updateDatabaseMayoralties(resultado.get(i)
 								.getNombreAlcaldia(), resultado.get(i)
 								.getDirectorALcaldia(), resultado.get(i)
@@ -300,8 +300,8 @@ public class Update extends Main {
 		private void updateProcedures(List<Tramite> resultado) {
 			if (resultado != null) {
 				for (int i = 0; i < resultado.size(); i++) {
-					if (helper.updateDatabaseProcedures(resultado.get(i)
-							.getIdTramite())) {
+					if (helper.seekRegistration(resultado.get(i)
+							.getIdTramite(), PROCEDURES)) {
 						helper.updateDatabaseProcedures(resultado.get(i)
 								.getNombreTramite(), resultado.get(i)
 								.getRequisitos(), resultado.get(i)

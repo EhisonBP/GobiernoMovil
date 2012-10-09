@@ -51,12 +51,13 @@ public class SoapClient implements Constants {
 	 * 
 	 * @param fecha
 	 *            Fecha de actualización.
+	 * @param metodo
 	 * @return Lista de instituciones.
 	 * @throws XmlPullParserException
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public static List<Institucion> ListarInstituciones(String fecha)
+	public static List<Institucion> ListarInstituciones(String fecha, int metodo)
 			throws XmlPullParserException, IOException {
 		final String Metodo = "listarInstitucionesPorPoder";
 		final String accionSoap = NAMESPACE + Metodo;
@@ -93,21 +94,44 @@ public class SoapClient implements Constants {
 		 */
 		ArrayList<Institucion> instituciones = new ArrayList<Institucion>();
 		List<SoapObject> resultado = (List<SoapObject>) sobre.getResponse();
-		for (SoapObject miresultado : resultado) {
-			Institucion institucion = new Institucion(
-					Integer.parseInt(miresultado.getProperty("idInstitucion")
+		switch (metodo) {
+			case 1:
+				for (SoapObject miresultado : resultado) {
+					Institucion institucion = new Institucion(
+							Integer.parseInt(miresultado.getProperty("idInstitucion")
 							.toString()), miresultado.getProperty(
 							"nombreSector").toString(), miresultado
 							.getProperty("nombreInstitucion").toString(),
-					miresultado.getProperty("director").toString(), miresultado
+							miresultado.getProperty("director").toString(), miresultado
 							.getProperty("direccion").toString(), miresultado
 							.getProperty("telefono").toString(), miresultado
 							.getProperty("paginaWeb").toString(), miresultado
 							.getProperty("correoElect").toString(),
-					Integer.parseInt(miresultado.getProperty("poder")
+							Integer.parseInt(miresultado.getProperty("poder")
 							.toString()), miresultado.getProperty("fecha")
 							.toString());
-			instituciones.add(institucion);
+					instituciones.add(institucion);
+				}
+				break;
+			case 2:
+				for (SoapObject miresultado : resultado) {
+					Institucion institucion = new Institucion(
+							Integer.parseInt(miresultado.getProperty("idInstitucion")
+							.toString()), miresultado.getProperty(
+							"nombreSector").toString(), miresultado
+							.getProperty("nombreInstitucion").toString(),
+							miresultado.getProperty("director").toString(), miresultado
+							.getProperty("direccion").toString(), miresultado
+							.getProperty("telefono").toString(), miresultado
+							.getProperty("paginaWeb").toString(), miresultado
+							.getProperty("correoElect").toString(),
+							Integer.parseInt(miresultado.getProperty("poder")
+							.toString()), miresultado.getProperty("fecha")
+							.toString());
+					instituciones.add(institucion);
+					if (institucion != null)
+						break;
+				}
 		}
 		return instituciones;
 	}
@@ -122,7 +146,7 @@ public class SoapClient implements Constants {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public static List<Alcaldia> ListarAlcaldias(String fecha)
+	public static List<Alcaldia> ListarAlcaldias(String fecha, int metodo)
 			throws XmlPullParserException, IOException {
 		final String Metodo = "listarAlcaldia";
 		final String accionSoap = NAMESPACE + Metodo;
@@ -147,23 +171,44 @@ public class SoapClient implements Constants {
 
 		ArrayList<Alcaldia> alcaldias = new ArrayList<Alcaldia>();
 		List<SoapObject> resultado = (List<SoapObject>) sobre.getResponse();
+		switch (metodo) {
+			case 1:
+				for (SoapObject miresultado : resultado) {
+					Alcaldia alcaldia = new Alcaldia(Integer.parseInt(miresultado
+							.getProperty("idAlcaldia").toString()), miresultado
+							.getProperty("nombreMunicipio").toString(), miresultado
+							.getProperty("nombreAlcaldia").toString(), miresultado
+							.getProperty("directorAlcaldia").toString(), miresultado
+							.getProperty("direccionAlcaldia").toString(), miresultado
+							.getProperty("telefonoAlcaldia").toString(), miresultado
+							.getProperty("webAlcaldia").toString(), miresultado
+							.getProperty("correoAlcaldia").toString(), miresultado
+							.getProperty("fecha").toString(),
+							Integer.parseInt(miresultado.getProperty("estado")
+									.toString()));
+					alcaldias.add(alcaldia);
 
-		for (SoapObject miresultado : resultado) {
-			Alcaldia alcaldia = new Alcaldia(Integer.parseInt(miresultado
-					.getProperty("idAlcaldia").toString()), miresultado
-					.getProperty("nombreMunicipio").toString(), miresultado
-					.getProperty("nombreAlcaldia").toString(), miresultado
-					.getProperty("directorAlcaldia").toString(), miresultado
-					.getProperty("direccionAlcaldia").toString(), miresultado
-					.getProperty("telefonoAlcaldia").toString(), miresultado
-					.getProperty("webAlcaldia").toString(), miresultado
-					.getProperty("correoAlcaldia").toString(), miresultado
-					.getProperty("fecha").toString(),
-					Integer.parseInt(miresultado.getProperty("estado")
-							.toString()));
-			alcaldias.add(alcaldia);
-
-		}
+				}
+			break;
+			case 2:
+				for (SoapObject miresultado : resultado) {
+					Alcaldia alcaldia = new Alcaldia(Integer.parseInt(miresultado
+							.getProperty("idAlcaldia").toString()), miresultado
+							.getProperty("nombreMunicipio").toString(), miresultado
+							.getProperty("nombreAlcaldia").toString(), miresultado
+							.getProperty("directorAlcaldia").toString(), miresultado
+							.getProperty("direccionAlcaldia").toString(), miresultado
+							.getProperty("telefonoAlcaldia").toString(), miresultado
+							.getProperty("webAlcaldia").toString(), miresultado
+							.getProperty("correoAlcaldia").toString(), miresultado
+							.getProperty("fecha").toString(),
+							Integer.parseInt(miresultado.getProperty("estado")
+									.toString()));
+					alcaldias.add(alcaldia);
+					if (alcaldia != null)
+						break;
+				}
+			}
 		return alcaldias;
 	}
 
@@ -177,7 +222,7 @@ public class SoapClient implements Constants {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public static List<Tramite> ListarTramites(String fecha)
+	public static List<Tramite> ListarTramites(String fecha, int metodo)
 			throws XmlPullParserException, IOException {
 		final String Metodo = "listarTramitesPorPerfiles";
 		final String accionSoap = NAMESPACE + Metodo;
@@ -203,20 +248,40 @@ public class SoapClient implements Constants {
 		ArrayList<Tramite> tramites = new ArrayList<Tramite>();
 		List<SoapObject> resultado = (List<SoapObject>) sobre.getResponse();
 
-		for (SoapObject miresultado : resultado) {
-			Tramite tramite = new Tramite(Integer.parseInt(miresultado
-					.getProperty("idTramite").toString()), miresultado
-					.getProperty("nombreTramite").toString(), miresultado
-					.getProperty("telefono").toString(), miresultado
-					.getProperty("horarios").toString(), miresultado
-					.getProperty("direccion").toString(), miresultado
-					.getProperty("descripcion").toString(), miresultado
-					.getProperty("costo").toString(), miresultado.getProperty(
-					"requisitos").toString(), miresultado.getProperty("fecha")
-					.toString(), Integer.parseInt(miresultado.getProperty(
-					"idPerfil").toString()));
-			tramites.add(tramite);
-
+		switch (metodo) {
+			case 1:
+				for (SoapObject miresultado : resultado) {
+					Tramite tramite = new Tramite(Integer.parseInt(miresultado
+							.getProperty("idTramite").toString()), miresultado
+							.getProperty("nombreTramite").toString(), miresultado
+							.getProperty("telefono").toString(), miresultado
+							.getProperty("horarios").toString(), miresultado
+							.getProperty("direccion").toString(), miresultado
+							.getProperty("descripcion").toString(), miresultado
+							.getProperty("costo").toString(), miresultado.getProperty(
+									"requisitos").toString(), miresultado.getProperty("fecha")
+									.toString(), Integer.parseInt(miresultado.getProperty(
+											"idPerfil").toString()));
+					tramites.add(tramite);
+				}
+				break;
+			case 2:
+				for (SoapObject miresultado : resultado) {
+					Tramite tramite = new Tramite(Integer.parseInt(miresultado
+							.getProperty("idTramite").toString()), miresultado
+							.getProperty("nombreTramite").toString(), miresultado
+							.getProperty("telefono").toString(), miresultado
+							.getProperty("horarios").toString(), miresultado
+							.getProperty("direccion").toString(), miresultado
+							.getProperty("descripcion").toString(), miresultado
+							.getProperty("costo").toString(), miresultado.getProperty(
+									"requisitos").toString(), miresultado.getProperty("fecha")
+									.toString(), Integer.parseInt(miresultado.getProperty(
+											"idPerfil").toString()));
+					tramites.add(tramite);
+					if (tramite != null)
+						break;
+				}
 		}
 		return tramites;
 	}

@@ -334,19 +334,6 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 		db.close();
 	}
 
-	// TODO ¿Qué hace este método?
-	public boolean updateDatabaseProcedures(int identificador) {
-		db = getWritableDatabase();
-		int i = 0;
-		Cursor c = db.rawQuery("SELECT identificador FROM " + PROCEDURES
-				+ " WHERE identificador = " + identificador + "", null);
-		if (c.moveToFirst())
-			do {
-				i = c.getInt(0);
-			} while (c.moveToNext());
-		return i == identificador;
-	}
-
 	/**
 	 * Método para actualizar los datos de las instituciones dentro de la
 	 * aplicación en caso de que no exista.
@@ -381,19 +368,6 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 				+ " twitter = '" + correo + "'," + " poder = '" + poder + "'"
 				+ " WHERE identificador = " + identificador + "");
 		db.close();
-	}
-
-	// TODO ¿Qué hace este método?
-	public boolean updateDatabaseAgencies(int identificador) {
-		db = getWritableDatabase();
-		int i = 0;
-		Cursor c = db.rawQuery("SELECT identificador FROM " + AGENCIES
-				+ " WHERE identificador = " + identificador + "", null);
-		if (c.moveToFirst())
-			do {
-				i = c.getInt(0);
-			} while (c.moveToNext());
-		return i == identificador;
 	}
 
 	/**
@@ -436,16 +410,16 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	// TODO Observación: La misma lógica parece repetirse tres veces, se puede
 	// optimizar para usar un único método e incrementar la cantidad de
 	// parámetros.
-	public boolean updateDatabaseMayoralties(int identificador) {
+	public boolean seekRegistration(int identifier, String table) {
 		db = getWritableDatabase();
 		int i = 0;
-		Cursor c = db.rawQuery("SELECT identificador FROM " + MAYORALTIES
-				+ " WHERE identificador = " + identificador + "", null);
+		Cursor c = db.rawQuery("SELECT identificador FROM " + table
+				+ " WHERE identificador = " + identifier + "", null);
 		if (c.moveToFirst())
 			do {
 				i = c.getInt(0);
 			} while (c.moveToNext());
-		return i == identificador;
+		return i == identifier;
 	}
 
 	/**

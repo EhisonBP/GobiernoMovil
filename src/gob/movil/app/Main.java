@@ -159,6 +159,7 @@ public class Main extends Activity implements Constants {
 			showActivity(Directory.class, 0);
 			break;
 		case R.id.procedures_main:
+			stopService();
 			showActivity(Procedures.class, 0);
 			break;
 		case R.id.government_main:
@@ -205,5 +206,10 @@ public class Main extends Activity implements Constants {
     private void startService() {
         Intent svc = new Intent(this, Notifications.class);
         startService(svc);
+    }
+    
+    private void stopService(){
+    	Intent svc = new Intent(this, Notifications.class);
+    	stopService(svc);
     }
 }

@@ -21,7 +21,7 @@
  */
 package gob.movil.service;
 
-import gob.movil.app.Main;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -41,9 +41,6 @@ public class Broadcast extends BroadcastReceiver{
 		if("android.intent.action.BOOT_COMPLETED".equals(intent.getAction())){
 			Intent serviceIntent = new Intent(context, Notifications.class);
 			context.startService(serviceIntent);
-			Intent i = new Intent(context, Main.class);
-			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			context.startActivity(i);
 		}
 	}
 }
