@@ -28,6 +28,7 @@ import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Help;
 import gob.movil.info.Preferences;
 import gob.movil.info.Update;
+import gob.movil.service.Notifications;
 
 import java.io.IOException;
 
@@ -154,6 +155,7 @@ public class Main extends Activity implements Constants {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.directory_main:
+			startService();
 			showActivity(Directory.class, 0);
 			break;
 		case R.id.procedures_main:
@@ -199,4 +201,9 @@ public class Main extends Activity implements Constants {
 			throw new Error("Unable to create database");
 		}
 	}
+	
+    private void startService() {
+        Intent svc = new Intent(this, Notifications.class);
+        startService(svc);
+    }
 }

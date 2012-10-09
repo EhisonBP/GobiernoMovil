@@ -21,7 +21,11 @@
  */
 package gob.movil.service;
 
+import gob.movil.info.Update;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
@@ -44,6 +48,21 @@ public class Notifications extends Service {
 	public void onCreate() {
 		super.onCreate();                   
 		Toast.makeText(this, "Servicio creado", Toast.LENGTH_LONG).show();
+		int icon = android.R.drawable.stat_sys_warning;
+		CharSequence alert = "Actualizacion automatica";
+		long time = System.currentTimeMillis();
+		Notification notification = new Notification(icon, alert, time);
+		
+		Context context = getApplicationContext();
+		CharSequence title = "Se ha encontrado una actualizacion";
+		CharSequence description = "xxxxxxxxxxxxxxxxxxxxxx";
+		Intent notIntent = new Intent(context, Update.class);
+		PendingIntent contIntent = PendingIntent.getActivity(context, 0, notIntent, 0);
+		notification.setLatestEventInfo(context, title, description, contIntent);
+		notification.flags |= Notification.FLAG_AUTO_CANCEL;
+		notification.defaults |= Notification.DEFAULT_SOUND;
+		notification.defaults |= Notification.DEFAULT_VIBRATE;
+		
 		Log.d("SERVICEBOOT", "Servicio creado");
 		
 	}
