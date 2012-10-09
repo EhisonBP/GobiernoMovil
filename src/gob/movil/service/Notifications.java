@@ -22,11 +22,11 @@
 package gob.movil.service;
 
 import gob.movil.R;
+import gob.movil.info.Constants;
 import gob.movil.info.Update;
 import gob.movil.model.Alcaldia;
 import gob.movil.model.Institucion;
 import gob.movil.model.Tramite;
-import gob.movil.info.Constants;
 
 import java.io.IOException;
 import java.util.List;
@@ -58,6 +58,7 @@ public class Notifications extends Service implements Constants {
 	private static final long time = System.currentTimeMillis();
 	private Timer timer; 
 	
+	
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
@@ -75,18 +76,18 @@ public class Notifications extends Service implements Constants {
 		super.onStartCommand(intent, flags, startId);
 		timer.scheduleAtFixedRate(new TimerTask(){
 			public void run() {
+				String fecha = Update.fecha();
 				Log.i("SERVICEBOOT", "El servicio se ejecuto automaticamente a las "+ time );
-
 						int metodo = 0;
 						boolean res = false;
 						do{
 							switch (metodo){
 								case 0:
 									try {
-										List<Institucion> resultado = SoapClient.ListarInstituciones("2012-10-01", 2);
+										List<Institucion> resultado = SoapClient.ListarInstituciones(fecha, 2);
 										if (resultado != null){
 											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification());
+											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de Instituciones"));
 											res = true;
 										}
 									} catch (XmlPullParserException e) {
@@ -99,10 +100,10 @@ public class Notifications extends Service implements Constants {
 									break;
 								case 1:
 									try {
-										List<Tramite> resultado1 = SoapClient.ListarTramites("2012-01-01", 2);
+										List<Tramite> resultado1 = SoapClient.ListarTramites(fecha, 2);
 										if (resultado1 != null){
 											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification());
+											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de Tramites"));
 											res = true;
 										}
 									} catch (XmlPullParserException e) {
@@ -115,10 +116,10 @@ public class Notifications extends Service implements Constants {
 									break;
 								default :
 									try {
-										List<Alcaldia> resultado2 = SoapClient.ListarAlcaldias("2010-01-01", 2);
+										List<Alcaldia> resultado2 = SoapClient.ListarAlcaldias(fecha, 2);
 										if (resultado2 != null){
 											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification());
+											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de alcaldias"));
 											res = true;
 										}
 									} catch (XmlPullParserException e) {
@@ -131,7 +132,6 @@ public class Notifications extends Service implements Constants {
 									}
 							metodo++;
 						}while (metodo <= 2 && res == false);
-		
 			}
 		}
 		, START_AUTOMATIC_UPDATE, PERIOD_AUTOMATIC_UPDATE);
@@ -146,12 +146,11 @@ public class Notifications extends Service implements Constants {
 		Log.d("SERVICEBOOT", "Servicio destruido");
 	}
 	
-	public Notification showNotification(){
+	public Notification showNotification(CharSequence description){
 		CharSequence alert = "Actualizacion automatica";
 		Notification notification = new Notification(R.drawable.icon, alert, time);
 		Context context = getApplicationContext();
 		CharSequence title = "Se ha encontrado una actualizacion";
-		CharSequence description = "xxxxxxxxxxxxxxxxxxxxxx";
 		Intent notIntent = new Intent(context, Update.class);
 		PendingIntent contIntent = PendingIntent.getActivity(context, 0, notIntent, 0);
 		notification.setLatestEventInfo(context, title, description, contIntent);

@@ -168,9 +168,8 @@ public class Update extends Main {
 		 * @author Ehison Pérez
 		 */
 		private void update() {
-			String fecha = helper.fechaActualizacion();
 			try {
-				List<Tramite> resultado = SoapClient.ListarTramites(fecha, 1);
+				List<Tramite> resultado = SoapClient.ListarTramites(fecha(), 1);
 				updateProcedures(resultado);
 				helper.updateFecha();
 				resultado.clear();
@@ -184,7 +183,7 @@ public class Update extends Main {
 			}
 			try {
 				List<Institucion> resultado = SoapClient
-						.ListarInstituciones(fecha, 1);
+						.ListarInstituciones(fecha(), 1);
 				updateAgencies(resultado);
 				helper.updateFecha();
 				resultado.clear();
@@ -197,7 +196,7 @@ public class Update extends Main {
 					errorConnection++;
 			}
 			try {
-				List<Alcaldia> resultado = SoapClient.ListarAlcaldias(fecha, 1);
+				List<Alcaldia> resultado = SoapClient.ListarAlcaldias(fecha(), 1);
 				updateMayoralties(resultado);
 				helper.updateFecha();
 				resultado.clear();
@@ -391,5 +390,10 @@ public class Update extends Main {
 		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 		return networkInfo != null && networkInfo.isConnectedOrConnecting();
+	}
+	
+	public static String fecha(){
+		String fecha = helper.fechaActualizacion();
+		return fecha;
 	}
 }
