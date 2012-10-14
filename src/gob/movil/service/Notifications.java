@@ -41,6 +41,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
@@ -61,8 +62,15 @@ public class Notifications extends Service implements Constants {
 	
 	@Override
 	public IBinder onBind(Intent intent) {
-		return null;
+		MyBinder mBinder = new MyBinder();
+		return mBinder;
 	}
+	
+	public class MyBinder extends Binder {
+		Notifications getService() {
+		      return Notifications.this;
+		    }
+		}
 
 	@Override
 	public void onCreate() {
@@ -70,8 +78,69 @@ public class Notifications extends Service implements Constants {
 		Toast.makeText(this, "Servicio creado", Toast.LENGTH_LONG).show();
 		Log.d("SERVICEBOOT", "Servicio creado");
 		timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask(){
+			public void run() {
+				String fecha = Update.fecha();
+				Log.i("SERVICEBOOT", "El servicio se ejecuto automaticamente a las "+ time );
+						int metodo = 0;
+						boolean res = false;
+						do{
+							switch (metodo){
+								case 0:
+									try {
+										List<Institucion> resultado = SoapClient.ListarInstituciones(fecha, 2);
+										if (resultado != null){
+											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de Instituciones"));
+											res = true;
+										}
+									} catch (XmlPullParserException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									break;
+								case 1:
+									try {
+										List<Tramite> resultado1 = SoapClient.ListarTramites(fecha, 2);
+										if (resultado1 != null){
+											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de Tramites"));
+											res = true;
+										}
+									} catch (XmlPullParserException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									break;
+								default :
+									try {
+										List<Alcaldia> resultado2 = SoapClient.ListarAlcaldias(fecha, 2);
+										if (resultado2 != null){
+											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de alcaldias"));
+											res = true;
+										}
+									} catch (XmlPullParserException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									}
+							metodo++;
+						}while (metodo <= 2 && res == false);
+			}
+		}
+		, 30000, 120000);
 	}
-	
+	/**
 	public int onStartCommand(Intent intent, int flags, int startId){
 		super.onStartCommand(intent, flags, startId);
 		timer.scheduleAtFixedRate(new TimerTask(){
@@ -134,9 +203,9 @@ public class Notifications extends Service implements Constants {
 						}while (metodo <= 2 && res == false);
 			}
 		}
-		, START_AUTOMATIC_UPDATE, PERIOD_AUTOMATIC_UPDATE);
-		return START_STICKY;
-	}
+		, 30000, 120000);
+		return Service.START_STICKY;
+	}*/
 
 	@Override
 	public void onDestroy() {
@@ -147,10 +216,10 @@ public class Notifications extends Service implements Constants {
 	}
 	
 	public Notification showNotification(CharSequence description){
-		CharSequence alert = "Actualizacion automatica";
+		CharSequence alert = getString(R.string.notification_alert);
 		Notification notification = new Notification(R.drawable.icon, alert, time);
 		Context context = getApplicationContext();
-		CharSequence title = "Se ha encontrado una actualizacion";
+		CharSequence title = getString(R.string.notification_title);
 		Intent notIntent = new Intent(context, Update.class);
 		PendingIntent contIntent = PendingIntent.getActivity(context, 0, notIntent, 0);
 		notification.setLatestEventInfo(context, title, description, contIntent);

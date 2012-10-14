@@ -173,5 +173,8 @@
     <string name="automatic_update_summary_off">Actualización automática desactivada</string>
     <string name="automatic_update_summary_on">Actualización automática activada</string>
     <string name="automatic_update">Actualización automática</string>
+    <string name="notification_alert">Actualizacion disponible</string>
+    <string name="notification_title">Actualizacion de datos encontrada</string>
+    
     
 </resources>
