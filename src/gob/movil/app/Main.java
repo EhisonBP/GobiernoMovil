@@ -60,9 +60,10 @@ public class Main extends Activity implements Constants {
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		crearBBDD();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		crearBBDD();
+		closeDatabase();
 	}
 
 	/**
@@ -119,7 +120,6 @@ public class Main extends Activity implements Constants {
 	 * Método para cerrar la conexión a la base de datos.
 	 */
 	public void closeDatabase() {
-		db.close();
 		helper.close();
 	}
 
@@ -192,14 +192,11 @@ public class Main extends Activity implements Constants {
 	 * @author Ehison Pérez
 	 */
 	public void crearBBDD() {
-		helper = new DatabaseHelper(this);
-		try {
+        try{	
+			helper = new DatabaseHelper(this);
 			helper.crearDataBase();
 		} catch (IOException ioe) {
-			// TODO Este error no puede estar escrito de esta manera, debe
-			// utilizarse los recursos de cadenas de texto para
-			// internacionalizarlo correctamente.
-			throw new Error("Unable to create database");
+			
 		}
 	}
 	

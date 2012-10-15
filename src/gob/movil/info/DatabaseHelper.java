@@ -45,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 
 	private static String DB_NAME = "GobiernoMovil.db";
 	private SQLiteDatabase db;
-	private final Context myContext;
+	private final Context context;
 
 	/**
 	 * Guarda una referencia al contexto para acceder a la carpeta assets y los
@@ -57,7 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	 */
 	public DatabaseHelper(Context contexto) {
 		super(contexto, DB_NAME, null, 1);
-		this.myContext = contexto;
+		this.context = contexto;
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 		 * Abrimos la base de datos de la carpeta assets con un objeto de la
 		 * clase InputStream.
 		 */
-		InputStream myInput = myContext.getAssets().open(DB_NAME);
+		InputStream myInput = context.getAssets().open(DB_NAME);
 		/**
 		 * Carpeta de destino donde hemos creado la base de datos vacía.
 		 */
@@ -147,7 +147,6 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 		String myPath = DB_PATH + DB_NAME;
 		db = SQLiteDatabase.openDatabase(myPath, null,
 				SQLiteDatabase.OPEN_READONLY);
-
 	}
 
 	/**

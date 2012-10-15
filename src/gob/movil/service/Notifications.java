@@ -42,8 +42,6 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
@@ -60,101 +58,24 @@ public class Notifications extends Service implements Constants {
 	private static final int ID_NOTIFICATION_CREAR = 1;
 	private static final long time = System.currentTimeMillis();
 	public Context context;
-	public static DatabaseHelper helper;
-	private static SQLiteDatabase db;
+	public DatabaseHelper helper;
 	private Timer timer; 
+	private String fecha;
 	
 	
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
 	}
-
-
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();         
 		timer = new Timer();
-		String fecha = null;
-		try{
-			fecha = fechaActualizacion();
-		}catch (Exception w){
-			Log.w("SERVICEBOOT", "Error en la carga de la fecha");
-		}
-		respuesta(timer, fecha);
-		
+		respuesta(timer);
 		Toast.makeText(this, "Servicio creado", Toast.LENGTH_LONG).show();
 		Log.d("SERVICEBOOT", "Servicio creado");
-
-
 	}
-	
-	/**
-	public int onStartCommand(Intent intent, int flags, int startId){
-		super.onStartCommand(intent, flags, startId);
-		timer.scheduleAtFixedRate(new TimerTask(){
-			public void run() {
-				String fecha = Update.fecha();
-				Log.i("SERVICEBOOT", "El servicio se ejecuto automaticamente a las "+ time );
-						int metodo = 0;
-						boolean res = false;
-						do{
-							switch (metodo){
-								case 0:
-									try {
-										List<Institucion> resultado = SoapClient.ListarInstituciones(fecha, 2);
-										if (resultado != null){
-											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de Instituciones"));
-											res = true;
-										}
-									} catch (XmlPullParserException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									} catch (IOException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-									break;
-								case 1:
-									try {
-										List<Tramite> resultado1 = SoapClient.ListarTramites(fecha, 2);
-										if (resultado1 != null){
-											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de Tramites"));
-											res = true;
-										}
-									} catch (XmlPullParserException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									} catch (IOException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-									break;
-								default :
-									try {
-										List<Alcaldia> resultado2 = SoapClient.ListarAlcaldias(fecha, 2);
-										if (resultado2 != null){
-											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de alcaldias"));
-											res = true;
-										}
-									} catch (XmlPullParserException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									} catch (IOException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-									}
-							metodo++;
-						}while (metodo <= 2 && res == false);
-			}
-		}
-		, 30000, 120000);
-		return Service.START_STICKY;
-	}*/
 
 	@Override
 	public void onDestroy() {
@@ -164,9 +85,17 @@ public class Notifications extends Service implements Constants {
 		Log.d("SERVICEBOOT", "Servicio destruido");
 	}
 	
-	public void respuesta (Timer timer, final String fecha){
+	public void respuesta (Timer timer){
+		crearBBDD();
+		helper.abrirBaseDatos();
 		timer.scheduleAtFixedRate(new TimerTask(){
 			public void run() {
+				try{
+					fecha = helper.fechaActualizacion();
+					Log.i("SERVICEBOOT", "El valor ingresado en "+ fecha);
+				}catch (Exception w){
+					Log.w("SERVICEBOOT", "Error en la carga de la fecha");
+				}
 				Log.i("SERVICEBOOT", "El servicio se ejecuto automaticamente a las "+ time );
 						int metodo = 0;
 						boolean res = false;
@@ -224,7 +153,8 @@ public class Notifications extends Service implements Constants {
 						}while (metodo <= 2 && res == false);
 			}
 		}
-		, 30000, 120000);
+		, START_AUTOMATIC_UPDATE, PERIOD_AUTOMATIC_UPDATE);
+		helper.close();
 	}
 	
 	public Notification showNotification(CharSequence description){
@@ -241,19 +171,12 @@ public class Notifications extends Service implements Constants {
 		return notification;
 	}
 	
-	public String fechaActualizacion() {
-		openDatabase(context);
-		String fecha = null;
-		Cursor c = db.rawQuery("SELECT fecha FROM fecha_actualizacion", null);
-		if (c.moveToFirst())
-			do {
-				fecha = c.getString(0);
-			} while (c.moveToNext());
-		return fecha;
-	}
-	
-	public static void openDatabase(Context context) {
-		helper = new DatabaseHelper(context);
-		db = helper.getWritableDatabase();
+	public void crearBBDD() {
+        try{	
+			helper = new DatabaseHelper(this);
+			helper.crearDataBase();
+		} catch (IOException ioe) {
+			Log.w("SERVICEBOOT", "Error en el copiado de la base de datos");
+		}
 	}
 }
