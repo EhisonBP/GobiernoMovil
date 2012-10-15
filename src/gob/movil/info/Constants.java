@@ -46,7 +46,8 @@ public interface Constants extends BaseColumns {
 	public static final int START_AUTOMATIC_UPDATE = 30000;
 	public static final int PERIOD_AUTOMATIC_UPDATE = 120000;
 	public static final String NAMESPACE = "http://www.cnti.gob.ve/servicio/ServicioDirectorioEstadoVenezolano";
-	public static final String WEB_SERVICE_URL = "http://192.168.1.4:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
+	public static final String WEB_SERVICE_URL = "http://10.16.17.101:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
+//	public static final String WEB_SERVICE_URL = "http://10.16.17.101:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
 	public static final String DB_PATH = "/data/data/gob.movil/databases/";
 
 }
