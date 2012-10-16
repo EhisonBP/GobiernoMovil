@@ -52,6 +52,8 @@ public class Preferences extends PreferenceActivity {
 	private static final boolean OPT_RESULTS_DEF = true;
 	private static final String OPT_ABOUT = "about";
 	private static final boolean OPT_ABOUT_DEF = true;
+	private static final String OPT_UPDATE = "automatic_update";
+	private static final boolean OPT_UPDATE_DEF = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,11 @@ public class Preferences extends PreferenceActivity {
 						return !OPT_ABOUT_DEF;
 					}
 				});
+	}
+
+	public static boolean getUpdate(Context context) {
+		return PreferenceManager.getDefaultSharedPreferences(context)
+				.getBoolean(OPT_UPDATE, OPT_UPDATE_DEF);
 	}
 
 	/**
