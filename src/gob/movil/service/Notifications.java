@@ -47,30 +47,30 @@ import android.util.Log;
 import android.widget.Toast;
 
 /**
+ * Clase para el servicio de notificaciones de actualizaciones para la base de
+ * datos de Gobierno en Línea.
  * 
+ * @author Ehison Pérez
  * 
- * @author ehisonbp
- *
  */
 public class Notifications extends Service implements Constants {
-	
+
 	private NotificationManager mNotification;
-	private static final int ID_NOTIFICATION_CREAR = 1;
+	private static final int ID_NOTIFICATION_CREATE = 1;
 	private static final long time = System.currentTimeMillis();
 	public Context context;
 	public DatabaseHelper helper;
-	private Timer timer; 
+	private Timer timer;
 	private String fecha;
-	
-	
+
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
 	}
-	
+
 	@Override
 	public void onCreate() {
-		super.onCreate();         
+		super.onCreate();
 		timer = new Timer();
 		respuesta(timer);
 		Toast.makeText(this, "Servicio creado", Toast.LENGTH_LONG).show();
@@ -84,95 +84,107 @@ public class Notifications extends Service implements Constants {
 		Toast.makeText(this, "Servicio destruido", Toast.LENGTH_LONG).show();
 		Log.d("SERVICEBOOT", "Servicio destruido");
 	}
-	
-	public void respuesta (Timer timer){
+
+	public void respuesta(Timer timer) {
 		crearBBDD();
 		helper.abrirBaseDatos();
-		timer.scheduleAtFixedRate(new TimerTask(){
+		timer.scheduleAtFixedRate(new TimerTask() {
 			public void run() {
-				try{
+				try {
 					fecha = helper.fechaActualizacion();
-					Log.i("SERVICEBOOT", "El valor ingresado en "+ fecha);
-				}catch (Exception w){
+					Log.i("SERVICEBOOT", "El valor ingresado en " + fecha);
+				} catch (Exception w) {
 					Log.w("SERVICEBOOT", "Error en la carga de la fecha");
 				}
-				Log.i("SERVICEBOOT", "El servicio se ejecuto automaticamente a las "+ time );
-						int metodo = 0;
-						boolean res = false;
-						do{
-							switch (metodo){
-								case 0:
-									try {
-										List<Institucion> resultado = SoapClient.ListarInstituciones(fecha, 2);
-										if (resultado != null){
-											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de Instituciones"));
-											res = true;
-										}
-									} catch (XmlPullParserException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									} catch (IOException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-									break;
-								case 1:
-									try {
-										List<Tramite> resultado1 = SoapClient.ListarTramites(fecha, 2);
-										if (resultado1 != null){
-											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de Tramites"));
-											res = true;
-										}
-									} catch (XmlPullParserException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									} catch (IOException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-									break;
-								default :
-									try {
-										List<Alcaldia> resultado2 = SoapClient.ListarAlcaldias(fecha, 2);
-										if (resultado2 != null){
-											mNotification = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-											mNotification.notify(ID_NOTIFICATION_CREAR, showNotification("Actualizacion de alcaldias"));
-											res = true;
-										}
-									} catch (XmlPullParserException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									} catch (IOException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-									}
-							metodo++;
-						}while (metodo <= 2 && res == false);
+				Log.i("SERVICEBOOT",
+						"El servicio se ejecuto automaticamente a las " + time);
+				int metodo = 0;
+				boolean res = false;
+				do {
+					switch (metodo) {
+					case 0:
+						try {
+							List<Institucion> resultado = SoapClient
+									.ListarInstituciones(fecha, 2);
+							if (resultado != null) {
+								mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+								mNotification
+										.notify(ID_NOTIFICATION_CREATE,
+												showNotification("Actualizacion de Instituciones"));
+								res = true;
+							}
+						} catch (XmlPullParserException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						break;
+					case 1:
+						try {
+							List<Tramite> resultado1 = SoapClient
+									.ListarTramites(fecha, 2);
+							if (resultado1 != null) {
+								mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+								mNotification
+										.notify(ID_NOTIFICATION_CREATE,
+												showNotification("Actualizacion de Tramites"));
+								res = true;
+							}
+						} catch (XmlPullParserException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						break;
+					default:
+						try {
+							List<Alcaldia> resultado2 = SoapClient
+									.ListarAlcaldias(fecha, 2);
+							if (resultado2 != null) {
+								mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+								mNotification
+										.notify(ID_NOTIFICATION_CREATE,
+												showNotification("Actualizacion de alcaldias"));
+								res = true;
+							}
+						} catch (XmlPullParserException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					metodo++;
+				} while (metodo <= 2 && res == false);
 			}
-		}
-		, START_AUTOMATIC_UPDATE, PERIOD_AUTOMATIC_UPDATE);
+		}, START_AUTOMATIC_UPDATE, PERIOD_AUTOMATIC_UPDATE);
 		helper.close();
 	}
-	
-	public Notification showNotification(CharSequence description){
+
+	public Notification showNotification(CharSequence description) {
 		CharSequence alert = getString(R.string.notification_alert);
-		Notification notification = new Notification(R.drawable.icon, alert, time);
+		Notification notification = new Notification(R.drawable.icon, alert,
+				time);
 		Context context = getApplicationContext();
 		CharSequence title = getString(R.string.notification_title);
 		Intent notIntent = new Intent(context, Update.class);
-		PendingIntent contIntent = PendingIntent.getActivity(context, 0, notIntent, 0);
-		notification.setLatestEventInfo(context, title, description, contIntent);
+		PendingIntent contIntent = PendingIntent.getActivity(context, 0,
+				notIntent, 0);
+		notification
+				.setLatestEventInfo(context, title, description, contIntent);
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
 		notification.defaults |= Notification.DEFAULT_SOUND;
 		notification.defaults |= Notification.DEFAULT_VIBRATE;
 		return notification;
 	}
-	
+
 	public void crearBBDD() {
-        try{	
+		try {
 			helper = new DatabaseHelper(this);
 			helper.crearDataBase();
 		} catch (IOException ioe) {
