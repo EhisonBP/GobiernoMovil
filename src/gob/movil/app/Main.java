@@ -62,8 +62,34 @@ public class Main extends Activity implements Constants {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		updateService();
 		crearBBDD();
 		closeDatabase();
+	}
+
+	@Override
+	protected void onPause() {
+		updateService();
+		super.onPause();
+	}
+
+	@Override
+	protected void onRestart() {
+		updateService();
+		super.onRestart();
+	}
+
+	@Override
+	protected void onResume() {
+		updateService();
+		super.onResume();
+	}
+
+	private void updateService() {
+		if (Preferences.getUpdate(getApplicationContext()))
+			startService();
+		else
+			stopService();
 	}
 
 	/**
@@ -155,11 +181,9 @@ public class Main extends Activity implements Constants {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.directory_main:
-			startService();
 			showActivity(Directory.class, 0);
 			break;
 		case R.id.procedures_main:
-			stopService();
 			showActivity(Procedures.class, 0);
 			break;
 		case R.id.government_main:
@@ -192,21 +216,21 @@ public class Main extends Activity implements Constants {
 	 * @author Ehison Pérez
 	 */
 	public void crearBBDD() {
-        try{	
+		try {
 			helper = new DatabaseHelper(this);
 			helper.crearDataBase();
 		} catch (IOException ioe) {
-			
+
 		}
 	}
-	
-    private void startService() {
-        Intent svc = new Intent(this, Notifications.class);
-        startService(svc);
-    }
-    
-    private void stopService(){
-    	Intent svc = new Intent(this, Notifications.class);
-    	stopService(svc);
-    }
+
+	private void startService() {
+		Intent svc = new Intent(this, Notifications.class);
+		startService(svc);
+	}
+
+	private void stopService() {
+		Intent svc = new Intent(this, Notifications.class);
+		stopService(svc);
+	}
 }
