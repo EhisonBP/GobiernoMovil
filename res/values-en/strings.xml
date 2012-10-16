@@ -166,5 +166,13 @@
     <string name="please_wait">Please wait...</string>
     <string name="connection_error">Connection error</string>
     <string name="connection_unavailable">Connection unavailable</string>
+    <string name="automatic_update_summary_off">Do not notify me when updates are available</string>
+    <string name="automatic_update_summary_on">Notify me when updates are available</string>
+    <string name="automatic_update">Updates</string>
+    <string name="notification_alert">New update available</string>
+    <string name="notification_title">Update available</string>
+    <string name="institutions_update">Institutions update available</string>
+    <string name="procedures_update">Procedures update available</string>
+    <string name="mayoralties_update">Mayoralties update available</string>
 
 </resources>
