@@ -21,24 +21,22 @@
  */
 package gob.movil.service;
 
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
 /**
- * Modulo que permite ejecutar el servico al encender el dispositivo movil 
+ * Módulo que permite ejectuar el servicio al encender el dispositivo móvil.
  * 
  * @author Ehison Pérez
  * 
  */
+public class Broadcast extends BroadcastReceiver {
 
-public class Broadcast extends BroadcastReceiver{
-	
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		
-		if("android.intent.action.BOOT_COMPLETED".equals(intent.getAction())){
+
+		if ("android.intent.action.BOOT_COMPLETED".equals(intent.getAction())) {
 			Intent serviceIntent = new Intent(context, Notifications.class);
 			context.startService(serviceIntent);
 		}
