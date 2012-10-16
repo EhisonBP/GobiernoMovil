@@ -62,9 +62,9 @@ public class Main extends Activity implements Constants {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		updateService();
 		crearBBDD();
 		closeDatabase();
+		updateService();
 	}
 
 	@Override
@@ -85,6 +85,11 @@ public class Main extends Activity implements Constants {
 		super.onResume();
 	}
 
+	/**
+	 * Actualiza el servicio de acuerdo a lo dictado por las preferencias.
+	 * 
+	 * @author Richard Ricciardelli
+	 */
 	private void updateService() {
 		if (Preferences.getUpdate(getApplicationContext()))
 			startService();
@@ -224,13 +229,21 @@ public class Main extends Activity implements Constants {
 		}
 	}
 
+	/**
+	 * Inicia el servicio de notificaciones.
+	 * 
+	 * @author Ehison Pérez
+	 */
 	private void startService() {
-		Intent svc = new Intent(this, Notifications.class);
-		startService(svc);
+		startService(new Intent(this, Notifications.class));
 	}
 
+	/**
+	 * Destruye el servicio de notificaciones.
+	 * 
+	 * @author Ehison Pérez
+	 */
 	private void stopService() {
-		Intent svc = new Intent(this, Notifications.class);
-		stopService(svc);
+		stopService(new Intent(this, Notifications.class));
 	}
 }
