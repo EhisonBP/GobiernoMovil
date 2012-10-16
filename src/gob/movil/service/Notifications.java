@@ -44,7 +44,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * Clase para el servicio de notificaciones de actualizaciones para la base de
@@ -73,16 +72,16 @@ public class Notifications extends Service implements Constants {
 		super.onCreate();
 		timer = new Timer();
 		respuesta(timer);
-		Toast.makeText(this, "Servicio creado", Toast.LENGTH_LONG).show();
-		Log.d("SERVICEBOOT", "Servicio creado");
+		// Toast.makeText(this, "Servicio creado", Toast.LENGTH_LONG).show();
+		Log.d("NOTIFICATION SERVICE", "El servicio ha sido creado");
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		timer.cancel();
-		Toast.makeText(this, "Servicio destruido", Toast.LENGTH_LONG).show();
-		Log.d("SERVICEBOOT", "Servicio destruido");
+		// Toast.makeText(this, "Servicio destruido", Toast.LENGTH_LONG).show();
+		Log.d("NOTIFICATION SERVICE", "El servicio ha sido destruido");
 	}
 
 	public void respuesta(Timer timer) {
@@ -92,12 +91,14 @@ public class Notifications extends Service implements Constants {
 			public void run() {
 				try {
 					fecha = helper.fechaActualizacion();
-					Log.i("SERVICEBOOT", "El valor ingresado en " + fecha);
+					Log.i("NOTIFICATION SERVICE", "El valor ingresado es "
+							+ fecha);
 				} catch (Exception w) {
-					Log.w("SERVICEBOOT", "Error en la carga de la fecha");
+					Log.w("NOTIFICATION SERVICE",
+							"Error en la carga de la fecha");
 				}
-				Log.i("SERVICEBOOT",
-						"El servicio se ejecuto automaticamente a las " + time);
+				Log.i("NOTIFICATION SERVICE",
+						"El servicio se ejecutó automáticamente a las " + time);
 				int metodo = 0;
 				boolean res = false;
 				do {
@@ -110,7 +111,7 @@ public class Notifications extends Service implements Constants {
 								mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 								mNotification
 										.notify(ID_NOTIFICATION_CREATE,
-												showNotification("Actualizacion de Instituciones"));
+												showNotification(getString(R.string.institutions_update)));
 								res = true;
 							}
 						} catch (XmlPullParserException e) {
@@ -129,7 +130,7 @@ public class Notifications extends Service implements Constants {
 								mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 								mNotification
 										.notify(ID_NOTIFICATION_CREATE,
-												showNotification("Actualizacion de Tramites"));
+												showNotification(getString(R.string.procedures_update)));
 								res = true;
 							}
 						} catch (XmlPullParserException e) {
@@ -148,7 +149,7 @@ public class Notifications extends Service implements Constants {
 								mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 								mNotification
 										.notify(ID_NOTIFICATION_CREATE,
-												showNotification("Actualizacion de alcaldias"));
+												showNotification(getString(R.string.mayoralties_update)));
 								res = true;
 							}
 						} catch (XmlPullParserException e) {
@@ -160,7 +161,7 @@ public class Notifications extends Service implements Constants {
 						}
 					}
 					metodo++;
-				} while (metodo <= 2 && res == false);
+				} while (metodo <= 2 && !res);
 			}
 		}, START_AUTOMATIC_UPDATE, PERIOD_AUTOMATIC_UPDATE);
 		helper.close();
@@ -188,7 +189,8 @@ public class Notifications extends Service implements Constants {
 			helper = new DatabaseHelper(this);
 			helper.crearDataBase();
 		} catch (IOException ioe) {
-			Log.w("SERVICEBOOT", "Error en el copiado de la base de datos");
+			Log.w("NOTIFICATION SERVICE",
+					"Error en el copiado de la base de datos");
 		}
 	}
 }
