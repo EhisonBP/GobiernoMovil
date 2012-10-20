@@ -22,10 +22,12 @@
 package gob.movil.info;
 
 import gob.movil.R;
+import gob.movil.service.Notifications;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -41,7 +43,8 @@ import android.widget.Toast;
  * @author Ehison Perez
  * 
  */
-public class Preferences extends PreferenceActivity {
+public class Preferences extends PreferenceActivity implements
+		SharedPreferences.OnSharedPreferenceChangeListener {
 	private static final String OPT_VIBRATION = "vibration";
 	private static final boolean OPT_VIBRATION_DEF = true;
 	private static final String OPT_SEARCH = "search";
@@ -59,6 +62,8 @@ public class Preferences extends PreferenceActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preferences);
+		PreferenceManager.getDefaultSharedPreferences(this)
+				.registerOnSharedPreferenceChangeListener(this);
 		getPreferenceManager().findPreference(OPT_SEARCH)
 				.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 					public boolean onPreferenceClick(Preference preference) {
@@ -72,7 +77,6 @@ public class Preferences extends PreferenceActivity {
 				getString(R.string.version)));
 		aboutPreference
 				.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-
 					public boolean onPreferenceClick(Preference preference) {
 						Intent about = new Intent(preference.getContext(),
 								About.class);
@@ -82,15 +86,59 @@ public class Preferences extends PreferenceActivity {
 				});
 	}
 
+	/**
+	 * Actualiza el servicio dependiendo del estado de la preferencia de
+	 * actualización.
+	 * 
+	 * @author Richard Ricciardelli
+	 */
+	private void updateService() {
+		if (Preferences.getUpdate(getApplicationContext()))
+			startService();
+		else
+			stopService();
+	}
+
+	/**
+	 * Inicia el servicio de notificaciones.
+	 * 
+	 * @author Ehison Pérez
+	 */
+	private void startService() {
+		startService(new Intent(this, Notifications.class));
+	}
+
+	/**
+	 * Destruye el servicio de notificaciones.
+	 * 
+	 * @author Ehison Pérez
+	 */
+	private void stopService() {
+		stopService(new Intent(this, Notifications.class));
+	}
+
+	/**
+	 * Obtiene si la preferencia de actualización está activada o no.
+	 * 
+	 * @param context
+	 *            where the method is called
+	 * @return <code>true</code> or <code>false</code>
+	 * 
+	 * @author Richard Ricciardelli
+	 */
 	public static boolean getUpdate(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context)
 				.getBoolean(OPT_UPDATE, OPT_UPDATE_DEF);
 	}
 
 	/**
+	 * Obtiene si la preferencia de vibración está activada o no.
+	 * 
 	 * @param context
-	 *            where the method is called.
-	 * @return true or false.
+	 *            where the method is called
+	 * @return <code>true</code> or <code>false</code>
+	 * 
+	 * @author Richard Ricciardelli
 	 */
 	public static boolean getVibration(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context)
@@ -98,9 +146,14 @@ public class Preferences extends PreferenceActivity {
 	}
 
 	/**
+	 * Obtiene si la preferencia de mostrar resultados previos está activada o
+	 * no.
+	 * 
 	 * @param context
-	 *            where the method is called.
-	 * @return true or false.
+	 *            where the method is called
+	 * @return <code>true</code> or <code>false</code>
+	 * 
+	 * @author Richard Ricciardelli
 	 */
 	public static boolean getResults(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context)
@@ -108,9 +161,13 @@ public class Preferences extends PreferenceActivity {
 	}
 
 	/**
+	 * Obtiene si la preferencia de mostrar sugerencias está activada o no.
+	 * 
 	 * @param context
-	 *            where method is called.
-	 * @return true or false.
+	 *            where the method is called
+	 * @return <code>true</code> or <code>false</code>
+	 * 
+	 * @author Richard Ricciardelli
 	 */
 	public static boolean getSuggestions(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context)
@@ -143,9 +200,32 @@ public class Preferences extends PreferenceActivity {
 		alert.show();
 	}
 
+	/**
+	 * Elimina las sugerencias de búsquedas previas.
+	 * 
+	 * @author Richard Ricciardelli
+	 */
 	public void clearSuggestions() {
 		SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,
 				SuggestionProvider.AUTHORITY, SuggestionProvider.MODE);
 		suggestions.clearHistory();
+	}
+
+	/**
+	 * Se ejecuta cuando se realiza cualquier cambio en la preferencia
+	 * registrada.
+	 * 
+	 * @param sharedPreferences
+	 *            Preferencia registrada
+	 * @param key
+	 *            Identificador de la preferencia que ha sufrido un cambio de
+	 *            parte del usuario
+	 * 
+	 * @author Richard Ricciardelli
+	 */
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+			String key) {
+		if (key.equals(OPT_UPDATE))
+			updateService();
 	}
 }
