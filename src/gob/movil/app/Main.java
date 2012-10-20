@@ -28,7 +28,6 @@ import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Help;
 import gob.movil.info.Preferences;
 import gob.movil.info.Update;
-import gob.movil.service.Notifications;
 
 import java.io.IOException;
 
@@ -64,41 +63,12 @@ public class Main extends Activity implements Constants {
 		setContentView(R.layout.main);
 		crearBBDD();
 		closeDatabase();
-		updateService();
-	}
-
-	@Override
-	protected void onPause() {
-		updateService();
-		super.onPause();
-	}
-
-	@Override
-	protected void onRestart() {
-		updateService();
-		super.onRestart();
-	}
-
-	@Override
-	protected void onResume() {
-		updateService();
-		super.onResume();
-	}
-
-	/**
-	 * Actualiza el servicio de acuerdo a lo dictado por las preferencias.
-	 * 
-	 * @author Richard Ricciardelli
-	 */
-	private void updateService() {
-		if (Preferences.getUpdate(getApplicationContext()))
-			startService();
-		else
-			stopService();
 	}
 
 	/**
 	 * Crea el menú de opciones.
+	 * 
+	 * @author Richard Ricciardelli
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,6 +79,8 @@ public class Main extends Activity implements Constants {
 
 	/**
 	 * Método que ejecuta las acciones según la opción escogida.
+	 * 
+	 * @author Richard Ricciardelli
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -140,7 +112,9 @@ public class Main extends Activity implements Constants {
 	 * Método para abrir la conexión a la base de datos.
 	 * 
 	 * @param context
-	 *            Contexto del Activity donde se ejecuta.
+	 *            Contexto del Activity donde se ejecuta
+	 * 
+	 * @author Richard Ricciardelli
 	 */
 	public static void openDatabase(Context context) {
 		helper = new DatabaseHelper(context);
@@ -149,6 +123,8 @@ public class Main extends Activity implements Constants {
 
 	/**
 	 * Método para cerrar la conexión a la base de datos.
+	 * 
+	 * @author Richard Ricciardelli
 	 */
 	public void closeDatabase() {
 		helper.close();
@@ -183,6 +159,15 @@ public class Main extends Activity implements Constants {
 		return data;
 	}
 
+	/**
+	 * Implementando la interfaz para escuchar los clicks del usuario en la
+	 * Activity.
+	 * 
+	 * @param v
+	 *            Vista que recibió el click
+	 * 
+	 * @author Richard Ricciardelli
+	 */
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.directory_main:
@@ -197,18 +182,32 @@ public class Main extends Activity implements Constants {
 		}
 	}
 
+	/**
+	 * Muestra la pantalla seleccionada.
+	 * 
+	 * @param c
+	 *            Clase a activar en Activity
+	 * @param item
+	 *            Información que pasa a través de las Activity
+	 * 
+	 * @author Richard Ricciardelli
+	 */
 	public void showActivity(Class<?> c, int item) {
-		if (Preferences.getVibration(getApplicationContext())) {
+		if (Preferences.getVibration(getApplicationContext()))
 			setVibration(VIBRATION_INTENT);
-		}
-		Intent i = new Intent(this, c);
-		i.putExtra("item", item);
-		startActivity(i);
+		startActivity(new Intent(this, c).putExtra("item", item));
 	}
 
-	public void setVibration(int milliSeconds) {
-		Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-		v.vibrate(milliSeconds);
+	/**
+	 * Coloca el valor de vibración.
+	 * 
+	 * @param ms
+	 *            Milisegundos
+	 * 
+	 * @author Richard Ricciardelli
+	 */
+	public void setVibration(int ms) {
+		((Vibrator) getSystemService(VIBRATOR_SERVICE)).vibrate(ms);
 	}
 
 	public void onMainClick(View button) {
@@ -225,25 +224,8 @@ public class Main extends Activity implements Constants {
 			helper = new DatabaseHelper(this);
 			helper.crearDataBase();
 		} catch (IOException ioe) {
-
+			// TODO
+			// ¿Qué se hará con la excepción?
 		}
-	}
-
-	/**
-	 * Inicia el servicio de notificaciones.
-	 * 
-	 * @author Ehison Pérez
-	 */
-	private void startService() {
-		startService(new Intent(this, Notifications.class));
-	}
-
-	/**
-	 * Destruye el servicio de notificaciones.
-	 * 
-	 * @author Ehison Pérez
-	 */
-	private void stopService() {
-		stopService(new Intent(this, Notifications.class));
 	}
 }
