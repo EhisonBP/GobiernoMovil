@@ -64,25 +64,22 @@ public class Preferences extends PreferenceActivity implements
 		addPreferencesFromResource(R.xml.preferences);
 		PreferenceManager.getDefaultSharedPreferences(this)
 				.registerOnSharedPreferenceChangeListener(this);
-		getPreferenceManager().findPreference(OPT_SEARCH)
-				.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-					public boolean onPreferenceClick(Preference preference) {
-						alertDialog();
-						return false;
-					}
-				});
 		getPreferenceManager().findPreference(OPT_ABOUT).setTitle(
 				getString(R.string.about_title, getString(R.string.version)));
+		setListener(OPT_SEARCH, null);
 		setListener(OPT_ABOUT, About.class);
 		setListener(OPT_HELP, Help.class);
 	}
 
-	private void setListener(String key, final Class<?> c) {
+	private void setListener(final String key, final Class<?> c) {
 		Preference preference = getPreferenceManager().findPreference(key);
 		preference
 				.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 					public boolean onPreferenceClick(Preference preference) {
-						startActivity(new Intent(preference.getContext(), c));
+						if (key.equals(OPT_SEARCH))
+							alertDialog();
+						else
+							startActivity(new Intent(preference.getContext(), c));
 						return false;
 					}
 				});
