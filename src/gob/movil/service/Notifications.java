@@ -140,10 +140,8 @@ public class Notifications extends Service implements Constants {
 								resultado.clear();
 							}
 						} catch (XmlPullParserException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						break;
