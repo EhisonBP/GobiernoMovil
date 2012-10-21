@@ -74,8 +74,6 @@ public class Notifications extends Service implements Constants {
 		Log.d("NOTIFICATION SERVICE", "El servicio ha sido creado");
 	}
 	
-	
-
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		respuesta(timer);
