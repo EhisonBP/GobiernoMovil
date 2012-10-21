@@ -54,9 +54,7 @@ public class Preferences extends PreferenceActivity implements
 	private static final String OPT_RESULTS = "results";
 	private static final boolean OPT_RESULTS_DEF = true;
 	private static final String OPT_ABOUT = "about";
-	private static final boolean OPT_ABOUT_DEF = true; // WTF?
 	private static final String OPT_HELP = "help";
-	private static final boolean OPT_HELP_DEF = true; // WTF?
 	private static final String OPT_UPDATE = "automatic_update";
 	private static final boolean OPT_UPDATE_DEF = false;
 
@@ -73,24 +71,21 @@ public class Preferences extends PreferenceActivity implements
 						return false;
 					}
 				});
-		Preference about = getPreferenceManager().findPreference(OPT_ABOUT);
-		about.setTitle(getString(R.string.about_title,
-				getString(R.string.version)));
-		about.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick(Preference preference) {
-				Intent about = new Intent(preference.getContext(), About.class);
-				startActivity(about);
-				return !OPT_ABOUT_DEF;
-			}
-		});
-		Preference help = getPreferenceManager().findPreference(OPT_HELP);
-		help.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+		getPreferenceManager().findPreference(OPT_ABOUT).setTitle(
+				getString(R.string.about_title, getString(R.string.version)));
+		setListener(OPT_ABOUT, About.class);
+		setListener(OPT_HELP, Help.class);
+	}
 
-			public boolean onPreferenceClick(Preference preference) {
-				startActivity(new Intent(preference.getContext(), Help.class));
-				return !OPT_HELP_DEF;
-			}
-		});
+	private void setListener(String key, final Class<?> c) {
+		Preference preference = getPreferenceManager().findPreference(key);
+		preference
+				.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+					public boolean onPreferenceClick(Preference preference) {
+						startActivity(new Intent(preference.getContext(), c));
+						return false;
+					}
+				});
 	}
 
 	/**
