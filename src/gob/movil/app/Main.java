@@ -22,10 +22,8 @@
 package gob.movil.app;
 
 import gob.movil.R;
-import gob.movil.info.About;
 import gob.movil.info.Constants;
 import gob.movil.info.DatabaseHelper;
-import gob.movil.info.Help;
 import gob.movil.info.Preferences;
 import gob.movil.info.Update;
 
@@ -85,14 +83,6 @@ public class Main extends Activity implements Constants {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.about:
-			Intent about = new Intent(this, About.class);
-			startActivity(about);
-			break;
-		case R.id.help:
-			Intent help = new Intent(this, Help.class);
-			startActivity(help);
-			break;
 		case R.id.update:
 			Intent update = new Intent(this, Update.class);
 			startActivity(update);

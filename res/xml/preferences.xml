@@ -29,8 +29,7 @@
         android:key="automatic_update"
         android:summaryOff="@string/automatic_update_summary_off"
         android:summaryOn="@string/automatic_update_summary_on"
-        android:title="@string/automatic_update"/>
-    
+        android:title="@string/automatic_update" />
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="vibration"
@@ -46,28 +45,26 @@
             android:key="results"
             android:summary="@string/results_summary"
             android:title="@string/results_title" />
-        
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="suggestions"
             android:summary="@string/suggestions_summary"
             android:title="@string/suggestions_title" />
-        
+
         <Preference
             android:key="search"
             android:summary="@string/clear_history_summary"
             android:title="@string/clear_history" />
-        
     </PreferenceCategory>
-    
     <PreferenceCategory
         android:key="about_preferences"
         android:title="@string/about" >
-        
         <Preference
             android:key="about"
             android:summary="@string/about_summary" />
-        
+        <Preference
+            android:key="help"
+            android:title="@string/help" />
     </PreferenceCategory>
 
 </PreferenceScreen>
