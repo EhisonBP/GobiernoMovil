@@ -37,6 +37,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -96,9 +97,18 @@ public class Update extends Main {
 	 * segundo plano.
 	 */
 	public void startUpdatingProcess() {
+		final ProgressTask progressTask = new ProgressTask();
 		progressDialog = ProgressDialog.show(this,
 				getString(R.string.updating), getString(R.string.please_wait));
-		new ProgressTask().execute((Void) null);
+		progressDialog.setCancelable(true);
+		progressDialog.setOnCancelListener(new OnCancelListener() {
+			public void onCancel(DialogInterface dialog) {
+				Toast.makeText(getApplicationContext(), "Cancelled",
+						Toast.LENGTH_SHORT).show();
+				progressTask.cancel(true);
+			}
+		});
+		progressTask.execute((Void) null);
 	}
 
 	/**
@@ -183,8 +193,8 @@ public class Update extends Main {
 					errorConnection++;
 			}
 			try {
-				List<Institucion> resultado = SoapClient
-						.ListarInstituciones(fecha, 1);
+				List<Institucion> resultado = SoapClient.ListarInstituciones(
+						fecha, 1);
 				updateAgencies(resultado);
 				helper.updateFecha();
 				resultado.clear();
@@ -300,8 +310,8 @@ public class Update extends Main {
 		private void updateProcedures(List<Tramite> resultado) {
 			if (resultado != null) {
 				for (int i = 0; i < resultado.size(); i++) {
-					if (helper.seekRegistration(resultado.get(i)
-							.getIdTramite(), PROCEDURES)) {
+					if (helper.seekRegistration(
+							resultado.get(i).getIdTramite(), PROCEDURES)) {
 						helper.updateDatabaseProcedures(resultado.get(i)
 								.getNombreTramite(), resultado.get(i)
 								.getRequisitos(), resultado.get(i)
@@ -392,5 +402,5 @@ public class Update extends Main {
 		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 		return networkInfo != null && networkInfo.isConnectedOrConnecting();
 	}
-	
+
 }
