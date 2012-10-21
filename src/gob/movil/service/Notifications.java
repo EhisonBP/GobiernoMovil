@@ -60,7 +60,6 @@ public class Notifications extends Service implements Constants {
 	public Context context;
 	public DatabaseHelper helper;
 	private Timer timer;
-	private String fecha;
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -71,9 +70,16 @@ public class Notifications extends Service implements Constants {
 	public void onCreate() {
 		super.onCreate();
 		timer = new Timer();
-		respuesta(timer);
 		// Toast.makeText(this, "Servicio creado", Toast.LENGTH_LONG).show();
 		Log.d("NOTIFICATION SERVICE", "El servicio ha sido creado");
+	}
+	
+	
+
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		respuesta(timer);
+		return START_NOT_STICKY;
 	}
 
 	@Override
@@ -89,8 +95,8 @@ public class Notifications extends Service implements Constants {
 		helper.abrirBaseDatos();
 		timer.scheduleAtFixedRate(new TimerTask() {
 			public void run() {
+				String fecha = helper.fechaActualizacion();
 				try {
-					fecha = helper.fechaActualizacion();
 					Log.i("NOTIFICATION SERVICE", "El valor ingresado es "
 							+ fecha);
 				} catch (Exception w) {
@@ -113,25 +119,25 @@ public class Notifications extends Service implements Constants {
 										.notify(ID_NOTIFICATION_CREATE,
 												showNotification(getString(R.string.institutions_update)));
 								res = true;
+								resultado.clear();
 							}
 						} catch (XmlPullParserException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						break;
 					case 1:
 						try {
-							List<Tramite> resultado1 = SoapClient
+							List<Tramite> resultado = SoapClient
 									.ListarTramites(fecha, 2);
-							if (resultado1 != null) {
+							if (resultado != null) {
 								mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 								mNotification
 										.notify(ID_NOTIFICATION_CREATE,
 												showNotification(getString(R.string.procedures_update)));
 								res = true;
+								resultado.clear();
 							}
 						} catch (XmlPullParserException e) {
 							// TODO Auto-generated catch block
@@ -143,14 +149,15 @@ public class Notifications extends Service implements Constants {
 						break;
 					default:
 						try {
-							List<Alcaldia> resultado2 = SoapClient
+							List<Alcaldia> resultado = SoapClient
 									.ListarAlcaldias(fecha, 2);
-							if (resultado2 != null) {
+							if (resultado != null) {
 								mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 								mNotification
 										.notify(ID_NOTIFICATION_CREATE,
 												showNotification(getString(R.string.mayoralties_update)));
 								res = true;
+								resultado.clear();
 							}
 						} catch (XmlPullParserException e) {
 							// TODO Auto-generated catch block

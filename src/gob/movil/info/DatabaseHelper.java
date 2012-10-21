@@ -70,9 +70,9 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	public void crearDataBase() throws IOException {
 		boolean dbExist = comprobarBaseDatos();
 		if (!dbExist) {
-			this.getReadableDatabase();
 			try {
-				copiarBaseDatos();
+			this.getReadableDatabase();
+			copiarBaseDatos();
 			} catch (IOException e) {
 				// TODO Este mensaje debe estar internacionalizado.
 				throw new Error("Error al copiar la Base de Datos");
@@ -209,6 +209,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 				+ " 'Información no disponible.', " + " '" + telefono + "', '"
 				+ direccion + "'," + " '" + identificador + "', '" + perfil
 				+ "')");
+		db.close();
 	}
 
 	/**
@@ -243,6 +244,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 				+ " '" + direccion + "'," + " '" + telefono + "'," + " '" + web
 				+ "'," + " '" + correo + "'," + " '" + poder + "'," + " '"
 				+ identificador + "')");
+		db.close();
 	}
 
 	/**
@@ -277,6 +279,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 				+ "'," + " '" + direccion + "'," + " '" + telefono + "',"
 				+ " '" + web + "'," + " '" + correo + "'," + " '" + estado
 				+ "'," + " '" + identificador + "')");
+		db.close();
 	}
 
 	/**
@@ -291,6 +294,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 		db = getWritableDatabase();
 		db.execSQL("UPDATE fecha_actualizacion SET fecha='" + fecha
 				+ "' WHERE _id = 1");
+		db.close();
 	}
 
 	/**
@@ -418,6 +422,8 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 			do {
 				i = c.getInt(0);
 			} while (c.moveToNext());
+		c.close();
+		db.close();
 		return i == identifier;
 	}
 
@@ -435,6 +441,8 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 			do {
 				fecha = c.getString(0);
 			} while (c.moveToNext());
+		c.close();
+		db.close();
 		return fecha;
 	}
 }

@@ -129,7 +129,7 @@ public class SoapClient implements Constants {
 							.toString()), miresultado.getProperty("fecha")
 							.toString());
 					instituciones.add(institucion);
-					if (institucion != null)
+					if (instituciones != null)
 						break;
 				}
 		}
@@ -205,7 +205,7 @@ public class SoapClient implements Constants {
 							Integer.parseInt(miresultado.getProperty("estado")
 									.toString()));
 					alcaldias.add(alcaldia);
-					if (alcaldia != null)
+					if (alcaldias != null)
 						break;
 				}
 			}
@@ -279,7 +279,7 @@ public class SoapClient implements Constants {
 									.toString(), Integer.parseInt(miresultado.getProperty(
 											"idPerfil").toString()));
 					tramites.add(tramite);
-					if (tramite != null)
+					if (tramites != null)
 						break;
 				}
 		}
