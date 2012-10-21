@@ -174,5 +174,6 @@
     <string name="institutions_update">Institutions update available</string>
     <string name="procedures_update">Procedures update available</string>
     <string name="mayoralties_update">Mayoralties update available</string>
+    <string name="update_canceled">Update canceled</string>
 
 </resources>

@@ -103,8 +103,9 @@ public class Update extends Main {
 		progressDialog.setCancelable(true);
 		progressDialog.setOnCancelListener(new OnCancelListener() {
 			public void onCancel(DialogInterface dialog) {
-				Toast.makeText(getApplicationContext(), "Cancelled",
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(),
+						getString(R.string.update_canceled), Toast.LENGTH_SHORT)
+						.show();
 				progressTask.cancel(true);
 			}
 		});

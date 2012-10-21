@@ -168,5 +168,6 @@
     <string name="institutions_update">Actualización de instituciones</string>
     <string name="procedures_update">Actualización de trámites</string>
     <string name="mayoralties_update">Actualización de alcaldías</string>
+    <string name="update_canceled">Actualización cancelada</string>
 
 </resources>
