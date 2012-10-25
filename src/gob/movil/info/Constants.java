@@ -39,6 +39,7 @@ public interface Constants extends BaseColumns {
 	public static final String MAYORALTIES = "alcaldias";
 	public static final String WHERE = " WHERE ";
 	public static final String OR = " OR ";
+	public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.S";
 	public static final int VIBRATION_ERROR = 80;
 	public static final int VIBRATION_INTENT = 30;
 	public static final int WAITING_PERIOD = 2000;
@@ -54,6 +55,6 @@ public interface Constants extends BaseColumns {
 	// "http://172.26.16.55:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
 	// Richard's home localhost:
 	// "http://192.168.1.100:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL"
-	public static final String WEB_SERVICE_URL = "http://192.168.1.100:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
+	public static final String WEB_SERVICE_URL = "http://10.0.207.55:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
 	public static final String DB_PATH = "/data/data/gob.movil/databases/";
 }
