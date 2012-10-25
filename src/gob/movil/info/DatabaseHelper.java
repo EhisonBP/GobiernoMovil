@@ -25,6 +25,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.content.Context;
@@ -33,6 +34,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Clase para la conexión y modelado de la base de datos de la aplicación.
@@ -71,8 +73,8 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 		boolean dbExist = comprobarBaseDatos();
 		if (!dbExist) {
 			try {
-			this.getReadableDatabase();
-			copiarBaseDatos();
+				this.getReadableDatabase();
+				copiarBaseDatos();
 			} catch (IOException e) {
 				// TODO Este mensaje debe estar internacionalizado.
 				throw new Error("Error al copiar la Base de Datos");
@@ -288,13 +290,12 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	 * @author Ehison Pérez
 	 */
 	public void updateFecha() {
-		long time = new Date().getTime();
-		java.sql.Date sqlDate = new java.sql.Date(time);
-		String fecha = "" + sqlDate;
+		String date = new SimpleDateFormat(DATE_FORMAT).format(new Date());
 		db = getWritableDatabase();
-		db.execSQL("UPDATE fecha_actualizacion SET fecha='" + fecha
+		db.execSQL("UPDATE fecha_actualizacion SET fecha='" + date
 				+ "' WHERE _id = 1");
 		db.close();
+		Log.v("UP TO DATE", date);
 	}
 
 	/**
