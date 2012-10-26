@@ -107,6 +107,7 @@ public class Update extends Main {
 						getString(R.string.update_canceled), Toast.LENGTH_SHORT)
 						.show();
 				progressTask.cancel(true);
+				new DatabaseHelper(getApplicationContext()).rollback();
 			}
 		});
 		progressTask.execute((Void) null);

@@ -299,6 +299,25 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	}
 
 	/**
+	 * Método que será llamado al momento de cancelar el proceso de descarga, se
+	 * encargará de actualizar la fecha en la base de datos colocando un día
+	 * menos para que la notificación de actualización vuelva a mostrarse.
+	 * 
+	 * @author Richard Ricciardelli
+	 */
+	public void rollback() {
+		String date = new SimpleDateFormat(DATE_FORMAT).format(new Date());
+		int today = Integer.parseInt(date.substring(8, 10));
+		int yesterday = today - 1;
+		date = date.replace(date.substring(7, 10),
+				"-" + String.valueOf(yesterday));
+		db = getWritableDatabase();
+		db.execSQL("UPDATE fecha_actualizacion SET fecha='" + date
+				+ "' WHERE _id = 1");
+		db.close();
+	}
+
+	/**
 	 * Método para actualizar los datos de los trámites y servicios dentro de la
 	 * aplicación en caso de que no exista.
 	 * 
