@@ -41,248 +41,176 @@ import org.xmlpull.v1.XmlPullParserException;
  * Clase que se encarga de la conexión del cliente mediante SOAP.
  * 
  * @author Ehison Pérez
+ * @author Richard Ricciardelli
  * 
  */
 public class SoapClient implements Constants {
+	private static final String SOAP_OPERATION_INSTITUTIONS = "listarInstitucionesPorPoder";
+	private static final String SOAP_OPERATION_MAYORALTIES = "listarAlcaldia";
+	private static final String SOAP_OPERATION_PROCEDURES = "listarTramitesPorPerfiles";
 
-	/**
-	 * Método para conectar con el servcio web del Directorio del Estado
-	 * Venezolano llamando al método web <b>listarInstitucionesPorPoder</b>.
-	 * 
-	 * @param fecha
-	 *            Fecha de actualización.
-	 * @param metodo
-	 * @return Lista de instituciones.
-	 * @throws XmlPullParserException
-	 * @throws IOException
-	 */
-	@SuppressWarnings("unchecked")
-	public static List<Institucion> ListarInstituciones(String fecha, int metodo)
-			throws XmlPullParserException, IOException {
-		final String Metodo = "listarInstitucionesPorPoder";
-		final String accionSoap = NAMESPACE + Metodo;
-		/**
-		 * Solicitud.
-		 */
-		SoapObject request = new SoapObject(NAMESPACE, Metodo);
-		PropertyInfo pi1 = new PropertyInfo();
-		pi1.setName("fecha");
-		pi1.setValue(fecha);
-		request.addProperty(pi1);
-		/**
-		 * Modelo sobre.
-		 */
-		SoapSerializationEnvelope sobre = new SoapSerializationEnvelope(
-				SoapEnvelope.VER11);
-		sobre.dotNet = false;
-		sobre.setOutputSoapObject(request);
-		// TODO Supuestamente debería manejarse el Connection Timeout de esta
-		// manera pero parece que no genera ningún efecto. He leído sobre esto y
-		// parece que es en la versión 2.5 de ksoap que funciona bien, pero esta
-		// es una versión posterior así que no lo comprendo del todo.
-		/**
-		 * Modelo transporte.
-		 */
-		HttpTransportSE transporte = new HttpTransportSE(WEB_SERVICE_URL,
-				CONNECTION_TIMEOUT);
-		/**
-		 * Llamada.
-		 */
-		transporte.call(accionSoap, sobre);
-		/**
-		 * Resultado.
-		 */
+	public static List<Institucion> listarInstituciones(String date, int method)
+			throws IOException, XmlPullParserException {
 		ArrayList<Institucion> instituciones = new ArrayList<Institucion>();
-		List<SoapObject> resultado = (List<SoapObject>) sobre.getResponse();
-		switch (metodo) {
-			case 1:
-				for (SoapObject miresultado : resultado) {
-					Institucion institucion = new Institucion(
-							Integer.parseInt(miresultado.getProperty("idInstitucion")
-							.toString()), miresultado.getProperty(
-							"nombreSector").toString(), miresultado
-							.getProperty("nombreInstitucion").toString(),
-							miresultado.getProperty("director").toString(), miresultado
-							.getProperty("direccion").toString(), miresultado
-							.getProperty("telefono").toString(), miresultado
-							.getProperty("paginaWeb").toString(), miresultado
-							.getProperty("correoElect").toString(),
-							Integer.parseInt(miresultado.getProperty("poder")
-							.toString()), miresultado.getProperty("fecha")
-							.toString());
-					instituciones.add(institucion);
-				}
-				break;
-			case 2:
-				for (SoapObject miresultado : resultado) {
-					Institucion institucion = new Institucion(
-							Integer.parseInt(miresultado.getProperty("idInstitucion")
-							.toString()), miresultado.getProperty(
-							"nombreSector").toString(), miresultado
-							.getProperty("nombreInstitucion").toString(),
-							miresultado.getProperty("director").toString(), miresultado
-							.getProperty("direccion").toString(), miresultado
-							.getProperty("telefono").toString(), miresultado
-							.getProperty("paginaWeb").toString(), miresultado
-							.getProperty("correoElect").toString(),
-							Integer.parseInt(miresultado.getProperty("poder")
-							.toString()), miresultado.getProperty("fecha")
-							.toString());
-					instituciones.add(institucion);
-					if (instituciones != null)
-						break;
-				}
+		switch (method) {
+		case 1:
+			for (SoapObject result : getResponse(SOAP_OPERATION_INSTITUTIONS,
+					date)) {
+				Institucion institucion = new Institucion(
+						Integer.parseInt(result.getProperty("idInstitucion")
+								.toString()),
+						result.getProperty("nombreSector").toString(),
+						result.getProperty("nombreInstitucion").toString(),
+						result.getProperty("director").toString(),
+						result.getProperty("direccion").toString(),
+						result.getProperty("telefono").toString(),
+						result.getProperty("paginaWeb").toString(),
+						result.getProperty("correoElect").toString(),
+						Integer.parseInt(result.getProperty("poder").toString()),
+						result.getProperty("fecha").toString());
+				instituciones.add(institucion);
+			}
+			break;
+		case 2:
+			for (SoapObject result : getResponse(SOAP_OPERATION_INSTITUTIONS,
+					date)) {
+
+				Institucion institucion = new Institucion(
+						Integer.parseInt(result.getProperty("idInstitucion")
+								.toString()),
+						result.getProperty("nombreSector").toString(),
+						result.getProperty("nombreInstitucion").toString(),
+						result.getProperty("director").toString(),
+						result.getProperty("direccion").toString(),
+						result.getProperty("telefono").toString(),
+						result.getProperty("paginaWeb").toString(),
+						result.getProperty("correoElect").toString(),
+						Integer.parseInt(result.getProperty("poder").toString()),
+						result.getProperty("fecha").toString());
+				instituciones.add(institucion);
+				if (instituciones != null)
+					break;
+			}
+		default:
+			break;
 		}
 		return instituciones;
 	}
 
-	/**
-	 * Método para conectar con el servcio web del Directorio del Estado
-	 * Venezolano llamando al método web <b>listarAlcaldia</b>.
-	 * 
-	 * @param fecha
-	 * @return
-	 * @throws XmlPullParserException
-	 * @throws IOException
-	 */
-	@SuppressWarnings("unchecked")
-	public static List<Alcaldia> ListarAlcaldias(String fecha, int metodo)
-			throws XmlPullParserException, IOException {
-		final String Metodo = "listarAlcaldia";
-		final String accionSoap = NAMESPACE + Metodo;
-		// request
-		SoapObject request = new SoapObject(NAMESPACE, Metodo);
-		PropertyInfo pi1 = new PropertyInfo();
-		pi1.setName("fecha");
-		pi1.setValue(fecha);
-		request.addProperty(pi1);
-
-		// Modelo Sobre
-		SoapSerializationEnvelope sobre = new SoapSerializationEnvelope(
-				SoapEnvelope.VER11);
-		sobre.dotNet = false;
-		sobre.setOutputSoapObject(request);
-
-		// Modelo Trasporte
-		HttpTransportSE transporte = new HttpTransportSE(WEB_SERVICE_URL);
-		// llamada
-		transporte.call(accionSoap, sobre);
-		// Resultado
-
+	public static List<Alcaldia> listarAlcaldias(String date, int method)
+			throws NumberFormatException, IOException, XmlPullParserException {
 		ArrayList<Alcaldia> alcaldias = new ArrayList<Alcaldia>();
-		List<SoapObject> resultado = (List<SoapObject>) sobre.getResponse();
-		switch (metodo) {
-			case 1:
-				for (SoapObject miresultado : resultado) {
-					Alcaldia alcaldia = new Alcaldia(Integer.parseInt(miresultado
-							.getProperty("idAlcaldia").toString()), miresultado
-							.getProperty("nombreMunicipio").toString(), miresultado
-							.getProperty("nombreAlcaldia").toString(), miresultado
-							.getProperty("directorAlcaldia").toString(), miresultado
-							.getProperty("direccionAlcaldia").toString(), miresultado
-							.getProperty("telefonoAlcaldia").toString(), miresultado
-							.getProperty("webAlcaldia").toString(), miresultado
-							.getProperty("correoAlcaldia").toString(), miresultado
-							.getProperty("fecha").toString(),
-							Integer.parseInt(miresultado.getProperty("estado")
-									.toString()));
-					alcaldias.add(alcaldia);
-
-				}
-			break;
-			case 2:
-				for (SoapObject miresultado : resultado) {
-					Alcaldia alcaldia = new Alcaldia(Integer.parseInt(miresultado
-							.getProperty("idAlcaldia").toString()), miresultado
-							.getProperty("nombreMunicipio").toString(), miresultado
-							.getProperty("nombreAlcaldia").toString(), miresultado
-							.getProperty("directorAlcaldia").toString(), miresultado
-							.getProperty("direccionAlcaldia").toString(), miresultado
-							.getProperty("telefonoAlcaldia").toString(), miresultado
-							.getProperty("webAlcaldia").toString(), miresultado
-							.getProperty("correoAlcaldia").toString(), miresultado
-							.getProperty("fecha").toString(),
-							Integer.parseInt(miresultado.getProperty("estado")
-									.toString()));
-					alcaldias.add(alcaldia);
-					if (alcaldias != null)
-						break;
-				}
+		switch (method) {
+		case 1:
+			for (SoapObject result : getResponse(SOAP_OPERATION_MAYORALTIES,
+					date)) {
+				Alcaldia alcaldia = new Alcaldia(Integer.parseInt(result
+						.getProperty("idAlcaldia").toString()), result
+						.getProperty("nombreMunicipio").toString(), result
+						.getProperty("nombreAlcaldia").toString(), result
+						.getProperty("directorAlcaldia").toString(), result
+						.getProperty("direccionAlcaldia").toString(), result
+						.getProperty("telefonoAlcaldia").toString(), result
+						.getProperty("webAlcaldia").toString(), result
+						.getProperty("correoAlcaldia").toString(), result
+						.getProperty("fecha").toString(),
+						Integer.parseInt(result.getProperty("estado")
+								.toString()));
+				alcaldias.add(alcaldia);
 			}
+			break;
+		case 2:
+			for (SoapObject result : getResponse(SOAP_OPERATION_MAYORALTIES,
+					date)) {
+				Alcaldia alcaldia = new Alcaldia(Integer.parseInt(result
+						.getProperty("idAlcaldia").toString()), result
+						.getProperty("nombreMunicipio").toString(), result
+						.getProperty("nombreAlcaldia").toString(), result
+						.getProperty("directorAlcaldia").toString(), result
+						.getProperty("direccionAlcaldia").toString(), result
+						.getProperty("telefonoAlcaldia").toString(), result
+						.getProperty("webAlcaldia").toString(), result
+						.getProperty("correoAlcaldia").toString(), result
+						.getProperty("fecha").toString(),
+						Integer.parseInt(result.getProperty("estado")
+								.toString()));
+				alcaldias.add(alcaldia);
+				if (alcaldias != null)
+					break;
+			}
+		default:
+			break;
+		}
 		return alcaldias;
 	}
 
-	/**
-	 * Metodo para la conectar con el Servicio web Directorio del Estado
-	 * Venezolano con el webMetodo listarTramitesPorInstitucion
-	 * 
-	 * @param fecha
-	 * @return
-	 * @throws XmlPullParserException
-	 * @throws IOException
-	 */
-	@SuppressWarnings("unchecked")
-	public static List<Tramite> ListarTramites(String fecha, int metodo)
-			throws XmlPullParserException, IOException {
-		final String Metodo = "listarTramitesPorPerfiles";
-		final String accionSoap = NAMESPACE + Metodo;
-		// request
-		SoapObject request = new SoapObject(NAMESPACE, Metodo);
-		PropertyInfo pi1 = new PropertyInfo();
-		pi1.setName("fecha");
-		pi1.setValue(fecha);
-		request.addProperty(pi1);
-
-		// Modelo Sobre
-		SoapSerializationEnvelope sobre = new SoapSerializationEnvelope(
-				SoapEnvelope.VER11);
-		sobre.dotNet = false;
-		sobre.setOutputSoapObject(request);
-
-		// Modelo Trasporte
-		HttpTransportSE transporte = new HttpTransportSE(WEB_SERVICE_URL);
-		// llamada
-		transporte.call(accionSoap, sobre);
-		// Resultado
-
+	public static List<Tramite> listarTramites(String date, int method)
+			throws NumberFormatException, IOException, XmlPullParserException {
 		ArrayList<Tramite> tramites = new ArrayList<Tramite>();
-		List<SoapObject> resultado = (List<SoapObject>) sobre.getResponse();
-
-		switch (metodo) {
-			case 1:
-				for (SoapObject miresultado : resultado) {
-					Tramite tramite = new Tramite(Integer.parseInt(miresultado
-							.getProperty("idTramite").toString()), miresultado
-							.getProperty("nombreTramite").toString(), miresultado
-							.getProperty("telefono").toString(), miresultado
-							.getProperty("horarios").toString(), miresultado
-							.getProperty("direccion").toString(), miresultado
-							.getProperty("descripcion").toString(), miresultado
-							.getProperty("costo").toString(), miresultado.getProperty(
-									"requisitos").toString(), miresultado.getProperty("fecha")
-									.toString(), Integer.parseInt(miresultado.getProperty(
-											"idPerfil").toString()));
-					tramites.add(tramite);
-				}
-				break;
-			case 2:
-				for (SoapObject miresultado : resultado) {
-					Tramite tramite = new Tramite(Integer.parseInt(miresultado
-							.getProperty("idTramite").toString()), miresultado
-							.getProperty("nombreTramite").toString(), miresultado
-							.getProperty("telefono").toString(), miresultado
-							.getProperty("horarios").toString(), miresultado
-							.getProperty("direccion").toString(), miresultado
-							.getProperty("descripcion").toString(), miresultado
-							.getProperty("costo").toString(), miresultado.getProperty(
-									"requisitos").toString(), miresultado.getProperty("fecha")
-									.toString(), Integer.parseInt(miresultado.getProperty(
-											"idPerfil").toString()));
-					tramites.add(tramite);
-					if (tramites != null)
-						break;
-				}
+		switch (method) {
+		case 1:
+			for (SoapObject result : getResponse(SOAP_OPERATION_PROCEDURES,
+					date)) {
+				Tramite tramite = new Tramite(Integer.parseInt(result
+						.getProperty("idTramite").toString()), result
+						.getProperty("nombreTramite").toString(), result
+						.getProperty("telefono").toString(), result
+						.getProperty("horarios").toString(), result
+						.getProperty("direccion").toString(), result
+						.getProperty("descripcion").toString(), result
+						.getProperty("costo").toString(), result.getProperty(
+						"requisitos").toString(), result.getProperty("fecha")
+						.toString(), Integer.parseInt(result.getProperty(
+						"idPerfil").toString()));
+				tramites.add(tramite);
+			}
+			break;
+		case 2:
+			for (SoapObject result : getResponse(SOAP_OPERATION_PROCEDURES,
+					date)) {
+				Tramite tramite = new Tramite(Integer.parseInt(result
+						.getProperty("idTramite").toString()), result
+						.getProperty("nombreTramite").toString(), result
+						.getProperty("telefono").toString(), result
+						.getProperty("horarios").toString(), result
+						.getProperty("direccion").toString(), result
+						.getProperty("descripcion").toString(), result
+						.getProperty("costo").toString(), result.getProperty(
+						"requisitos").toString(), result.getProperty("fecha")
+						.toString(), Integer.parseInt(result.getProperty(
+						"idPerfil").toString()));
+				tramites.add(tramite);
+				if (tramites != null)
+					break;
+			}
+		default:
+			break;
 		}
 		return tramites;
+	}
+
+	@SuppressWarnings("unchecked")
+	private static List<SoapObject> getResponse(final String method, String date)
+			throws IOException, XmlPullParserException {
+		final String soapAction = NAMESPACE + method;
+		SoapObject soapObject = new SoapObject(NAMESPACE, method);
+		PropertyInfo propertyInfo = new PropertyInfo();
+		propertyInfo.setName("fecha");
+		propertyInfo.setValue(date);
+		soapObject.addProperty(propertyInfo);
+		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+				SoapEnvelope.VER11);
+		envelope.dotNet = false;
+		envelope.setOutputSoapObject(soapObject);
+		HttpTransportSE transport = new HttpTransportSE(WEB_SERVICE_URL,
+				CONNECTION_TIMEOUT);
+		transport.call(soapAction, envelope);
+		List<SoapObject> list = new ArrayList<SoapObject>();
+		try {
+			list = (List<SoapObject>) envelope.getResponse();
+		} catch (Exception e) {
+			list.add((SoapObject) envelope.getResponse());
+		}
+		return list;
 	}
 }
