@@ -181,7 +181,7 @@ public class Update extends Main {
 		private void update() {
 			String fecha = helper.fechaActualizacion();
 			try {
-				List<Tramite> resultado = SoapClient.ListarTramites(fecha, 1);
+				List<Tramite> resultado = SoapClient.listarTramites(fecha, 1);
 				updateProcedures(resultado);
 				helper.updateFecha();
 				resultado.clear();
@@ -194,7 +194,7 @@ public class Update extends Main {
 					errorConnection++;
 			}
 			try {
-				List<Institucion> resultado = SoapClient.ListarInstituciones(
+				List<Institucion> resultado = SoapClient.listarInstituciones(
 						fecha, 1);
 				updateAgencies(resultado);
 				helper.updateFecha();
@@ -208,7 +208,7 @@ public class Update extends Main {
 					errorConnection++;
 			}
 			try {
-				List<Alcaldia> resultado = SoapClient.ListarAlcaldias(fecha, 1);
+				List<Alcaldia> resultado = SoapClient.listarAlcaldias(fecha, 1);
 				updateMayoralties(resultado);
 				helper.updateFecha();
 				resultado.clear();

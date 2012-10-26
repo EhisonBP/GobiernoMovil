@@ -73,7 +73,7 @@ public class Notifications extends Service implements Constants {
 		// Toast.makeText(this, "Servicio creado", Toast.LENGTH_LONG).show();
 		Log.d("NOTIFICATION SERVICE", "El servicio ha sido creado");
 	}
-	
+
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		respuesta(timer);
@@ -110,7 +110,7 @@ public class Notifications extends Service implements Constants {
 					case 0:
 						try {
 							List<Institucion> resultado = SoapClient
-									.ListarInstituciones(fecha, 2);
+									.listarInstituciones(fecha, 2);
 							if (resultado != null) {
 								mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 								mNotification
@@ -128,7 +128,7 @@ public class Notifications extends Service implements Constants {
 					case 1:
 						try {
 							List<Tramite> resultado = SoapClient
-									.ListarTramites(fecha, 2);
+									.listarTramites(fecha, 2);
 							if (resultado != null) {
 								mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 								mNotification
@@ -146,7 +146,7 @@ public class Notifications extends Service implements Constants {
 					default:
 						try {
 							List<Alcaldia> resultado = SoapClient
-									.ListarAlcaldias(fecha, 2);
+									.listarAlcaldias(fecha, 2);
 							if (resultado != null) {
 								mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 								mNotification
