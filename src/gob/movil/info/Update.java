@@ -100,7 +100,9 @@ public class Update extends Main {
 		final ProgressTask progressTask = new ProgressTask();
 		progressDialog = ProgressDialog.show(this,
 				getString(R.string.updating), getString(R.string.please_wait));
-		progressDialog.setCancelable(true);
+		// TODO Si se permitirá al usuario cancelar el proceso de actualización,
+		// colocar el valor de la siguiente sentencia en true.
+		progressDialog.setCancelable(false);
 		progressDialog.setOnCancelListener(new OnCancelListener() {
 			public void onCancel(DialogInterface dialog) {
 				Toast.makeText(getApplicationContext(),
