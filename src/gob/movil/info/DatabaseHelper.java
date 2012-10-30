@@ -289,13 +289,13 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	 * 
 	 * @author Ehison Pérez
 	 */
-	public void updateFecha() {
-		String date = new SimpleDateFormat(DATE_FORMAT).format(new Date());
+	public void updateFecha(int id, String date) {
+		// String date = new SimpleDateFormat(DATE_FORMAT).format(new Date());
 		db = getWritableDatabase();
 		db.execSQL("UPDATE fecha_actualizacion SET fecha='" + date
-				+ "' WHERE _id = 1");
+				+ "' WHERE _id = " + id);
 		db.close();
-		Log.v("UP TO DATE", date);
+		Log.v("UP TO DATE", date + " ID => " + id);
 	}
 
 	/**
@@ -455,10 +455,12 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	 * 
 	 * @return Fecha de actualización en String.
 	 */
-	public String fechaActualizacion() {
+	public String fechaActualizacion(int id) {
 		String fecha = null;
 		db = getWritableDatabase();
-		Cursor c = db.rawQuery("SELECT fecha FROM fecha_actualizacion", null);
+		Cursor c = db
+				.rawQuery("SELECT fecha FROM fecha_actualizacion WHERE _id = "
+						+ id, null);
 		if (c.moveToFirst())
 			do {
 				fecha = c.getString(0);
