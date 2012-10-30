@@ -77,7 +77,7 @@ public class Notifications extends Service implements Constants {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		respuesta(timer);
-		return START_NOT_STICKY;
+		return START_STICKY;
 	}
 
 	@Override
