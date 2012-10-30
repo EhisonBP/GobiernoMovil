@@ -122,7 +122,9 @@ public class Notifications extends Service implements Constants {
 						} catch (XmlPullParserException e) {
 							e.printStackTrace();
 						} catch (IOException e) {
-							e.printStackTrace();
+							// e.printStackTrace();
+							Log.w("NOTIFICATION EXCEPTION",
+									"No hay instituciones nuevas");
 						}
 						break;
 					case 1:
@@ -140,7 +142,9 @@ public class Notifications extends Service implements Constants {
 						} catch (XmlPullParserException e) {
 							e.printStackTrace();
 						} catch (IOException e) {
-							e.printStackTrace();
+							// e.printStackTrace();
+							Log.w("NOTIFICATION EXCEPTION",
+									"No hay trámites nuevos");
 						}
 						break;
 					default:
@@ -160,7 +164,9 @@ public class Notifications extends Service implements Constants {
 							e.printStackTrace();
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							// e.printStackTrace();
+							Log.w("NOTIFICATION EXCEPTION",
+									"No hay alcaldías nuevas");
 						}
 					}
 					metodo++;
