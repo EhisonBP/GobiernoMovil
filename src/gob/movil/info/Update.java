@@ -174,6 +174,8 @@ public class Update extends Main {
 			else
 				Toast.makeText(Update.this, getString(R.string.full_update),
 						Toast.LENGTH_LONG).show();
+			if (errorConnection == 0 && errorException != 3)
+				helper.updateFecha();
 		}
 
 		/**
@@ -186,7 +188,7 @@ public class Update extends Main {
 			try {
 				List<Tramite> resultado = SoapClient.listarTramites(fecha, 1);
 				updateProcedures(resultado);
-				helper.updateFecha();
+				// helper.updateFecha();
 				resultado.clear();
 			} catch (XmlPullParserException e) {
 				e.printStackTrace();
@@ -200,7 +202,7 @@ public class Update extends Main {
 				List<Institucion> resultado = SoapClient.listarInstituciones(
 						fecha, 1);
 				updateAgencies(resultado);
-				helper.updateFecha();
+				// helper.updateFecha();
 				resultado.clear();
 			} catch (XmlPullParserException e) {
 				e.printStackTrace();
@@ -213,7 +215,7 @@ public class Update extends Main {
 			try {
 				List<Alcaldia> resultado = SoapClient.listarAlcaldias(fecha, 1);
 				updateMayoralties(resultado);
-				helper.updateFecha();
+				// helper.updateFecha();
 				resultado.clear();
 			} catch (XmlPullParserException e) {
 				e.printStackTrace();
