@@ -42,6 +42,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -174,8 +175,6 @@ public class Update extends Main {
 			else
 				Toast.makeText(Update.this, getString(R.string.full_update),
 						Toast.LENGTH_LONG).show();
-			if (errorConnection == 0 && errorException != 3)
-				helper.updateFecha();
 		}
 
 		/**
@@ -184,46 +183,58 @@ public class Update extends Main {
 		 * @author Ehison Pérez
 		 */
 		private void update() {
-			String fecha = helper.fechaActualizacion();
+			String fecha;
 			try {
+				fecha = helper.fechaActualizacion(PROCEDURES_ID);
 				List<Tramite> resultado = SoapClient.listarTramites(fecha, 1);
 				updateProcedures(resultado);
 				// helper.updateFecha();
-				resultado.clear();
+				// resultado.clear();
 			} catch (XmlPullParserException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				if (e.getMessage().equals("Exception"))
 					errorException++;
-				else
+				else {
 					errorConnection++;
+					Log.i("CONNECTION ERROR", "ERROR DE CONEXIÓN EN TRÁMITE");
+				}
+
 			}
 			try {
+				fecha = helper.fechaActualizacion(INSTITUTION_ID);
 				List<Institucion> resultado = SoapClient.listarInstituciones(
 						fecha, 1);
 				updateAgencies(resultado);
 				// helper.updateFecha();
-				resultado.clear();
+				// resultado.clear();
 			} catch (XmlPullParserException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				if (e.getMessage().equals("Exception"))
 					errorException++;
-				else
+				else {
 					errorConnection++;
+					Log.i("CONNECTION ERROR",
+							"ERROR DE CONEXIÓN EN INSTITUCIÓN");
+				}
 			}
 			try {
+				fecha = helper.fechaActualizacion(MAYORALTIES_ID);
 				List<Alcaldia> resultado = SoapClient.listarAlcaldias(fecha, 1);
 				updateMayoralties(resultado);
 				// helper.updateFecha();
-				resultado.clear();
+				// resultado.clear();
 			} catch (XmlPullParserException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				if (e.getMessage().equals("Exception"))
 					errorException++;
-				else
+				else {
 					errorConnection++;
+					Log.i("CONNECTION ERROR", "ERROR DE CONEXIÓN ALCALDÍAS");
+					e.printStackTrace();
+				}
 			}
 		}
 
@@ -263,6 +274,10 @@ public class Update extends Main {
 										.getIdInstitucion());
 					}
 				}
+				Log.v("FECHA INSTITUCIONES", resultado
+						.get(resultado.size() - 1).getFecha());
+				helper.updateFecha(INSTITUTION_ID,
+						resultado.get(resultado.size() - 1).getFecha());
 				resultado.clear();
 			}
 		}
@@ -301,6 +316,10 @@ public class Update extends Main {
 								.getEstado(), resultado.get(i).getIdAlcaldia());
 					}
 				}
+				Log.v("FECHA ALCALDÍAS", resultado.get(resultado.size() - 1)
+						.getFecha());
+				helper.updateFecha(MAYORALTIES_ID,
+						resultado.get(resultado.size() - 1).getFecha());
 				resultado.clear();
 			}
 		}
@@ -339,6 +358,10 @@ public class Update extends Main {
 										.getIPerfil());
 					}
 				}
+				Log.v("FECHA TRÁMITES", resultado.get(resultado.size() - 1)
+						.getFecha());
+				helper.updateFecha(PROCEDURES_ID,
+						resultado.get(resultado.size() - 1).getFecha());
 				resultado.clear();
 			}
 		}
