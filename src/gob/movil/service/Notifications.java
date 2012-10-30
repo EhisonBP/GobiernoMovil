@@ -93,14 +93,7 @@ public class Notifications extends Service implements Constants {
 		helper.abrirBaseDatos();
 		timer.scheduleAtFixedRate(new TimerTask() {
 			public void run() {
-				String fecha = helper.fechaActualizacion();
-				try {
-					Log.i("NOTIFICATION SERVICE", "El valor ingresado es "
-							+ fecha);
-				} catch (Exception w) {
-					Log.w("NOTIFICATION SERVICE",
-							"Error en la carga de la fecha");
-				}
+				String fecha;
 				Log.i("NOTIFICATION SERVICE",
 						"El servicio se ejecutó automáticamente a las " + time);
 				int metodo = 0;
@@ -109,6 +102,7 @@ public class Notifications extends Service implements Constants {
 					switch (metodo) {
 					case 0:
 						try {
+							fecha = helper.fechaActualizacion(INSTITUTION_ID);
 							List<Institucion> resultado = SoapClient
 									.listarInstituciones(fecha, 2);
 							if (resultado != null) {
@@ -129,6 +123,7 @@ public class Notifications extends Service implements Constants {
 						break;
 					case 1:
 						try {
+							fecha = helper.fechaActualizacion(PROCEDURES_ID);
 							List<Tramite> resultado = SoapClient
 									.listarTramites(fecha, 2);
 							if (resultado != null) {
@@ -149,6 +144,7 @@ public class Notifications extends Service implements Constants {
 						break;
 					default:
 						try {
+							fecha = helper.fechaActualizacion(MAYORALTIES_ID);
 							List<Alcaldia> resultado = SoapClient
 									.listarAlcaldias(fecha, 2);
 							if (resultado != null) {
