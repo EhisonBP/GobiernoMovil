@@ -40,6 +40,9 @@ public interface Constants extends BaseColumns {
 	public static final String WHERE = " WHERE ";
 	public static final String OR = " OR ";
 	public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.S";
+	public static final int INSTITUTION_ID = 1;
+	public static final int MAYORALTIES_ID = 2;
+	public static final int PROCEDURES_ID = 3;
 	public static final int VIBRATION_ERROR = 80;
 	public static final int VIBRATION_INTENT = 30;
 	public static final int WAITING_PERIOD = 2000;
