@@ -310,8 +310,8 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 		int today = Integer.parseInt(date.substring(8, 10));
 		int yesterday = today - 1;
 		date = date.replace(date.substring(7, 11),
-				
-				"-" + String.valueOf(yesterday) + " ");
+
+		"-" + String.valueOf(yesterday) + " ");
 		db = getWritableDatabase();
 		db.execSQL("UPDATE fecha_actualizacion SET fecha='" + date
 				+ "' WHERE _id = 1");
