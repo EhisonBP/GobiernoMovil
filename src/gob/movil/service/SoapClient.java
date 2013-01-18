@@ -47,7 +47,7 @@ import org.xmlpull.v1.XmlPullParserException;
 public class SoapClient implements Constants {
 	private static final String SOAP_OPERATION_INSTITUTIONS = "listarInstitucionesPorFecha";
 	private static final String SOAP_OPERATION_MAYORALTIES = "listarAlcaldiaPorFecha";
-	private static final String SOAP_OPERATION_PROCEDURES = "listarTramitesFecha";
+	private static final String SOAP_OPERATION_PROCEDURES = "listarTramitesPorFecha";
 
 	public static List<Institucion> listarInstituciones(String date, int method)
 			throws IOException, XmlPullParserException {
