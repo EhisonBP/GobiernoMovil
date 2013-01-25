@@ -25,6 +25,7 @@ import gob.movil.R;
 import gob.movil.info.Constants;
 import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Preferences;
+import gob.movil.info.Update;
 
 import java.io.IOException;
 
@@ -82,10 +83,10 @@ public class Main extends Activity implements Constants {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		// case R.id.update:
-		// Intent update = new Intent(this, Update.class);
-		// startActivity(update);
-		// break;
+		case R.id.update:
+			Intent update = new Intent(this, Update.class);
+			startActivity(update);
+			break;
 		case R.id.preferences:
 			Intent preferences = new Intent(this, Preferences.class);
 			startActivity(preferences);

@@ -29,11 +29,11 @@
         android:alphabeticShortcut="s"
         android:icon="@android:drawable/ic_menu_search"
         android:title="@string/search"/>
-    <!-- <item -->
-    <!-- android:id="@+id/update" -->
-    <!-- android:alphabeticShortcut="u" -->
-    <!-- android:icon="@android:drawable/ic_menu_rotate" -->
-    <!-- android:title="@string/update"/> -->
+    <item
+        android:id="@+id/update"
+        android:alphabeticShortcut="u"
+        android:icon="@android:drawable/ic_menu_rotate"
+        android:title="@string/update"/>
     <item
         android:id="@+id/preferences"
         android:alphabeticShortcut="p"
