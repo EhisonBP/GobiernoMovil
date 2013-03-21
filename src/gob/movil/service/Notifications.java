@@ -22,8 +22,8 @@
 package gob.movil.service;
 
 import gob.movil.R;
+import gob.movil.database.DatabaseHelper;
 import gob.movil.info.Constants;
-import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Update;
 import gob.movil.model.Alcaldia;
 import gob.movil.model.Institucion;

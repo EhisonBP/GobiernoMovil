@@ -23,6 +23,7 @@ package gob.movil.info;
 
 import gob.movil.R;
 import gob.movil.app.Main;
+import gob.movil.database.DatabaseHelper;
 import gob.movil.model.Alcaldia;
 import gob.movil.model.Institucion;
 import gob.movil.model.Tramite;

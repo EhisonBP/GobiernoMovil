@@ -22,8 +22,8 @@
 package gob.movil.app;
 
 import gob.movil.R;
+import gob.movil.database.DatabaseHelper;
 import gob.movil.info.Constants;
-import gob.movil.info.DatabaseHelper;
 import gob.movil.info.Preferences;
 import gob.movil.info.Update;
 
