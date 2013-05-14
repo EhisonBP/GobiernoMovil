@@ -97,7 +97,7 @@ public class Procedures extends Main {
 		animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 1.0f,
 				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
 				0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
-		animation.setDuration(400);
+		animation.setDuration(200);
 		set.addAnimation(animation);
 		text.setAnimation(animation);
 	}
