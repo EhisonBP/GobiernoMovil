@@ -36,7 +36,6 @@ public class Alcaldia {
 	private String direccionAlcaldia;
 	private String telefonoAlcaldia;
 	private String webAlcaldia;
-	private String correoAlcaldia;
 	private String fecha;
 	private int estado;
 
@@ -46,7 +45,7 @@ public class Alcaldia {
 	public Alcaldia(int idAlcaldia, String nombreAlcaldia,
 			String directorAlcaldia, String nombreMunicipio,
 			String direccionAlcaldia, String telefonoAlcaldia,
-			String webAlcaldia, String correoAlcaldia, String fecha, int estado) {
+			String webAlcaldia, String fecha, int estado) {
 		this.idAlcaldia = idAlcaldia;
 		this.nombreAlcaldia = nombreAlcaldia;
 		this.nombreMunicipio = nombreMunicipio;
@@ -54,7 +53,6 @@ public class Alcaldia {
 		this.direccionAlcaldia = direccionAlcaldia;
 		this.telefonoAlcaldia = telefonoAlcaldia;
 		this.webAlcaldia = webAlcaldia;
-		this.correoAlcaldia = correoAlcaldia;
 		this.fecha = fecha;
 		this.estado = estado;
 	}
@@ -73,14 +71,6 @@ public class Alcaldia {
 
 	public void setEstado(int estado) {
 		this.estado = estado;
-	}
-
-	public String getCorreoAlcaldia() {
-		return correoAlcaldia;
-	}
-
-	public void setCorreoAlcaldia(String correoAlcaldia) {
-		this.correoAlcaldia = correoAlcaldia;
 	}
 
 	public String getWebAlcaldia() {

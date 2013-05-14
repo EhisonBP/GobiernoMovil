@@ -35,27 +35,25 @@ public class Tramite {
 	private String horarios;
 	private String direccion;
 	private String descripcion;
-	private String costo;
+
 	private String requisitos;
 	private String fecha;
-	int perfil;
 
 	public Tramite() {
 	}
 
 	public Tramite(int idTramite, String nombreTramite, String telefono,
 			String horarios, String direccion, String descripcion,
-			String costo, String requisitos, String fecha, int perfil) {
+			String requisitos, String fecha) {
 		this.idTramite = idTramite;
 		this.nombreTramite = nombreTramite;
 		this.telefono = telefono;
 		this.horarios = horarios;
 		this.direccion = direccion;
 		this.descripcion = descripcion;
-		this.costo = costo;
 		this.requisitos = requisitos;
 		this.fecha = fecha;
-		this.perfil = perfil;
+
 	}
 
 	public String getFecha() {
@@ -72,14 +70,6 @@ public class Tramite {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public String getCosto() {
-		return costo;
-	}
-
-	public void setCosto(String costo) {
-		this.costo = costo;
 	}
 
 	public String getHorarios() {
@@ -130,11 +120,4 @@ public class Tramite {
 		this.telefono = telefono;
 	}
 
-	public int getIPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(int perfil) {
-		this.perfil = perfil;
-	}
 }

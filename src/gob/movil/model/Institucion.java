@@ -36,7 +36,6 @@ public class Institucion {
 	private String direccion;
 	private String telefono;
 	private String paginaWeb;
-	private String correoElect;
 	private int poder;
 	private String fecha;
 
@@ -45,8 +44,7 @@ public class Institucion {
 
 	public Institucion(int idInstituto, String nombreSector,
 			String nombreInstituto, String director, String direccion,
-			String telefono, String web, String correoElect, int poder,
-			String fecha) {
+			String telefono, String web, int poder, String fecha) {
 		this.idInstitucion = idInstituto;
 		this.nombreInstitucion = nombreInstituto;
 		this.nombreSector = nombreSector;
@@ -54,7 +52,6 @@ public class Institucion {
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.paginaWeb = web;
-		this.correoElect = correoElect;
 		this.poder = poder;
 		this.fecha = fecha;
 	}
@@ -73,14 +70,6 @@ public class Institucion {
 
 	public void setDirector(String director) {
 		this.director = director;
-	}
-
-	public String getCorreoElect() {
-		return correoElect;
-	}
-
-	public void setCorreoElect(String correoElect) {
-		this.correoElect = correoElect;
 	}
 
 	public String getFecha() {

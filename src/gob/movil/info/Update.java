@@ -185,9 +185,13 @@ public class Update extends Main {
 		 */
 		private void update() {
 			String fecha;
+
 			try {
+				Log.i("Metodo", "Inicio de la ejecucion del servicio web");
 				fecha = helper.fechaActualizacion(PROCEDURES_ID);
+				Log.i("Metodo", "La fecha es: " + fecha);
 				List<Tramite> resultado = SoapClient.listarTramites(fecha, 1);
+				Log.i("Metodo", "Se obtuvo resultado de tramites");
 				updateProcedures(resultado);
 				// helper.updateFecha();
 				// resultado.clear();
@@ -202,6 +206,7 @@ public class Update extends Main {
 				}
 
 			}
+
 			try {
 				fecha = helper.fechaActualizacion(INSTITUTION_ID);
 				List<Institucion> resultado = SoapClient.listarInstituciones(
@@ -220,23 +225,16 @@ public class Update extends Main {
 							"ERROR DE CONEXIÓN EN INSTITUCIÓN");
 				}
 			}
-			try {
-				fecha = helper.fechaActualizacion(MAYORALTIES_ID);
-				List<Alcaldia> resultado = SoapClient.listarAlcaldias(fecha, 1);
-				updateMayoralties(resultado);
-				// helper.updateFecha();
-				// resultado.clear();
-			} catch (XmlPullParserException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				if (e.getMessage().equals("Exception"))
-					errorException++;
-				else {
-					errorConnection++;
-					Log.i("CONNECTION ERROR", "ERROR DE CONEXIÓN ALCALDÍAS");
-					e.printStackTrace();
-				}
-			}
+			/**
+			 * try { fecha = helper.fechaActualizacion(MAYORALTIES_ID);
+			 * List<Alcaldia> resultado = SoapClient.listarAlcaldias(fecha, 1);
+			 * updateMayoralties(resultado); // helper.updateFecha(); //
+			 * resultado.clear(); } catch (XmlPullParserException e) {
+			 * e.printStackTrace(); } catch (IOException e) { if
+			 * (e.getMessage().equals("Exception")) errorException++; else {
+			 * errorConnection++; Log.i("CONNECTION ERROR",
+			 * "ERROR DE CONEXIÓN ALCALDÍAS"); e.printStackTrace(); } }
+			 */
 		}
 
 		/**
@@ -258,9 +256,8 @@ public class Update extends Main {
 								.getNombreInstitucion(), resultado.get(i)
 								.getDireccion(),
 								resultado.get(i).getTelefono(), resultado
-										.get(i).getPaginatWeb(),
-								resultado.get(i).getCorreoElect(), resultado
-										.get(i).getPoder(), resultado.get(i)
+										.get(i).getPaginatWeb(), "Hola Mundo",
+								resultado.get(i).getPoder(), resultado.get(i)
 										.getIdInstitucion());
 					} else {
 						helper.insertDatabaseAgencies(resultado.get(i)
@@ -269,16 +266,15 @@ public class Update extends Main {
 								.getNombreInstitucion(), resultado.get(i)
 								.getDireccion(),
 								resultado.get(i).getTelefono(), resultado
-										.get(i).getPaginatWeb(),
-								resultado.get(i).getCorreoElect(), resultado
-										.get(i).getPoder(), resultado.get(i)
+										.get(i).getPaginatWeb(), "Hola Mundo",
+								resultado.get(i).getPoder(), resultado.get(i)
 										.getIdInstitucion());
 					}
 				}
 				Log.v("FECHA INSTITUCIONES", resultado
 						.get(resultado.size() - 1).getFecha());
-				helper.updateFecha(INSTITUTION_ID,
-						resultado.get(resultado.size() - 1).getFecha());
+				formatFecha(INSTITUTION_ID, resultado.get(resultado.size() - 1)
+						.getFecha());
 				resultado.clear();
 			}
 		}
@@ -302,9 +298,8 @@ public class Update extends Main {
 								.getNombreMunicipio(), resultado.get(i)
 								.getDireccionALcaldia(), resultado.get(i)
 								.getTelefonoAlcaldia(), resultado.get(i)
-								.getWebAlcaldia(), resultado.get(i)
-								.getCorreoAlcaldia(), resultado.get(i)
-								.getIdAlcaldia());
+								.getWebAlcaldia(), "Hola Mundo",
+								resultado.get(i).getIdAlcaldia());
 					} else {
 						helper.insertDatabaseMayoralties(resultado.get(i)
 								.getNombreAlcaldia(), resultado.get(i)
@@ -312,15 +307,15 @@ public class Update extends Main {
 								.getNombreMunicipio(), resultado.get(i)
 								.getDireccionALcaldia(), resultado.get(i)
 								.getTelefonoAlcaldia(), resultado.get(i)
-								.getWebAlcaldia(), resultado.get(i)
-								.getCorreoAlcaldia(), resultado.get(i)
-								.getEstado(), resultado.get(i).getIdAlcaldia());
+								.getWebAlcaldia(), "Hola Mundo",
+								resultado.get(i).getEstado(), resultado.get(i)
+										.getIdAlcaldia());
 					}
 				}
 				Log.v("FECHA ALCALDÍAS", resultado.get(resultado.size() - 1)
 						.getFecha());
-				helper.updateFecha(MAYORALTIES_ID,
-						resultado.get(resultado.size() - 1).getFecha());
+				formatFecha(MAYORALTIES_ID, resultado.get(resultado.size() - 1)
+						.getFecha());
 				resultado.clear();
 			}
 		}
@@ -341,28 +336,26 @@ public class Update extends Main {
 						helper.updateDatabaseProcedures(resultado.get(i)
 								.getNombreTramite(), resultado.get(i)
 								.getRequisitos(), resultado.get(i)
-								.getHorarios(), resultado.get(i).getCosto(),
-								resultado.get(i).getDescripcion(), resultado
-										.get(i).getTelefono(), resultado.get(i)
-										.getDireccion(), resultado.get(i)
-										.getIdTramite(), resultado.get(i)
-										.getIPerfil());
+								.getHorarios(), "Hola como estas", resultado
+								.get(i).getDescripcion(), resultado.get(i)
+								.getTelefono(),
+								resultado.get(i).getDireccion(),
+								resultado.get(i).getIdTramite(), 1);
 					} else {
 						helper.insertDatabaseProcedures(resultado.get(i)
 								.getNombreTramite(), resultado.get(i)
 								.getRequisitos(), resultado.get(i)
-								.getHorarios(), resultado.get(i).getCosto(),
-								resultado.get(i).getDescripcion(), resultado
-										.get(i).getTelefono(), resultado.get(i)
-										.getDireccion(), resultado.get(i)
-										.getIdTramite(), resultado.get(i)
-										.getIPerfil());
+								.getHorarios(), "Hola Mundo", resultado.get(i)
+								.getDescripcion(), resultado.get(i)
+								.getTelefono(),
+								resultado.get(i).getDireccion(),
+								resultado.get(i).getIdTramite(), 1);
 					}
 				}
 				Log.v("FECHA TRÁMITES", resultado.get(resultado.size() - 1)
 						.getFecha());
-				helper.updateFecha(PROCEDURES_ID,
-						resultado.get(resultado.size() - 1).getFecha());
+				formatFecha(PROCEDURES_ID, resultado.get(resultado.size() - 1)
+						.getFecha());
 				resultado.clear();
 			}
 		}
@@ -431,6 +424,12 @@ public class Update extends Main {
 		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 		return networkInfo != null && networkInfo.isConnectedOrConnecting();
+	}
+
+	public void formatFecha(int id, String fecha) {
+		fecha = fecha.substring(0, 10);
+		Log.i("GobiernoMovil", "La fecha recortada es: " + fecha);
+		helper.updateFecha(id, fecha);
 	}
 
 }

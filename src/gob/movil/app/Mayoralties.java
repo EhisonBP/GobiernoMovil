@@ -27,6 +27,11 @@ import gob.movil.info.Show;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.LayoutAnimationController;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -53,6 +58,21 @@ public class Mayoralties extends Main {
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, items);
 		lv.setAdapter(listAdapter);
+		AnimationSet set = new AnimationSet(true);
+
+		Animation animation = new AlphaAnimation(0.0f, 1.0f);
+		animation.setDuration(200);
+		set.addAnimation(animation);
+
+		animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+				-1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+		animation.setDuration(200);
+		set.addAnimation(animation);
+
+		LayoutAnimationController controller = new LayoutAnimationController(
+				set, 0.5f);
+		lv.setLayoutAnimation(controller);
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> a, View v, int position,
 					long id) {

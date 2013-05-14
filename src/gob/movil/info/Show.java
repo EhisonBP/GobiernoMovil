@@ -43,11 +43,18 @@ public class Show extends Activity {
 	public static void setDialog(Context context, String[] data) {
 		final Dialog dialog = new Dialog(context);
 		dialog.setContentView(R.layout.show);
-		dialog.setTitle(data[2]);
+		int id = 0;
+		if (data.equals("mayoralties")) {
+			dialog.setTitle(data[3]);
+			id = 2;
+		} else {
+			dialog.setTitle(data[2]);
+			id = 3;
+		}
 		dialog.setCancelable(true);
 		dialog.setCanceledOnTouchOutside(true);
 		TextView text = (TextView) dialog.findViewById(R.id.public_official);
-		text.setText(data[3] + ".\n" + context.getString(R.string.address)
+		text.setText(data[id] + ".\n" + context.getString(R.string.address)
 				+ ": " + data[4] + ".\n" + context.getString(R.string.phones)
 				+ ": " + data[5] + "\n" + context.getString(R.string.web)
 				+ ": " + data[6] + "\n");

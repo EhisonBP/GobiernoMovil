@@ -81,6 +81,13 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 				// TODO Este mensaje debe estar internacionalizado.
 				throw new Error("Error al copiar la Base de Datos");
 			}
+		} else {
+			
+			Log.i("DataBase",
+					"Entra en este condicion en caso de que la base de datos se encuetra "
+							+ "registrada y se consultara para actualizarla");
+			deletedDataBase(SearchVersion(), "2013-01-18");
+			
 		}
 	}
 
@@ -91,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 	 */
 	private boolean comprobarBaseDatos() {
 		File dbFile = new File(DB_PATH + DB_NAME);
-	    return dbFile.exists();
+		return dbFile.exists();
 	}
 
 	/**
@@ -461,4 +468,37 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 		db.close();
 		return fecha;
 	}
+
+	/**
+	 * Metodo para BUscar la Version de la
+	 * 
+	 * @param version
+	 * @return
+	 */
+	public String SearchVersion() {
+		db = getWritableDatabase();
+		String i = "";
+		Cursor cursor = db.rawQuery(
+				"SELECT fecha FROM fecha_actualizacion LIMIT 1", null);
+		if (cursor.moveToFirst()) {
+			do {
+				i = cursor.getString(0);
+				Log.i("DataBase", "La version de la base de datos es: " + i);
+			} while (cursor.moveToNext());
+		}
+		return i;
+	}
+
+	public void deletedDataBase(String oldVersion, String newVersion)
+			throws IOException {
+		if (!oldVersion.equals(newVersion)) {
+			Log.i("DataBase", "Eliminando Base de Datos Vieja");
+			context.deleteDatabase(DB_NAME);
+			Log.i("DataBase", "Base de datos Vieja Eliminada");
+			crearDataBase();
+		}else{
+			Log.i("DataBase", "La base de datos se encuentra actualizada");
+		}
+	}
+
 }

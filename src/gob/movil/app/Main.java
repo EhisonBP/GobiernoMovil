@@ -186,6 +186,7 @@ public class Main extends Activity implements Constants {
 		if (Preferences.getVibration(getApplicationContext()))
 			setVibration(VIBRATION_INTENT);
 		startActivity(new Intent(this, c).putExtra("item", item));
+		overridePendingTransition(R.anim.fade, R.anim.hold);
 	}
 
 	/**
@@ -214,8 +215,6 @@ public class Main extends Activity implements Constants {
 			helper = new DatabaseHelper(this);
 			helper.crearDataBase();
 		} catch (IOException ioe) {
-			// TODO
-			// ¿Qué se hará con la excepción?
 		}
 	}
 }
