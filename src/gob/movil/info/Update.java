@@ -426,6 +426,13 @@ public class Update extends Main {
 		return networkInfo != null && networkInfo.isConnectedOrConnecting();
 	}
 
+	/**
+	 * Permite recorta la fecha para el formato adecuado que permiten el
+	 * servicio web
+	 * 
+	 * @param id
+	 * @param fecha
+	 */
 	public void formatFecha(int id, String fecha) {
 		fecha = fecha.substring(0, 10);
 		Log.i("GobiernoMovil", "La fecha recortada es: " + fecha);
