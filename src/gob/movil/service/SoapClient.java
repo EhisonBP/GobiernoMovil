@@ -186,6 +186,7 @@ public class SoapClient implements Constants {
 			list = (List<SoapObject>) envelope.getResponse();
 			Log.i("Metodo", "Se lleno la lista con la respuesta");
 		} catch (Exception e) {
+			Log.i("Metodo", e.toString());
 			list.add((SoapObject) envelope.getResponse());
 		}
 		return list;

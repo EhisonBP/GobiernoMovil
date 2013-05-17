@@ -60,6 +60,6 @@ public interface Constants extends BaseColumns {
 	// "http://172.26.16.55:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
 	// Richard's home localhost:
 	// "http://192.168.1.100:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL"
-	public static final String WEB_SERVICE_URL = "http://10.16.17.101:9090/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
+	public static final String WEB_SERVICE_URL = "http://10.16.17.101:8080/Directorio/ServicioDirectorioEstadoVenezolano?WSDL";
 	public static final String DB_PATH = "/data/data/gob.movil/databases/";
 }

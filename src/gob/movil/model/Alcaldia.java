@@ -48,8 +48,8 @@ public class Alcaldia {
 			String webAlcaldia, String fecha, int estado) {
 		this.idAlcaldia = idAlcaldia;
 		this.nombreAlcaldia = nombreAlcaldia;
-		this.nombreMunicipio = nombreMunicipio;
 		this.directorAlcaldia = directorAlcaldia;
+		this.nombreMunicipio = nombreMunicipio;
 		this.direccionAlcaldia = direccionAlcaldia;
 		this.telefonoAlcaldia = telefonoAlcaldia;
 		this.webAlcaldia = webAlcaldia;

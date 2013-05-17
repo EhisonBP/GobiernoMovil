@@ -225,16 +225,25 @@ public class Update extends Main {
 							"ERROR DE CONEXIÓN EN INSTITUCIÓN");
 				}
 			}
-			/**
-			 * try { fecha = helper.fechaActualizacion(MAYORALTIES_ID);
-			 * List<Alcaldia> resultado = SoapClient.listarAlcaldias(fecha, 1);
-			 * updateMayoralties(resultado); // helper.updateFecha(); //
-			 * resultado.clear(); } catch (XmlPullParserException e) {
-			 * e.printStackTrace(); } catch (IOException e) { if
-			 * (e.getMessage().equals("Exception")) errorException++; else {
-			 * errorConnection++; Log.i("CONNECTION ERROR",
-			 * "ERROR DE CONEXIÓN ALCALDÍAS"); e.printStackTrace(); } }
-			 */
+
+			try {
+				fecha = helper.fechaActualizacion(MAYORALTIES_ID);
+				List<Alcaldia> resultado = SoapClient.listarAlcaldias(fecha, 1);
+				updateMayoralties(resultado);
+				// helper.updateFecha();
+				// resultado.clear();
+			} catch (XmlPullParserException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				if (e.getMessage().equals("Exception"))
+					errorException++;
+				else {
+					errorConnection++;
+					Log.i("CONNECTION ERROR", "ERROR DE CONEXIÓN ALCALDÍAS");
+					e.printStackTrace();
+				}
+			}
+
 		}
 
 		/**
@@ -432,6 +441,8 @@ public class Update extends Main {
 	 * 
 	 * @param id
 	 * @param fecha
+	 * 
+	 * @author Ehison Perez
 	 */
 	public void formatFecha(int id, String fecha) {
 		fecha = fecha.substring(0, 10);
