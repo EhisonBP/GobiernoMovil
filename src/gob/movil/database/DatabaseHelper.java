@@ -82,12 +82,12 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constants {
 				throw new Error("Error al copiar la Base de Datos");
 			}
 		} else {
-			/**
+			
 			Log.i("DataBase",
 					"Entra en este condicion en caso de que la base de datos se encuetra "
 							+ "registrada y se consultara para actualizarla");
-			deletedDataBase(SearchVersion(), "2013-01-18");
-			*/
+			deletedDataBase(SearchVersion(), "2013-05-20");
+			
 		}
 	}
 

@@ -127,8 +127,8 @@ public class SoapClient implements Constants {
 			Alcaldia mayoralty = new Alcaldia(
 					Integer.parseInt(result.getProperty("idAlcaldia").toString()), 
 					result.getProperty("nombreMunicipio").toString(), 
-					result.getProperty("nombreAlcaldia").toString(), 
 					result.getProperty("directorAlcaldia").toString(),
+					result.getProperty("nombreAlcaldia").toString(), 
 					result.getProperty("direccionAlcaldia").toString(), 
 					result.getProperty("telefonoAlcaldia").toString(), 
 					result.getProperty("webAlcaldia").toString(), 
