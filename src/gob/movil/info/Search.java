@@ -34,6 +34,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -66,14 +67,12 @@ public class Search extends Main {
 					this,
 					AGENCIES + WHERE + replace("nombre", query) + OR
 							+ replace("director", query) + OR
-							+ replace("institucion", query) + OR
-							+ replace("twitter", query));
+							+ replace("institucion", query));
 			String[] mayoralties = getListItems(
 					this,
 					MAYORALTIES + WHERE + replace("nombre", query) + OR
 							+ replace("director", query) + OR
-							+ replace("alcaldia", query) + OR
-							+ replace("twitter", query));
+							+ replace("alcaldia", query));
 			String[] procedures = getListItems(this, PROCEDURES + WHERE
 					+ replace("nombre", query));
 			TextView noResults = (TextView) findViewById(R.id.search_results);
@@ -142,9 +141,20 @@ public class Search extends Main {
 					Show.setDialog(Search.this, agenciesResults);
 				if (mayoraltiesResults != null)
 					Show.setDialog(Search.this, mayoraltiesResults);
-				if (proceduresResults != null)
-					showActivity(Procedures.class,
-							Integer.parseInt(proceduresResults[0]));
+				if (proceduresResults != null) {
+					Log.i("Busqueda", "Seleccionado un tramite de la lista");
+					try {
+						Log.i("Busqueda",
+								"Numero de tramite: "
+										+ (Integer.parseInt(proceduresResults[0]) - 1));
+						showActivity(Procedures.class,
+								(Integer.parseInt(proceduresResults[0]) - 1));
+					} catch (Exception e) {
+						Log.e("Busqueda",
+								"Error encontrado al seleccionar segundo elemento de tramite ",
+								e.fillInStackTrace());
+					}
+				}
 			}
 		});
 		resultsList.setVisibility(View.VISIBLE);

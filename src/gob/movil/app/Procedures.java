@@ -24,7 +24,6 @@ package gob.movil.app;
 import gob.movil.R;
 import gob.movil.info.Preferences;
 import gob.movil.info.Show;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -47,8 +46,8 @@ public class Procedures extends Main {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.procedures);
-		Intent receive = getIntent();
-		final int procedure = receive.getIntExtra("item", 0);
+		Bundle receive = getIntent().getExtras();
+		final int procedure = receive.getInt("item");
 		String[] items = getListItems(this, PROCEDURES);
 		final Spinner spinner = (Spinner) findViewById(R.id.spinner_procedures);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
