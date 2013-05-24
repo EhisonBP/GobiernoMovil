@@ -160,13 +160,13 @@ public class Main extends Activity implements Constants {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.directory_main:
-			showActivity(Directory.class, 0);
+			showActivity(Directory.class, 0, "Main", "");
 			break;
 		case R.id.procedures_main:
-			showActivity(Procedures.class, 0);
+			showActivity(Procedures.class, 0, "Main", "");
 			break;
 		case R.id.government_main:
-			showActivity(Government.class, 0);
+			showActivity(Government.class, 0, "Main", "");
 			break;
 		}
 	}
@@ -181,10 +181,15 @@ public class Main extends Activity implements Constants {
 	 * 
 	 * @author Richard Ricciardelli
 	 */
-	public void showActivity(Class<?> c, int item, String clase, String titulo) {
+	public void showActivity(Class<?> c, int item, String nameClass,
+			String title) {
 		if (Preferences.getVibration(getApplicationContext()))
 			setVibration(VIBRATION_INTENT);
-		startActivity(new Intent(this, c).putExtra("item", item));
+		Intent intent = new Intent(this, c);
+		intent.putExtra("item", item);
+		intent.putExtra("nameClass", nameClass);
+		intent.putExtra("title", title);
+		startActivity(intent);
 		overridePendingTransition(R.anim.fade, R.anim.hold);
 	}
 

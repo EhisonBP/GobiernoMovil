@@ -146,9 +146,12 @@ public class Search extends Main {
 					try {
 						Log.i("Busqueda",
 								"Numero de tramite: "
-										+ (Integer.parseInt(proceduresResults[0]) - 1));
-						showActivity(Procedures.class,
-								(Integer.parseInt(proceduresResults[0]) - 1));
+										+ (Integer
+												.parseInt(proceduresResults[0]) - 1));
+						Log.i("Busqueda", "Nombre del tramite: "
+								+ proceduresResults[1]);
+						showActivity(Procedures.class, 0, "Search",
+								proceduresResults[1]);
 					} catch (Exception e) {
 						Log.e("Busqueda",
 								"Error encontrado al seleccionar segundo elemento de tramite ",

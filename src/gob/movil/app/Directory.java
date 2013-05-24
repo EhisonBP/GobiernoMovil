@@ -120,7 +120,7 @@ public class Directory extends Main {
 			Show.setDialog(this, officers);
 			break;
 		case 6:
-			showActivity(Mayoralties.class, position + 1);
+			showActivity(Mayoralties.class, position + 1, "Directory", "");
 			break;
 		default:
 			String[] agencies = getArrayFromCursor(this, "SELECT * FROM "

@@ -48,6 +48,8 @@ public class Procedures extends Main {
 		setContentView(R.layout.procedures);
 		Bundle receive = getIntent().getExtras();
 		final int procedure = receive.getInt("item");
+		final String nameClass = receive.getString("nameClass");
+		final String title = receive.getString("title");
 		String[] items = getListItems(this, PROCEDURES);
 		final Spinner spinner = (Spinner) findViewById(R.id.spinner_procedures);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -59,11 +61,20 @@ public class Procedures extends Main {
 			public void onItemSelected(AdapterView<?> parent,
 					android.view.View v, int position, long id) {
 				try {
-					String[] procedures = getArrayFromCursor(
-							getApplicationContext(), "SELECT * FROM "
-									+ PROCEDURES + " WHERE nombre = '"
-									+ spinner.getItemAtPosition(position) + "'");
-					setTextProcedure(procedures);
+					if (nameClass.equals("Search")) {
+						String[] procedures = getArrayFromCursor(
+								getApplicationContext(), "SELECT * FROM "
+										+ PROCEDURES + " WHERE nombre = '"
+										+ title + "'");
+						setTextProcedure(procedures);
+					} else {
+						String[] procedures = getArrayFromCursor(
+								getApplicationContext(), "SELECT * FROM "
+										+ PROCEDURES + " WHERE nombre = '"
+										+ spinner.getItemAtPosition(position)
+										+ "'");
+						setTextProcedure(procedures);
+					}
 				} catch (Exception e) {
 					if (Preferences.getVibration(getApplicationContext())) {
 						setVibration(VIBRATION_ERROR);
