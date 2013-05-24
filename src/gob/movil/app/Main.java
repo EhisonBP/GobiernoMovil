@@ -181,7 +181,7 @@ public class Main extends Activity implements Constants {
 	 * 
 	 * @author Richard Ricciardelli
 	 */
-	public void showActivity(Class<?> c, int item) {
+	public void showActivity(Class<?> c, int item, String clase, String titulo) {
 		if (Preferences.getVibration(getApplicationContext()))
 			setVibration(VIBRATION_INTENT);
 		startActivity(new Intent(this, c).putExtra("item", item));

@@ -84,7 +84,6 @@ public class Procedures extends Main {
 				+ "\n\n" + getString(R.string.address) + ": " + data[8]
 				+ "\n\n" + getString(R.string.phones) + ": " + data[7] + "\n\n"
 				+ getString(R.string.hours) + ": " + data[3] + "\n\n"
-				+ getString(R.string.cost) + ": " + data[4] + "\n\n"
 				+ getString(R.string.info) + ": " + data[5] + "\n\n"
 				+ getString(R.string.organism) + ": " + data[6]);
 		AnimationSet set = new AnimationSet(true);
